@@ -6,14 +6,23 @@ class BandsController < ApplicationController
 
   def new
     @band = Band.new
+    @tag_ids = []
     render :new
   end
 
   def create
     @band = Band.new(band_params)
-    if @band.save
+
+    if params[:tag_ids] == [""]
+      @tag_ids = params[:tag_ids]
+      flash.now[:errors] = ["Must select a tag"]
+      render :new
+    elsif @band.save
+      @band.update_tags(params[:tag_ids])
+      flash[:notice] = "#{@band.name} added successfully"
       redirect_to band_url(@band.id)
     else
+      @tag_ids = params[:tag_ids]
       flash.now[:errors] = @band.errors.full_messages
       render :new
     end
@@ -26,16 +35,25 @@ class BandsController < ApplicationController
 
   def edit
     @band = Band.find(params[:id])
+    @tag_ids = @band.tags.pluck(:id).map(&:to_s)
     render :edit
   end
 
   def update
     @band = Band.find(params[:id])
-    if @band.update(band_params)
-      redirect_to band_url(@band)
+
+    if params[:tag_ids] == [""]
+      @tag_ids = params[:tag_ids]
+      flash.now[:errors] = ["Must select a tag"]
+      render :new
+    elsif @band.update(band_params)
+      @band.update_tags(params[:tag_ids])
+      flash[:notice] = "#{@band.name} added successfully"
+      redirect_to band_url(@band.id)
     else
+      @tag_ids = params[:tag_ids]
       flash.now[:errors] = @band.errors.full_messages
-      render :edit
+      render :new
     end
   end
 

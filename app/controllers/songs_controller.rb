@@ -6,6 +6,7 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @tag_ids = []
     @blog_id = params[:blog_id] ? params[:blog_id] : nil
     @band_id = params[:band_id] ? params[:band_id] : nil
     render :new
@@ -28,6 +29,7 @@ class SongsController < ApplicationController
 
   def edit
     @song = Song.find(params[:id])
+    @tag_ids = @song.tags.pluck(:id).map(&:to_s)
     render :edit
   end
 
