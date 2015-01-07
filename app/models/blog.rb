@@ -1,4 +1,4 @@
-class Song < ActiveRecord::Base
+class Blog < ActiveRecord::Base
   validates :name, :url, presence: true, uniqueness: true
 
   has_many :songs

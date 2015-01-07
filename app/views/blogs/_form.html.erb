@@ -1,0 +1,30 @@
+<% action_url = blog.persisted? ? blog_url(blog) : blogs_url %>
+<% http_method = blog.persisted? ? "PATCH" : "POST" %>
+
+<% if !blog.errors.full_messages.empty? %>
+<ul>
+  <% blog.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= http_method %>">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <label>Name
+    <input type="text" name="blog[name]" value="<%= blog.name %>" class="mytext">
+  </label>
+  <br><br>
+
+  <label>URL
+    <input type="text" name="blog[url]" value="<%= blog.url %>" class="mytext">
+  </label>
+  <br><br>
+
+  <input type="submit">
+</form>

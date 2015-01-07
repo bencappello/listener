@@ -1,0 +1,15 @@
+<h1><%= @blog.name %></h1>
+<h4><a href="<%= @blog.url %>"><%= @blog.url %></a></h4>
+
+<ul>
+  <% @blog.songs.each do |song| %>
+  <li><%= link_to song.name, song_url(song) %></li>
+  <% end %>
+</ul>
+
+<h4>Links</h4>
+<ul>
+  <li><%= link_to "Edit Blog", edit_blog_url(@blog) %></li>
+  <li><%= link_to "Delete Blog", blog_url(@blog), method: :delete, class: 'btn' %></li>
+  <li><%= link_to "All blogs", blogs_url %></li>
+</ul>
