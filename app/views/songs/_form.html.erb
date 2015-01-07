@@ -58,7 +58,20 @@
     id="regular"
     <%= "checked" if song.song_type == 'regular' %>>
   <label for="regular">Regular</label>
-  <br>
+  <br><br>
+
+  <label>Tags</label>
+    <input type="hidden" name="tag_ids[]" value="">
+    <% Tag.all.each do |tag| %>
+    <label>
+      <input type="checkbox"
+        name="tag_ids[]"
+        value="<%= tag.id %>"
+        <%= "checked" if tag_ids.include?(tag.id.to_s) %>>
+      <%= tag.name %>
+  </label>
+  <% end %>
+  <br><br>
 
   <input type="submit">
 </form>

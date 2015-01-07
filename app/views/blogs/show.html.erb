@@ -2,6 +2,13 @@
 <h4><a href="<%= @blog.url %>"><%= @blog.url %></a></h4>
 
 <ul>
+  <% @blog.tags.each do |tag| %>
+  <li><%= tag.name %></li>
+  <% end %>
+</ul>
+<br><br>
+
+<ul>
   <% @blog.songs.each do |song| %>
   <li><%= link_to song.name, song_url(song) %></li>
   <% end %>
