@@ -1,8 +1,13 @@
 class SongsController < ApplicationController
+  def index
+    @songs = Song.all
+    render :index
+  end
+
   def new
     @song = Song.new
-    @blog_id = params[:blog_id] if params[:blog_id]
-    @band_id = params[:band_id] if params[:band_id]
+    @blog_id = params[:blog_id] ? params[:blog_id] : nil
+    @band_id = params[:band_id] ? params[:band_id] : nil
     render :new
   end
 
@@ -37,13 +42,14 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    @song = Song.new(song_params)
+    @song = Song.find(params[:id])
     @song.destroy
+    redirect_to songs_url
   end
 
   private
 
   def song_params
-    params.require(:song).permit(:name, :band_name, :blog_name, :song_type)
+    params.require(:song).permit(:name, :band_id, :blog_id, :song_type)
   end
 end
