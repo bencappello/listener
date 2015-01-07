@@ -1,12 +1,12 @@
 <h1><%= @blog.name %></h1>
 <h4><a href="<%= @blog.url %>"><%= @blog.url %></a></h4>
 
+<h5>Tags</h5>
 <ul>
   <% @blog.tags.each do |tag| %>
   <li><%= tag.name %></li>
   <% end %>
 </ul>
-<br><br>
 
 <ul>
   <% @blog.songs.each do |song| %>
