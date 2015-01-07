@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   resources :bands do
     resources :songs, only: [:new]
   end
-  
-  resources :songs, except: [:new]
+
+  resources :blogs do
+    resources :songs, only: [:new]
+  end
+
+  resources :songs
   # resources :blogs
   # resources :comments
 
