@@ -12,7 +12,7 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      redirect_to tags_url(@tag.id)
+      redirect_to tags_url
     else
       flash.now[:errors] = @tag.errors.full_messages
       render :new
@@ -32,7 +32,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
-      redirect_to tags_url(@tag)
+      redirect_to tags_url
     else
       flash.now[:errors] = @tag.errors.full_messages
       render :edit

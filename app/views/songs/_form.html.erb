@@ -1,16 +1,9 @@
+<%= render 'layouts/errors' %>
+
 <% action_url = song.persisted? ? song_url(song) : songs_url %>
 <% http_method = song.persisted? ? "PATCH" : "POST" %>
 <% band_page_id ||= nil %>
 <% blog_page_id ||= nil %>
-
-
-<% if !song.errors.full_messages.empty? %>
-<ul>
-  <% song.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
 
 <form action="<%= action_url %>" method="POST" %>
   <input type="hidden" name="_method" value="<%= http_method %>">

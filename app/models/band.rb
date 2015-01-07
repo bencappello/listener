@@ -3,4 +3,5 @@ class Band < ActiveRecord::Base
 
   has_many :songs, inverse_of: :band, dependent: :destroy
   has_many :band_tags, dependent: :destroy
+  has_many :tags, through: :band_tags
 end

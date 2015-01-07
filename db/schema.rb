@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107184057) do
+ActiveRecord::Schema.define(version: 20150107204434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "band_tags", force: true do |t|
+    t.integer  "band_id",    null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bands", force: true do |t|
     t.string   "name",       null: false
@@ -22,9 +29,23 @@ ActiveRecord::Schema.define(version: 20150107184057) do
     t.datetime "updated_at"
   end
 
+  create_table "blog_tags", force: true do |t|
+    t.integer  "blog_id",    null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "blogs", force: true do |t|
     t.string   "name",       null: false
     t.string   "url",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "song_tags", force: true do |t|
+    t.integer  "song_id",    null: false
+    t.integer  "tag_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
