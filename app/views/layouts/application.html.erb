@@ -16,7 +16,12 @@
       <input type="submit" value="Log out">
     </form>
   <% else %>
-    <a href="<%= new_session_url %>">Log in</a>
+    <a href="<%= new_session_url %>">Log In</a>
+    <a href="<%= new_users_url %>">Sign Up</a>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
   <% end %>
 
 <%= yield %>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :songs
+
+  resources :tags, except: [:show]
   # resources :blogs
   # resources :comments
 
