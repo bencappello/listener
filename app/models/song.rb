@@ -7,8 +7,9 @@ class Song < ActiveRecord::Base
   belongs_to :blog
   has_many :song_tags, dependent: :destroy
   has_many :tags, through: :song_tags
-  # has_many :favorites
-  # has_many :favoriters, through: :favorites, :source: :user
+
+  has_many :user_songs, dependent: :destroy
+  has_many :favoriters, through: :user_songs, :source: :user
 
   def update_tags(new_tag_ids)
     new_tag_ids.delete("")

@@ -3,9 +3,15 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 5, allow_nil: true }
   validates :email, :username, uniqueness: true
 
-  # has_many :boards
-  # has_many :card_assignments
-  # has_many :board_memberships
+  has_many :user_songs, dependent: :destroy
+  has_many :user_blogs, dependent: :destroy
+  has_many :user_follows, dependent: :destroy
+
+  has_many :favorite_songs, through: :user_songs, source: :song
+  has_many :followed_blogs, through: :user_blogs, source: :blog
+
+  has_many :followers, through: :user_follows, source: :follower
+  has_many :followed_users, through: :user_follows, source: :followed_user
 
   attr_reader :password
   after_initialize :ensure_session_token
