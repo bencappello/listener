@@ -13,16 +13,10 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
 
-    if params[:tag_ids] == [""]
-      @tag_ids = params[:tag_ids]
-      flash.now[:errors] = ["Must select a tag"]
-      render :new
-    elsif @blog.save
-      @blog.update_tags(params[:tag_ids])
+    if @blog.save
       flash[:notice] = "#{@blog.name} added successfully"
       redirect_to blog_url(@blog.id)
     else
-      @tag_ids = params[:tag_ids]
       flash.now[:errors] = @blog.errors.full_messages
       render :new
     end
@@ -41,24 +35,17 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
-    if params[:tag_ids] == [""]
-      @tag_ids = params[:tag_ids]
-      flash.now[:errors] = ["Must select a tag"]
-      render :edit
-    elsif @blog.update(blog_params)
-      @blog.update_tags(params[:tag_ids])
+    if @blog.update(blog_params)
       flash[:notice] = "#{@blog.name} added successfully"
       redirect_to blog_url(@blog.id)
     else
-      @tag_ids = params[:tag_ids]
       flash.now[:errors] = @blog.errors.full_messages
       render :edit
     end
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
-    @blog.destroy
+    Blog.find(params[:id]).destroy
     redirect_to blogs_url
   end
 
@@ -66,6 +53,6 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:name, :url)
+    params.require(:blog).permit(:name, :url, tag_ids: [])
   end
 end

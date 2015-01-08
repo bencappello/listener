@@ -1,8 +1,12 @@
 class UserSongsController < ApplicationController
+  before_action :require_login
+
   def create
-    @user_song = UserSong.new()
-    @user_song.user_id = current_user.id
-    @user_song.song_id = params[:song_id]
+    @user_song = current_user.user_songs.new(user_song_params)
+    fail
+    # @user_song = UserSong.new()
+    # @user_song.user_id = current_user.id
+    # @user_song.song_id = params[:song_id]
     @user_song.save
     redirect_to :back
   end
@@ -17,7 +21,7 @@ class UserSongsController < ApplicationController
 
   private
 
-  # def user_follow_params
-  #   params.require(:user_song).permit(:follower_id, :followed_user_id)
-  # end
+  def user_song_params
+    {song_id: params[:song_id].to_i}
+  end
 end

@@ -2,7 +2,7 @@
 <h4>Posted by: <%= link_to @song.blog.name, blog_url(@song.blog) %></h4>
 
 
-<% if @song.favoriters.pluck(:id).include?(current_user.id) %>
+<% if @song.favoriters.pluck(:id).include?(current_user.try(:id)) %>
   <%= button_to "Unfavorite", user_song_url(@song), method: 'delete' %>
 <% else %>
   <%= button_to "Favorite", user_songs_url, params: {song_id: @song} %>

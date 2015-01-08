@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :user_follows, only: [:create, :destroy]
   resources :user_songs, only: [:create, :destroy]
+  resources :user_blogs, only: [:create, :destroy]
 
 
 

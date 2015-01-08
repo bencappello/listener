@@ -1,8 +1,8 @@
 class UserFollowsController < ApplicationController
+  before_action :require_login
+
   def create
-    @user_follow = UserFollow.new()
-    @user_follow.follower_id = current_user.id
-    @user_follow.followed_user_id = params[:followed_user_id]
+    @user_follow = current_user.follow_choices.new(user_follow_params)
 
     if @user_follow.save
       flash[:notice] = ["Following user"]
@@ -22,7 +22,7 @@ class UserFollowsController < ApplicationController
 
   private
 
-  # def user_follow_params
-  #   params.require(:user_follow).permit(:follower_id, :followed_user_id)
-  # end
+  def user_follow_params
+    {followed_user_id: params[:followed_user_id].to_i}
+  end
 end

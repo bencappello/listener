@@ -1,6 +1,12 @@
 <h1><%= @blog.name %></h1>
 <h4><a href="<%= @blog.url %>"><%= @blog.url %></a></h4>
 
+<% if @blog.followers.pluck(:id).include?(current_user.try(:id)) %>
+  <%= button_to "Unfollow", user_blog_url(@blog), method: 'delete' %>
+<% else %>
+  <%= button_to "Follow", user_blogs_url, params: {blog_id: @blog} %>
+<% end %>
+
 <h5>Genres</h5>
 <ul>
   <% @blog.tags.each do |tag| %>

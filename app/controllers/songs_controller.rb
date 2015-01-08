@@ -15,16 +15,10 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params)
 
-    if params[:tag_ids] == [""]
-      @tag_ids = params[:tag_ids]
-      flash.now[:errors] = ["Must select a tag"]
-      render :new
-    elsif @song.save
-      @song.update_tags(params[:tag_ids])
+    if @song.save
       flash[:notice] = "#{@song.name} added successfully"
       redirect_to song_url(@song.id)
     else
-      @tag_ids = params[:tag_ids]
       flash.now[:errors] = @song.errors.full_messages
       render :new
     end
@@ -44,16 +38,10 @@ class SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
 
-    if params[:tag_ids] == [""]
-      @tag_ids = params[:tag_ids]
-      flash.now[:errors] = ["Must select a tag"]
-      render :new
-    elsif @song.update(song_params)
-      @song.update_tags(params[:tag_ids])
+    if @song.update(song_params)
       flash[:notice] = "#{@song.name} added successfully"
       redirect_to song_url(@song.id)
     else
-      @tag_ids = params[:tag_ids]
       flash.now[:errors] = @song.errors.full_messages
       render :new
     end
@@ -67,6 +55,6 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :band_id, :blog_id, :song_type)
+    params.require(:song).permit(:name, :band_id, :blog_id, :song_type, tag_ids: [])
   end
 end

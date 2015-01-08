@@ -61,13 +61,14 @@
   <br><br>
 
   <label>Tags</label>
-    <input type="hidden" name="tag_ids[]" value="">
+    <input type="hidden" name="song[tag_ids][]" value="">
     <% Tag.all.each do |tag| %>
     <label>
-      <input type="checkbox"
-        name="tag_ids[]"
+      <input
+        type="checkbox"
+        name="song[tag_ids][]"
         value="<%= tag.id %>"
-        <%= "checked" if tag_ids.include?(tag.id.to_s) %>>
+        <%= "checked" if song.tag_ids.include?(tag.id) %>>
       <%= tag.name %>
   </label>
   <% end %>
