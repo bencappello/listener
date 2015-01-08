@@ -3,10 +3,6 @@ class UserSongsController < ApplicationController
 
   def create
     @user_song = current_user.user_songs.new(user_song_params)
-    fail
-    # @user_song = UserSong.new()
-    # @user_song.user_id = current_user.id
-    # @user_song.song_id = params[:song_id]
     @user_song.save
     redirect_to :back
   end

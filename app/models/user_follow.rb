@@ -5,13 +5,13 @@ class UserFollow < ActiveRecord::Base
   belongs_to(
     :follower,
     class_name: "User",
-    inverse_of: :user_follow
+    inverse_of: :user_follows
   )
 
   belongs_to(
   :followed_user,
   class_name: "User",
-  inverse_of: :user_follow
+  inverse_of: :user_follows
   )
 
 end

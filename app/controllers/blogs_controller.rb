@@ -6,7 +6,6 @@ class BlogsController < ApplicationController
 
   def new
     @blog = Blog.new
-    @tag_ids = []
     render :new
   end
 
@@ -29,7 +28,6 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
-    @tag_ids = @blog.tags.pluck(:id).map(&:to_s)
     render :edit
   end
 

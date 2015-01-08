@@ -2,9 +2,7 @@ class UserBlogsController < ApplicationController
   before_action :require_login
 
   def create
-    @user_blog = UserBlog.new()
-    @user_blog.user_id = current_user.id
-    @user_blog.blog_id = params[:blog_id]
+    @user_blog = current_user.user_blogs.new(user_blog_params)
     @user_blog.save
     redirect_to :back
   end
@@ -19,7 +17,7 @@ class UserBlogsController < ApplicationController
 
   private
 
-  # def user_follow_params
-  #   params.require(:user_blog).permit(:follower_id, :followed_user_id)
-  # end
+  def user_blog_params
+    {blog_id: params[:blog_id].to_i}
+  end
 end

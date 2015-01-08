@@ -18,6 +18,3 @@ Add tags:
 Maybe add polymorphic comments
 
 Feed page should be able to be split up between followed blogs and followed users' loved songs
-
-
-add to params in controller

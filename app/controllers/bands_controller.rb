@@ -6,7 +6,6 @@ class BandsController < ApplicationController
 
   def new
     @band = Band.new
-    @tag_ids = []
     render :new
   end
 
@@ -29,7 +28,6 @@ class BandsController < ApplicationController
 
   def edit
     @band = Band.find(params[:id])
-    @tag_ids = @band.tags.pluck(:id).map(&:to_s)
     render :edit
   end
 
