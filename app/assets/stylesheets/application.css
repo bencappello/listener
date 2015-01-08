@@ -17,3 +17,13 @@
 .mytext {
   width: 250px;
 }
+
+.nav-links {
+  float: right
+}
+
+.group {
+  clear: both;
+  display: block;
+  content: '';
+}

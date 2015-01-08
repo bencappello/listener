@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if @user.nil?
       @user = User.new(email: email)
-      flash.now[:errors] = @user.errors.full_messages
+      flash.now[:errors] = ["Incorrect email/password combination."]
       render :new
     else
       login!(@user)

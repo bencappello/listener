@@ -6,6 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+me = User.create(
+  username: 'thatpurplestuff',
+  email: 'ben@gmail.com',
+  password: 'password'
+)
+
+10.times do
+  User.create(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: 'password'
+  )
+end
+
 tags = Tag.create([
   {name: 'Funk'},
   {name: 'Soul'},

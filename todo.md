@@ -16,3 +16,5 @@ Add tags:
   update 3 controllers to liase between view forms and model update methods
 
 Maybe add polymorphic comments
+
+Feed page should be able to be split up between followed blogs and followed users' loved songs

@@ -29,11 +29,6 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
-  def self.find_by_credentials(user_params)
-    user = User.find_by_email(user_params[:email])
-    user.try(:is_password?, user_params[:password]) ? user : nil
-  end
-
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
@@ -45,18 +40,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
-
-    if user
-      if user.is_password?(password)
-        user
-      else
-        errors[:base] << "That is not the correct password for the user."
-        nil
-      end
-    else
-      errors[:base] << "There is no user with that email address."
-      nil
-    end
+    user.try(:is_password?, password) ? user : nil
   end
 
   def self.generate_session_token
