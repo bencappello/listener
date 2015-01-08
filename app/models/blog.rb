@@ -6,7 +6,7 @@ class Blog < ActiveRecord::Base
   has_many :tags, through: :blog_tags
 
   has_many :user_blogs, dependent: :destroy
-  has_many :followers, through: :user_blogs, :source: :user
+  has_many :followers, through: :user_blogs, source: :user
 
   def update_tags(new_tag_ids)
     new_tag_ids.delete("")

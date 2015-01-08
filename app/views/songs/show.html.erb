@@ -1,7 +1,7 @@
 <h1><%= link_to @song.band.name, band_url(@song.band) %> - <%= @song.name %></h1>
 <h4>Posted by: <%= link_to @song.blog.name, blog_url(@song.blog) %></h4>
 
-<h5>Tags</h5>
+<h5>Genres</h5>
 <ul>
   <% @song.tags.each do |tag| %>
   <li><%= tag.name %></li>

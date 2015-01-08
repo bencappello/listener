@@ -1,9 +1,19 @@
-<h2><%= current_user.username %></h2>
+<h2><%= @user.username %></h2>
+
+<% if !(current_user.id == @user.id) %>
+  <% if @user.followers.pluck(:id).include?(current_user.id) %>
+  <button name="button"><a href="#">Unfollow</a></button>
+  <% else %>
+  <button name="button"><a href="#">Follow</a></button>
+  <% end %>
+<% end %>
+
 <br>
-<div>Email: <%= current_user.email %></div>
+<div>Email: <%= @user.email %></div>
 <br><br>
-<!-- <ul>
-  <#% current_user.songs.each do |song| %>
-  <li><#%= link_to song.name, song_url(song) %></li>
-  <#% end %>
-</ul> -->
+<h5>Favorite Songs</h5>
+<ul>
+  <% @user.favorite_songs.each do |song| %>
+  <li><%= link_to song.name, song_url(song) %></li>
+  <% end %>
+</ul>
