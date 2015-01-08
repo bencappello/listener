@@ -1,10 +1,10 @@
 <h2><%= @user.username %></h2>
 
-<% if !(current_user.id == @user.id) %>
+<% if logged_in? && !(current_user.id == @user.id) %>
   <% if @user.followers.pluck(:id).include?(current_user.id) %>
-  <button name="button"><a href="#">Unfollow</a></button>
+    <%= button_to "Unfollow", user_follow_url(@user), method: 'delete' %>
   <% else %>
-  <button name="button"><a href="#">Follow</a></button>
+    <%= button_to "Follow", user_follows_url, params: {followed_user_id: @user.id} %>
   <% end %>
 <% end %>
 

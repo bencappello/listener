@@ -1,18 +1,19 @@
 <h1><%= link_to @song.band.name, band_url(@song.band) %> - <%= @song.name %></h1>
 <h4>Posted by: <%= link_to @song.blog.name, blog_url(@song.blog) %></h4>
 
+
+<% if @song.favoriters.pluck(:id).include?(current_user.id) %>
+  <%= button_to "Unfavorite", user_song_url(@song), method: 'delete' %>
+<% else %>
+  <%= button_to "Favorite", user_songs_url, params: {song_id: @song} %>
+<% end %>
+
 <h5>Genres</h5>
 <ul>
   <% @song.tags.each do |tag| %>
   <li><%= tag.name %></li>
   <% end %>
 </ul>
-
-<!-- <#% @song.comments.each do |comment| %>
-  <#%= render "note/note", note: note %>
-<#% end %>
-
-<#%= render "note/form", song: @song %> -->
 
 <h4>Links</h4>
 <ul>

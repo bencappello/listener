@@ -17,7 +17,10 @@ Rails.application.routes.draw do
 
   resources :tags, except: [:show]
 
-  resources :comments, :only => [:create, :destroy, :update]
+  resources :comments, only: [:create, :destroy, :update]
+
+  resources :user_follows, only: [:create, :destroy]
+  resources :user_songs, only: [:create, :destroy]
 
 
 
