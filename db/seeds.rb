@@ -8,6 +8,7 @@
 
 tags = Tag.create([
   {name: 'Funk'},
+  {name: 'Soul'},
   {name: 'House'},
   {name: 'Electronic'},
   {name: 'Rap'},
