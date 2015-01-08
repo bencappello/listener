@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150108160856) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer  "author",           null: false
+    t.integer  "user_id",          null: false
     t.string   "body",             null: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150108160856) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "song_tags", force: true do |t|
     t.integer  "song_id",    null: false

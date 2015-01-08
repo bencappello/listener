@@ -8,6 +8,8 @@ class Blog < ActiveRecord::Base
   has_many :user_blogs, dependent: :destroy
   has_many :followers, through: :user_blogs, source: :user
 
+  has_many :comments, as: :commentable
+
   def update_tags(new_tag_ids)
     new_tag_ids.delete("")
     new_tag_ids.map!(&:to_i)

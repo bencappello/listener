@@ -5,6 +5,8 @@ class Band < ActiveRecord::Base
   has_many :band_tags, dependent: :destroy
   has_many :tags, through: :band_tags
 
+  has_many :comments, as: :commentable
+
   def update_tags(new_tag_ids)
     new_tag_ids.delete("")
     new_tag_ids.map!(&:to_i)

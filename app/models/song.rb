@@ -11,6 +11,8 @@ class Song < ActiveRecord::Base
   has_many :user_songs, dependent: :destroy
   has_many :favoriters, through: :user_songs, source: :user
 
+  has_many :comments, as: :commentable
+
   def update_tags(new_tag_ids)
     new_tag_ids.delete("")
     new_tag_ids.map!(&:to_i)
