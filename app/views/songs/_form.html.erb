@@ -21,7 +21,7 @@
   <select name="song[band_id]">
       <% Band.all.each do |band| %>
           <option
-              <%= "selected" if song.band_id == band.id || band_page_id == band.id %>
+              <%= "selected" if song.band_id == band.id || band_page_id.to_i == band.id %>
               value="<%= band.id %>">
               <%= band.name %>
           </option>
@@ -34,7 +34,7 @@
   <select name="song[blog_id]">
     <% Blog.all.each do |blog| %>
     <option
-    <%= "selected" if song.blog_id == blog.id || blog_page_id == blog.id %>
+    <%= "selected" if song.blog_id == blog.id || blog_page_id.to_i == blog.id %>
     value="<%= blog.id %>">
     <%= blog.name %>
   </option>

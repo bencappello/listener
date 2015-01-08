@@ -1,6 +1,3 @@
-Fix the user_follows logic because right now it is a join table between to user model objects which is probably impossible
-
-
 Add flash messages when you successfully create/update stuff (rendering html element already made)
 
 Add 'song' views and make sure to account for the band_id and blog_id in the new form

@@ -17,6 +17,7 @@
 
 <h4>Links</h4>
 <ul>
+  <li><%= link_to "Add Song", new_blog_song_url(@blog) %></li>
   <li><%= link_to "Edit Blog", edit_blog_url(@blog) %></li>
   <li><%= link_to "Delete Blog", blog_url(@blog), method: :delete, class: 'btn' %></li>
   <li><%= link_to "All blogs", blogs_url %></li>
