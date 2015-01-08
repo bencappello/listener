@@ -10,6 +10,7 @@
 
   <% if logged_in? %>
     User: <%= current_user.username %>
+    <a href="<%= user_url(current_user) %>">My Page</a>
     <form action="<%= session_url %>" method="POST">
       <%= auth_token %>
       <input type ="hidden" name="_method" value="DELETE">
@@ -17,7 +18,7 @@
     </form>
   <% else %>
     <a href="<%= new_session_url %>">Log In</a>
-    <a href="<%= new_users_url %>">Sign Up</a>
+    <a href="<%= new_user_url %>">Sign Up</a>
   <% end %>
 
   <% if flash[:notice] %>
