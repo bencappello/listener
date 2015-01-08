@@ -10,8 +10,21 @@ class User < ActiveRecord::Base
   has_many :favorite_songs, through: :user_songs, source: :song
   has_many :followed_blogs, through: :user_blogs, source: :blog
 
-  has_many :followers, through: :user_follows, source: :follower
-  has_many :followed_users, through: :user_follows, source: :followed_user
+  has_many(
+    :follow_choices,
+    class_name: "UserFollow",
+    foreign_key: :follower_id,
+    dependent: :destroy
+  )
+  has_many :followed_users, through: :follow_choices, source: :followed_user
+  has_many(
+  :followings,
+  class_name: "UserFollow",
+  foreign_key: :followed_user_id,
+  dependent: :destroy
+  )
+  has_many :followers, through: :followings, source: :follower
+
 
   attr_reader :password
   after_initialize :ensure_session_token

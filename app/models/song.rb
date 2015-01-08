@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
   has_many :tags, through: :song_tags
 
   has_many :user_songs, dependent: :destroy
-  has_many :favoriters, through: :user_songs, :source: :user
+  has_many :favoriters, through: :user_songs, source: :user
 
   def update_tags(new_tag_ids)
     new_tag_ids.delete("")
