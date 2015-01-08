@@ -1,9 +1,6 @@
-class CommentsController < ApplicationController
-
-  before_action :require_login, only: [:create]
-
+class UserFollowsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
+    @user_follow = UserFollow.new(user_follow_params)
     @comment.user_id = current_user.id
 
     if @comment.save
@@ -17,7 +14,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update(comment_params)
+    if @comment.update(user_follow_params)
       flash[:notice] = ["Comment saved!"]
     else
       flash[:errors] = @comment.errors.full_messages
@@ -32,7 +29,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_params
-    params.require(:comment).permit(:commentable_id, :commentable_type, :body)
+  def user_follow_params
+    params.require(:user_follow).permit(:follower_id, :followed_user_id)
   end
 end

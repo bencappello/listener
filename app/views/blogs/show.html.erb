@@ -22,3 +22,14 @@
   <li><%= link_to "Delete Blog", blog_url(@blog), method: :delete, class: 'btn' %></li>
   <li><%= link_to "All blogs", blogs_url %></li>
 </ul>
+
+<h4>Comments</h4>
+<% @blog.comments.each do |comment| %>
+  <p><%= comment.author.username %>: <%= comment.body %></p>
+  <% if comment.user_id == current_user.try(:id) %>
+    <button class="edit-button"><a class = 'edit-link' href="#">Edit</a></button>
+    <%= button_to 'Delete', comment_url(comment), method: 'delete' %>
+  <% end %>
+
+<% end %>
+<%= render "shared/comments_form", commentable_id: @blog.id, commentable_type: "Blog" %>
