@@ -29,12 +29,10 @@
       <a href="/tags">Tags</a>
       <a href="/users">Users</a>
     </section>
-
   </nav>
 
-  <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
-  <% end %>
+  <%= render 'shared/errors' %>
+  <%= render 'shared/notice' %>
 
 <%= yield %>
 

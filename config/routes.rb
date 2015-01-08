@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :songs
 
   resources :tags, except: [:show]
-  # resources :blogs
-  # resources :comments
+
+  resources :comments, :only => [:create, :destroy, :update]
 
 
 

@@ -21,3 +21,15 @@
   <li><%= link_to "Delete Band", band_url(@band), method: :delete, class: 'btn' %></li>
   <li><%= link_to "All bands", bands_url %></li>
 </ul>
+
+<h4>Comments</h4>
+<% @band.comments.each do |comment| %>
+  <p><%= comment.author.username %>: <%= comment.body %></p>
+  <% if comment.user_id == current_user.id %>
+    <form class='delete-button' action="<%= comment_url(comment) %>" method="post">
+      <input type="hidden" name="_method" value="Delete">
+      <input type="submit" value="Delete">
+    </form>
+  <% end %>
+<% end %>
+<%= render "shared/comments_form", commentable_id: @band.id, commentable_type: "Band" %>
