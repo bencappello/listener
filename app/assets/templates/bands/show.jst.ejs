@@ -1,0 +1,10 @@
+<h1><%= band.get('name') %></h1>
+
+
+
+<h5>Songs</h5>
+<ul class='songs'>
+  <% band.songs().forEach(function (song) { %>
+    <li><a data-id='<%= song.id %>' href="#"><%= song.get('name') %></a></li>
+  <% }) %>
+</ul>

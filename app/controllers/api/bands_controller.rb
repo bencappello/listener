@@ -1,7 +1,7 @@
 class Api::BandsController < ApplicationController
   def index
     @bands = Band.all
-    render json: @bands
+    render :index
   end
 
   def new
@@ -22,8 +22,8 @@ class Api::BandsController < ApplicationController
   end
 
   def show
-    @band = Band.find(params[:id])
-    render json: @band
+    @band = Band.includes(:songs, :tags, :comments).find(params[:id])
+    render :show
   end
 
   def edit

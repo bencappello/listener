@@ -1,4 +1,4 @@
-class UserFollowsController < ApplicationController
+class Api::UserFollowsController < ApplicationController
   before_action :require_login
 
   def create

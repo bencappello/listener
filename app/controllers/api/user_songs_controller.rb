@@ -1,4 +1,4 @@
-class UserSongsController < ApplicationController
+class Api::UserSongsController < ApplicationController
   before_action :require_login
 
   def create

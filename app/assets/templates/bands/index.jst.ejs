@@ -1,8 +1,8 @@
 <h1>Bands</h1>
+<ul class='collection' id='bands'>
 
-<ul>
-  <% bands.forEach(function (band) { %>
-    <li><a href="#"><%= band.name %></a></li>
+  <% bands.each(function (band) { %>
+    <li><a href="#/bands/<%= band.id %>"><%= band.escape('name') %></a></li>
   <% }) %>
 </ul>
 

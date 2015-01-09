@@ -1,4 +1,4 @@
-class UserBlogsController < ApplicationController
+class Api::UserBlogsController < ApplicationController
   before_action :require_login
 
   def create
