@@ -1,0 +1,34 @@
+
+
+<% action_url = band.persisted? ? band_url(band) : bands_url %>
+<% http_method = band.persisted? ? "PATCH" : "POST" %>
+
+
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= http_method %>">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label>Name
+  <input type="text" name="band[name]" value="<%= band.name %>" class="mytext">
+  </label>
+  <br><br>
+
+  <label>Tags</label>
+    <input type="hidden" name="band[tag_ids][]" value="">
+    <% Tag.all.each do |tag| %>
+    <label>
+      <input
+        type="checkbox"
+        name="band[tag_ids][]"
+        value="<%= tag.id %>"
+        <%= "checked" if band.tag_ids.include?(tag.id) %>>
+      <%= tag.name %>
+  </label>
+  <% end %>
+  <br><br>
+
+  <input type="submit">
+</form>

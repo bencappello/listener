@@ -1,0 +1,35 @@
+<h1><%= link_to @song.band.name, band_url(@song.band) %> - <%= @song.name %></h1>
+<h4>Posted by: <%= link_to @song.blog.name, blog_url(@song.blog) %></h4>
+
+
+<% if @song.favoriters.pluck(:id).include?(current_user.try(:id)) %>
+  <%= button_to "Unfavorite", user_song_url(@song), method: 'delete' %>
+<% else %>
+  <%= button_to "Favorite", user_songs_url, params: {song_id: @song} %>
+<% end %>
+
+<h5>Genres</h5>
+<ul>
+  <% @song.tags.each do |tag| %>
+  <li><%= tag.name %></li>
+  <% end %>
+</ul>
+
+<h4>Links</h4>
+<ul>
+  <li><%= link_to "All Songs", songs_url %></li>
+  <li><%= link_to "Edit Song", edit_song_url(@song) %></li>
+  <li><%= link_to "Delete Song", song_url(@song), method: :delete %></li>
+  <li><%= link_to @song.band.name, band_url(@song.band) %></li>
+</ul>
+
+<h4>Comments</h4>
+<% @song.comments.each do |comment| %>
+  <p><%= comment.author.username %>: <%= comment.body %></p>
+  <% if comment.user_id == current_user.try(:id) %>
+    <button class="edit-button"><a class = 'edit-link' href="#">Edit</a></button>
+    <%= button_to 'Delete', comment_url(comment), method: 'delete' %>
+  <% end %>
+
+<% end %>
+<%= render "shared/comments_form", commentable_id: @song.id, commentable_type: "Song" %>

@@ -1,0 +1,19 @@
+
+
+<% action_url = tag.persisted? ? tag_url(tag) : tags_url %>
+<% http_method = tag.persisted? ? "PATCH" : "POST" %>
+
+<form action="<%= action_url %>" method="POST">
+  <input type="hidden" name="_method" value="<%= http_method %>">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label>Name
+  <input type="text" name="tag[name]" value="<%= tag.name %>" class="mytext">
+  </label>
+  <br><br>
+
+  <input type="submit">
+</form>

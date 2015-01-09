@@ -1,0 +1,78 @@
+
+
+<% action_url = song.persisted? ? song_url(song) : songs_url %>
+<% http_method = song.persisted? ? "PATCH" : "POST" %>
+<% band_page_id ||= nil %>
+<% blog_page_id ||= nil %>
+
+<form action="<%= action_url %>" method="POST" %>
+  <input type="hidden" name="_method" value="<%= http_method %>">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+<label>Name
+  <input type="text" name="song[name]" value="<%= song.name %>">
+</label>
+<br><br>
+
+<label>Band
+  <select name="song[band_id]">
+      <% Band.all.each do |band| %>
+          <option
+              <%= "selected" if song.band_id == band.id || band_page_id.to_i == band.id %>
+              value="<%= band.id %>">
+              <%= band.name %>
+          </option>
+      <% end %>
+  </select>
+</label>
+<br><br>
+
+<label>Blog
+  <select name="song[blog_id]">
+    <% Blog.all.each do |blog| %>
+    <option
+    <%= "selected" if song.blog_id == blog.id || blog_page_id.to_i == blog.id %>
+    value="<%= blog.id %>">
+    <%= blog.name %>
+  </option>
+  <% end %>
+</select>
+</label>
+<br><br>
+
+  <input
+    type="radio"
+    name="song[song_type]"
+    value="remix"
+    id="remix"
+    <%= "checked" if song.song_type == 'remix' %>>
+  <label for="remix">Remix</label>
+  <br>
+  <input
+    type="radio"
+    name="song[song_type]"
+    value="regular"
+    id="regular"
+    <%= "checked" if song.song_type == 'regular' %>>
+  <label for="regular">Regular</label>
+  <br><br>
+
+  <label>Tags</label>
+    <input type="hidden" name="song[tag_ids][]" value="">
+    <% Tag.all.each do |tag| %>
+    <label>
+      <input
+        type="checkbox"
+        name="song[tag_ids][]"
+        value="<%= tag.id %>"
+        <%= "checked" if song.tag_ids.include?(tag.id) %>>
+      <%= tag.name %>
+  </label>
+  <% end %>
+  <br><br>
+
+  <input type="submit">
+</form>
