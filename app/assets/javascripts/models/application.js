@@ -1,9 +1,7 @@
-Listener.Models.Band = Backbone.Model.extend ({
-  urlRoot: 'api/bands',
-
-  songs: function () {
+Backbone.SharedModel = Backbone.Model.extend ({
+  songs: function (model) {
     if(!this._songs) {
-      this._songs = new Listener.Collections.Songs([], { band: this });
+      this._songs = new Listener.Collections.Songs([], { parent: this });
     }
     return this._songs;
   },
@@ -15,11 +13,11 @@ Listener.Models.Band = Backbone.Model.extend ({
     return this._tags;
   },
 
-  comments: function () {
-    if(!this._comments) {
-      this._comments = new Listener.Collections.Comments([], { parent: this });
+  songs: function () {
+    if(!this._songs) {
+      this._songs = new Listener.Collections.Songs([], { parent: this });
     }
-    return this._comments;
+    return this._songs;
   },
 
   parse: function (response) {
@@ -37,4 +35,4 @@ Listener.Models.Band = Backbone.Model.extend ({
     }
     return response;
   },
-});
+})
