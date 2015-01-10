@@ -5,7 +5,7 @@ Listener.Views.BandShow = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
-    this.listenTo(this.model.comments(), 'add sync', this.renderComments)
+    this.listenTo(this.model.comments(), 'sync', this.renderComments)
   },
 
   render: function () {

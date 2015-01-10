@@ -11,7 +11,7 @@ class Api::CommentsController < ApplicationController
     else
       flash[:errors] = @comment.errors.full_messages
     end
-    redirect_to :back
+    render :show
   end
 
   def update

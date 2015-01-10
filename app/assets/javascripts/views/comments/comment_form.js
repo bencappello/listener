@@ -50,7 +50,6 @@ Listener.Views.CommentForm = Backbone.View.extend({
   create: function (event) {
     event.preventDefault();
     this.collection.create({
-      author_id: 'yay',
       body: this.$('textarea').val(),
       commentable_id: this.parent_id,
       commentable_type: this.parent_type
