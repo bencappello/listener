@@ -1,5 +1,7 @@
 Listener.Models.Comment = Backbone.Model.extend ({
-  initialize: function () {
-    
+  urlRoot: 'api/comments',
+
+  initialize: function (options) {
+    this.author_name = options.author_name
   },
 });

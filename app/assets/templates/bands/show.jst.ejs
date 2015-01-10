@@ -14,10 +14,8 @@
   <% }) %>
 </ul>
 
-
-<h4>Comments</h4>
-<% band.comments().forEach(function (comment) { %>
-  <p><%= comment.get('author_name') %>: <%= comment.get('body') %></p>
-  <button class="edit-button"><a class='edit-link' href="#">Edit</a></button>
-  <button class="delete-button"><a class='delete-link' href="#">Delete</a></button>
-<% }) %>
+<h5>Comments</h5>
+<section class='comments-window'>
+  <div id="comment-form"></div>
+  <ul id="comments"></ul>
+</section>

@@ -18,3 +18,14 @@ Add tags:
 Maybe add polymorphic comments
 
 Feed page should be able to be split up between followed blogs and followed users' loved songs
+
+
+<h4>Comments</h4>
+<% band.comments().forEach(function (comment) { %>
+  <p><%= comment.get('author_name') %>: <%= comment.get('body') %></p>
+  <button class="edit-button"><a class='edit-link' href="#">Edit</a></button>
+  <button class="delete-button"><a class='delete-link' href="#">Delete</a></button>
+  <% }) %>
+
+
+  <%= render "shared/comments_form", commentable_id: @band.id, commentable_type: "Band" %>

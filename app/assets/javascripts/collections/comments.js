@@ -1,5 +1,6 @@
 Listener.Collections.Comments = Backbone.Collection.extend({
   model: Listener.Models.Comment,
+  url: 'api/comments',
 
   initialize: function (options) {
     // this.band = options.band
