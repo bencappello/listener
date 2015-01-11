@@ -1,3 +1,3 @@
 <p><%= comment.get('author_name') %>: <%= comment.get('body') %></p>
-<button class="edit-button"><a class='edit-link' href="#">Edit</a></button>
-<button class="delete-button"><a class='delete-link' href="#">Delete</a></button>
+<button class="edit-comment" data-id='<%= comment.id %>'>Edit</button>
+<button class="delete-comment" data-id='<%= comment.id %>'>Delete</button>
