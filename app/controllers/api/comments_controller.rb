@@ -16,13 +16,10 @@ class Api::CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-
-    if @comment.update(comment_params)
-      flash[:notice] = ["Comment saved!"]
-    else
+    unless @comment.update(comment_params)
       flash[:errors] = @comment.errors.full_messages
     end
-    redirect_to :back
+    render json: @comment
   end
 
   def destroy

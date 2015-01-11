@@ -18,6 +18,7 @@ Listener.Views.BandShow = Backbone.CompositeView.extend({
   addComment: function (comment) {
     var view = new Listener.Views.CommentShow({
       model: comment,
+      collection: this.model.comments(),
       parent: this
     });
     this.addSubview('#comments', view);
