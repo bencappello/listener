@@ -1,5 +1,5 @@
-Listener.Views.SongShow = Backbone.View.extend ({
-  template: JST['songs/show'],
+Listener.Views.SongListShow = Backbone.View.extend ({
+  template: JST['songs/list_show'],
 
   className: 'song-show',
 

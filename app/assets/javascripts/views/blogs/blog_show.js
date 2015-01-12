@@ -10,9 +10,23 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template({blog: this.model}))
+    this.renderSongs();
     this.renderComments();
     this.renderCommentForm();
     return this;
+  },
+
+  addSong: function (song) {
+    var view = new Listener.Views.SongShow({
+      model: song,
+      collection: this.model.songs(),
+    });
+    this.addSubview('#songs', view);
+  },
+
+  renderSongs: function () {
+    this.$el.find('ul#songs').empty();
+    this.model.songs().each(this.addSong.bind(this));
   },
 
   addComment: function (comment) {
