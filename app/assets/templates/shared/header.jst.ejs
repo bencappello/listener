@@ -2,7 +2,7 @@
 
 <% if(Listener.currentUser.isSignedIn()) { %>
 
-  <p>
+  <p class='user-info'>
     Signed in as:
     <a href="#users/<%= Listener.currentUser.id %>"><%= Listener.currentUser.escape("username") %></a> |
     <a href="#" id="sign-out-link">Sign Out</a>
@@ -10,11 +10,9 @@
 
 <% } else { %>
 
-  <p>
+  <p class='user-info'>
     <a href="#users/new">Sign Up</a> |
     <a href="#session/new">Sign In</a>
   </p>
 
 <% } %>
-
-<hr>

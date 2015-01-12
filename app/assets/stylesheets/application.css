@@ -19,11 +19,19 @@
 }
 
 .nav-links {
-  float: right
+  float: right;
 }
 
-.group {
+.group::after {
   clear: both;
   display: block;
   content: '';
+}
+
+.user-info {
+  float: right;
+}
+
+header h1 {
+  float: left;
 }
