@@ -52,7 +52,7 @@ Listener.Views.CommentForm = Backbone.CompositeView.extend({
       body: this.$('textarea').val(),
       commentable_id: this.parent_id,
       commentable_type: this.parent_type
-    }, {at: 0});
+    }, {wait: true, at: 0});
     this.$('textarea').val('');
     this.$('textarea').focus();
   },
