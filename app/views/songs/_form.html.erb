@@ -12,13 +12,13 @@
 
 <label>Band
   <select name="song[band_id]">
-      <% Band.all.each do |band| %>
-          <option
-              <%= "selected" if song.band_id == band.id || band_page_id.to_i == band.id %>
-              value="<%= band.id %>">
-              <%= band.name %>
-          </option>
-      <% end %>
+    <% Listener.bandList.forEach(function (band) { %>
+      <option
+        <% if (song.get('band_id') == band[0]) {selected} %>
+        value="<%= band.id %>">
+        <%= band.name %>
+      </option>
+    <% }) %>
   </select>
 </label>
 <br><br>
@@ -61,11 +61,9 @@
       type="checkbox"
       name="song[tag_ids][]"
       value="<%= tag.id %>"
-      <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
-        checked
-        <% } %>>
-        <%= tag.get('name') %>
-      </label>
+      <% if (_.contains(song.get('tag_ids'), tag.id)) {checked} %>>
+    <%= tag.get('name') %>
+    </label>
       <% }) %>
       <br><br>
 

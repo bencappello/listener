@@ -1,6 +1,6 @@
 <form id=new-band>
   <ul id="errors"></ul>
-  
+
   <label>Name
   <input type="text" name="band[name]" value="<%= band.get('name') %>" class="mytext">
   </label>
@@ -16,9 +16,9 @@
         value="<%= tag.id %>"
         <% if (_.contains(band.get('tag_ids'), tag.id)) { %>
           checked
-          <% } %>>
-          <%= tag.get('name') %>
-        </label>
+        <% } %>>
+      <%= tag.get('name') %>
+      </label>
     <% }) %>
   <br><br>
 

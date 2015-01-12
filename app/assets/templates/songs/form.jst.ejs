@@ -2,25 +2,63 @@
   <ul id="errors"></ul>
 
   <label>Name
-  <input type="text" name="song[name]" value="<%= song.get('name') %>" class="mytext">
+  <input type="text" name="song[name]" value="<%= song.escape('name') %>" class="mytext">
   </label>
   <br><br>
 
   <label>Band
     <select name="song[band_id]">
-      <% Band.all.each do |band| %>
-      <option
-      <%= "selected" if song.band_id == band.id || band_page_id.to_i == band.id %>
-      value="<%= band.id %>">
-      <%= band.name %>
-    </option>
-    <% end %>
-  </select>
-</label>
-<br><br>
+      <% Listener.bandList.forEach(function (band) { %>
+        <option
+        <% if (song.get('band_id') == band[0]) { %>
+          selected
+        <% } %>
+        value="<%= band[0] %>">
+        <%= band[1] %>
+      </option>
+      <% }) %>
+    </select>
+  </label>
+  <br><br>
+
+  <label>Blog
+    <select name="song[blog_id]">
+      <% Listener.blogList.forEach(function (blog) { %>
+        <option
+        <% if (song.get('blog_id') == blog[0]) { %>
+          selected
+        <% } %>
+        value="<%= blog[0] %>">
+        <%= blog[1] %>
+      </option>
+      <% }) %>
+    </select>
+  </label>
+  <br><br>
+
+  <input
+    type="radio"
+    name="song[song_type]"
+    value="remix"
+    id="remix"
+    <% if (song.escape('song_type') == 'remix') { %>
+      checked
+    <% } %>
+  <label for="remix">Remix</label>
+  <br>
+  <input
+    type="radio"
+    name="song[song_type]"
+    value="regular"
+    id="regular"
+    <% if (song.escape('song_type') == 'regular') { %>
+      checked
+    <% } %>
+    <label for="regular">Regular</label>
+  <br><br>
 
   <label>Tags</label>
-    <input type="hidden" name="song[tag_ids][]" value="">
+  <input type="hidden" name="song[tag_ids][]" value="">
     <% Listener.tags.each(function (tag) { %>
       <label>
         <input
@@ -29,11 +67,11 @@
         value="<%= tag.id %>"
         <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
           checked
-          <% } %>>
-          <%= tag.get('name') %>
-        </label>
+        <% } %>>
+        <%= tag.escape('name') %>
+      </label>
     <% }) %>
-  <br><br>
+    <br><br>
 
   <input type="submit">
 </form>
