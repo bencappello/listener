@@ -10,7 +10,7 @@ class Api::BandsController < ApplicationController
     if @band.save
       render :show
     else
-      render json: @band.errors.full_messages
+      render json: @band.errors.full_messages, status: 422
     end
   end
 
@@ -25,7 +25,7 @@ class Api::BandsController < ApplicationController
     if @band.update(band_params)
       render :show
     else
-      render json: @band.errors.full_messages
+      render json: @band.errors.full_messages, status: 422
     end
   end
 

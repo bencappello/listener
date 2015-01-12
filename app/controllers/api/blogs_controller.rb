@@ -13,11 +13,9 @@ class Api::BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
 
     if @blog.save
-      flash[:notice] = "#{@blog.name} added successfully"
-      redirect_to blog_url(@blog.id)
+      render :show
     else
-      flash.now[:errors] = @blog.errors.full_messages
-      render :new
+      render json: @blog.errors.full_messages, status: 422
     end
   end
 
@@ -33,12 +31,11 @@ class Api::BlogsController < ApplicationController
 
   def update
     @blog = Blog.find(params[:id])
+
     if @blog.update(blog_params)
-      flash[:notice] = "#{@blog.name} added successfully"
-      redirect_to blog_url(@blog.id)
+      render :show
     else
-      flash.now[:errors] = @blog.errors.full_messages
-      render :edit
+      render json: @blog.errors.full_messages, status: 422
     end
   end
 

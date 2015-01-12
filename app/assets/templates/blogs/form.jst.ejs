@@ -1,0 +1,30 @@
+<form id=new-blog>
+  <ul id="errors"></ul>
+  <label>Name
+  <input type="text" name="blog[name]" value="<%= blog.get('name') %>" class="mytext">
+  </label>
+  <br><br>
+
+  <label>URL
+    <input type="text" name="blog[url]" value="<%= blog.get('url') %>" class="mytext">
+  </label>
+  <br><br>
+
+  <label>Tags</label>
+    <input type="hidden" name="blog[tag_ids][]" value="">
+    <% Listener.tags.each(function (tag) { %>
+      <label>
+        <input
+        type="checkbox"
+        name="blog[tag_ids][]"
+        value="<%= tag.id %>"
+        <% if (_.contains(blog.get('tag_ids'), tag.id)) { %>
+          checked
+          <% } %>>
+          <%= tag.get('name') %>
+        </label>
+    <% }) %>
+  <br><br>
+
+  <input type="submit">
+</form>

@@ -8,6 +8,7 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
     'blogs': 'blogsIndex',
     'blogs/new': 'blogNew',
     'blogs/:id': 'blogShow',
+    'blogs/:id/edit': 'blogEdit',
   },
 
   blogsIndex: function () {
@@ -23,8 +24,14 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
   },
 
   blogNew: function () {
-    var blog = new Listner.Models.Blog();
-    var view = new Listener.Views.BlogForm({model: blog})
+    var blog = new Listener.Models.Blog();
+    var view = new Listener.Views.BlogForm({model: blog, collection: this.blogs})
+    this._swapView(view);
+  },
+
+  blogEdit: function (id) {
+    var blog = this.blogs.getOrFetch(id);
+    var view = new Listener.Views.BlogForm({model: blog, collection: this.blogs})
     this._swapView(view);
   },
 

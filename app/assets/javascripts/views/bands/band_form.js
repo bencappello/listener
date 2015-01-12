@@ -16,6 +16,15 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     return this;
   },
 
+  renderErrors: function (resp) {
+    $('#errors').empty();
+    resp.responseJSON.forEach(function (el) {
+      var li = $('<li></li>');
+      li.html(el);
+      $('#errors').append(li);
+    })
+  },
+
   saveBand: function (event) {
     event.preventDefault();
     var that = this;
@@ -23,25 +32,20 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     var formData = $form.serializeJSON().band;
     if (this.model.isNew()) {
       this.collection.create(formData, {
-        success: function () {
-          Backbone.history.navigate('bands', {trigger: true});
+        success: function (model, resp) {
+          Backbone.history.navigate('bands/' + resp.id, {trigger: true});
         },
-        error: function () {
-          console.log('error');
+        error: function (model, resp) {
+          that.renderErrors(resp);
         }
       })
     } else {
       this.model.save(formData, {
-        success: function () {
-          Backbone.history.navigate('bands', {trigger: true});
+        success: function (model, resp) {
+          Backbone.history.navigate('bands/' + resp.id, {trigger: true});
         },
         error: function (model, resp) {
-          $('.errors').empty();
-          resp.responseJSON.forEach(function (el) {
-            var li = $('<li></li>');
-            li.html(el);
-            $('.errors').append(li);
-          })
+          that.renderErrors(resp);
         }
       })
     }

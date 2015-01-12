@@ -1,6 +1,11 @@
 Listener.Models.Blog = Backbone.Model.extend ({
   urlRoot: 'api/blogs',
 
+  toJSON: function(){
+    var json = { blog: _.clone(this.attributes) };
+    return json;
+  },
+
   songs: function () {
     if(!this._songs) {
       this._songs = new Listener.Collections.Songs();
