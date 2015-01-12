@@ -12,7 +12,7 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.parent = options.parent
-    // this.listenTo(this.model, 'sync', this.render)
+    this.listenTo(this.model, 'sync', this.render)
   },
 
   render: function () {
@@ -29,23 +29,15 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
   updateComment: function () {
     event.preventDefault();
     var that = this;
-    var comment = new Listener.Models.Comment({
-      id: this.model.id,
+    var attrs = {
       body: this.$('textarea').val(),
       author_name: Listener.currentUser.get('username')
-    }, {});
-    comment.save(null, {
-      success: function () {
-        that.collection.add(comment, { merge: true });
-        that.model = comment;
-        that.render();
-      }
-    });
+    };
+    this.model.save(attrs);
   },
 
   delete: function (event) {
     event.preventDefault();
-    console.log(this.model.collection);
     this.model.destroy();
     this.parent.removeSubview('#comments', this);
   },

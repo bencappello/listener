@@ -40,6 +40,7 @@ Listener.Views.BandShow = Backbone.CompositeView.extend({
 
   renderComments: function () {
     this.$el.find('ul#comments').empty();
+    debugger
     this.model.comments().each(this.addComment.bind(this));
   },
 
