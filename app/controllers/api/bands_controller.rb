@@ -4,11 +4,6 @@ class Api::BandsController < ApplicationController
     render :index
   end
 
-  def new
-    @band = Band.new
-    render :new
-  end
-
   def create
     @band = Band.new(band_params)
 
@@ -24,20 +19,13 @@ class Api::BandsController < ApplicationController
     render :show
   end
 
-  def edit
-    @band = Band.find(params[:id])
-    render :edit
-  end
-
   def update
     @band = Band.find(params[:id])
 
     if @band.update(band_params)
-      flash[:notice] = "#{@band.name} added successfully"
-      redirect_to band_url(@band.id)
+      render :show
     else
-      flash.now[:errors] = @band.errors.full_messages
-      render :new
+      render json: @band.errors.full_messages
     end
   end
 

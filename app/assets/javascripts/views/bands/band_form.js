@@ -4,7 +4,7 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
   className: 'band-form',
 
   events : {
-    'submit form': 'submit'
+    'submit form': 'saveBand'
   },
 
   initialize: function () {
@@ -16,19 +16,34 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     return this;
   },
 
-  submit: function (event) {
+  saveBand: function (event) {
     event.preventDefault();
     var that = this;
     var $form = $(event.currentTarget);
     var formData = $form.serializeJSON().band;
-    debugger
-    this.collection.create(formData, {
-      success: function () {
-        Backbone.history.navigate('bands', {trigger: true});
-      },
-      error: function () {
-        console.log('error');
-      }
-    })
+    if (this.model.isNew()) {
+      this.collection.create(formData, {
+        success: function () {
+          Backbone.history.navigate('bands', {trigger: true});
+        },
+        error: function () {
+          console.log('error');
+        }
+      })
+    } else {
+      this.model.save(formData, {
+        success: function () {
+          Backbone.history.navigate('bands', {trigger: true});
+        },
+        error: function (model, resp) {
+          $('.errors').empty();
+          resp.responseJSON.forEach(function (el) {
+            var li = $('<li></li>');
+            li.html(el);
+            $('.errors').append(li);
+          })
+        }
+      })
+    }
   },
 });
