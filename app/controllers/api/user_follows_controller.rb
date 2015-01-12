@@ -1,5 +1,5 @@
 class Api::UserFollowsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def create
     @user_follow = current_user.follow_choices.new(user_follow_params)

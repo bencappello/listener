@@ -1,5 +1,5 @@
 class Api::UserBlogsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def create
     @user_blog = current_user.user_blogs.new(user_blog_params)

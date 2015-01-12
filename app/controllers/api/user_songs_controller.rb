@@ -1,5 +1,5 @@
 class Api::UserSongsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def create
     @user_song = current_user.user_songs.new(user_song_params)

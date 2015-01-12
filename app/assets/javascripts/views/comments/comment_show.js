@@ -32,7 +32,7 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
     var comment = new Listener.Models.Comment({
       id: this.model.id,
       body: this.$('textarea').val(),
-      author_name: 'currentUser'
+      author_name: Listener.currentUser.get('username')
     }, {});
     comment.save(null, {
       success: function () {
