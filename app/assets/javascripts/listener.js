@@ -6,6 +6,7 @@ window.Listener = {
   initialize: function() {
     new Listener.Routers.BandsRouter();
     new Listener.Routers.BlogsRouter();
+    new Listener.Routers.SongsRouter();
     Backbone.history.start();
   }
 };

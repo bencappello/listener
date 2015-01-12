@@ -17,7 +17,7 @@ Listener.Views.BandShow = Backbone.CompositeView.extend({
   },
 
   addSong: function (song) {
-    var view = new Listener.Views.SongShow({
+    var view = new Listener.Views.SongListShow({
       model: song,
       collection: this.model.songs(),
     });

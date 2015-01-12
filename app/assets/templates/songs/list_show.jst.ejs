@@ -11,17 +11,3 @@
 <h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
 <button class="favorite">Favorite</button>
 <button class="play">Play</button>
-
-
-<h5>Genres</h5>
-<ul class='tags'>
-  <% song.tags().forEach(function (tag) { %>
-    <li><%= tag.get('name') %></li>
-    <% }) %>
-  </ul>
-
-  <h5>Comments</h5>
-  <section class='comments-window'>
-    <div id="comment-form"></div>
-    <ul id="comments"></ul>
-  </section>

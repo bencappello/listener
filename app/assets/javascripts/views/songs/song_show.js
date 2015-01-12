@@ -1,7 +1,7 @@
-Listener.Views.BlogShow = Backbone.CompositeView.extend({
-  template: JST['blogs/show'],
+Listener.Views.SongShow = Backbone.CompositeView.extend({
+  template: JST['songs/show'],
 
-  className: 'blog-show',
+  className: 'song-show',
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
@@ -9,24 +9,10 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({blog: this.model}))
-    this.renderSongs();
+    this.$el.html(this.template({song: this.model}))
     this.renderComments();
     this.renderCommentForm();
     return this;
-  },
-
-  addSong: function (song) {
-    var view = new Listener.Views.SongListShow({
-      model: song,
-      collection: this.model.songs(),
-    });
-    this.addSubview('#songs', view);
-  },
-
-  renderSongs: function () {
-    this.$el.find('ul#songs').empty();
-    this.model.songs().each(this.addSong.bind(this));
   },
 
   addComment: function (comment) {
@@ -47,7 +33,7 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
     var view = new Listener.Views.CommentForm({
       collection: this.model.comments(),
       parent_id: this.model.id,
-      parent_type: 'Blog'
+      parent_type: 'Song'
     });
     this.addSubview('#comment-form', view);
   },
