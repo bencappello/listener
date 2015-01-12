@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ * {
+   font-family: Sans-serif;
+ }
+
  body {
    margin: 0px;
    background: #ffffe1;
