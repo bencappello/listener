@@ -2,9 +2,10 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   model: Listener.Models.Song,
   url: 'api/songs',
 
-  initialize: function (options) {
-    this.band = options.band
-  },
+  // initialize: function (options) {
+  //   this.blog = options.blog
+  //   this.band = options.band
+  // },
 
   getOrFetch: function (id) {
     var song = this.get(id);

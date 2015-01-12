@@ -12,10 +12,11 @@ Listener.Views.CommentShow = Backbone.View.extend ({
 
   initialize: function (options) {
     this.parent = options.parent
-    this.listenTo(this.model, 'sync', this.render)
+    // this.listenTo(this.model, 'sync', this.render)
   },
 
   render: function () {
+    console.log(this.model)
     this.$el.html(this.template({comment: this.model}))
     return this;
   },

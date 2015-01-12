@@ -3,7 +3,7 @@ Listener.Models.Blog = Backbone.Model.extend ({
 
   songs: function () {
     if(!this._songs) {
-      this._songs = new Listener.Collections.Songs([], { blog: this });
+      this._songs = new Listener.Collections.Songs();
     }
     return this._songs;
   },
