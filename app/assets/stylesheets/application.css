@@ -16,10 +16,7 @@
 
  body {
    margin: 0px;
- }
-
- #backdrop {
-   margin: 0px;
+   background: #ffffe1;
  }
 
  #content {
