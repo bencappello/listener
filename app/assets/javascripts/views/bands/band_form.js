@@ -8,6 +8,7 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
+    this.listenTo(Listener.tags, 'sync', this.render);
   },
 
   render: function () {
