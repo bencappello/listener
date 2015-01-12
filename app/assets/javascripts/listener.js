@@ -9,7 +9,7 @@ window.Listener = {
     this.currentUser = new Listener.Models.CurrentUser();
     this.currentUser.fetch();
 
-    this.header = new Listener.Views.Header({ el: "#header" });
+    this.header = new Listener.Views.Header({ el: "#top-header" });
 
     new Listener.Routers.BandsRouter();
     new Listener.Routers.BlogsRouter();

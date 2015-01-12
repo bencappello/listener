@@ -14,12 +14,24 @@
  *= require_self
  */
 
+ * {
+   margin: 0px;
+ }
+
+ #content {
+   margin: 8px;
+ }
+
 .mytext {
   width: 250px;
 }
 
 .nav-links {
   float: right;
+}
+
+nav#top-nav {
+  margin: 8px
 }
 
 .group::after {
@@ -34,4 +46,9 @@
 
 header h1 {
   float: left;
+  padding: 10px;
+}
+
+header#top-header {
+  background: #83c441;
 }
