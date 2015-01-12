@@ -1,6 +1,5 @@
 Listener.Views.CommentForm = Backbone.View.extend({
   initialize: function (options) {
-    this.edit = options.edit
     this.parent_id = options.parent_id
     this.parent_type = options.parent_type
   },
@@ -21,7 +20,7 @@ Listener.Views.CommentForm = Backbone.View.extend({
   render: function () {
     var content;
     if(this.formShowing) {
-      content = this.edit ? this.editTemplate : this.formTemplate();
+      content = this.formTemplate();
     } else {
       content = this.linkTemplate();
     }

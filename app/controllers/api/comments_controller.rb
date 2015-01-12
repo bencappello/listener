@@ -6,10 +6,8 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
 
-    if @comment.save
-      flash[:notice] = ["Comment saved!"]
-    else
-      flash[:errors] = @comment.errors.full_messages
+    unless @comment.save
+      render json: @comment.errors.full_messages
     end
     render :show
   end
@@ -17,7 +15,7 @@ class Api::CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     unless @comment.update(comment_params)
-      flash[:errors] = @comment.errors.full_messages
+      render json: @comment.errors.full_messages
     end
     render json: @comment
   end

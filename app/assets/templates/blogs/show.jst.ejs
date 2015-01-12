@@ -1,0 +1,21 @@
+<h1><%= blog.get('name') %></h1>
+
+<h5>Genres</h5>
+<ul class='tags'>
+  <% blog.tags().forEach(function (tag) { %>
+    <li><%= tag.get('name') %></li>
+  <% }) %>
+</ul>
+
+<h5>Songs</h5>
+<ul class='songs'>
+  <% blog.songs().forEach(function (song) { %>
+    <li><a data-id='<%= song.id %>' href="#"><%= song.get('name') %></a></li>
+  <% }) %>
+</ul>
+
+<h5>Comments</h5>
+<section class='comments-window'>
+  <div id="comment-form"></div>
+  <ul id="comments"></ul>
+</section>

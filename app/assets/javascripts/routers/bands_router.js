@@ -1,4 +1,4 @@
-Listener.Routers.Router = Backbone.Router.extend ({
+Listener.Routers.BandsRouter = Backbone.Router.extend ({
   initialize: function () {
     this.$rootEl = $('#content')
     this.bands = new Listener.Collections.Bands();
@@ -19,6 +19,12 @@ Listener.Routers.Router = Backbone.Router.extend ({
   bandShow: function (id) {
     var band = this.bands.getOrFetch(id)
     var view = new Listener.Views.BandShow({model: band});
+    this._swapView(view);
+  },
+
+  bandNew: function () {
+    var band = new Listner.Models.Band();
+    var view = new Listener.Views.BandForm({model: band})
     this._swapView(view);
   },
 

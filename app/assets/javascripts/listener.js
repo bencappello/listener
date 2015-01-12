@@ -4,7 +4,8 @@ window.Listener = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new Listener.Routers.Router();
+    new Listener.Routers.BandsRouter();
+    new Listener.Routers.BlogsRouter();
     Backbone.history.start();
   }
 };

@@ -1,0 +1,9 @@
+<h1>Blogs</h1>
+<ul class='collection' id='blogs'>
+
+  <% blogs.each(function (blog) { %>
+    <li><a href="#/blogs/<%= blog.id %>"><%= blog.escape('name') %></a></li>
+  <% }) %>
+</ul>
+
+<button><a href="#/blogs/new">Add A Blog</a></button>

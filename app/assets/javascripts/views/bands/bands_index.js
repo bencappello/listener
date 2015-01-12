@@ -11,9 +11,4 @@ Listener.Views.BandsIndex = Backbone.View.extend ({
     this.$el.html(this.template({bands: this.collection}))
     return this;
   },
-
-  showBand: function () {
-    Backbone.history.navigate('')
-  },
-
 });
