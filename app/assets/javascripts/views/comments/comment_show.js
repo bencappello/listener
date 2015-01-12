@@ -16,7 +16,6 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    console.log(this.model)
     this.$el.html(this.template({comment: this.model}))
     return this;
   },

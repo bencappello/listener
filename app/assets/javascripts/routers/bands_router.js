@@ -23,8 +23,8 @@ Listener.Routers.BandsRouter = Backbone.Router.extend ({
   },
 
   bandNew: function () {
-    var band = new Listner.Models.Band();
-    var view = new Listener.Views.BandForm({model: band})
+    var band = new Listener.Models.Band();
+    var view = new Listener.Views.BandForm({model: band, collection: this.bands})
     this._swapView(view);
   },
 

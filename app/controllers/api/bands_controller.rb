@@ -13,11 +13,9 @@ class Api::BandsController < ApplicationController
     @band = Band.new(band_params)
 
     if @band.save
-      flash[:notice] = "#{@band.name} added successfully"
-      redirect_to band_url(@band.id)
+      render :show
     else
-      flash.now[:errors] = @band.errors.full_messages
-      render :new
+      render json: @band.errors.full_messages
     end
   end
 

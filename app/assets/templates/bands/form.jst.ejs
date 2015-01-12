@@ -1,0 +1,24 @@
+<form id=new-band>
+  <label>Name
+  <input type="text" name="band[name]" value="<%= band.get('name') %>" class="mytext">
+  </label>
+  <br><br>
+
+  <label>Tags</label>
+    <input type="hidden" name="band[tag_ids][]" value="">
+    <% Listener.tags.each(function (tag) { %>
+      <label>
+        <input
+        type="checkbox"
+        name="band[tag_ids][]"
+        value="<%= tag.id %>"
+        <% if (_.contains(band.get('tag_ids'), tag.id)) { %>
+          checked
+          <% } %>>
+          <%= tag.get('name') %>
+        </label>
+    <% }) %>
+  <br><br>
+
+  <input type="submit">
+</form>
