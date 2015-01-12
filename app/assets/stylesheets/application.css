@@ -14,12 +14,20 @@
  *= require_self
  */
 
- * {
+ body {
+   margin: 0px;
+ }
+
+ #backdrop {
    margin: 0px;
  }
 
  #content {
    margin: 8px;
+ }
+
+ hr {
+   margin: 0px;
  }
 
 .mytext {
@@ -34,6 +42,10 @@ nav#top-nav {
   margin: 8px
 }
 
+.user-info {
+  padding: 10px;
+}
+
 .group::after {
   clear: both;
   display: block;
@@ -46,9 +58,12 @@ nav#top-nav {
 
 header h1 {
   float: left;
+  float: left;
   padding: 10px;
 }
 
 header#top-header {
   background: #83c441;
+  margin: 0px;
+
 }
