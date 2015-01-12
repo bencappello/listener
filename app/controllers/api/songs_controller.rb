@@ -15,11 +15,9 @@ class Api::SongsController < ApplicationController
     @song = Song.new(song_params)
 
     if @song.save
-      flash[:notice] = "#{@song.name} added successfully"
-      redirect_to song_url(@song.id)
+      render :show
     else
-      flash.now[:errors] = @song.errors.full_messages
-      render :new
+      render json: @song.errors.full_messages, status: 422
     end
   end
 
@@ -37,11 +35,9 @@ class Api::SongsController < ApplicationController
     @song = Song.find(params[:id])
 
     if @song.update(song_params)
-      flash[:notice] = "#{@song.name} added successfully"
-      redirect_to song_url(@song.id)
+      render :show
     else
-      flash.now[:errors] = @song.errors.full_messages
-      render :new
+      render json: @song.errors.full_messages, status: 422
     end
   end
 

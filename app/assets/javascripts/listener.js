@@ -16,7 +16,6 @@ window.Listener = {
     new Listener.Routers.BlogsRouter();
     new Listener.Routers.SongsRouter();
     new Listener.Routers.Users({ $rootEl: $("#content") });
-
     Backbone.history.start();
   }
 };

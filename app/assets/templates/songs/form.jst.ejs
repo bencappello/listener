@@ -1,0 +1,39 @@
+<form id=new-song>
+  <ul id="errors"></ul>
+
+  <label>Name
+  <input type="text" name="song[name]" value="<%= song.get('name') %>" class="mytext">
+  </label>
+  <br><br>
+
+  <label>Band
+    <select name="song[band_id]">
+      <% Band.all.each do |band| %>
+      <option
+      <%= "selected" if song.band_id == band.id || band_page_id.to_i == band.id %>
+      value="<%= band.id %>">
+      <%= band.name %>
+    </option>
+    <% end %>
+  </select>
+</label>
+<br><br>
+
+  <label>Tags</label>
+    <input type="hidden" name="song[tag_ids][]" value="">
+    <% Listener.tags.each(function (tag) { %>
+      <label>
+        <input
+        type="checkbox"
+        name="song[tag_ids][]"
+        value="<%= tag.id %>"
+        <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
+          checked
+          <% } %>>
+          <%= tag.get('name') %>
+        </label>
+    <% }) %>
+  <br><br>
+
+  <input type="submit">
+</form>

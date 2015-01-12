@@ -22,6 +22,9 @@ end
 
 tags = Tag.create([
   {name: 'Funk'},
+  {name: 'Indie Rock'},
+  {name: 'Folk Rock'},
+  {name: 'Electro-pop'},
   {name: 'Soul'},
   {name: 'House'},
   {name: 'Electronic'},
