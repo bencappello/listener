@@ -1,4 +1,4 @@
-Listener.Views.BandForm = Backbone.View.extend ({
+Listener.Views.BandForm = Backbone.CompositeView.extend({
   template: JST['bands/form'],
 
   className: 'band-form',

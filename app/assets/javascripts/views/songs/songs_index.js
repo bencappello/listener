@@ -1,4 +1,4 @@
-Listener.Views.SongsIndex = Backbone.View.extend ({
+Listener.Views.SongsIndex = Backbone.CompositeView.extend({
   template: JST['songs/index'],
 
   className: 'songs-index',

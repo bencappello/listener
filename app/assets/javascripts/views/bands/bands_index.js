@@ -1,4 +1,4 @@
-Listener.Views.BandsIndex = Backbone.View.extend ({
+Listener.Views.BandsIndex = Backbone.CompositeView.extend({
   template: JST['bands/index'],
 
   className: 'bands-index',

@@ -1,4 +1,4 @@
-Listener.Views.BlogsIndex = Backbone.View.extend ({
+Listener.Views.BlogsIndex = Backbone.CompositeView.extend({
   template: JST['blogs/index'],
 
   className: 'blogs-index',

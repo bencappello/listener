@@ -1,4 +1,4 @@
-Listener.Views.BlogForm = Backbone.View.extend ({
+Listener.Views.BlogForm = Backbone.CompositeView.extend({
   template: JST['blogs/form'],
 
   className: 'blog-form',

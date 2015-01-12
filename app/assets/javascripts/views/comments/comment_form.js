@@ -1,4 +1,4 @@
-Listener.Views.CommentForm = Backbone.View.extend({
+Listener.Views.CommentForm = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.parent_id = options.parent_id
     this.parent_type = options.parent_type

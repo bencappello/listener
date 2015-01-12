@@ -1,4 +1,4 @@
-Listener.Views.CommentShow = Backbone.View.extend ({
+Listener.Views.CommentShow = Backbone.CompositeView.extend({
   template: JST['comments/show'],
   editTemplate: JST['comments/edit'],
 
