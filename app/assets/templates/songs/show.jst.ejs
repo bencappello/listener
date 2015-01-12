@@ -4,7 +4,9 @@
 <% var blogU = '#/blogs/' + song.get('blog_id') %>
 <% var songN = song.get('name') %>
 <% var songU = '#/songs/' + song.id %>
+<% var songEditU = '#/songs/' + song.id + '/edit' %>
 
+<button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
 <h2>
   <a href="<%= bandU %>"><%= bandN %></a> - <a href="<%= songU %>"><%= songN %></a>
 </h2>

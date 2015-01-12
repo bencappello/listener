@@ -1,10 +1,3 @@
-
-
-<% action_url = song.persisted? ? song_url(song) : songs_url %>
-<% http_method = song.persisted? ? "PATCH" : "POST" %>
-<% band_page_id ||= nil %>
-<% blog_page_id ||= nil %>
-
 <form action="<%= action_url %>" method="POST" %>
   <input type="hidden" name="_method" value="<%= http_method %>">
   <input
@@ -61,18 +54,20 @@
   <br><br>
 
   <label>Tags</label>
-    <input type="hidden" name="song[tag_ids][]" value="">
-    <% Tag.all.each do |tag| %>
+  <input type="hidden" name="song[tag_ids][]" value="">
+  <% Listener.tags.each(function (tag) { %>
     <label>
       <input
-        type="checkbox"
-        name="song[tag_ids][]"
-        value="<%= tag.id %>"
-        <%= "checked" if song.tag_ids.include?(tag.id) %>>
-      <%= tag.name %>
-  </label>
-  <% end %>
-  <br><br>
+      type="checkbox"
+      name="song[tag_ids][]"
+      value="<%= tag.id %>"
+      <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
+        checked
+        <% } %>>
+        <%= tag.get('name') %>
+      </label>
+      <% }) %>
+      <br><br>
 
   <input type="submit">
 </form>

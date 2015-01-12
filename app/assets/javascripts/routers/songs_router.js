@@ -5,7 +5,6 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   routes: {
-    // '': 'songsIndex',
     'songs': 'songsIndex',
     'songs/new': 'songNew',
     'songs/:id': 'songShow',
