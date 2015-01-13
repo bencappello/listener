@@ -72,7 +72,7 @@ Backbone.CompositeView = Backbone.View.extend({
       collection: this.model.comments(),
       parent: this
     });
-    this.addSubview('#comments', view);
+    this.addSubview('ul#comments', view);
   },
 
   renderComments: function () {

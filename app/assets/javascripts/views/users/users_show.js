@@ -1,8 +1,9 @@
-Listener.Views.UsersShow = Backbone.View.extend({
+Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(Listener.currentUser, 'sync', this.render)
+    this.content = options.content;
   },
 
   template: JST['users/show'],
@@ -10,6 +11,9 @@ Listener.Views.UsersShow = Backbone.View.extend({
   events: {
     'click .follow': 'follow',
     'click .unfollow': 'unfollow',
+    'click .btn-favorites': 'renderFavorites',
+    'click .btn-feed': 'renderFeed',
+    'click .btn-blogs': 'renderBlogs',
   },
 
   render: function(){
@@ -18,21 +22,37 @@ Listener.Views.UsersShow = Backbone.View.extend({
       followed: this.model.followed()
       });
     this.$el.html(html);
+    if (this.content == 'blogs') {
+      this.renderBlogs();
+    } else if (this.content == 'feed') {
+      this.renderFeed();
+    } else {
+      this.renderFavorites();
+    }
     return this;
   },
 
-  addSong: function (comment) {
-    var view = new Listener.Views.CommentShow({
-      model: comment,
-      collection: this.model.comments(),
-      parent: this
+  addSong: function (song) {
+    var view = new Listener.Views.SongListShow({
+      model: song,
+      collection: this.model.favoriteSongs(),
     });
-    this.addSubview('#comments', view);
+    this.addSubview('section#displayed-content', view);
   },
 
   renderFavorites: function () {
-    this.$el.find('#displayed-content').empty();
-    this.model.favoriteSongs().each(this.addSong.bind(this));  },
+    this.content = 'favorites';
+    this.$el.find('section#displayed-content').empty();
+    this.model.favoriteSongs().each(this.addSong.bind(this));
+  },
+
+  renderFeed: function () {
+
+  },
+
+  renderBlogs: function () {
+
+  },
 
   follow: function () {
     var follow = new Listener.Models.UserFollow({
