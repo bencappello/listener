@@ -1,15 +1,25 @@
 <div id="backdrop">
-  <header id="top-header" class='group'></header>
-  <hr>
-  <nav id="top-nav">
-    <section class='nav-links'>
-      <a href="#/bands">Bands</a>
-      <a href="#/blogs">Blogs</a>
-      <a href="#/songs">Songs</a>
-      <a href="/tags">Tags</a>
-      <a href="#">Users</a>
-    </section>
-  </nav>
+  <header id="top-header">
+    <nav class='group'>
+      <h1><a href="#">LISTENER</a></h1>
+      <form id="search" >
+        <label for="">
+          <input id='q' type="text" name="some_name" placeholder="Artist or Track">
+        </label>
+      </form>
+      <ul id='header-links' class='group'>
+        <li class='nav-link'><a href="#/bands">Bands</a></li>
+        <li class='nav-link'><a href="#/blogs">Blogs</a></li>
+        <li class='nav-link'><a href="#/songs">Songs</a></li>
+        <li class='nav-link'><a href="#">Users</a></li>
+      </section>
+    </nav>
+  </header>
+  <header id='sub-header' class='group'>
+    <nav>
+      <section id='user-nav'></section>
+    </nav>
+  </header>
   <div id="content"></div>
   <script charset="utf-8">
     Listener.bandList = <%= band_list %>;
