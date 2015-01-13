@@ -5,9 +5,13 @@
 <h4><a href="<%= blog.get('url') %>"><%= blog.get('url') %></a></h4>
 
 <% if (_.contains(follows.pluck('id'), blog.id)) { %>
-  <button class="unfollow">- Unfollow</i></button>
-<% } else { %>
-  <button class="follow">+ Follow</i></button>
+  <button class="unfollow">
+    <i class="fa fa-plus-square"></i> Unfollow
+  </button>
+  <% } else { %>
+    <button class="follow">
+      <i class="fa fa-minus-square"></i> Follow
+    </button>
 <% } %>
 
 <h5>Genres</h5>

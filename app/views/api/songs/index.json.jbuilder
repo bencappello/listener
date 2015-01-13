@@ -1,3 +1,3 @@
 json.array!(@songs) do |song|
-  json.extract!(song, :id, :name, :created_at, :updated_at)
+  json.extract!(song, :id, :name, :song_type, :created_at, :updated_at)
 end

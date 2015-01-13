@@ -29,7 +29,7 @@ gem 'bcrypt', require: "bcrypt"
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
-gem 'font-awesome-sass', '~> 4.2.0'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'better_errors'

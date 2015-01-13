@@ -15,7 +15,10 @@
  *= require_self
  */
 
- /*body, header, ul, li, section, div, span, hr, nav, h1, h2, h3, h4, h5,  a {*/
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+ body, header, ul, li, section, div, span, hr, nav, h1, h2, h3, h4, h5,  a {
    margin: 0;
    padding: 0;
    border: 0;

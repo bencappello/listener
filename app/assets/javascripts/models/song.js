@@ -6,6 +6,16 @@ Listener.Models.Song = Backbone.Model.extend ({
     return json;
   },
 
+  fullName: function () {
+    var remixName;
+    if (this.escape('song_type') == 'remix') {
+      remixName = this.escape('name') + "(Remix)";
+    } else {
+      remixName = this.escape('name');
+    }
+    return remixName;
+  },
+
   tags: function () {
     if(!this._tags) {
       this._tags = new Listener.Collections.Tags([], { parent: this });

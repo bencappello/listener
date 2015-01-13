@@ -2,23 +2,15 @@
 <% var bandU = '#/bands/' + song.get('band_id') %>
 <% var blogN = song.get('blog_name') %>
 <% var blogU = '#/blogs/' + song.get('blog_id') %>
-<% var songN = song.get('name') %>
+<% var songN = song.fullName() %>
 <% var songU = '#/songs/' + song.id %>
 <% var songEditU = '#/songs/' + song.id + '/edit' %>
 <% var favorites = Listener.currentUser.favorite_songs() %>
 
-<% if (song.escape('song_type') == 'remix') { %>
-  <% var remix = "(Remix)" %>
-<% } else {%>
-  <% var remix = "" %>
-<% }%>
-
-
-
 <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
 <h2>
   <a href="<%= bandU %>"><%= bandN %></a> -
-  <a href="<%= songU %>"><%= songN %><%= remix %></a>
+  <a href="<%= songU %>"><%= songN %></a>
 </h2>
 <h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
 

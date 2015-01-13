@@ -2,7 +2,7 @@
 <ul class='collection' id='songs'>
 
   <% songs.each(function (song) { %>
-    <li><a href="#/songs/<%= song.id %>"><%= song.escape('name') %></a></li>
+    <li><a href="#/songs/<%= song.id %>"><%= song.fullName() %></a></li>
   <% }) %>
 </ul>
 

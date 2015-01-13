@@ -4,8 +4,12 @@
 
 <% if (!(Listener.currentUser.id == user.id)) { %>
   <% if (_.contains(follows.pluck('id'), user.id)) { %>
-    <button class="unfollow">- Unfollow</i></button>
+    <button class="unfollow">
+      <i class="fa fa-plus-square"></i> Unfollow
+    </button>
   <% } else { %>
-    <button class="follow">+ Follow</i></button>
+    <button class="follow">
+      <i class="fa fa-minus-square"></i> Follow
+      </button>
   <% } %>
 <% } %>
