@@ -1,5 +1,5 @@
 class UserSongsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def create
     @user_song = current_user.user_songs.new(user_song_params)
@@ -11,7 +11,7 @@ class UserSongsController < ApplicationController
     song = params[:id]
     favoriter = current_user.id
     UserSong.find_by(user_id: favoriter, song_id: song).destroy
-    flash[:notice] = ["Yeah fuck that song...."]
+    flash[:notice] = ["Yeah who likes that song...."]
     redirect_to :back
   end
 

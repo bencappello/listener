@@ -1,5 +1,5 @@
 class UserBlogsController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def create
     @user_blog = current_user.user_blogs.new(user_blog_params)
@@ -11,7 +11,7 @@ class UserBlogsController < ApplicationController
     blog = params[:id]
     follower = current_user.id
     UserBlog.find_by(user_id: follower, blog_id: blog).destroy
-    flash[:notice] = ["Yeah fuck that blog...."]
+    flash[:notice] = ["Yeah who likes that blog...."]
     redirect_to :back
   end
 

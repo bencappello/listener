@@ -16,7 +16,7 @@ class Api::UserFollowsController < ApplicationController
     followed = params[:id]
     follower = current_user.id
     UserFollow.find_by(followed_user_id: followed, follower_id: follower).destroy
-    flash[:notice] = ["Yeah fuck that Ho's taste in music...."]
+    flash[:notice] = ["Yeah who likes that Ho's taste in music...."]
     redirect_to :back
   end
 

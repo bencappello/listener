@@ -5,14 +5,30 @@
 <% var songN = song.get('name') %>
 <% var songU = '#/songs/' + song.id %>
 <% var songEditU = '#/songs/' + song.id + '/edit' %>
+<% var favorites = Listener.currentUser.favorite_songs() %>
+
+<% if (song.escape('song_type') == 'remix') { %>
+  <% var remix = "(Remix)" %>
+<% } else {%>
+  <% var remix = "" %>
+<% }%>
+
+
 
 <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
 <h2>
-  <a href="<%= bandU %>"><%= bandN %></a> - <a href="<%= songU %>"><%= songN %></a>
+  <a href="<%= bandU %>"><%= bandN %></a> -
+  <a href="<%= songU %>"><%= songN %><%= remix %></a>
 </h2>
 <h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
-<button class="favorite">Favorite</button>
-<button class="play">Play</button>
+
+<% if (_.contains(favorites.pluck('id'), song.id)) { %>
+  <button class="unfavorite"><i class="fa fa-scissors"></i></button>
+<% } else { %>
+  <button class="favorite"><i class="fa fa-star"></i></button>
+<% } %>
+
+<button class="play"><i class="fa fa-play"></i></button>
 
 
 <h5>Genres</h5>

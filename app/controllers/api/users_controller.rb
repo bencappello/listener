@@ -6,7 +6,12 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(
+      :followed_blogs,
+      :followed_users,
+      :followers,
+      favorite_songs: [:blog, :band]
+      ).find(params[:id])
     render :show
   end
 

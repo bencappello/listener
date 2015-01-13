@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require font-awesome
  *= require_self
  */
 
@@ -136,4 +137,8 @@ header h1 {
   float: left;
   float: left;
   padding: 12px 15px;
+}
+
+header h1 a:hover {
+  color: white;
 }
