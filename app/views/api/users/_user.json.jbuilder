@@ -9,7 +9,7 @@ json.favorite_songs user.favorite_songs do |favorite_song|
 end
 
 json.followed_blogs user.followed_blogs do |followed_blog|
-  json.extract! followed_blogs, :id, :name, :created_at, :updated_at
+  json.extract! followed_blog, :id, :name, :created_at, :updated_at
 end
 
 json.followed_users user.followed_users do |followed_user|

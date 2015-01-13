@@ -3,9 +3,15 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
 
   className: 'blog-show',
 
+  events: {
+    'click .follow': 'follow',
+    'click .unfollow': 'unfollow',
+  },
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
     this.listenTo(this.model.comments(), 'sync', this.renderComments)
+    this.listenTo(Listener.currentUser, 'sync', this.render)
   },
 
   render: function () {
@@ -50,5 +56,26 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
       parent_type: 'Blog'
     });
     this.addSubview('#comment-form', view);
+  },
+
+  follow: function () {
+    var follow = new Listener.Models.BlogFollow({
+      blog_id: this.model.id
+    });
+    follow.save(null, {
+      success: function () {
+        Listener.currentUser.fetch();
+      }
+    });
+  },
+
+  unfollow: function () {
+    new Listener.Models.BlogFollow({
+      id: this.model.id,
+    }).destroy({
+      success: function () {
+        Listener.currentUser.fetch();
+      }
+    })
   },
 });

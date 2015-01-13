@@ -1,6 +1,14 @@
+<% var follows = Listener.currentUser.followed_blogs() %>
+
 <button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
 <h1><%= blog.get('name') %></h1>
 <h4><a href="<%= blog.get('url') %>"><%= blog.get('url') %></a></h4>
+
+<% if (_.contains(follows.pluck('id'), blog.id)) { %>
+  <button class="unfollow">- Unfollow</i></button>
+<% } else { %>
+  <button class="follow">+ Follow</i></button>
+<% } %>
 
 <h5>Genres</h5>
 <ul class='tags'>
