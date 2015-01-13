@@ -1,9 +1,7 @@
-<% var follows = Listener.currentUser.followed_users() %>
-
 <h2><%= user.escape("username") %></h2>
 
 <% if (!(Listener.currentUser.id == user.id)) { %>
-  <% if (_.contains(follows.pluck('id'), user.id)) { %>
+  <% if (followed) { %>
     <button class="unfollow">
       <i class="fa fa-plus-square"></i> Unfollow
     </button>
@@ -13,3 +11,5 @@
       </button>
   <% } %>
 <% } %>
+
+<section id='displayed-content'></section>

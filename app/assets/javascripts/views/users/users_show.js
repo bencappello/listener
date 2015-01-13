@@ -13,11 +13,26 @@ Listener.Views.UsersShow = Backbone.View.extend({
   },
 
   render: function(){
-    var html = this.template({ user: this.model });
+    var html = this.template({
+      user: this.model,
+      followed: this.model.followed()
+      });
     this.$el.html(html);
-
     return this;
   },
+
+  addSong: function (comment) {
+    var view = new Listener.Views.CommentShow({
+      model: comment,
+      collection: this.model.comments(),
+      parent: this
+    });
+    this.addSubview('#comments', view);
+  },
+
+  renderFavorites: function () {
+    this.$el.find('#displayed-content').empty();
+    this.model.favoriteSongs().each(this.addSong.bind(this));  },
 
   follow: function () {
     var follow = new Listener.Models.UserFollow({

@@ -5,7 +5,7 @@
 <% var songN = song.fullName() %>
 <% var songU = '#/songs/' + song.id %>
 <% var songEditU = '#/songs/' + song.id + '/edit' %>
-<% var favorites = Listener.currentUser.favorite_songs() %>
+<% var favorites = Listener.currentUser.favoriteSongs() %>
 
 <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
 <h2>

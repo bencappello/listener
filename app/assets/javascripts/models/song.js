@@ -9,7 +9,7 @@ Listener.Models.Song = Backbone.Model.extend ({
   fullName: function () {
     var remixName;
     if (this.escape('song_type') == 'remix') {
-      remixName = this.escape('name') + "(Remix)";
+      remixName = this.escape('name') + " (Remix)";
     } else {
       remixName = this.escape('name');
     }

@@ -8,7 +8,64 @@ Listener.Models.User = Backbone.Model.extend({
   toJSON: function(){
     var json = { user: _.clone(this.attributes) };
     return json;
-  }
+  },
+
+  favoriteSongs: function () {
+    if(!this._favoriteSongs) {
+      this._favoriteSongs = new Listener.Collections.Songs();
+    }
+    return this._favoriteSongs;
+  },
+
+  followedBlogs: function () {
+    if(!this._followedBlogs) {
+      this._followedBlogs = new Listener.Collections.Blogs();
+    }
+    return this._followedBlogs;
+  },
+
+  followedUsers: function () {
+    if(!this._followedUsers) {
+      this._followedUsers = new Listener.Collections.Users();
+    }
+    return this._followedUsers;
+  },
+
+  followers: function () {
+    if(!this._followers) {
+      this._followers = new Listener.Collections.Users();
+    }
+    return this._followers;
+  },
+
+  parse: function (response) {
+    if(response.favorite_songs) {
+      this.favoriteSongs().set(response.favorite_songs, { parse: true });
+      delete response.favorite_songs;
+    }
+    if(response.followed_blogs) {
+      this.followedBlogs().set(response.followed_blogs, { parse: true });
+      delete response.followed_blogs;
+    }
+    if(response.followed_users) {
+      this.followedUsers().set(response.followed_users, { parse: true });
+      delete response.followed_users;
+    }
+    if(response.followers) {
+      this.followers().set(response.followers, { parse: true });
+      delete response.followers;
+    }
+    return response;
+  },
+
+  followed: function () {
+    var followed_user_ids = Listener.currentUser.followedUsers().pluck('id');
+    if (_.contains(followed_user_ids, this.id)) {
+      return true;
+    } else {
+      return false;
+    }
+  },
 });
 
 Listener.Models.CurrentUser = Listener.Models.User.extend({
@@ -67,54 +124,6 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
       this.trigger("signOut");
       console.log("currentUser is signed out!", this);
     }
-  },
-
-  favorite_songs: function () {
-    if(!this._favorite_songs) {
-      this._favorite_songs = new Listener.Collections.Songs();
-    }
-    return this._favorite_songs;
-  },
-
-  followed_blogs: function () {
-    if(!this._followed_blogs) {
-      this._followed_blogs = new Listener.Collections.Blogs();
-    }
-    return this._followed_blogs;
-  },
-
-  followed_users: function () {
-    if(!this._followed_users) {
-      this._followed_users = new Listener.Collections.Users();
-    }
-    return this._followed_users;
-  },
-
-  followers: function () {
-    if(!this._followers) {
-      this._followers = new Listener.Collections.Users();
-    }
-    return this._followers;
-  },
-
-  parse: function (response) {
-    if(response.favorite_songs) {
-      this.favorite_songs().set(response.favorite_songs, { parse: true });
-      delete response.favorite_songs;
-    }
-    if(response.followed_blogs) {
-      this.followed_blogs().set(response.followed_blogs, { parse: true });
-      delete response.followed_blogs;
-    }
-    if(response.followed_users) {
-      this.followed_users().set(response.followed_users, { parse: true });
-      delete response.followed_users;
-    }
-    if(response.followers) {
-      this.followers().set(response.followers, { parse: true });
-      delete response.followers;
-    }
-    return response;
   },
 
 });

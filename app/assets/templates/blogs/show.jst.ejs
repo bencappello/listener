@@ -1,4 +1,4 @@
-<% var follows = Listener.currentUser.followed_blogs() %>
+<% var follows = Listener.currentUser.followedBlogs() %>
 
 <button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
 <h1><%= blog.get('name') %></h1>

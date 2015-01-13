@@ -10,6 +10,8 @@ Listener.Routers.Users = Backbone.Router.extend({
     "": "index",
     "users/new": "new",
     "users/:id": "show",
+    "users/:id/favorites": "showFavorites",
+    "users/:id/feed": "showFeed",
     "session/new": "signIn"
   },
 
