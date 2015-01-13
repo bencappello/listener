@@ -17,6 +17,13 @@ Listener.Models.User = Backbone.Model.extend({
     return this._favoriteSongs;
   },
 
+  feedSongs: function () {
+    if(!this._feedSongs) {
+      this._feedSongs = new Listener.Collections.Songs();
+    }
+    return this._feedSongs;
+  },
+
   followedBlogs: function () {
     if(!this._followedBlogs) {
       this._followedBlogs = new Listener.Collections.Blogs();
@@ -42,6 +49,10 @@ Listener.Models.User = Backbone.Model.extend({
     if(response.favorite_songs) {
       this.favoriteSongs().set(response.favorite_songs, { parse: true });
       delete response.favorite_songs;
+    }
+    if(response.feed_songs) {
+      this.feedSongs().set(response.feed_songs, { parse: true });
+      delete response.feed_songs;
     }
     if(response.followed_blogs) {
       this.followedBlogs().set(response.followed_blogs, { parse: true });

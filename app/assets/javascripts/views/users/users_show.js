@@ -42,12 +42,16 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   renderFavorites: function () {
     this.content = 'favorites';
+    this.$el.find('.content-header').html('Favorites')
     this.$el.find('section#displayed-content').empty();
     this.model.favoriteSongs().each(this.addSong.bind(this));
   },
 
   renderFeed: function () {
-
+    this.content = 'feed';
+    this.$el.find('.content-header').html('Feed')
+    this.$el.find('section#displayed-content').empty();
+    this.model.feedSongs().each(this.addSong.bind(this));
   },
 
   renderBlogs: function () {

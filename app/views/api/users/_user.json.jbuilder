@@ -1,11 +1,7 @@
 json.(user, :id, :username, :email, :created_at, :updated_at)
 
 json.favorite_songs user.favorite_songs do |favorite_song|
-  json.extract! favorite_song, :id, :name, :band_id, :blog_id, :song_type, :created_at, :updated_at
-
-  json.blog_name favorite_song.blog.name
-  json.blog_url favorite_song.blog.url
-  json.band_name favorite_song.band.name
+  json.partial! "api/songs/list_show", song: favorite_song
 end
 
 json.followed_blogs user.followed_blogs do |followed_blog|
@@ -18,4 +14,11 @@ end
 
 json.followers user.followers do |follower|
   json.extract! follower, :id, :username
+end
+
+songs = user.followed_blogs.map(&:songs).flatten
+json.feed_songs do
+  json.array!(songs) do |feed_song|
+    json.partial! "api/songs/list_show", song: feed_song
+  end
 end

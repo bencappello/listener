@@ -7,6 +7,10 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   //   this.band = options.band
   // },
 
+  comparator: function (song) {
+    return -song.id;
+  },
+
   getOrFetch: function (id) {
     var song = this.get(id);
 

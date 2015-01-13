@@ -3,11 +3,11 @@
 <% if (!(Listener.currentUser.id == user.id)) { %>
   <% if (followed) { %>
     <button class="unfollow">
-      <i class="fa fa-plus-square"></i> Unfollow
+      <i class="fa fa-minus-square"></i> Unfollow
     </button>
   <% } else { %>
     <button class="follow">
-      <i class="fa fa-minus-square"></i> Follow
+      <i class="fa fa-plus-square"></i> Follow
       </button>
   <% } %>
 <% } %>
@@ -16,5 +16,5 @@
 <button class='btn-feed'>Feed</button>
 <button class='btn-blogs'>Followed Blogs</button>
 
-<h2 class='favorites'>Favorites</h2>
+<h2 class='content-header'></h2>
 <section id='displayed-content'></section>
