@@ -8,7 +8,7 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   // },
 
   comparator: function (song) {
-    return -song.get('updated_at');
+    return -song.get('id');
   },
 
   getOrFetch: function (id) {
