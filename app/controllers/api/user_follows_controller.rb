@@ -5,19 +5,17 @@ class Api::UserFollowsController < ApplicationController
     @user_follow = current_user.follow_choices.new(user_follow_params)
 
     if @user_follow.save
-      flash[:notice] = ["Following user"]
+      render json: @user_follow
     else
-      flash[:errors] = @user_follow.errors.full_messages
+      render json: @user_follow.errors.full_messages, status: 422
     end
-    redirect_to :back
   end
 
   def destroy
     followed = params[:id]
     follower = current_user.id
     UserFollow.find_by(followed_user_id: followed, follower_id: follower).destroy
-    flash[:notice] = ["Yeah who likes that Ho's taste in music...."]
-    redirect_to :back
+    render json: followed
   end
 
   private
