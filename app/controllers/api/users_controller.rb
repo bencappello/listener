@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
     @user = User.includes(
       :followed_users,
       :followers,
-      followed_blogs: :songs,
+      followed_blogs: [:tags, :songs],
       favorite_songs: [:blog, :band]
       ).find(params[:id])
     render :show

@@ -1,0 +1,16 @@
+<% var blogN = blog.get('name') %>
+<% var blogU = '#/blogs/' + blog.id %>
+
+<h2>
+  <a href="<%= blogU %>"><%= blogN %></a>
+</h2>
+
+<label class='blog-list'>Genres</label>
+<ul class='genres'>
+  <% blog.get('tag_names').forEach(function (tagName) { %>
+    <li><%= tagName %></li>
+  <% }) %>
+</ul>
+
+<button class="blog-songs"><%= blog.get('song_count') + ' Songs' %></button>
+<button class="follow">Follow</button>

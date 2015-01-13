@@ -1,13 +1,21 @@
 Listener.Models.User = Backbone.Model.extend({
   urlRoot: "/api/users",
 
-  username: function(){
-    return this.escape("username");
-  },
-
   toJSON: function(){
     var json = { user: _.clone(this.attributes) };
     return json;
+  },
+
+  username: function () {
+    return this.escape("username");
+  },
+
+  possessiveName: function () {
+    if (Listener.currentUser.id == this.id) {
+      return 'My'
+    } else {
+      return this.escape('username') + "'s"
+    }
   },
 
   favoriteSongs: function () {
