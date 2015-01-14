@@ -2,15 +2,15 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "sync change", this.render);
-    this.listenTo(Listener.currentUser, 'sync', this.render)
+    // this.listenTo(Listener.currentUser, 'sync', this.render)
     this.content = options.content;
   },
 
   template: JST['users/show'],
 
   events: {
-    'click .follow': 'follow',
-    'click .unfollow': 'unfollow',
+    'click .user-follow': 'follow',
+    'click .user-unfollow': 'unfollow',
     'click .btn-favorites': 'renderFavorites',
     'click .btn-feed': 'renderFeed',
     'click .btn-blogs': 'renderBlogs',

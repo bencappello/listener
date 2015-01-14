@@ -1,3 +1,4 @@
+<% var follows = Listener.currentUser.followedBlogs() %>
 <% var blogN = blog.get('name') %>
 <% var blogU = '#/blogs/' + blog.id %>
 
@@ -13,4 +14,7 @@
 </ul>
 
 <button class="blog-songs"><%= blog.get('song_count') + ' Songs' %></button>
-<button class="follow">Follow</button>
+<button
+  data-id= '<%= blog.id %>'
+  class="blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
+</button>

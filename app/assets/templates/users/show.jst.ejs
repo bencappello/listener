@@ -2,11 +2,11 @@
 
 <% if (!(Listener.currentUser.id == user.id)) { %>
   <% if (followed) { %>
-    <button class="unfollow">
+    <button class="user-unfollow">
       <i class="fa fa-minus-square"></i> Unfollow
     </button>
   <% } else { %>
-    <button class="follow">
+    <button class="user-follow">
       <i class="fa fa-plus-square"></i> Follow
       </button>
   <% } %>

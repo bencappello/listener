@@ -145,4 +145,18 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
     }
   },
 
+  toggleBlogFollow: function (blog_id) {
+    var that = this;
+    var response;
+    $.ajax({
+      url: "/api/user_blogs",
+      type: "POST",
+      data: {
+        blog_id: blog_id,
+      }, success: function (resp) {
+        that.fetch();
+      }
+    });
+  },
+
 });

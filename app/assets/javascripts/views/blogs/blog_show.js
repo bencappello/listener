@@ -4,8 +4,7 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
   className: 'blog-show',
 
   events: {
-    'click .follow': 'follow',
-    'click .unfollow': 'unfollow',
+    'click .blog-follow': 'toggleFollow',
   },
 
   initialize: function () {
@@ -35,24 +34,11 @@ Listener.Views.BlogShow = Backbone.CompositeView.extend({
     this.model.songs().each(this.addSong.bind(this));
   },
 
-  follow: function () {
-    var follow = new Listener.Models.BlogFollow({
-      blog_id: this.model.id
-    });
-    follow.save(null, {
-      success: function () {
-        Listener.currentUser.fetch();
-      }
-    });
-  },
-
-  unfollow: function () {
-    new Listener.Models.BlogFollow({
-      id: this.model.id,
-    }).destroy({
-      success: function () {
-        Listener.currentUser.fetch();
-      }
-    })
+  toggleFollow: function (event) {
+    event.preventDefault();
+    var button = $(event.currentTarget)
+    var blog_id = button.data('id');
+    var followed = Listener.currentUser.toggleBlogFollow(blog_id);
+    button.toggleClass("blog-unfollow");
   },
 });

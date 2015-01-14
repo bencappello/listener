@@ -142,6 +142,26 @@ header h1 {
   padding: 12px 15px;
 }
 
+header h1:after {
+  // content: "♫"
+}
+
 header h1 a:hover {
   color: white;
+}
+
+.blog-follow:after {
+  content: '✚ Follow';
+}
+
+.blog-unfollow:after {
+  content: '━ Unfollow';
+}
+
+.favorite:after {
+  content: '★';
+}
+
+.unfavorite:after {
+  content: '★';
 }
