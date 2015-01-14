@@ -43,11 +43,11 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
-  # def image_url=(image_url)
-  #   unless self.image.exists?
-  #     self.image = image_url
-  #   end
-  # end
+  def image_url=(image_url)
+    unless self.image.exists?
+      self.image = image_url
+    end
+  end
 
   def password=(password)
     @password = password
