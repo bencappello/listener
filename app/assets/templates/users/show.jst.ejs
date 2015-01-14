@@ -1,15 +1,11 @@
+<% var follows = Listener.currentUser.followedUsers() %>
 <h2><%= user.escape("username") %></h2>
 
 <% if (!(Listener.currentUser.id == user.id)) { %>
-  <% if (followed) { %>
-    <button class="user-unfollow">
-      <i class="fa fa-minus-square"></i> Unfollow
-    </button>
-  <% } else { %>
-    <button class="user-follow">
-      <i class="fa fa-plus-square"></i> Follow
-      </button>
-  <% } %>
+  <button
+    data-id= '<%= user.id %>'
+    class="user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
+  </button>
 <% } %>
 
 <button class='btn-favorites'>Favorites</button>

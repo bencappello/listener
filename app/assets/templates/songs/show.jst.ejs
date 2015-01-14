@@ -14,11 +14,10 @@
 </h2>
 <h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
 
-<% if (_.contains(favorites.pluck('id'), song.id)) { %>
-  <button class="unfavorite"><i class="fa fa-scissors"></i></button>
-<% } else { %>
-  <button class="favorite"><i class="fa fa-star"></i></button>
-<% } %>
+<button
+  data-id= '<%= song.id %>'
+  class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+</button>
 
 <button class="play"><i class="fa fa-play"></i></button>
 

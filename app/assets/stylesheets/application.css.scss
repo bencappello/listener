@@ -158,10 +158,20 @@ header h1 a:hover {
   content: '━ Unfollow';
 }
 
+.user-follow:after {
+  content: '✚ Follow';
+}
+
+.user-unfollow:after {
+  content: '━ Unfollow';
+}
+
 .favorite:after {
   content: '★';
+  color: #4D4D4D; 
 }
 
 .unfavorite:after {
   content: '★';
+  color: #CCCC00;
 }

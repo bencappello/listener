@@ -159,4 +159,32 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
     });
   },
 
+  toggleFavorite: function (song_id) {
+    var that = this;
+    var response;
+    $.ajax({
+      url: "/api/user_songs",
+      type: "POST",
+      data: {
+        song_id: song_id,
+      }, success: function (resp) {
+        that.fetch();
+      }
+    });
+  },
+
+  toggleUserFollow: function (followed_id) {
+    var that = this;
+    var response;
+    $.ajax({
+      url: "/api/user_follows",
+      type: "POST",
+      data: {
+        followed_id: followed_id,
+      }, success: function (resp) {
+        that.fetch();
+      }
+    });
+  },
+
 });

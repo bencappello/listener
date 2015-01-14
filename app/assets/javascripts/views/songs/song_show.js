@@ -4,8 +4,7 @@ Listener.Views.SongShow = Backbone.CompositeView.extend({
   className: 'song-show',
 
   events: {
-    'click .favorite': 'favorite',
-    'click .unfavorite': 'unfavorite',
+    'click .favorite': 'toggleFavorite',
   },
 
   initialize: function () {
@@ -21,25 +20,11 @@ Listener.Views.SongShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  favorite: function () {
-    var favorite = new Listener.Models.Favorite({
-      song_id: this.model.id
-    });
-    favorite.save(null, {
-      success: function () {
-        Listener.currentUser.fetch();
-      }
-    });
+  toggleFavorite: function (event) {
+    event.preventDefault();
+    var button = $(event.currentTarget)
+    var song_id = button.data('id');
+    Listener.currentUser.toggleFavorite(song_id);
+    button.toggleClass("unfavorite");
   },
-
-  unfavorite: function () {
-    new Listener.Models.Favorite({
-      id: this.model.id,
-    }).destroy({
-      success: function () {
-        Listener.currentUser.fetch();
-      }
-    })
-  },
-
 });

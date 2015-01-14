@@ -11,5 +11,8 @@
   <a href="<%= bandU %>"><%= bandN %></a> - <a href="<%= songU %>"><%= songN %></a>
 </h2>
 <h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
-<button class="favorite">Favorite</button>
+<button
+  data-id= '<%= song.id %>'
+  class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+</button>
 <button class="play">Play</button>

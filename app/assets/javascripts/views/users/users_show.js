@@ -9,8 +9,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   template: JST['users/show'],
 
   events: {
-    'click .user-follow': 'follow',
-    'click .user-unfollow': 'unfollow',
+    'click .user-follow': 'toggleFollow',
     'click .btn-favorites': 'renderFavorites',
     'click .btn-feed': 'renderFeed',
     'click .btn-blogs': 'renderBlogs',
@@ -72,24 +71,11 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     this.model.followedBlogs().each(this.addBlog.bind(this));
   },
 
-  follow: function () {
-    var follow = new Listener.Models.UserFollow({
-      followed_user_id: this.model.id
-    });
-    follow.save(null, {
-      success: function () {
-        Listener.currentUser.fetch();
-      }
-    });
-  },
-
-  unfollow: function () {
-    new Listener.Models.UserFollow({
-      id: this.model.id,
-    }).destroy({
-      success: function () {
-        Listener.currentUser.fetch();
-      }
-    })
+  toggleFollow: function (event) {
+    event.preventDefault();
+    var button = $(event.currentTarget)
+    var followed_id = button.data('id');
+    Listener.currentUser.toggleUserFollow(followed_id);
+    button.toggleClass("user-unfollow");
   },
 });
