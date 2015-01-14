@@ -7,7 +7,8 @@ Listener.Views.UsersForm = Backbone.View.extend({
   template: JST['users/form'],
 
   events: {
-    "submit form": "submit"
+    "submit form": "submit",
+    "change #input-user-image": "fileInputChange"
   },
 
   render: function(){
@@ -29,6 +30,7 @@ Listener.Views.UsersForm = Backbone.View.extend({
       success: function(){
         Listener.currentUser.fetch();
         that.collection.add(that.model, { merge: true });
+        delete that.model._image;
         Backbone.history.navigate("", { trigger: true });
       },
       error: function(data){
@@ -36,6 +38,33 @@ Listener.Views.UsersForm = Backbone.View.extend({
         console.log(data);
       }
     });
-  }
+  },
+
+  fileInputChange: function(event){
+
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+      that._updatePreview(reader.result);
+      that.model._image = reader.result;
+
+      console.log(that.model);
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this._updatePreview("");
+      delete this.model._image;
+
+      console.log(this.model);
+    }
+  },
+
+  _updatePreview: function(src){
+    this.$el.find("#preview-user-image").attr("src", src);
+  },
 
 });

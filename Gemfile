@@ -30,6 +30,9 @@ gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'font-awesome-sass'
+gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '~> 1.5.7'
+gem "figaro"
 
 group :development do
   gem 'better_errors'

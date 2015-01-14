@@ -1,5 +1,9 @@
 <h2><%= @user.username %></h2>
 
+<%= image_tag @user.image.url %>
+<%= image_tag @user.image.url(:medium) %>
+<%= image_tag @user.image.url(:thumb) %>
+
 <% if logged_in? && !(current_user.id == @user.id) %>
   <% if @user.followers.pluck(:id).include?(current_user.id) %>
     <%= button_to "Unfollow", user_follow_url(@user), method: 'delete' %>

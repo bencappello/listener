@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113045527) do
+ActiveRecord::Schema.define(version: 20150114170252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,12 +104,16 @@ ActiveRecord::Schema.define(version: 20150113045527) do
   add_index "user_songs", ["user_id", "song_id"], name: "index_user_songs_on_user_id_and_song_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",           null: false
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
+    t.string   "email",              null: false
+    t.string   "username",           null: false
+    t.string   "password_digest",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "session_token",   null: false
+    t.string   "session_token",      null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

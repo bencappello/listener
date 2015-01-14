@@ -1,4 +1,5 @@
 json.(user, :id, :username, :email, :created_at, :updated_at)
+json.image_url asset_path(user.image.url)
 
 json.favorite_songs user.favorite_songs do |favorite_song|
   json.partial! "api/songs/list_show", song: favorite_song
