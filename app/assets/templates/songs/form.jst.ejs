@@ -73,11 +73,30 @@
     <% }) %>
     <br><br>
 
-    <label>
-      Audio File
-      <input type="file" name="song[audio]" id="input-song-audio">
-    </label>
-    <br><br>
+  <label>
+    Audio File
+    <input type="file" name="song[audio]" id="input-song-audio">
+  </label>
+  <br>
+  <div>Or give an song url</div>
+  <label>
+    Audio Url
+    <input type="text" name="song[audio_url]">
+  </label>
+  <br><br>
+
+  <label>
+    Album Art
+    <input type="file" name="song[image]" id="input-song-image">
+  </label>
+  <br>
+  <img src="" width="50" id="preview-song-image">
+  <br>
+  <div>Or give an image url</div>
+  <label>
+    Image Url
+    <input type="text" name="song[image_url]">
+  </label>
 
   <input type="submit">
 </form>

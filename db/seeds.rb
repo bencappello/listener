@@ -9,14 +9,16 @@
 me = User.create(
   username: 'thatpurplestuff',
   email: 'ben@gmail.com',
-  password: 'password'
-)
+  password: 'password',
+  image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
+  )
 
 10.times do
   User.create(
     username: Faker::Name.name,
     email: Faker::Internet.email,
-    password: 'password'
+    password: 'password',
+    image_url: "http://www.mtv.com/crop-images/2013/09/09/slash.jpg"
   )
 end
 

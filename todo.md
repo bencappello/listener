@@ -29,3 +29,12 @@ Feed page should be able to be split up between followed blogs and followed user
 
 
   <%= render "shared/comments_form", commentable_id: @band.id, commentable_type: "Band" %>
+
+
+  https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/115343497&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false
+
+"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/109962663&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
+
+  User.create(username: 'thatpurplestuff', email: 'ben@gmail.com', password: 'password',image_url: "http://www.mtv.com/crop-images/2013/09/09/slash.jpg")
+
+  Song.create(name: "Over Your Shoulder", band_id: 5, blog_id: 1, song_type: 'regular', audio_url: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/109962663&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true")

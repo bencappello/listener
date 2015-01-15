@@ -7,7 +7,7 @@
 <% var songEditU = '#/songs/' + song.id + '/edit' %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 
-<button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
+<img src="<%= song.get("image_url") %>" width="100" alt="">
 <h2>
   <a href="<%= bandU %>"><%= bandN %></a> -
   <a href="<%= songU %>"><%= songN %></a>
@@ -24,8 +24,10 @@
   data-id= '<%= song.id %>'
   class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
 </button>
-
 <button class="play"><i class="fa fa-play"></i></button>
+<br><br>
+<button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
+
 
 <h5>Genres</h5>
 <ul class='tags'>

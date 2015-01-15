@@ -3,7 +3,6 @@ Listener.Routers.Users = Backbone.Router.extend({
   initialize: function(options){
     this.$rootEl = options.$rootEl;
     this.collection = new Listener.Collections.Users();
-    this.collection.fetch();
   },
 
   routes: {
@@ -16,6 +15,7 @@ Listener.Routers.Users = Backbone.Router.extend({
   },
 
   index: function(){
+    this.collection.fetch();
     var callback = this.index.bind(this);
     if (!this._requireSignedIn(callback)) { return; }
 

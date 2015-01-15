@@ -4,19 +4,15 @@ class Song < ActiveRecord::Base
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
   has_attached_file :audio
-  # :default_url => "missing.jpg",
 
   validates_attachment_content_type :audio,
-    content_type: [
-      'audio/mpeg',
-      'audio/x-mpeg',
-      'audio/mp3',
-      'audio/x-mp3',
-      'audio/mpeg3',
-      'audio/x-mpeg3',
-      'audio/mpg',
-      'audio/x-mpg',
-      'audio/x-mpegaudio' ]
+    content_type: /\Aaudio\/.*\Z/
+
+  has_attached_file :image,
+  :default_url => "missing_song.jpg"
+
+  validates_attachment_content_type :image,
+    :content_type => /\Aimage\/.*\Z/
 
   belongs_to :band
   belongs_to :blog
@@ -27,4 +23,16 @@ class Song < ActiveRecord::Base
   has_many :favoriters, through: :user_songs, source: :user
 
   has_many :comments, as: :commentable
+
+  def audio_url=(audio_url)
+    unless self.audio.exists?
+      self.audio = audio_url
+    end
+  end
+
+  def image_url=(image_url)
+    unless self.image.exists?
+      self.image = image_url
+    end
+  end
 end

@@ -5,7 +5,8 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
 
   events : {
     'submit form': 'saveSong',
-    "change #input-song-audio": "fileInputChange"
+    "change #input-song-audio": "audioInputChange",
+    "change #input-song-image": "imageInputChange",
   },
 
   initialize: function () {
@@ -37,6 +38,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
       success: function (model, resp) {
         that.collection.add(that.model);
         delete that.model._audio;
+        delete that.model._image;
         Backbone.history.navigate('songs/' + resp.id, {trigger: true});
       },
       error: function (model, resp) {
@@ -45,19 +47,42 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     })
   },
 
-  fileInputChange: function(event){
+  audioInputChange: function(event){
 
     var that = this;
     var file = event.currentTarget.files[0];
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      that.model._audio = reader.result;
+      that.model._image = reader.result;
     }
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      delete this.model._audio;
+      delete this.model._image;
     }
+  },
+
+  imageInputChange: function(event){
+
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+      that._updatePreview(reader.result);
+      that.model._image = reader.result;
+    }
+
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this._updatePreview("");
+      delete this.model._image;
+    }
+  },
+
+  _updatePreview: function(src){
+    this.$el.find("#preview-song-image").attr("src", src);
   },
 });

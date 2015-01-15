@@ -6,11 +6,16 @@
 <% var songU = '#/songs/' + song.id %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 
-
+<img src="<%= song.get("image_url") %>" width="100" alt="">
 <h2>
   <a href="<%= bandU %>"><%= bandN %></a> - <a href="<%= songU %>"><%= songN %></a>
 </h2>
 <h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
+
+<audio src="<%= song.get('audio_url') %>" controls>
+  <p>Your browser does not support the audio element </p>
+</audio>
+
 <button
   data-id= '<%= song.id %>'
   class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">

@@ -7,7 +7,9 @@ Listener.Models.Song = Backbone.Model.extend ({
     if (this._audio) {
       json.song.audio = this._audio;
     }
-    debugger
+    if (this._image) {
+      json.song.image = this._image;
+    }
     return json;
   },
 
