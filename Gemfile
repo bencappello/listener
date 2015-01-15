@@ -33,6 +33,7 @@ gem 'font-awesome-sass'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '~> 1.5.7'
 gem "figaro"
+gem 'pg_search'
 
 group :development do
   gem 'better_errors'

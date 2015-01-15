@@ -9,6 +9,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     'songs/new': 'songNew',
     'songs/:id': 'songShow',
     'songs/:id/edit': 'songEdit',
+    'songs/search/:query': 'search',
   },
 
   songsIndex: function () {
@@ -32,6 +33,20 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   songEdit: function (id) {
     var song = this.songs.getOrFetch(id);
     var view = new Listener.Views.SongForm({model: song, collection: this.songs})
+    this._swapView(view);
+  },
+
+  search: function (query) {
+    var results = this.songs;
+    var that = this;
+    this.songs.fetch ({
+      data: {query: query},
+      success: function () {
+        console.log('search success');
+        debugger
+      }.bind(this)
+    })
+    var view = new Listener.Views.SongSearch({collection: results, query: query})
     this._swapView(view);
   },
 

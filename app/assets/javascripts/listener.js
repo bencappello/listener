@@ -10,7 +10,8 @@ window.Listener = {
     this.tags = new Listener.Collections.Tags();
     this.tags.fetch();
 
-    this.header = new Listener.Views.Header({ el: "#user-nav" });
+    this.topHeader = new Listener.Views.TopHeader({ el: "#top-header" });
+    this.userHeader = new Listener.Views.UserHeader({ el: "#user-nav" });
 
     new Listener.Routers.BandsRouter();
     new Listener.Routers.BlogsRouter();

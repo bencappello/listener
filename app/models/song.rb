@@ -1,4 +1,5 @@
 class Song < ActiveRecord::Base
+  include PgSearch
   validates :name, presence: true, uniqueness: {scope: :blog_id}
   validates :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
@@ -23,6 +24,10 @@ class Song < ActiveRecord::Base
   has_many :favoriters, through: :user_songs, source: :user
 
   has_many :comments, as: :commentable
+
+  pg_search_scope :search_by_title_or_band,
+    against: :name,
+    associated_against: { band: :name }
 
   def audio_url=(audio_url)
     unless self.audio.exists?

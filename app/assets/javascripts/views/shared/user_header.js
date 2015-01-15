@@ -1,4 +1,4 @@
-Listener.Views.Header = Backbone.View.extend({
+Listener.Views.UserHeader = Backbone.View.extend({
 
   initialize: function(options){
     this.listenTo(Listener.currentUser, "signIn signOut", this.render);
@@ -9,7 +9,7 @@ Listener.Views.Header = Backbone.View.extend({
     "click #sign-out-link": "signOut"
   },
 
-  template: JST['shared/header'],
+  template: JST['shared/user_header'],
 
   render: function(){
     var html = this.template({ currentUser: Listener.currentUser });

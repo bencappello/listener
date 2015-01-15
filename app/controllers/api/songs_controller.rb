@@ -1,7 +1,16 @@
 class Api::SongsController < ApplicationController
   def index
-    @songs = Song.all
-    render :index
+    if params[:query]
+      @songs = Song.includes(:blog, :band).search_by_title_or_band(params[:query])
+      if @songs.empty?
+        render json: @songs, status: 422
+      else
+        render :search
+      end
+    else
+      @songs = Song.all
+      render :index
+    end
   end
 
   def new
