@@ -1,5 +1,7 @@
 <% var follows = Listener.currentUser.followedUsers() %>
 <h2><%= user.escape("username") %></h2>
+<br>
+<h4><%= user.escape("email") %></h4>
 <img src="<%= user.get("image_url") %>" width="100" alt="">
 
 <% if (!(Listener.currentUser.id == user.id)) { %>

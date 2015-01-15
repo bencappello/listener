@@ -7,7 +7,6 @@ Listener.Models.User = Backbone.Model.extend({
     if (this._image) {
       json.user.image = this._image;
     }
-    debugger
     return json;
   },
 

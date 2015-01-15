@@ -10,7 +10,5 @@ json.tags @band.tags do |tag|
 end
 
 json.comments @band.comments do |comment|
-  json.extract! comment, :id, :body, :user_id, :created_at, :updated_at
-
-  json.author_name comment.author.username
+  json.partial! "api/comments/show", comment: comment
 end

@@ -3,4 +3,10 @@ Listener.Models.Comment = Backbone.Model.extend ({
 
   initialize: function (options) {
   },
+
+  toJSON: function(){
+    var json = { comment: _.clone(this.attributes) };
+
+    return json;
+  },
 });
