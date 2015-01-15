@@ -4,7 +4,8 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   className: 'song-form',
 
   events : {
-    'submit form': 'saveSong'
+    'submit form': 'saveSong',
+    "change #input-song-audio": "fileInputChange"
   },
 
   initialize: function () {
@@ -30,24 +31,38 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     var that = this;
     var $form = $(event.currentTarget);
     var formData = $form.serializeJSON().song;
-    if (this.model.isNew()) {
-      this.collection.create(formData, {
-        success: function (model, resp) {
-          Backbone.history.navigate('songs/' + resp.id, {trigger: true});
-        },
-        error: function (model, resp) {
-          that.renderErrors(resp);
-        }
-      })
+
+    this.model.set(formData);
+    this.model.save({}, {
+      success: function (model, resp) {
+        that.collection.add(that.model);
+        delete that.model._audio;
+        Backbone.history.navigate('songs/' + resp.id, {trigger: true});
+      },
+      error: function (model, resp) {
+        that.renderErrors(resp);
+      }
+    })
+
+  },
+
+  fileInputChange: function(event){
+
+    var that = this;
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function(){
+      // that._updatePreview(reader.result);
+      that.model._audio = reader.result;
+      console.log(that.model);
+    }
+    if (file) {
+      reader.readAsDataURL(file);
     } else {
-      this.model.save(formData, {
-        success: function (model, resp) {
-          Backbone.history.navigate('songs/' + resp.id, {trigger: true});
-        },
-        error: function (model, resp) {
-          that.renderErrors(resp);
-        }
-      })
+      delete this.model._audio;
+
+      console.log(this.model);
     }
   },
 });

@@ -2,21 +2,12 @@ class User < ActiveRecord::Base
   validates :email, :username, :session_token, presence: true
   validates :password, length: { minimum: 5, allow_nil: true }
   validates :email, :username, uniqueness: true
-  # validates_with AttachmentSizeValidator, :attributes => :image, :less_than => 1.megabytes
-  # validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   has_attached_file :image,
-  # :styles => { :medium => "300x300>", :thumb => "100x100>" },
-  :default_url => "missing.jpg",
-  :bucket => ENV["s3_bucket"]
+  :default_url => "missing.jpg"
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  # validates_attachment :image,
-  #   # content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] },
-  #   content_type: /\Aimage\/.*\Z/,
-  #   file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/] },
-  #   size: { in: 0..1000.kilobytes }
 
   has_many :user_songs, dependent: :destroy
   has_many :user_blogs, dependent: :destroy

@@ -3,6 +3,11 @@ Listener.Models.Song = Backbone.Model.extend ({
 
   toJSON: function(){
     var json = { song: _.clone(this.attributes) };
+
+    if (this._audio) {
+      json.song.audio = this._audio;
+    }
+    debugger
     return json;
   },
 
