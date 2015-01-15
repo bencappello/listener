@@ -37,13 +37,11 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   search: function (query) {
-    var results = this.songs;
-    var that = this;
-    this.songs.fetch ({
+    var results = new Listener.Collections.Songs();
+    results.fetch ({
       data: {query: query},
       success: function () {
         console.log('search success');
-        debugger
       }.bind(this)
     })
     var view = new Listener.Views.SongSearch({collection: results, query: query})

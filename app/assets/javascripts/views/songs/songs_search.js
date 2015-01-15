@@ -9,7 +9,7 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({query: this.query}))
+    this.$el.html(this.template({songs: this.collection, query: this.query}))
     this.renderSongs();
     return this;
   },

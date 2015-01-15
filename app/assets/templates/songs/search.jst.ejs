@@ -1,4 +1,8 @@
 <h1>Results for <%= query %></h1>
 <ul id="songs"></ul>
-
-<button><a href="#/songs/new">Add A Song</a></button>
+<br>
+<div id="no-results">
+  <% if (songs.length == 0) { %>
+    Sorry, there are no results for <%= query %>... maybe try a song that doesn't suck
+    <% } %>
+</div>
