@@ -8,6 +8,7 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
     'click .edit-comment': 'edit',
     'click .delete-comment': 'delete',
     'submit' : 'updateComment',
+    'keydown textarea': 'maybeUpdate',
   },
 
   initialize: function (options) {
@@ -25,7 +26,7 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
     this.$el.html(this.editTemplate({comment: this.model}))
   },
 
-  updateComment: function () {
+  updateComment: function (event) {
     event.preventDefault();
     var that = this;
     var attrs = {
@@ -33,6 +34,12 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
       author_name: Listener.currentUser.get('username')
     };
     this.model.save(attrs);
+  },
+
+  maybeUpdate: function (event) {
+    if(event.keyCode === 13) {
+      this.updateComment(event);
+    }
   },
 
   delete: function (event) {
