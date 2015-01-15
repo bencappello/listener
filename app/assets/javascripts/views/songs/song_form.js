@@ -43,7 +43,6 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
         that.renderErrors(resp);
       }
     })
-
   },
 
   fileInputChange: function(event){
@@ -53,16 +52,12 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      // that._updatePreview(reader.result);
       that.model._audio = reader.result;
-      console.log(that.model);
     }
     if (file) {
       reader.readAsDataURL(file);
     } else {
       delete this.model._audio;
-
-      console.log(this.model);
     }
   },
 });

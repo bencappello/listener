@@ -49,8 +49,6 @@ Listener.Views.UsersForm = Backbone.View.extend({
     reader.onloadend = function(){
       that._updatePreview(reader.result);
       that.model._image = reader.result;
-
-      console.log(that.model);
     }
 
     if (file) {
@@ -58,8 +56,6 @@ Listener.Views.UsersForm = Backbone.View.extend({
     } else {
       this._updatePreview("");
       delete this.model._image;
-
-      console.log(this.model);
     }
   },
 

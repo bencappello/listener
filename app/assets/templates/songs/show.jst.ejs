@@ -35,4 +35,8 @@
   </section>
 
   URL
-  <%= song.get('audio_url') %>
+
+
+  <audio src="<%= song.get('audio_url') %>" controls>
+    <p>Your browser does not support the audio element </p>
+  </audio>
