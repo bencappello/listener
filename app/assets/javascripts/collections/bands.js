@@ -2,6 +2,10 @@ Listener.Collections.Bands = Backbone.Collection.extend({
   model: Listener.Models.Band,
   url: 'api/bands',
 
+  comparator: function (band) {
+    return band.escape('name');
+  },
+
   getOrFetch: function (id) {
     var band = this.get(id);
 
