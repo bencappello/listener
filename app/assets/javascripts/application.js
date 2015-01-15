@@ -17,7 +17,8 @@
 //= require backbone
 //= require listener
 //= require_tree ../templates
-//= require_tree ./utils
+//= require ./utils/composite_view.js
+//= require ./utils/commentable_view.js
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

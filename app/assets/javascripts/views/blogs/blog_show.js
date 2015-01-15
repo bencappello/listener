@@ -1,4 +1,4 @@
-Listener.Views.BlogShow = Backbone.CompositeView.extend({
+Listener.Views.BlogShow = Backbone.CommentableView.extend({
   template: JST['blogs/show'],
 
   className: 'blog-show',

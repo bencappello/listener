@@ -1,4 +1,4 @@
-Listener.Views.BandShow = Backbone.CompositeView.extend({
+Listener.Views.BandShow = Backbone.CommentableView.extend({
   template: JST['bands/show'],
 
   className: 'band-show',
