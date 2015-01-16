@@ -1,9 +1,14 @@
-<h2>Everyone</h2>
+<section class='index'>
+  <h2>Everyone</h2>
 
-<ul>
-  <% users.each(function(user){ %>
-  <li>
-    <a href="#users/<%= user.id %>"><%= user.escape("username") %></a>
-  </li>
-  <% }) %>
-</ul>
+  <ul>
+    <% users.each(function(user){ %>
+    <li>
+      <a class='underline-link' href="#users/<%= user.id %>"><%= user.escape("username") %></a>
+    </li>
+    <% }) %>
+  </ul>
+
+  <br>
+  https://api.soundcloud.com/tracks/34532583/stream?client_id=4346c8125f4f5c40ad666bacd8e96498
+</section>

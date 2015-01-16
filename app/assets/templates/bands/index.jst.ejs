@@ -1,9 +1,11 @@
-<h1>Bands</h1>
-<ul class='collection' id='bands'>
+<section class='index'>
+  <h1>Bands</h1>
+  <ul class='collection' id='bands'>
 
-  <% bands.each(function (band) { %>
-    <li><a href="#/bands/<%= band.id %>"><%= band.escape('name') %></a></li>
-  <% }) %>
-</ul>
+    <% bands.each(function (band) { %>
+      <li><a class='underline-link' href="#/bands/<%= band.id %>"><%= band.escape('name') %></a></li>
+      <% }) %>
+    </ul>
 
-<button><a href="#/bands/new">Add A Band</a></button>
+    <button><a href="#/bands/new">Add A Band</a></button>
+</section>

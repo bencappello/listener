@@ -3,7 +3,7 @@
 <% var blogU = '#/blogs/' + blog.id %>
 
 <h2>
-  <a href="<%= blogU %>"><%= blogN %></a>
+  <a class='underline-link' href="<%= blogU %>"><%= blogN %></a>
 </h2>
 
 <label class='blog-list'>Genres</label>
@@ -16,5 +16,5 @@
 <button class="blog-songs"><%= blog.get('song_count') + ' Songs' %></button>
 <button
   data-id= '<%= blog.id %>'
-  class="blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
+  class="small-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
 </button>

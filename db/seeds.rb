@@ -94,7 +94,7 @@ blogs = Blog.create!([
 ])
 
 10.times do
-  Blog.create(name: Faker::App.name)
+  Blog.create(name: Faker::App.name, url: Faker::Company.logo)
 end
 
 

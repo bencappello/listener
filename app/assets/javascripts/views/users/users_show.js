@@ -10,9 +10,9 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   events: {
     'click .user-follow': 'toggleFollow',
-    'click .btn-favorites': 'renderFavorites',
-    'click .btn-feed': 'renderFeed',
-    'click .btn-blogs': 'renderBlogs',
+    'click #btn-favorites': 'renderFavorites',
+    'click #btn-feed': 'renderFeed',
+    'click #btn-blogs': 'renderBlogs',
   },
 
   render: function(){
@@ -36,7 +36,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       model: song,
       collection: this.model.favoriteSongs(),
     });
-    this.addSubview('section.main', view);
+    this.addSubview('section#display-content', view);
   },
 
   addBlog: function (blog) {
@@ -44,14 +44,14 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       model: blog,
       collection: this.model.followedBlogs(),
     });
-    this.addSubview('section.main', view);
+    this.addSubview('section#display-content', view);
   },
 
   renderFavorites: function () {
     var header = this.model.possessiveName() + ' Favorite Songs';
     this.content = 'favorites';
+    this.$el.find('section#display-content').empty();
     this.$el.find('.content-header').html(header)
-    this.$el.find('section.main').empty();
     this.model.favoriteSongs().each(this.addSong.bind(this));
   },
 
@@ -59,7 +59,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var header = this.model.possessiveName() + ' Feed';
     this.content = 'feed';
     this.$el.find('.content-header').html(header)
-    this.$el.find('section.main').empty();
+    this.$el.find('section#display-content').empty();
     this.model.feedSongs().each(this.addSong.bind(this));
   },
 
@@ -67,7 +67,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var header = this.model.possessiveName() + ' Favorite Blogs';
     this.content = 'blogs';
     this.$el.find('.content-header').html(header)
-    this.$el.find('section.main').empty();
+    this.$el.find('section#display-content').empty();
     this.model.followedBlogs().each(this.addBlog.bind(this));
   },
 

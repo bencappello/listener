@@ -1,10 +1,12 @@
-<h2>Sign Up</h2>
 
-<form>
 
+<form class='modal-form'>
+
+  <h2>Sign Up</h2>
+  <br><br>
   <label>
     Username
-    <input type="text" name="user[username]"
+    <input class='mytext' type="text" name="user[username]"
            value="<%= user.escape("username") %>">
   </label>
 
@@ -40,7 +42,7 @@
 
   <label>
     Image Url
-    <input type="text" name="user[image_url]">
+    <input class='mytext' type="text" name="user[image_url]">
   </label>
 
   <button>Create Account</button>

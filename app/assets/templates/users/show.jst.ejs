@@ -1,19 +1,26 @@
 <% var follows = Listener.currentUser.followedUsers() %>
-<h2><%= user.escape("username") %></h2>
-<br>
-<h4><%= user.escape("email") %></h4>
-<img class ='large-image' src="<%= user.get("image_url") %>" width="100" alt="">
+<section class='sidebar'>
+  <section id='user-top'>
+    <img class ='large-image' src="<%= user.get("image_url") %>" width="100" alt="">
+    <h2><%= user.escape("username") %></h2>
 
-<% if (!(Listener.currentUser.id == user.id)) { %>
-  <button
-    data-id= '<%= user.id %>'
-    class="big-follow user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
-  </button>
-<% } %>
+    <% if (!(Listener.currentUser.id == user.id)) { %>
+      <button
+      data-id= '<%= user.id %>'
+      class="big-follow user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
+    </button>
+    <% } %>
+  </section>
 
-<button class='btn-favorites'>Favorites</button>
-<button class='btn-feed'>Feed</button>
-<button class='btn-blogs'>Followed Blogs</button>
+  <section id='button-list'>
+    <button id='btn-favorites' class='user-btn'>Favorites</button>
+    <button id='btn-feed' class='user-btn'>Feed</button>
+    <button id='btn-blogs' class='user-btn'>Followed Blogs</button>
+  </section>
+</section>
 
-<h2 class='content-header'></h2>
-<section class='main'></section>
+
+<section class='main'>
+  <h2 class='content-header main-title-header'></h2>
+  <section id='display-content'></section>
+</section>

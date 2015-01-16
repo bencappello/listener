@@ -115,7 +115,29 @@
 
  .mytext {
    width: 250px;
+   border-radius: 3px;
+   border: 1px solid #C2B20A;
+   margin-top: 10px;
  }
+
+ label {
+   font-size: 18px;
+ }
+
+ .modal-form {
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 40px;
+   width: 500px;
+ }
+
+ .index {
+   border: 1px solid #C2B20A;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 40px;
+   width: 500px;
+}
 
 
 
@@ -229,17 +251,19 @@ header h3 a:hover {
   margin-left: auto;
   margin-right: auto;
   background: #ffffe1;
-  height: 1200px;
+  min-height: 800px;
   border-left: 1px solid black;
   border-right: 1px solid black;
+  margin-bottom: 80px;
 }
 
 .sidebar {
   width: 289px;
   float: left;
-  border-right: 1px solid #C2B20A;
-  border-left: 1px solid #C2B20A;
-  border-top: 1px solid #C2B20A;
+  border: 1px solid #C2B20A;
+  outline: 1px solid black;
+  // border-left: 1px solid #C2B20A;
+  // border-top: 1px solid #C2B20A;
   margin-left: 20px;
   margin-right: 10px;
   margin-top: 20px;
@@ -251,20 +275,28 @@ header h3 a:hover {
   width: 585px;
   float: right;
   padding: 20px;
-  border-right: 1px solid #C2B20A;
-  border-left: 1px solid #C2B20A;
-  border-top: 1px solid #C2B20A;
+  border: 1px solid #C2B20A;
+  outline: 1px solid black;
+  // border-left: 1px solid #C2B20A;
+  // border-top: 1px solid #C2B20A;
   margin-left: 10px;
   margin-right: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
+.main::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
 .main-title-header {
   color: black;
   margin-bottom: 20px;
   border-bottom: 3px solid black;
-  text-shadow: 1px 0 0 #3D7D0A, -1px 0 0 #3D7D0A, 0 1px 0 #3D7D0A, 0 -1px 0 #3D7D0A, 1px 1px #3D7D0A, -1px -1px 0 #3D7D0A, 1px -1px 0 #3D7D0A, -1px 1px 0 #3D7D0A;
+  font-weight: bold;
+  text-shadow: 1px 0 0 #71AB3A, -1px 0 0 #71AB3A, 0 1px 0 #71AB3A, 0 -1px 0 #71AB3A, 1px 1px #71AB3A, -1px -1px 0 #3D7D0A, 1px -1px 0 #71AB3A, -1px 1px 0 #71AB3A;
 }
 
 .main-title {
@@ -277,6 +309,7 @@ header h3 a:hover {
   width: 100%;
   display: block;
   margin-top: 20px;
+  float: left;
 }
 
 ul.tags {
@@ -311,8 +344,17 @@ li.genre {
 }
 
 .small-follow {
+  font-size: 12px;
   background: transparent;
   color: #0063dc;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.small-follow:hover {
+  color: #0063dc;
+  background: #E6E7F5;
 }
 
 .blog-follow:after {
@@ -331,6 +373,27 @@ li.genre {
   content: '━ Unfollow';
 }
 
+.user-btn {
+  margin: 5px;
+}
+
+
+//USER-SHOW
+
+#user-top {
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#button-list {
+  text-align: center;
+}
+
+.user-sidebar {
+
+}
 
 
 

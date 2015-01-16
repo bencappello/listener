@@ -1,8 +1,8 @@
-<form id=new-song>
+<form id=new-song class='modal-form'>
   <ul id="errors"></ul>
 
   <label>Name
-  <input type="text" name="song[name]" value="<%= song.escape('name') %>" class="mytext">
+  <input class='mytext' type="text" name="song[name]" value="<%= song.escape('name') %>" class="mytext">
   </label>
   <br><br>
 
@@ -43,7 +43,7 @@
     id="remix"
     <% if (song.escape('song_type') == 'remix') { %>
       checked
-    <% } %>
+    <% } %>>
   <label for="remix">Remix</label>
   <br>
   <input
@@ -53,11 +53,12 @@
     id="regular"
     <% if (song.escape('song_type') == 'regular') { %>
       checked
-    <% } %>
+    <% } %>>
     <label for="regular">Regular</label>
   <br><br>
 
   <label>Tags</label>
+  <br>
   <input type="hidden" name="song[tag_ids][]" value="">
     <% Listener.tags.each(function (tag) { %>
       <label>
@@ -81,7 +82,7 @@
   <div>Or give an song url</div>
   <label>
     Audio Url
-    <input type="text" name="song[audio_url]">
+    <input class='mytext' type="text" name="song[audio_url]">
   </label>
   <br><br>
 
@@ -95,7 +96,7 @@
   <div>Or give an image url</div>
   <label>
     Image Url
-    <input type="text" name="song[image_url]">
+    <input class='mytext' type="text" name="song[image_url]">
   </label>
 
   <input type="submit">

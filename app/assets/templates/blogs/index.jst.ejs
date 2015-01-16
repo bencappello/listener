@@ -1,9 +1,11 @@
-<h1>Blogs</h1>
-<ul class='collection' id='blogs'>
+<section class='index'>
+  <h1>Blogs</h1>
+  <ul class='collection' id='blogs'>
 
-  <% blogs.each(function (blog) { %>
-    <li><a href="#/blogs/<%= blog.id %>"><%= blog.escape('name') %></a></li>
-  <% }) %>
-</ul>
+    <% blogs.each(function (blog) { %>
+      <li><a class='underline-link' href="#/blogs/<%= blog.id %>"><%= blog.escape('name') %></a></li>
+    <% }) %>
+  </ul>
 
-<button><a href="#/blogs/new">Add A Blog</a></button>
+  <button><a href="#/blogs/new">Add A Blog</a></button>
+</section>

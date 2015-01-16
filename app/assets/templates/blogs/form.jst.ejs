@@ -1,12 +1,12 @@
-<form id=new-blog>
+<form id=new-blog class='modal-form'>
   <ul id="errors"></ul>
   <label>Name
-  <input type="text" name="blog[name]" value="<%= blog.get('name') %>" class="mytext">
+  <input class='mytext' type="text" name="blog[name]" value="<%= blog.get('name') %>" class="mytext">
   </label>
   <br><br>
 
   <label>URL
-    <input type="text" name="blog[url]" value="<%= blog.get('url') %>" class="mytext">
+    <input class='mytext' type="text" name="blog[url]" value="<%= blog.get('url') %>" class="mytext">
   </label>
   <br><br>
 
