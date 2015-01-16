@@ -40,6 +40,7 @@ tags = Tag.create([
   {name: 'Disco'},
   {name: 'Country'},
   {name: 'Dub Step'},
+  {name: 'Rock'},
   {name: 'Classic Rock'},
   {name: 'Ska'}
 ])
