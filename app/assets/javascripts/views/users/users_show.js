@@ -36,7 +36,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       model: song,
       collection: this.model.favoriteSongs(),
     });
-    this.addSubview('section#displayed-content', view);
+    this.addSubview('section.main', view);
   },
 
   addBlog: function (blog) {
@@ -44,14 +44,14 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       model: blog,
       collection: this.model.followedBlogs(),
     });
-    this.addSubview('section#displayed-content', view);
+    this.addSubview('section.main', view);
   },
 
   renderFavorites: function () {
     var header = this.model.possessiveName() + ' Favorite Songs';
     this.content = 'favorites';
     this.$el.find('.content-header').html(header)
-    this.$el.find('section#displayed-content').empty();
+    this.$el.find('section.main').empty();
     this.model.favoriteSongs().each(this.addSong.bind(this));
   },
 
@@ -59,7 +59,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var header = this.model.possessiveName() + ' Feed';
     this.content = 'feed';
     this.$el.find('.content-header').html(header)
-    this.$el.find('section#displayed-content').empty();
+    this.$el.find('section.main').empty();
     this.model.feedSongs().each(this.addSong.bind(this));
   },
 
@@ -67,7 +67,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var header = this.model.possessiveName() + ' Favorite Blogs';
     this.content = 'blogs';
     this.$el.find('.content-header').html(header)
-    this.$el.find('section#displayed-content').empty();
+    this.$el.find('section.main').empty();
     this.model.followedBlogs().each(this.addBlog.bind(this));
   },
 
