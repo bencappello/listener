@@ -31,7 +31,7 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.includes(:tags, :blog, :band, comments: :author).find(params[:id])
+    @song = Song.includes(:tags, :blog, :band, :favoriters, comments: :author).find(params[:id])
     render :show
   end
 

@@ -19,7 +19,7 @@
 </audio>
 
 <br>
-
+<span><%= song.get('favoriters_count') %></span>
 <button
   data-id= '<%= song.id %>'
   class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">

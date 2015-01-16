@@ -14,4 +14,4 @@ json.comments @song.comments do |comment|
   json.partial! "api/comments/show", comment: comment
 end
 
-json.favoriters @song.favoriters
+json.favoriters_count @song.favoriters.length

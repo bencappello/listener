@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
       :followed_users,
       :followers,
       followed_blogs: [:tags, :songs],
-      favorite_songs: [:blog, :band]
+      favorite_songs: [:blog, :band, :favoriters]
       ).find(params[:id])
     render :show
   end

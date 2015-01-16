@@ -15,7 +15,7 @@ class Api::BandsController < ApplicationController
   end
 
   def show
-    @band = Band.includes(:tags, songs: [:blog, :band], comments: :author).find(params[:id])
+    @band = Band.includes(:tags, songs: [:blog, :band, :favoriters], comments: :author).find(params[:id])
     render :show
   end
 

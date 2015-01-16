@@ -9,3 +9,5 @@ json.band_name song.band.name
 json.tags song.tags do |tag|
   json.extract! tag, :id, :name, :created_at, :updated_at
 end
+
+json.favoriters_count @song.favoriters.length
