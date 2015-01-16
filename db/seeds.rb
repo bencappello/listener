@@ -45,6 +45,9 @@ tags = Tag.create!([
   {name: 'Ska'}
 ])
 
+
+
+
 bands = Band.create!([
   {name: 'Sublime'},
   {name: 'Rolling Stones'},
@@ -65,6 +68,38 @@ bands = Band.create!([
   {name: 'Morrissey'},
   {name: 'Sia'},
 ])
+
+20.times do
+  Band.create(name: Faker::App.name)
+end
+
+
+
+
+
+blogs = Blog.create!([
+  {name: 'Chromemusic', url: 'http://www.chromemusic.de'},
+  {name: 'The Quietus', url: 'http://thequietus.com/'},
+  {name: 'moarrr', url: 'http://moarrr.com'},
+  {name: 'Heart And Soul', url: 'http://heartandsoulmusic.tumblr.com/'},
+  {name: 'Avant-Avant', url: 'http://avant-avant.net'},
+  {name: 'Orange Peel', url: 'http://www.orangepeel.ch/'},
+  {name: 'Lady Wood', url: 'http://www.ladywoodmusic.com/'},
+  {name: 'Dublab', url: 'http://dublab.com/category/listen/mp3-blog/'},
+  {name: 'Lipstick Disco', url: 'http://www.lipstickdisco.co.uk'},
+  {name: 'Human Drizzle', url: 'http://humandrizzle.com/'},
+  {name: 'Stoney Roads', url: 'http://www.stoneyroads.com/'},
+  {name: 'Phonographecorp', url: 'http://www.phonographecorp.fr/'},
+  {name: 'Fluid-Radio', url: 'http://fluid-radio.co.uk'},
+])
+
+10.times do
+  Blog.create(name: Faker::App.name)
+end
+
+
+
+
 
 songs = Song.create!([
   {name: "Santeria", song_type: 'regular', blog_id: 1, band_id: 1},
@@ -90,20 +125,54 @@ songs = Song.create!([
     audio_url: "https://api.soundcloud.com/tracks/16294193/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
   {name: "First of the Gang to Die", song_type: 'regular', blog_id: 4, band_id: 17},
   {name: "Chandelier", song_type: 'regular', blog_id: 5, band_id: 18},
-  ])
-
-blogs = Blog.create!([
-  {name: 'Chromemusic', url: 'http://www.chromemusic.de'},
-  {name: 'The Quietus', url: 'http://thequietus.com/'},
-  {name: 'moarrr', url: 'http://moarrr.com'},
-  {name: 'Heart And Soul', url: 'http://heartandsoulmusic.tumblr.com/'},
-  {name: 'Avant-Avant', url: 'http://avant-avant.net'},
-  {name: 'Orange Peel', url: 'http://www.orangepeel.ch/'},
-  {name: 'Lady Wood', url: 'http://www.ladywoodmusic.com/'},
-  {name: 'Dublab', url: 'http://dublab.com/category/listen/mp3-blog/'},
-  {name: 'Lipstick Disco', url: 'http://www.lipstickdisco.co.uk'},
-  {name: 'Human Drizzle', url: 'http://humandrizzle.com/'},
-  {name: 'Stoney Roads', url: 'http://www.stoneyroads.com/'},
-  {name: 'Phonographecorp', url: 'http://www.phonographecorp.fr/'},
-  {name: 'Fluid-Radio', url: 'http://fluid-radio.co.uk'},
 ])
+
+20.times do
+  Song.create(name: Faker::App.name, song_type: 'remix', blog_id: Blog.all.sample.id, band_id: Band.all.sample.id)
+end
+
+
+
+
+
+blog_follows = UserBlog.create!([
+  {user_id: 1, blog_id: 1},
+  {user_id: 1, blog_id: 2},
+  {user_id: 1, blog_id: 3},
+  {user_id: 1, blog_id: 4}
+])
+
+favorites = UserSong.create!([
+  {user_id: 1, song_id: 1},
+  {user_id: 1, song_id: 2},
+  {user_id: 1, song_id: 3},
+  {user_id: 1, song_id: 4},
+  {user_id: 1, song_id: 5},
+  {user_id: 1, song_id: 6},
+  {user_id: 1, song_id: 7},
+  {user_id: 1, song_id: 8}
+])
+
+
+
+#JOIN TABLES
+
+6.times do
+  UserBlog.create(user_id: me.id, blog_id: Blog.all.sample.id)
+end
+
+10.times do
+  UserSong.create(user_id: me.id, song_id: Song.all.sample.id)
+end
+
+50.times do
+  BandTag.create(band: Band.all.sample, tag_id: Tag.all.sample.id)
+end
+
+50.times do
+  SongTag.create(song: Song.all.sample, tag_id: Tag.all.sample.id)
+end
+
+30.times do
+  BlogTag.create(blog: Blog.all.sample, tag_id: Tag.all.sample.id)
+end

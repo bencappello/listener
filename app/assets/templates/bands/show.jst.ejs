@@ -1,21 +1,27 @@
-<button class="edit"><a href="#/bands/<%= band.id %>/edit">Edit Band</a></button>
-<h1><%= band.get('name') %></h1>
+<section class=sidebar>
+  <button class="edit"><a href="#/bands/<%= band.id %>/edit">Edit Band</a></button>
+  <h1><%= band.get('name') %></h1>
 
-<h5>Genres</h5>
-<ul class='tags'>
-  <% band.tags().forEach(function (tag) { %>
-    <li><%= tag.get('name') %></li>
-  <% }) %>
-</ul>
+  <h5>Genres</h5>
+  <ul class='tags'>
+    <% band.tags().forEach(function (tag) { %>
+      <li><%= tag.get('name') %></li>
+    <% }) %>
+  </ul>
 
-<h5>Songs</h5>
-<section class='songs-window'>
-  <div id="song-form"></div>
-  <ul id="songs"></ul>
+  <h5>Comments</h5>
+  <section class='comments-window'>
+    <div id="comment-form"></div>
+    <ul id="comments"></ul>
+  </section>
 </section>
 
-<h5>Comments</h5>
-<section class='comments-window'>
-  <div id="comment-form"></div>
-  <ul id="comments"></ul>
+<section class='main'>
+  <header class='main-title-header'>
+    <h2 class='main-title'>Songs</h2>
+  </header>
+  <section class='songs-window'>
+    <div id="song-form"></div>
+    <ul id="songs"></ul>
+  </section>
 </section>

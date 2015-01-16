@@ -5,8 +5,8 @@ Listener.Views.CommentShow = Backbone.CompositeView.extend({
   className: 'comment-show',
 
   events: {
-    'click .edit-comment': 'edit',
-    'click .delete-comment': 'delete',
+    'click #edit-comment': 'edit',
+    'click #delete-comment': 'delete',
     'submit' : 'updateComment',
     'keydown textarea': 'maybeUpdate',
   },

@@ -1,4 +1,5 @@
 <% var follows = Listener.currentUser.followedBlogs() %>
+
 <section class=sidebar>
   <button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
   <h1><%= blog.get('name') %></h1>
@@ -7,12 +8,12 @@
   <button
   data-id= '<%= blog.id %>'
   class="big-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
-</button>
+  </button>
 
-<h5>Genres</h5>
-<ul class='tags'>
-  <% blog.tags().forEach(function (tag) { %>
-    <li><%= tag.get('name') %></li>
+  <h5>Genres</h5>
+  <ul class='tags group'>
+    <% blog.tags().forEach(function (tag) { %>
+      <li class='genre'><%= tag.get('name') %></li>
     <% }) %>
   </ul>
 
