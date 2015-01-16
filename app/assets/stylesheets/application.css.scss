@@ -43,10 +43,16 @@
    font-family: Sans-serif;
  }
 
- img {
+ button {
+   background: black;
+   padding: 5px;
+   color: white;
+   border-radius: 5px;
+   font-size: 14px;
+ }
 
-  // outline: 2px solid black;
-  // outline-radius: 5px;
+ button:hover {
+   color: #D0D4CD;
  }
 
  .large-image {
@@ -280,6 +286,11 @@ header h1 a:hover {
 
 .favorite {
   font-size: 18px;
+  background: transparent;
+  padding: 0px;
+  color: grey;
+  border-radius: 5px;
+  font-size: 27px;
 }
 
 .unfavorite {
@@ -296,6 +307,10 @@ header h1 a:hover {
 
 .play {
   padding: 2px 3px;
+  margin: 5px;
+  background: transparent;
+  font-size: 22px;
+  color: gray;
 }
 
 .play:after {
