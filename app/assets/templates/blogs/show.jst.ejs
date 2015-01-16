@@ -1,29 +1,32 @@
 <% var follows = Listener.currentUser.followedBlogs() %>
-
-<button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
-<h1><%= blog.get('name') %></h1>
-<h4><a href="<%= blog.get('url') %>"><%= blog.get('url') %></a></h4>
+<section class=sidebar>
+  <button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
+  <h1><%= blog.get('name') %></h1>
+  <h4><a href="<%= blog.get('url') %>"><%= blog.get('url') %></a></h4>
 
   <button
-    data-id= '<%= blog.id %>'
-    class="big-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
-  </button>
+  data-id= '<%= blog.id %>'
+  class="big-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
+</button>
 
 <h5>Genres</h5>
 <ul class='tags'>
   <% blog.tags().forEach(function (tag) { %>
     <li><%= tag.get('name') %></li>
-  <% }) %>
-</ul>
+    <% }) %>
+  </ul>
 
-<h5>Songs</h5>
-<section class='songs-window'>
-  <div id="song-form"></div>
-  <ul id="songs"></ul>
+  <h5>Comments</h5>
+  <section class='comments-window'>
+    <div id="comment-form"></div>
+    <ul id="comments"></ul>
+  </section>
 </section>
 
-<h5>Comments</h5>
-<section class='comments-window'>
-  <div id="comment-form"></div>
-  <ul id="comments"></ul>
+<section class='main'>
+  <h5>Songs</h5>
+  <section class='songs-window'>
+    <div id="song-form"></div>
+    <ul id="songs"></ul>
+  </section>
 </section>

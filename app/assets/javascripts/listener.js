@@ -18,6 +18,15 @@ window.Listener = {
     new Listener.Routers.SongsRouter();
     new Listener.Routers.Users({ $rootEl: $("#content") });
     Backbone.history.start();
+
+    $(window).bind('scroll', function() {
+      if ($(window).scrollTop() > 62) {
+        $('#sub-header').addClass('fixed');
+      }
+      else {
+        $('#sub-header').removeClass('fixed');
+      }
+    });
   }
 };
 
