@@ -6,21 +6,23 @@
 <% var songU = '#/songs/' + song.id %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 
-<a href="<%= songU %>"><img class='thumbnail' src="<%= song.get("image_url") %>" width="100" alt=""></a>
-<h2>
-  <a class='underline-link' href="<%= bandU %>"><%= bandN %></a> -
-  <a class='underline-link' href="<%= songU %>"><%= songN %></a>
-</h2>
-<h4>Posted by: <a class='underline-link blue' href="<%= blogU %>"><%= blogN %> </a>
-  <%= song.postTime() %></h4>
+<section class='list-song'>
+  <a href="<%= songU %>"><img class='thumbnail' src="<%= song.get("image_url") %>" width="100" alt=""></a>
+  <h2>
+    <a class='underline-link' href="<%= bandU %>"><%= bandN %></a> -
+    <a class='underline-link' href="<%= songU %>"><%= songN %></a>
+  </h2>
+  <h4>Posted by: <a class='underline-link blue' href="<%= blogU %>"><%= blogN %> </a>
+    <%= song.postTime() %></h4>
 
-<audio src="<%= song.get('audio_url') %>" controls>
-  <p>Your browser does not support the audio element </p>
-</audio>
-<br>
-<span><%= song.get('favoriters_count') %></span>
-<button
-  data-id= '<%= song.id %>'
-  class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-</button>
-<button class="play"></button>
+    <audio src="<%= song.get('audio_url') %>" controls>
+      <p>Your browser does not support the audio element </p>
+    </audio>
+    <br>
+    <span><%= song.get('favoriters_count') %></span>
+    <button
+    data-id= '<%= song.id %>'
+    class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+  </button>
+  <button class="play"></button>
+</section>

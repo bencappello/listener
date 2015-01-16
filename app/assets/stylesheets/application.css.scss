@@ -76,6 +76,25 @@
    font-size: 24px;
  }
 
+ .group::after {
+   clear: both;
+   display: block;
+   content: '';
+ }
+
+ .mytext {
+   width: 250px;
+ }
+
+
+
+
+//HEADERS
+
+
+
+
+
  #top-header {
    display: block;
    background: #83c441;
@@ -112,25 +131,6 @@
    z-index: 1;
  }
 
- #content {
-   width: 1000px;
-   margin-top: 50px;
-   margin-left: auto;
-   margin-right: auto;
-   background: #ffffe1;
-   height: 1200px;
-   border-left: 1px solid black;
-   border-right: 1px solid black;
- }
-
- hr {
-   margin: 0px;
- }
-
-.mytext {
-  width: 250px;
-}
-
 #header-links {
   float: right;
 }
@@ -164,12 +164,6 @@ nav#top-nav {
   padding: 0px;
 }
 
-.group::after {
-  clear: both;
-  display: block;
-  content: '';
-}
-
 .user-info {
   float: right;
 }
@@ -186,6 +180,74 @@ header h1:after {
 
 header h1 a:hover {
   color: white;
+}
+
+
+
+
+
+//CONTENT
+
+
+
+
+
+#content {
+  width: 1000px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffe1;
+  height: 1200px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.sidebar {
+  width: 289px;
+  float: left;
+  border-right: 1px solid #C2B20A;
+  border-left: 1px solid #C2B20A;
+  border-top: 1px solid #C2B20A;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 10px;
+}
+
+.main {
+  width: 585px;
+  float: right;
+  padding: 20px;
+  border-right: 1px solid #C2B20A;
+  border-left: 1px solid #C2B20A;
+  border-top: 1px solid #C2B20A;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+
+}
+
+.main-title-header {
+  color: black;
+  margin-bottom: 20px;
+  border-bottom: 3px solid black;
+  text-shadow: 1px 0 0 #3D7D0A, -1px 0 0 #3D7D0A, 0 1px 0 #3D7D0A, 0 -1px 0 #3D7D0A, 1px 1px #3D7D0A, -1px -1px 0 #3D7D0A, 1px -1px 0 #3D7D0A, -1px 1px 0 #3D7D0A;
+}
+
+.main-title {
+  padding: 5px;
+  font-size: 30px;
+}
+
+.list-song {
+  border-bottom: 1px solid black;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
 }
 
 .big-follow {
@@ -215,7 +277,6 @@ header h1 a:hover {
 .user-unfollow:after {
   content: '━ Unfollow';
 }
-
 
 .favorite {
   font-size: 18px;

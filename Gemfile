@@ -34,13 +34,13 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '~> 1.5.7'
 gem "figaro"
 gem 'pg_search'
+gem 'faker'
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'quiet_assets'
-  gem 'faker'
 end
 
 group :production do
