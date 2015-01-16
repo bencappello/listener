@@ -18,7 +18,7 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
- body, header, ul, li, section, div, span, hr, nav, h1, h2, h3, h4, h5,  a {
+ body, header, ul, li, section, div, span, hr, nav, h1, h2, h3, h4, h5,  a, button {
    margin: 0;
    padding: 0;
    border: 0;
@@ -31,12 +31,24 @@
    color: inherit;
    background: transparent;
    list-style: none;
+
  }
 
  body {
-   margin: 0px;
-   background: white;
+   background: url(music-color.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
    font-family: Sans-serif;
+ }
+
+ img {
+  border: 3px solid #0063dc;
+ }
+
+ button:hover {
+   cursor: pointer;
  }
 
  h1 {
@@ -150,6 +162,18 @@ header h1 a:hover {
   color: white;
 }
 
+.big-follow {
+  background: transparent;
+  color: #0063dc;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.small-follow {
+  background: transparent;
+  color: #0063dc;
+}
+
 .blog-follow:after {
   content: '✚ Follow';
 }
@@ -166,12 +190,42 @@ header h1 a:hover {
   content: '━ Unfollow';
 }
 
-.favorite:after {
-  content: '★';
-  color: #4D4D4D; 
+
+.favorite {
+  font-size: 18px;
 }
 
-.unfavorite:after {
-  content: '★';
-  color: #CCCC00;
+.unfavorite {
+  color: #DE3535;
+}
+
+.favorite:hover {
+  color: #0063dc;
+}
+
+.favorite:after {
+  content: '♥';
+}
+
+.play {
+  padding: 2px 3px;
+}
+
+.play:after {
+  content: "►";
+}
+
+.blue {
+  color: #0063dc;
+  ;
+}
+
+.play:hover {
+  color: #0063dc;
+  background: #A3A3A3;
+}
+
+.underline-link:hover {
+  text-decoration: underline;
+  color: #0063dc;
 }

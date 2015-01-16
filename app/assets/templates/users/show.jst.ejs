@@ -7,7 +7,7 @@
 <% if (!(Listener.currentUser.id == user.id)) { %>
   <button
     data-id= '<%= user.id %>'
-    class="user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
+    class="big-follow user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
   </button>
 <% } %>
 
