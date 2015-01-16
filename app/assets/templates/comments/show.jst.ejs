@@ -1,6 +1,6 @@
 <p><%= comment.get('author_name') %>: <%= comment.get('body') %></p>
 
 <% if (comment.get('author_id') == Listener.currentUser.id) { %>
-  <button class="edit-comment" data-id='<%= comment.id %>'>Edit</button>
-  <button class="delete-comment" data-id='<%= comment.id %>'>Delete</button>
+  <button class="btn-comment" data-id='<%= comment.id %>'>Edit</button>
+  <button class="btn-comment" data-id='<%= comment.id %>'>Delete</button>
   <% } %>

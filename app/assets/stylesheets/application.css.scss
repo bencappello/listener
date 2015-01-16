@@ -55,11 +55,21 @@
    color: #D0D4CD;
  }
 
+ .btn-comment {
+   font-size: 12px;
+   padding: 3px;
+ }
+
  .large-image {
    width: 200px;
    border: 5px solid #C2B20A;
    border-radius: 5px;
    box-shadow: 0px 0px 3pt 2pt black;
+   -webkit-transition: box-shadow 0.1s ease-in-out 0s;
+ }
+
+ .large-image:hover {
+   box-shadow: 0px 0px 5pt 4pt black;
  }
 
  .thumbnail {
@@ -67,6 +77,11 @@
    border: 3px solid #C2B20A;
    border-radius: 3px;
    box-shadow: 0px 0px 3pt 2pt black;
+   -webkit-transition: box-shadow 0.1s ease-in-out 0s;
+ }
+
+ .thumbnail:hover {
+   box-shadow: 0px 0px 4pt 3pt black;
  }
 
  button:hover {
@@ -261,6 +276,12 @@ header h1 a:hover {
   color: #0063dc;
   padding: 10px;
   border: 1px solid black;
+  border-radius: 0;
+}
+
+.big-follow:hover {
+  color: #0063dc;
+  background: #E6E7F5;
 }
 
 .small-follow {
