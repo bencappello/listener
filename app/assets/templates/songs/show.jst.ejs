@@ -12,7 +12,7 @@
   <a href="<%= bandU %>"><%= bandN %></a> -
   <a href="<%= songU %>"><%= songN %></a>
 </h2>
-<h4>Posted by: <a href="<%= blogU %>"><%= blogN %></a></h4>
+<h4>Posted by: <a href="<%= blogU %>"><%= blogN %> </a><%= song.postTime() %></h4>
 
 <audio src="<%= song.get('audio_url') %>" controls>
   <p>Your browser does not support the audio element </p>
