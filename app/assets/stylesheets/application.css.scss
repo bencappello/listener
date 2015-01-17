@@ -134,7 +134,8 @@
  }
 
  .index {
-   border: 1px solid #C2B20A;
+   border-left: 1px solid #C2B20A;
+   border-right: 1px solid #C2B20A;
    margin-left: auto;
    margin-right: auto;
    padding: 40px;
@@ -253,9 +254,14 @@ header h3 a:hover {
   margin-left: auto;
   margin-right: auto;
   background: #ffffe1;
-  min-height: 800px;
+  // min-height: 500px;
   border-left: 1px solid black;
   border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  outline: 2px solid white;
+  // outline-right: 2px solid white;
+  // outline-bottom: 2px solid white;
   margin-bottom: 80px;
 }
 

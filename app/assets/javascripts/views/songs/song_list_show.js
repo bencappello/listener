@@ -9,6 +9,7 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render)
+    this.listenTo(Listener.currentUser, 'sync', this.render)
   },
 
   render: function () {

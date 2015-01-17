@@ -116,6 +116,7 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
       data: credentials,
       dataType: "json",
       success: function(data){
+        data = model.parse(data);
         model.set(data);
         options.success && options.success();
       },

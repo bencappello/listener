@@ -6,7 +6,6 @@ Listener.Routers.Users = Backbone.Router.extend({
   },
 
   routes: {
-    "": "index",
     "users/new": "new",
     "users/:id": "show",
     "users/:id/favorites": "showFavorites",
