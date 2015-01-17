@@ -3,10 +3,10 @@
 #
 # Examples:
 #
-#   cities = City.create!([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create!(name: 'Emanuel', city: cities.first)
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
 
-me = User.create!(
+me = User.create(
   username: 'thatpurplestuff',
   email: 'ben@gmail.com',
   password: 'password',
@@ -14,7 +14,7 @@ me = User.create!(
   )
 
 10.times do
-  User.create!(
+  User.create(
     username: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'password',
@@ -22,7 +22,7 @@ me = User.create!(
   )
 end
 
-tags = Tag.create!([
+tags = Tag.create([
   {name: 'Funk'},
   {name: 'Indie Rock'},
   {name: 'Folk Rock'},
@@ -48,7 +48,7 @@ tags = Tag.create!([
 
 
 
-bands = Band.create!([
+bands = Band.create([
   {name: 'Sublime'},
   {name: 'Rolling Stones'},
   {name: 'The Strokes'},
@@ -77,7 +77,7 @@ end
 
 
 
-blogs = Blog.create!([
+blogs = Blog.create([
   {name: 'Chromemusic', url: 'http://www.chromemusic.de'},
   {name: 'The Quietus', url: 'http://thequietus.com/'},
   {name: 'moarrr', url: 'http://moarrr.com'},
@@ -101,7 +101,7 @@ end
 
 
 
-songs = Song.create!([
+songs = Song.create([
   {name: "Santeria", song_type: 'regular', blog_id: 1, band_id: 1},
   {name: "Satisfaction", song_type: 'regular', blog_id: 2, band_id: 2},
   {name: "Someday", song_type: 'regular', blog_id: 3, band_id: 3,
@@ -135,14 +135,14 @@ end
 
 
 
-blog_follows = UserBlog.create!([
+blog_follows = UserBlog.create([
   {user_id: 1, blog_id: 1},
   {user_id: 1, blog_id: 2},
   {user_id: 1, blog_id: 3},
   {user_id: 1, blog_id: 4}
 ])
 
-favorites = UserSong.create!([
+favorites = UserSong.create([
   {user_id: 1, song_id: 1},
   {user_id: 1, song_id: 2},
   {user_id: 1, song_id: 3},
@@ -169,10 +169,10 @@ end
   BandTag.create(band: Band.all.sample, tag_id: Tag.all.sample.id)
 end
 
-50.times do
+70.times do
   SongTag.create(song: Song.all.sample, tag_id: Tag.all.sample.id)
 end
 
-30.times do
+50.times do
   BlogTag.create(blog: Blog.all.sample, tag_id: Tag.all.sample.id)
 end

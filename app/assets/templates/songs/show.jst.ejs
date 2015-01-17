@@ -7,37 +7,40 @@
 <% var songEditU = '#/songs/' + song.id + '/edit' %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 
-<img src="<%= song.get("image_url") %>" width="100" alt="">
-<h2>
-  <a href="<%= bandU %>"><%= bandN %></a> -
-  <a href="<%= songU %>"><%= songN %></a>
-</h2>
-<h4>Posted by: <a href="<%= blogU %>"><%= blogN %> </a><%= song.postTime() %></h4>
+<section class='song-left'>
+  <img class='large-image' src="<%= song.get("image_url") %>" width="100" alt="">
+  <h2>
+    <a class='underline-link' href="<%= bandU %>"><%= bandN %></a> -
+    <a class='underline-link' href="<%= songU %>"><%= songN %></a>
+  </h2>
+  <h4>Posted by: <a class='underline-link blue' href="<%= blogU %>"><%= blogN %> </a><%= song.postTime() %></h4>
 
-<audio src="<%= song.get('audio_url') %>" controls>
-  <p>Your browser does not support the audio element </p>
-</audio>
+  <audio src="<%= song.get('audio_url') %>" controls>
+    <p>Your browser does not support the audio element </p>
+  </audio>
 
-<br>
-<span><%= song.get('favoriters_count') %></span>
-<button
-  data-id= '<%= song.id %>'
-  class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-</button>
-<button class="play"></i></button>
-<br><br>
-<button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
+  <br>
+  <span><%= song.get('favoriters_count') %></span>
+  <button
+    data-id= '<%= song.id %>'
+    class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+  </button>
+  <button class="play"></i></button>
+  <br><br>
+  <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
 
 
-<h5>Genres</h5>
-<ul class='tags'>
-  <% song.tags().forEach(function (tag) { %>
-    <li><%= tag.get('name') %></li>
+  <h5>Genres</h5>
+  <ul class='tags group'>
+    <% song.tags().forEach(function (tag) { %>
+      <li class='genre'><%= tag.get('name') %></li>
     <% }) %>
   </ul>
-
-  <h5>Comments</h5>
+</section>
+<section class='song-right'>
   <section class='comments-window'>
     <div id="comment-form"></div>
+    <h5>Comments</h5>
     <ul id="comments"></ul>
   </section>
+</section>

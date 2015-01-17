@@ -3,15 +3,15 @@
   <h1><%= band.get('name') %></h1>
 
   <h5>Genres</h5>
-  <ul class='tags'>
+  <ul class='tags group'>
     <% band.tags().forEach(function (tag) { %>
-      <li><%= tag.get('name') %></li>
+      <li class='genre'><%= tag.get('name') %></li>
     <% }) %>
   </ul>
 
-  <h5>Comments</h5>
   <section class='comments-window'>
     <div id="comment-form"></div>
+    <h5>Comments</h5>
     <ul id="comments"></ul>
   </section>
 </section>
