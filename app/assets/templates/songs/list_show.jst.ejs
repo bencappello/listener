@@ -7,7 +7,7 @@
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 
 <section class='list-song'>
-  <a href="<%= songU %>"><img class='thumbnail' src="<%= song.get("image_url") %>" width="100" alt=""></a>
+  <a href="<%= songU %>"><img class='thumbnail' src="<%= song.get("image_url") %>"></a>
   <h2>
     <a class='underline-link' href="<%= bandU %>"><%= bandN %></a> -
     <a class='underline-link' href="<%= songU %>"><%= songN %></a>

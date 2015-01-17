@@ -1,8 +1,11 @@
 Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
+    // if (this.model.id == Listener.currentUser.id) {
+    //   this.model = Listener.currentUser;
+    // }
     this.listenTo(this.model, "sync change", this.render);
-    // this.listenTo(Listener.currentUser, 'sync', this.render)
+    this.listenTo(Listener.currentUser, 'sync', this.render)
     this.content = options.content;
   },
 
@@ -10,9 +13,10 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   events: {
     'click .user-follow': 'toggleFollow',
-    'click #btn-favorites': 'renderFavorites',
-    'click #btn-feed': 'renderFeed',
-    'click #btn-blogs': 'renderBlogs',
+    'click .user-btn': 'changeContent'
+    // 'click #btn-favorites': 'renderFavorites',
+    // 'click #btn-feed': 'renderFeed',
+    // 'click #btn-blogs': 'renderBlogs',
   },
 
   render: function(){
@@ -45,6 +49,19 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       collection: this.model.followedBlogs(),
     });
     this.addSubview('section#display-content', view);
+  },
+
+  changeContent: function (event) {
+    Listener.currentUser.fetch();
+    var targ = $(event.currentTarget);
+    var id = targ.attr('id');
+    if (id == 'btn-favorites') {
+      this.renderFavorites();
+    } else if (id == 'btn-feed') {
+      this.renderFeed();
+    } else {
+      this.renderBlogs();
+    }
   },
 
   renderFavorites: function () {

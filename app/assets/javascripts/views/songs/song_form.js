@@ -19,6 +19,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   },
 
   renderErrors: function (resp) {
+    $('#loading').empty();
     $('#errors').empty();
     resp.responseJSON.forEach(function (el) {
       var li = $('<li></li>');
@@ -45,6 +46,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
         that.renderErrors(resp);
       }
     })
+    this.renderLoading();
   },
 
   audioInputChange: function(event){

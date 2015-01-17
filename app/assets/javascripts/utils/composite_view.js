@@ -65,4 +65,8 @@ Backbone.CompositeView = Backbone.View.extend({
       return this._subviews[selector];
     }
   },
+
+  renderLoading: function () {
+    $('#loading').html($('<div> Loading...</div>'));
+  },
 });
