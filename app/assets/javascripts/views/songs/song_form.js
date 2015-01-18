@@ -56,12 +56,12 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      that.model._image = reader.result;
+      that.model._audio = reader.result;
     }
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      delete this.model._image;
+      delete this.model._audio;
     }
   },
 
