@@ -9,10 +9,11 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render)
-    this.listenTo(Listener.currentUser, 'sync', this.render)
+    // this.listenTo(Listener.currentUser, 'sync', this.render)
   },
 
   render: function () {
+    console.log(this.model.get('name'))
     this.$el.html(this.template({song: this.model}))
     return this;
   },

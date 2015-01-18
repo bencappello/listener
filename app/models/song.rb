@@ -4,7 +4,8 @@ class Song < ActiveRecord::Base
   validates :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
-  has_attached_file :audio
+  has_attached_file :audio,
+  :default_url => "missing_song.jpg"
 
   validates_attachment_content_type :audio,
     content_type: /\Aaudio\/.*\Z/

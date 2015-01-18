@@ -5,7 +5,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     //   this.model = Listener.currentUser;
     // }
     this.listenTo(this.model, "sync change", this.render);
-    this.listenTo(Listener.currentUser, 'sync', this.render)
+    // this.listenTo(Listener.currentUser, 'sync', this.render)
     this.content = options.content;
   },
 
@@ -35,24 +35,11 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  addSong: function (song) {
-    var view = new Listener.Views.SongListShow({
-      model: song,
-      collection: this.model.favoriteSongs(),
-    });
-    this.addSubview('section#display-content', view);
-  },
-
-  addBlog: function (blog) {
-    var view = new Listener.Views.BlogListShow({
-      model: blog,
-      collection: this.model.followedBlogs(),
-    });
-    this.addSubview('section#display-content', view);
-  },
-
   changeContent: function (event) {
-    Listener.currentUser.fetch();
+    // Listener.currentUser.fetch();
+    if (this.model.id == Listener.currentUser.id) {
+        this.model.fetch();
+      }
     var targ = $(event.currentTarget);
     var id = targ.attr('id');
     if (id == 'btn-favorites') {
@@ -65,27 +52,27 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   renderFavorites: function () {
-    var header = this.model.possessiveName() + ' Favorite Songs';
     this.content = 'favorites';
-    this.$el.find('section#display-content').empty();
-    this.$el.find('.content-header').html(header)
-    this.model.favoriteSongs().each(this.addSong.bind(this));
+    var view = new Listener.Views.UserFavorites({model: this.model});
+    this._swapView(view);
   },
 
   renderFeed: function () {
-    var header = this.model.possessiveName() + ' Feed';
     this.content = 'feed';
-    this.$el.find('.content-header').html(header)
-    this.$el.find('section#display-content').empty();
-    this.model.feedSongs().each(this.addSong.bind(this));
+    var view = new Listener.Views.UserFeed({model: this.model});
+    this._swapView(view);
   },
 
   renderBlogs: function () {
-    var header = this.model.possessiveName() + ' Favorite Blogs';
     this.content = 'blogs';
-    this.$el.find('.content-header').html(header)
-    this.$el.find('section#display-content').empty();
-    this.model.followedBlogs().each(this.addBlog.bind(this));
+    var view = new Listener.Views.UserBlogs({model: this.model});
+    this._swapView(view);
+  },
+
+  _swapView: function (view) {
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
+    $('.main').html(view.render().$el);
   },
 
   toggleFollow: function (event) {

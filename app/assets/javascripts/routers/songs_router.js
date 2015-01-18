@@ -20,6 +20,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   songShow: function (id) {
+    Listener.currentUser.fetch();
     var song = this.songs.getOrFetch(id)
     var view = new Listener.Views.SongShow({model: song});
     this._swapView(view);
