@@ -1,11 +1,7 @@
 Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
-    // if (this.model.id == Listener.currentUser.id) {
-    //   this.model = Listener.currentUser;
-    // }
-    this.listenTo(this.model, "sync change", this.render);
-    // this.listenTo(Listener.currentUser, 'sync', this.render)
+    this.listenTo(this.model, "reloadUser", this.render);
     this.content = options.content;
   },
 
@@ -13,13 +9,13 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   events: {
     'click .user-follow': 'toggleFollow',
-    'click .user-btn': 'changeContent'
-    // 'click #btn-favorites': 'renderFavorites',
-    // 'click #btn-feed': 'renderFeed',
-    // 'click #btn-blogs': 'renderBlogs',
+    'click .user-btn': 'changeContent',
+    'click .favorite': 'maybeFetchUser',
+    'click .blog-follow': 'maybeFetchUser',
   },
 
   render: function(){
+    debugger
     var html = this.template({
       user: this.model,
       followed: this.model.followed()
@@ -36,10 +32,6 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   changeContent: function (event) {
-    // Listener.currentUser.fetch();
-    if (this.model.id == Listener.currentUser.id) {
-        this.model.fetch();
-      }
     var targ = $(event.currentTarget);
     var id = targ.attr('id');
     if (id == 'btn-favorites') {
@@ -81,5 +73,11 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var followed_id = button.data('id');
     Listener.currentUser.toggleUserFollow(followed_id);
     button.toggleClass("user-unfollow");
+  },
+
+  maybeFetchUser: function () {
+    if (this.model.id == Listener.currentUser.id) {
+      this.model.fetch();
+    }
   },
 });

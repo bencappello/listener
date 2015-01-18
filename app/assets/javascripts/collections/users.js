@@ -2,7 +2,7 @@ Listener.Collections.Users = Backbone.Collection.extend({
   url: "/api/users",
   model: Listener.Models.User,
 
-  getOrFetch: function(id) {
+  getOrFetch: function(id, reload) {
     var user = this.get(id),
     users = this;
 
@@ -11,6 +11,10 @@ Listener.Collections.Users = Backbone.Collection.extend({
       user.fetch({
         success: function() {
           users.add(user);
+          if (reload) {
+            debugger
+            user.trigger('reloadUser');
+          }
         }
       });
     } else {

@@ -40,7 +40,7 @@ Listener.Routers.Users = Backbone.Router.extend({
     var callback = this.show.bind(this, id);
     if (!this._requireSignedIn(callback)) { return; }
 
-    var model = this.collection.getOrFetch(id);
+    var model = this.collection.getOrFetch(id, 'reload');
     var showView = new Listener.Views.UsersShow({
       model: model
     });

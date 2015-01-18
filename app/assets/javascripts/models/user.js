@@ -159,7 +159,7 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
       data: {
         blog_id: blog_id,
       }, success: function (resp) {
-        // that.fetch();
+        that.fetch();
       }
     });
   },

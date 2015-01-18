@@ -15,6 +15,7 @@ Listener.Views.UserFavorites = Backbone.CompositeView.extend({
   },
 
   render: function () {
+    debugger
     this.$el.html(this.template({model: this.model}))
     this.model.favoriteSongs().each(this.addSong.bind(this));
     return this;

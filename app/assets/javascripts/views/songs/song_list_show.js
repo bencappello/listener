@@ -9,11 +9,11 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render)
+    this.parentModel = options.parentModel;
     // this.listenTo(Listener.currentUser, 'sync', this.render)
   },
 
   render: function () {
-    console.log(this.model.get('name'))
     this.$el.html(this.template({song: this.model}))
     return this;
   },
@@ -24,5 +24,6 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
     var song_id = button.data('id');
     Listener.currentUser.toggleFavorite(song_id);
     button.toggleClass("unfavorite");
+    this.parentModel && this.parentModel.fetch();
   },
 });
