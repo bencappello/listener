@@ -17,8 +17,6 @@ Listener.Routers.Users = Backbone.Router.extend({
   index: function(){
     this.collection.fetch();
     var callback = this.index.bind(this);
-    if (!this._requireSignedIn(callback)) { return; }
-
     var indexView = new Listener.Views.UsersIndex({
       collection: this.collection
     });
@@ -38,8 +36,6 @@ Listener.Routers.Users = Backbone.Router.extend({
 
   show: function(id){
     var callback = this.show.bind(this, id);
-    if (!this._requireSignedIn(callback)) { return; }
-
     var model = this.collection.getOrFetch(id, 'reload');
     var showView = new Listener.Views.UsersShow({
       model: model

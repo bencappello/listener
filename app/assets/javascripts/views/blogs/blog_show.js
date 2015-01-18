@@ -10,7 +10,7 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
     this.listenTo(this.model.comments(), 'sync', this.renderComments)
-    this.listenTo(Listener.currentUser, 'sync', this.render)
+    // this.listenTo(Listener.currentUser, 'sync', this.render)
   },
 
   render: function () {
