@@ -28,7 +28,10 @@ class Song < ActiveRecord::Base
 
   pg_search_scope :search_by_title_or_band,
     against: :name,
-    associated_against: { band: :name }
+    associated_against: { band: :name },
+    :using => {
+      :tsearch => {:prefix => true}
+    }
 
   def audio_url=(audio_url)
     unless self.audio.exists?
