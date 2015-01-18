@@ -8,19 +8,15 @@ Listener.Collections.Users = Backbone.Collection.extend({
 
     if(!user) {
       user = new this.model({ id: id });
-      user.fetch({
-        success: function() {
-          users.add(user);
-          if (reload) {
-            debugger
-            user.trigger('reloadUser');
-          }
-        }
-      });
-    } else {
-      user.fetch();
     }
-
+    user.fetch({
+      success: function() {
+        users.add(user);
+        if (reload) {
+          user.trigger('reloadUser');
+        }
+      }
+    });
     return user;
   }
 });

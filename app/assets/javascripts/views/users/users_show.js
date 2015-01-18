@@ -2,6 +2,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "reloadUser", this.render);
+    // this.listenTo(this.model, "sync", this.render);
     this.content = options.content;
   },
 
@@ -15,7 +16,6 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    debugger
     var html = this.template({
       user: this.model,
       followed: this.model.followed()
