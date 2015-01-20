@@ -20,10 +20,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
 
   signOut: function(event){
     event.preventDefault();
-    Listener.currentUser.signOut({
-      // success: function(){
-      // }
-    });
+    Listener.currentUser.signOut();
   },
 
   signIn: function (event) {
