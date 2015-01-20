@@ -103,32 +103,42 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
     return !this.isNew();
   },
 
-  signIn: function(options){
-    var model = this;
-    var credentials = {
-      "user[email]": options.email,
-      "user[password]": options.password
-    };
+  // signIn: function(options){
+  //   var model = this;
+  //   var credentials = {
+  //     "user[email]": options.email,
+  //     "user[password]": options.password
+  //   };
+  //
+  //   $.ajax({
+  //     url: this.url,
+  //     type: "POST",
+  //     data: credentials,
+  //     dataType: "json",
+  //     success: function(data){
+  //       data = model.parse(data);
+  //       model.set(data);
+  //       options.success && options.success();
+  //     },
+  //     error: function(){
+  //       options.error && options.error();
+  //     }
+  //   });
+  // },
 
-    $.ajax({
-      url: this.url,
-      type: "POST",
-      data: credentials,
-      dataType: "json",
-      success: function(data){
-        data = model.parse(data);
-        model.set(data);
-        options.success && options.success();
-      },
-      error: function(){
-        options.error && options.error();
-      }
-    });
+  clear: function(options) {
+    var attrs = {};
+    this.favoriteSongs().reset();
+    this.feedSongs().reset();
+    this.followedBlogs().reset();
+    this.followedUsers().reset();
+    this.followers().reset();
+    for (var key in this.attributes) attrs[key] = void 0;
+    return this.set(attrs, _.extend({}, options, {unset: true}));
   },
 
   signOut: function(options){
     var model = this;
-
     $.ajax({
       url: this.url,
       type: "DELETE",

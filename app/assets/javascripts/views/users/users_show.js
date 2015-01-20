@@ -2,7 +2,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.listenTo(this.model, "reloadUser", this.render);
-    // this.listenTo(this.model, "sync", this.render);
+    Backbone.GeneralView.prototype.initialize.call(this);
     this.content = options.content;
   },
 

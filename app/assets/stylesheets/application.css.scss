@@ -69,7 +69,12 @@
    background: #0c0;
    font-weight: 700;
    border-radius: 5px;
-   box-shadow: 0 3px 0 0 #236E0E;
+   box-shadow: 0 3px 0 0 #406606;
+ }
+
+ .modal .submit:hover {
+   background: #639C35;
+   cursor: pointer;
  }
 
  .submit:hover {
@@ -173,7 +178,7 @@
    padding-left: 5px;
  }
 
- div#login form.modal-form span.modal-close {
+ div#login form.modal-form div.modal-close {
    position: absolute;
    top: 10px;
    right: 20px;
@@ -181,6 +186,10 @@
    line-height: 1;
    cursor: pointer;
    background: #2c3338;
+ }
+
+ div.modal-close:hover {
+   color: #eee;
  }
 
  .modal {
@@ -617,6 +626,8 @@ li.genre {
 #errors {
   color: red;
   margin-bottom: 20px;
+  width: 230px;
+  margin-top: 20px;
 }
 
 .close-lg:hover {
@@ -654,7 +665,7 @@ li.genre {
   font-size: 18px;
   background: transparent;
   padding: 0px;
-  color: grey;
+  color: gray;
   border-radius: 5px;
   font-size: 27px;
 }

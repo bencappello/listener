@@ -11,7 +11,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     "users/:id": "show",
     "users/:id/favorites": "showFavorites",
     "users/:id/feed": "showFeed",
-    // "session/new": "signIn"
   },
 
   index: function(){
@@ -42,16 +41,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     });
     this._swapView(showView);
   },
-
-  // signIn: function(callback){
-  //   if (!this._requireSignedOut(callback)) { return; }
-  //
-  //   var signInView = new Listener.Views.SignIn({
-  //     callback: callback,
-  //     parentView = this._currentView
-  //   });
-  //   this._currentView.$el.append(signInView.render().$el);
-  // },
 
   _requireSignedIn: function(callback){
     if (!Listener.currentUser.isSignedIn()) {

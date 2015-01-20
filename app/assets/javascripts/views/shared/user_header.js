@@ -15,16 +15,14 @@ Listener.Views.UserHeader = Backbone.View.extend({
   render: function(){
     var html = this.template({ currentUser: Listener.currentUser });
     this.$el.html(html);
-
     return this;
   },
 
   signOut: function(event){
     event.preventDefault();
     Listener.currentUser.signOut({
-      success: function(){
-        Backbone.history.navigate("session/new", { trigger: true });
-      }
+      // success: function(){
+      // }
     });
   },
 

@@ -34,7 +34,7 @@ Listener.Views.SignIn = Backbone.View.extend({
     };
 
     $.ajax({
-      url: "/api/users",
+      url: "/api/session",
       type: "POST",
       data: credentials,
       dataType: "json",
@@ -44,7 +44,7 @@ Listener.Views.SignIn = Backbone.View.extend({
         $(".modal").removeClass("is-open");
       },
       error: function() {
-        $(".errors").html($('<div>Wrong username/password combination. Please try again.</div>'));
+        $("#errors").html($('<div>Wrong username/password combination. Please try again.</div>'));
       }
     });
   },
