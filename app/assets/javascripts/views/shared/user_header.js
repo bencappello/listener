@@ -6,7 +6,8 @@ Listener.Views.UserHeader = Backbone.View.extend({
   },
 
   events: {
-    "click #sign-out-link": "signOut"
+    "click #sign-out-link": "signOut",
+    "click #sign-in-link": "signIn"
   },
 
   template: JST['shared/user_header'],
@@ -25,6 +26,12 @@ Listener.Views.UserHeader = Backbone.View.extend({
         Backbone.history.navigate("session/new", { trigger: true });
       }
     });
-  }
+  },
+
+  signIn: function (event) {
+    event.preventDefault();
+    var signInView = new Listener.Views.SignIn();
+    Listener.modalRouter.trigger('swapModal', signInView)
+  },
 
 });

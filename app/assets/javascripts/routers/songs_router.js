@@ -1,6 +1,6 @@
 Listener.Routers.SongsRouter = Backbone.Router.extend ({
   initialize: function () {
-    this.$rootEl = $('#content')
+    this.$rootEl = $('#content');
     this.songs = new Listener.Collections.Songs();
   },
 

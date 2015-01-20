@@ -148,7 +148,7 @@
    width: 230px;
  }
 
- #login form input[type="submit"] {
+ .modal-submit {
    border-radius: 3px;
    -moz-border-radius: 3px;
    -webkit-border-radius: 3px;
@@ -158,6 +158,7 @@
    margin-bottom: 2em;
    text-transform: uppercase;
    width: 280px;
+   text-align: center;
  }
 
  // #login form input[type="submit"]:hover {
@@ -182,7 +183,23 @@
    background: #2c3338;
  }
 
+ .modal {
+   display: none;
+ }
 
+ .modal.is-open {
+   display: block;
+ }
+
+ .modal-screen {
+   position: fixed;
+   background: rgba(0, 0, 0, 0.7);
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   z-index: 2;
+ }
 
 
 
@@ -230,6 +247,10 @@
    color: white;
    border-radius: 5px;
    font-size: 14px;
+ }
+
+ a:hover {
+   cursor: pointer;
  }
 
  button:hover {

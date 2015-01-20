@@ -1,6 +1,6 @@
 Listener.Routers.BlogsRouter = Backbone.Router.extend ({
   initialize: function () {
-    this.$rootEl = $('#content')
+    this.$rootEl = $('#content');
     this.blogs = new Listener.Collections.Blogs();
   },
 

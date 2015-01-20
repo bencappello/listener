@@ -24,25 +24,29 @@
 
 
 
+<div class="modal is-open">
+  <div class="container">
 
-<div class="container">
+    <div id="login" class="group">
 
-  <div id="login" class="group">
+      <form action="javascript:void(0);" class='modal-form'>
 
-    <form action="javascript:void(0);" class='modal-form'>
+        <section>
+          <span class="modal-close js-modal-close">&times;</span>
+          <section class='errors'></section>
+          <p><span class="fontawesome-user"></span><input type="text" placeholder="Username" name="user[email]"></p> <!-- JS because of IE support; better: placeholder="Username" -->
+          <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password" name="user[password]"></p> <!-- JS because of IE support; better: placeholder="Password" -->
+          <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
+          <button class='submit modal-submit'>Sign In</button>
 
-      <section>
-        <span class="modal-close js-modal-close">&times;</span>
-        <p><span class="fontawesome-user"></span><input type="text" value="Username" onBlur="if(this.value == '') this.value = 'Username'" onFocus="if(this.value == 'Username') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
-        <p><span class="fontawesome-lock"></span><input type="password"  value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
-        <p><input class='submit' type="submit" value="Sign In"></p>
+        </section>
 
-      </section>
+      </form>
 
-    </form>
+      <p class='not-member'>Not a member? <a class='sign-up-link'href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
 
-    <p class='not-member'>Not a member? <a class='sign-up-link'href="#">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
+    </div> <!-- end login -->
 
-  </div> <!-- end login -->
-
+  </div>
+  <div class="modal-screen js-modal-close"></div>
 </div>

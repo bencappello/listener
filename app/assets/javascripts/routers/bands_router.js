@@ -1,6 +1,6 @@
 Listener.Routers.BandsRouter = Backbone.Router.extend ({
   initialize: function () {
-    this.$rootEl = $('#content')
+    this.$rootEl = $('#content');
     this.bands = new Listener.Collections.Bands();
   },
 

@@ -1,7 +1,7 @@
-Listener.Routers.Users = Backbone.Router.extend({
+Listener.Routers.UsersRouter = Backbone.Router.extend({
 
-  initialize: function(options){
-    this.$rootEl = options.$rootEl;
+  initialize: function(){
+    this.$rootEl = $('#content');
     this.collection = new Listener.Collections.Users();
   },
 
@@ -11,7 +11,7 @@ Listener.Routers.Users = Backbone.Router.extend({
     "users/:id": "show",
     "users/:id/favorites": "showFavorites",
     "users/:id/feed": "showFeed",
-    "session/new": "signIn"
+    // "session/new": "signIn"
   },
 
   index: function(){
@@ -43,14 +43,15 @@ Listener.Routers.Users = Backbone.Router.extend({
     this._swapView(showView);
   },
 
-  signIn: function(callback){
-    if (!this._requireSignedOut(callback)) { return; }
-
-    var signInView = new Listener.Views.SignIn({
-      callback: callback
-    });
-    this._swapView(signInView);
-  },
+  // signIn: function(callback){
+  //   if (!this._requireSignedOut(callback)) { return; }
+  //
+  //   var signInView = new Listener.Views.SignIn({
+  //     callback: callback,
+  //     parentView = this._currentView
+  //   });
+  //   this._currentView.$el.append(signInView.render().$el);
+  // },
 
   _requireSignedIn: function(callback){
     if (!Listener.currentUser.isSignedIn()) {
@@ -68,7 +69,6 @@ Listener.Routers.Users = Backbone.Router.extend({
       callback();
       return false;
     }
-
     return true;
   },
 
