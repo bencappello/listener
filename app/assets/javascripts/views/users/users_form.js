@@ -8,7 +8,9 @@ Listener.Views.UsersForm = Backbone.View.extend({
 
   events: {
     "submit form": "submit",
-    "change #input-user-image": "fileInputChange"
+    "change #input-user-image": "fileInputChange",
+    "click #sign-in-link": "signIn",
+    'click .js-modal-close': 'closeForm',
   },
 
   render: function(){
@@ -16,6 +18,11 @@ Listener.Views.UsersForm = Backbone.View.extend({
     this.$el.html(html);
 
     return this;
+  },
+
+  closeForm: function () {
+    event.preventDefault();
+    $(".modal").removeClass("is-open");
   },
 
   submit: function(event){
@@ -29,7 +36,7 @@ Listener.Views.UsersForm = Backbone.View.extend({
     this.model.save({}, {
       success: function(){
         Listener.currentUser.fetch();
-        that.collection.add(that.model, { merge: true });
+        Listener.users.add(that.model, { merge: true });
         delete that.model._image;
         Backbone.history.navigate("", { trigger: true });
       },
@@ -61,6 +68,12 @@ Listener.Views.UsersForm = Backbone.View.extend({
 
   _updatePreview: function(src){
     this.$el.find("#preview-user-image").attr("src", src);
+  },
+
+  signIn: function (event) {
+    event.preventDefault();
+    var signInView = new Listener.Views.SignIn();
+    Listener.modalRouter.trigger('swapModal', signInView)
   },
 
 });

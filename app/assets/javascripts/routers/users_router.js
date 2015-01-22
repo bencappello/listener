@@ -2,40 +2,37 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
 
   initialize: function(){
     this.$rootEl = $('#content');
-    this.collection = new Listener.Collections.Users();
   },
 
   routes: {
     "users": "index",
-    "users/new": "new",
+    // "users/new": "new",
     "users/:id": "show",
     "users/:id/favorites": "showFavorites",
     "users/:id/feed": "showFeed",
   },
 
   index: function(){
-    this.collection.fetch();
+    Listener.users.fetch();
     var callback = this.index.bind(this);
-    var indexView = new Listener.Views.UsersIndex({
-      collection: this.collection
-    });
+    var indexView = new Listener.Views.UsersIndex();
     this._swapView(indexView);
   },
 
-  new: function(){
-    if (!this._requireSignedOut()) { return; }
-
-    var model = new this.collection.model();
-    var formView = new Listener.Views.UsersForm({
-      collection: this.collection,
-      model: model
-    });
-    this._swapView(formView);
-  },
+  // new: function(){
+  //   if (!this._requireSignedOut()) { return; }
+  //
+  //   var model = new Listener.users.model();
+  //   var formView = new Listener.Views.UsersForm({
+  //     collection: Listener.users,
+  //     model: model
+  //   });
+  //   this._swapView(formView);
+  // },
 
   show: function(id){
     var callback = this.show.bind(this, id);
-    var model = this.collection.getOrFetch(id, 'reload');
+    var model = Listener.users.getOrFetch(id, 'reload');
     var showView = new Listener.Views.UsersShow({
       model: model
     });

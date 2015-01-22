@@ -1,11 +1,11 @@
 <section class=sidebar>
   <button class="edit"><a href="#/bands/<%= band.id %>/edit">Edit Band</a></button>
-  <h1><%= band.get('name') %></h1>
+  <h1><%= band.escape('name') %></h1>
 
   <h5>Genres</h5>
   <ul class='tags group'>
     <% band.tags().forEach(function (tag) { %>
-      <li class='genre'><%= tag.get('name') %></li>
+      <li class='genre'><%= tag.escape('name') %></li>
     <% }) %>
   </ul>
 

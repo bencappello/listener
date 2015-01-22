@@ -7,6 +7,8 @@ window.Listener = {
     this.currentUser = new Listener.Models.CurrentUser();
     this.currentUser.fetch();
 
+    this.users = new Listener.Collections.Users();
+
     this.tags = new Listener.Collections.Tags();
     this.tags.fetch();
 

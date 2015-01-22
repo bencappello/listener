@@ -1,12 +1,12 @@
 <form id=new-blog class='modal-form'>
   <ul id="errors"></ul>
   <label>Name
-  <input class='mytext' type="text" name="blog[name]" value="<%= blog.get('name') %>" class="mytext">
+  <input class='mytext' type="text" name="blog[name]" value="<%= blog.escape('name') %>" class="mytext">
   </label>
   <br><br>
 
   <label>URL
-    <input class='mytext' type="text" name="blog[url]" value="<%= blog.get('url') %>" class="mytext">
+    <input class='mytext' type="text" name="blog[url]" value="<%= blog.escape('url') %>" class="mytext">
   </label>
   <br><br>
 
@@ -21,7 +21,7 @@
         <% if (_.contains(blog.get('tag_ids'), tag.id)) { %>
           checked
           <% } %>>
-          <%= tag.get('name') %>
+          <%= tag.escape('name') %>
         </label>
     <% }) %>
   <br><br>

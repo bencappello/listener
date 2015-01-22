@@ -2,7 +2,7 @@
   <ul id="errors"></ul>
 
   <label>Name
-  <input class='mytext' type="text" name="band[name]" value="<%= band.get('name') %>" class="mytext">
+  <input class='mytext' type="text" name="band[name]" value="<%= band.escape('name') %>" class="mytext">
   </label>
   <br><br>
 
@@ -17,7 +17,7 @@
         <% if (_.contains(band.get('tag_ids'), tag.id)) { %>
           checked
         <% } %>>
-      <%= tag.get('name') %>
+      <%= tag.escape('name') %>
       </label>
     <% }) %>
   <br><br>

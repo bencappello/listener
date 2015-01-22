@@ -1,50 +1,54 @@
-<form class='modal-form'>
+<div class="modal is-open">
+  <div class="container">
 
-  <h2>Sign Up</h2>
-  <br><br>
-  <label>
-    Username
-    <input class='mytext' type="text" name="user[username]"
-           value="<%= user.escape("username") %>">
-  </label>
+    <div id="form" class="group">
 
-  <br>
+      <form action="javascript:void(0);" class='modal-form'>
 
-  <label>
-    Email
-    <input type="email" name="user[email]"
-           value="<%= user.escape("email") %>">
-  </label>
+        <section>
+          <div class="modal-close js-modal-close">&times;</div>
+          <section id='errors'></section>
+          <p><span class="fontawesome-user"></span><input type="text" placeholder="Username" name="user[username]" value="<%= user.escape("username") %>"></p>
+          <p><span class="fontawesome-user"></span><input type="text" placeholder="Email" name="user[email]" value="<%= user.escape("email") %>"></p>
+          <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password" name="user[password]"></p>
 
-  <br>
 
-  <label>
-    Password
-    <input type="password" name="user[password]"
-           value="<%= user.escape("password") %>">
-  </label>
 
-  <br>
+          <label>
+            Upload A Profile Image
+            <br>
+            <input class='upload' type="file" name="user[image]" id="input-user-image">
+          </label>
 
-  <label>
-    Profile Image
-    <input type="file" name="user[image]" id="input-user-image">
-  </label>
+          <br>
 
-  <br>
+          <img src="" width="50" id="preview-user-image">
 
-  <img src="" width="50" id="preview-user-image">
+          <br>
 
-  <br>
-  <div>Or give an image url</div>
+          <label>
+            Or provide an image url
+            <br>
+            <input class='upload' class='mytext' type="text" name="user[image_url]">
+          </label>
 
-  <label>
-    Image Url
-    <input class='mytext' type="text" name="user[image_url]">
-  </label>
-  <br><br>
-  <button>Create Account</button>
-  <div id="loading">
+          <div id="loading"></div>
+
+
+          <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
+          <button class='submit modal-submit'>Create Account</button>
+
+        </section>
+
+      </form>
+
+      <p class='not-member'>Already a member?
+        <a id="sign-in-link" class='sign-up-link' href="#">Sign in</a>
+        <span class="fontawesome-arrow-right"></span>
+      </p>
+
+    </div> <!-- end login -->
 
   </div>
-</form>
+  <div class="modal-screen js-modal-close"></div>
+</div>

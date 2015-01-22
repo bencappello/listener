@@ -1,4 +1,4 @@
-<p><%= comment.get('author_name') %>: <%= comment.get('body') %></p>
+<p><%= comment.escape('author_name') %>: <%= comment.escape('body') %></p>
 
 <% if (comment.get('author_id') == Listener.currentUser.id) { %>
   <button id='edit-comment' class="btn-comment" data-id='<%= comment.id %>'>Edit</button>

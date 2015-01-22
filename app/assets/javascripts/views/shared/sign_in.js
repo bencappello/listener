@@ -8,7 +8,8 @@ Listener.Views.SignIn = Backbone.View.extend({
 
   events: {
     "submit form": "submit",
-    'click .js-modal-close': 'closeForm'
+    'click .js-modal-close': 'closeForm',
+    "click .sign-up-link": "signUp",
   },
 
   template: JST['shared/sign_in'],
@@ -47,6 +48,15 @@ Listener.Views.SignIn = Backbone.View.extend({
         $("#errors").html($('<div>Wrong username/password combination. Please try again.</div>'));
       }
     });
+  },
+
+  signUp: function (event) {
+    event.preventDefault();
+    var model = new Listener.users.model();
+    var userFormView = new Listener.Views.UsersForm({
+      model: model
+    });
+    Listener.modalRouter.trigger('swapModal', userFormView)
   },
 
   // signInCallback: function(event){

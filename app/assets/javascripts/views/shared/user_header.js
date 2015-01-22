@@ -7,7 +7,8 @@ Listener.Views.UserHeader = Backbone.View.extend({
 
   events: {
     "click #sign-out-link": "signOut",
-    "click #sign-in-link": "signIn"
+    "click #sign-in-link": "signIn",
+    "click #sign-up-link": "signUp"
   },
 
   template: JST['shared/user_header'],
@@ -27,6 +28,15 @@ Listener.Views.UserHeader = Backbone.View.extend({
     event.preventDefault();
     var signInView = new Listener.Views.SignIn();
     Listener.modalRouter.trigger('swapModal', signInView)
+  },
+
+  signUp: function (event) {
+    event.preventDefault();
+    var model = new Listener.users.model();
+    var userFormView = new Listener.Views.UsersForm({
+      model: model
+    });
+    Listener.modalRouter.trigger('swapModal', userFormView)
   },
 
 });

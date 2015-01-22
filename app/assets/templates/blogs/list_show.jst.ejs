@@ -1,5 +1,5 @@
 <% var follows = Listener.currentUser.followedBlogs() %>
-<% var blogN = blog.get('name') %>
+<% var blogN = blog.escape('name') %>
 <% var blogU = '#/blogs/' + blog.id %>
 
 <h2>

@@ -1,13 +1,13 @@
 Listener.Views.UsersIndex = Backbone.View.extend({
 
   initialize: function(options){
-    this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(Listener.users, "sync", this.render);
   },
 
   template: JST['users/index'],
 
   render: function(){
-    var html = this.template({ users: this.collection });
+    var html = this.template({ users: Listener.users });
     this.$el.html(html);
 
     return this;

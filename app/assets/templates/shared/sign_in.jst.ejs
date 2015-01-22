@@ -1,15 +1,16 @@
 <div class="modal is-open">
   <div class="container">
 
-    <div id="login" class="group">
+    <div id="form" class="group">
 
       <form action="javascript:void(0);" class='modal-form'>
 
         <section>
           <div class="modal-close js-modal-close">&times;</div>
+          <div id="form-title">Sign In</div>
           <section id='errors'></section>
-          <p><span class="fontawesome-user"></span><input type="text" placeholder="Username" name="user[email]"></p> <!-- JS because of IE support; better: placeholder="Username" -->
-          <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password" name="user[password]"></p> <!-- JS because of IE support; better: placeholder="Password" -->
+          <p><span class="fontawesome-user"></span><input type="text" placeholder="Email" name="user[email]"></p>
+          <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password" name="user[password]"></p>
           <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
           <button class='submit modal-submit'>Sign In</button>
 
