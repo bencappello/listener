@@ -22,6 +22,20 @@ Listener.Models.User = Backbone.Model.extend({
     }
   },
 
+  songs: function () {
+    if(!this._songs) {
+      this._songs = new Listener.Collections.Songs();
+    }
+    return this._songs;
+  },
+
+  blogs: function () {
+    if(!this._blogs) {
+      this._blogs = new Listener.Collections.Blogs();
+    }
+    return this._blogs;
+  },
+
   favoriteSongs: function () {
     if(!this._favoriteSongs) {
       this._favoriteSongs = new Listener.Collections.Songs();
@@ -58,6 +72,14 @@ Listener.Models.User = Backbone.Model.extend({
   },
 
   parse: function (response) {
+    if(response.songs) {
+      this.songs().set(response.songs, { parse: true });
+      delete response.songs;
+    }
+    if(response.blogs) {
+      this.blogs().set(response.blogs, { parse: true });
+      delete response.blogs;
+    }
     if(response.favorite_songs) {
       this.favoriteSongs().set(response.favorite_songs, { parse: true });
       delete response.favorite_songs;
@@ -105,6 +127,8 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
 
   clear: function(options) {
     var attrs = {};
+    this.songs().reset();
+    this.blogs().reset();
     this.favoriteSongs().reset();
     this.feedSongs().reset();
     this.followedBlogs().reset();

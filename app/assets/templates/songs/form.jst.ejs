@@ -25,6 +25,21 @@
         </label>
         <br><br>
 
+        <label>Playlist
+          <select name="song[blog_id]">
+            <% Listener.currentUser.blogs().forEach(function (blog) { %>
+              <option
+              <% if (song.get('blog_id') == blog[0] || currentBlogId == blog[0]) { %>
+                selected
+              <% } %>
+              value="<%= blog[0] %>">
+              <%= blog[1] %>
+            </option>
+            <% }) %>
+          </select>
+        </label>
+        <br><br>
+
         <label>Song Type
           <br>
           <label class='multiple' for="remix">Remix</label>

@@ -5,11 +5,6 @@
   </label>
   <br><br>
 
-  <label>URL
-    <input class='mytext' type="text" name="blog[url]" value="<%= blog.escape('url') %>" class="mytext">
-  </label>
-  <br><br>
-
   <label>Tags</label>
     <input type="hidden" name="blog[tag_ids][]" value="">
     <% Listener.tags.each(function (tag) { %>

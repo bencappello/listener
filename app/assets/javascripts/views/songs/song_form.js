@@ -10,12 +10,13 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     'click .js-modal-close': 'closeForm',
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(Listener.tags, 'sync', this.render);
+    this.currentBlogId = options.currentBlogId
   },
 
   render: function () {
-    this.$el.html(this.template({song: this.model}))
+    this.$el.html(this.template({song: this.model, currentBlogId: this.currentBlogId}))
     return this;
   },
 

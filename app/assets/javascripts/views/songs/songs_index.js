@@ -19,7 +19,7 @@ Listener.Views.SongsIndex = Backbone.CompositeView.extend({
   addSong: function (event) {
     event.preventDefault();
     var song = new Listener.Models.Song();
-    var view = new Listener.Views.SongForm({model: song, collection: this.collection})
+    var view = new Listener.Views.SongForm({model: song, collection: this.collection, currentBlogId: ''})
     Listener.modalRouter.trigger('swapModal', view)
   },
 });

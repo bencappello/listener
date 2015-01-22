@@ -1,7 +1,6 @@
 Listener.Views.UsersForm = Backbone.View.extend({
 
   initialize: function(options){
-    this.listenTo(this.model, "sync change", this.render);
   },
 
   template: JST['users/form'],
@@ -14,6 +13,7 @@ Listener.Views.UsersForm = Backbone.View.extend({
   },
 
   render: function(){
+    // debugger
     var html = this.template({ user: this.model });
     this.$el.html(html);
 

@@ -11,6 +11,7 @@ class Api::BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
 
     if @blog.save
       render :show
