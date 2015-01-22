@@ -1,6 +1,18 @@
 json.(user, :id, :username, :email, :created_at, :updated_at)
 json.image_url asset_path(user.image.url)
 
+
+json.songs user.songs do |song|
+  json.partial! "api/songs/list_show", song: song
+end
+
+json.blogs user.blogs do |blog|
+  json.extract! blog, :id, :name, :created_at, :updated_at
+
+  json.song_count blog.songs.count
+  json.tag_names blog.tags.pluck('name')
+end
+
 json.favorite_songs user.favorite_songs do |favorite_song|
   json.partial! "api/songs/list_show", song: favorite_song
 end

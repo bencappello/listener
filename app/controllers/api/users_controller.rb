@@ -7,6 +7,8 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.includes(
+      :songs,
+      :blogs,
       :followed_users,
       :followers,
       followed_blogs: [:tags, :songs],
