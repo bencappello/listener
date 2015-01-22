@@ -1,7 +1,7 @@
 class Song < ActiveRecord::Base
   include PgSearch
   validates :name, presence: true, uniqueness: {scope: :blog_id}
-  validates :band_id, presence: true
+  validates :user_id, :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
   has_attached_file :audio,
@@ -16,6 +16,7 @@ class Song < ActiveRecord::Base
   validates_attachment_content_type :image,
     :content_type => /\Aimage\/.*\Z/
 
+  belongs_to :user
   belongs_to :band
   belongs_to :blog
   has_many :song_tags, dependent: :destroy

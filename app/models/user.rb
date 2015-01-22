@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   has_many :user_blogs, dependent: :destroy
   has_many :user_follows, dependent: :destroy
 
+  has_many :blogs, dependent: :destroy
+  has_many :songs, dependent: :destroy
+
   has_many :favorite_songs, through: :user_songs, source: :song
   has_many :followed_blogs, through: :user_blogs, source: :blog
 
