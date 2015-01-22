@@ -1,13 +1,12 @@
 <div class="modal is-open">
-  <div class="container">
+  <div class="container song-container">
 
-    <div id="form" class="group">
+    <div class="form group song-form">
 
       <form action="javascript:void(0);" class='modal-form'>
 
         <section>
           <div class="modal-close js-modal-close">&times;</div>
-          <div id="form-title">Add A Song</div>
           <section id='errors'></section>
           <p><span class="fontawesome-music"></span><input type="text" placeholder="Song Name" name="song[name]" value="<%= song.escape('name') %>"></p>
 
@@ -28,8 +27,9 @@
 
         <label>Song Type
           <br>
-          <label for="remix">Remix</label>
+          <label class='multiple' for="remix">Remix</label>
           <input
+            class='input-inline'
             type="radio"
             name="song[song_type]"
             value="remix"
@@ -38,8 +38,9 @@
               checked
             <% } %>>
           <br>
-          <label for="regular">Regular</label>
+          <label class='multiple' for="regular">Regular</label>
           <input
+            class='input-inline'
             type="radio"
             name="song[song_type]"
             value="regular"
@@ -50,9 +51,28 @@
           <br><br>
         </label>
 
+        <label>Genres</label>
+        <br>
+        <input type="hidden" name="song[tag_ids][]" value="">
+        <% Listener.tags.each(function (tag) { %>
+        <label class='multiple'>
+          <%= tag.escape('name') %>
+          <input
+            class='input-inline'
+            type="checkbox"
+            name="song[tag_ids][]"
+            value="<%= tag.id %>"
+        <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
+            checked
+        <% } %>>
+
+        </label>
+          <% }) %>
+        <br><br>
 
 
 
+        <section class='upload-container'>
           <label>
             Audio File
             <br>
@@ -65,8 +85,10 @@
             <br>
             <input class='upload' type="text" name="song[audio_url]">
           </label>
-          <br><br>
+        </section>
 
+
+          <section class='upload-container'>
           <label>
             Upload album cover art
             <br>
@@ -84,6 +106,8 @@
             <br>
             <input class='upload' type="text" name="song[image_url]">
           </label>
+          </section>
+
 
           <div id="loading"></div>
 

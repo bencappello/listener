@@ -7,6 +7,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     'submit form': 'saveSong',
     "change #input-song-audio": "audioInputChange",
     "change #input-song-image": "imageInputChange",
+    'click .js-modal-close': 'closeForm',
   },
 
   initialize: function () {
@@ -16,6 +17,11 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   render: function () {
     this.$el.html(this.template({song: this.model}))
     return this;
+  },
+
+  closeForm: function () {
+    event.preventDefault();
+    $(".modal").removeClass("is-open");
   },
 
   renderErrors: function (resp) {
@@ -40,6 +46,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
         that.collection.add(that.model);
         delete that.model._audio;
         delete that.model._image;
+        $(".modal").removeClass("is-open");
         Backbone.history.navigate('songs/' + resp.id, {trigger: true});
       },
       error: function (model, resp) {

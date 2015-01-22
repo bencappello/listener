@@ -34,15 +34,15 @@ Listener.Views.UsersForm = Backbone.View.extend({
 
     this.model.set(userData);
     this.model.save({}, {
-      success: function(){
+      success: function(model, resp){
         Listener.currentUser.fetch();
         Listener.users.add(that.model, { merge: true });
         delete that.model._image;
-        Backbone.history.navigate("", { trigger: true });
+        $(".modal").removeClass("is-open");
+        Backbone.history.navigate("users/" + resp.id, { trigger: true });
       },
-      error: function(data){
-        alert("Form invalid. Let the user know what went wrong.");
-        console.log(data);
+      error: function (model, resp) {
+        that.renderErrors(resp);
       }
     });
   },

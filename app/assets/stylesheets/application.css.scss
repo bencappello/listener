@@ -123,23 +123,23 @@
    content: '';
  }
 
- .mytext {
-   width: 250px;
-   border-radius: 3px;
-   border: 1px solid #C2B20A;
-   margin-top: 10px;
- }
+ // .mytext {
+ //   width: 250px;
+ //   border-radius: 3px;
+ //   border: 1px solid #C2B20A;
+ //   margin-top: 10px;
+ // }
 
  label {
    font-size: 18px;
  }
 
- .modal-form {
-   margin-left: auto;
-   margin-right: auto;
-   margin-bottom: 40px;
-   width: 500px;
- }
+ // .modal-form {
+ //   margin-left: auto;
+ //   margin-right: auto;
+ //   margin-bottom: 40px;
+ //   width: 500px;
+ // }
 
  .index {
    border-left: 1px solid #C2B20A;
@@ -172,6 +172,12 @@ input {
   line-height: 1.5em;
   padding: 0;
 }
+
+
+
+
+
+
 
 p {
   line-height: 1.5em;
@@ -230,6 +236,18 @@ p {
   border-radius: 5px;
   z-index: 3;
   box-shadow: 0 0 0 2px #606468;
+  overflow: hidden;
+}
+
+.modal .form section.upload-container {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 20px;
+  // width: 340px;
+}
+
+.song-form input {
+  width: 340px;
 }
 
 /* ---------- MODAL ---------- */
@@ -240,11 +258,15 @@ p {
   color: #f00;
 }
 
-#form {
+.form {
   width: 280px;
 }
 
-#form form span {
+.modal .container .song-form {
+  width: 380px;
+}
+
+.form form span {
   background-color: #363b41;
   border-radius: 3px 0px 0px 3px;
   color: #606468;
@@ -256,20 +278,25 @@ p {
   width: 50px;
 }
 
-#form form input {
+.form form input {
   height: 50px;
 }
 
-#form form .upload {
+.form form .upload {
   height: 20px;
 }
 
-#form form label {
+.form form label {
   font-size: 16px;
   color: #D1D1D1;
 }
 
-#form form input[type="text"], input[type="password"] {
+.form form label.multiple {
+  color: #606468;
+  font-size: 14px;
+}
+
+.form form input[type="text"], input[type="password"] {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
   color: #606468;
@@ -278,7 +305,7 @@ p {
   width: 230px;
 }
 
-.modal #form form label input {
+.modal .form form label input {
   color: #606468;
   width: 280px;
 }
@@ -301,17 +328,15 @@ p {
   text-align: center;
 }
 
-
-
-#form > p {
+.form > p {
   text-align: center;
 }
 
-#form > p span {
+.form > p span {
   padding-left: 5px;
 }
 
-div#form form.modal-form div.modal-close {
+div.form form.modal-form div.modal-close {
   position: absolute;
   top: 10px;
   right: 20px;
@@ -347,8 +372,33 @@ div.modal-close:hover {
 
 
 
+//SONG FORM
 
 
+.modal .form form .input-inline {
+  display: inline;
+  height: 20px;
+  width: 10px;
+  text-align: left;
+}
+
+.modal .form form section {
+  width: 400px;
+  text-align: left;
+}
+
+.modal .song-form form section input {
+  width: 340px;
+}
+
+.modal .song-form .submit {
+  width: 380px;
+  margin-bottom: 10px;
+}
+
+.modal .song-container {
+  padding: 20px 80px;
+}
 
 
 //HEADERS
