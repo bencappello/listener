@@ -13,7 +13,6 @@ Listener.Views.UsersForm = Backbone.View.extend({
   },
 
   render: function(){
-    // debugger
     var html = this.template({ user: this.model });
     this.$el.html(html);
 

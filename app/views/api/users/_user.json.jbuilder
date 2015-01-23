@@ -7,7 +7,7 @@ json.songs user.songs do |song|
 end
 
 json.blogs user.blogs do |blog|
-  json.extract! blog, :id, :name, :created_at, :updated_at
+  json.extract! blog, :id, :name, :user_id, :created_at, :updated_at
 
   json.creator_name user.username
   json.song_count blog.songs.count
@@ -19,7 +19,7 @@ json.favorite_songs user.favorite_songs do |favorite_song|
 end
 
 json.followed_blogs user.followed_blogs do |followed_blog|
-  json.extract! followed_blog, :id, :name, :created_at, :updated_at
+  json.extract! followed_blog, :id, :name, :user_id, :created_at, :updated_at
 
   json.creator_name followed_blog.user.username
   json.song_count followed_blog.songs.count

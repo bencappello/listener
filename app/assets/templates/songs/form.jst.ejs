@@ -14,7 +14,6 @@
           <select name="song[band_id]">
 
             <% Listener.allBands.forEach(function (band) { %>
-              <% debugger %>
               <option
               <% if (song.get('band_id') == band.id) { %>
                 selected

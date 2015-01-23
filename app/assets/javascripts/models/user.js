@@ -72,7 +72,6 @@ Listener.Models.User = Backbone.Model.extend({
   },
 
   parse: function (response) {
-
     if(response.songs) {
       this.addedSongs().set(response.songs, { parse: true });
       delete response.songs;
