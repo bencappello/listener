@@ -9,6 +9,7 @@ end
 json.blogs user.blogs do |blog|
   json.extract! blog, :id, :name, :created_at, :updated_at
 
+  json.creator_name user.username
   json.song_count blog.songs.count
   json.tag_names blog.tags.pluck('name')
 end
@@ -20,6 +21,7 @@ end
 json.followed_blogs user.followed_blogs do |followed_blog|
   json.extract! followed_blog, :id, :name, :created_at, :updated_at
 
+  json.creator_name followed_blog.user.username
   json.song_count followed_blog.songs.count
   json.tag_names followed_blog.tags.pluck('name')
 end

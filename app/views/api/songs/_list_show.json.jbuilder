@@ -2,7 +2,7 @@ json.extract! song, :id, :name, :user_id, :band_id, :blog_id, :song_type, :creat
 json.audio_url asset_path(song.audio.url)
 json.image_url asset_path(song.image.url)
 
-json.user_name song.user.username
+json.creator_name song.user.username
 json.blog_name song.blog.name
 json.band_name song.band.name
 

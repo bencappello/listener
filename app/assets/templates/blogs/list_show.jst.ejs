@@ -1,10 +1,14 @@
 <% var follows = Listener.currentUser.followedBlogs() %>
 <% var blogN = blog.escape('name') %>
 <% var blogU = '#/blogs/' + blog.id %>
+<% var creatorN = blog.escape('creator_name') %>
+<% var creatorU = '#/users/' + blog.escape('user_id') %>
 
 <h2>
-  <a class='underline-link' href="<%= blogU %>"><%= blogN %></a>
+  <a class='underline-link blue' href="<%= blogU %>"><%= blogN %></a>
 </h2>
+<h4>Created by: <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
+  <%= blog.postTime() %></h4>
 
 <label class='blog-list'>Genres</label>
 <ul class='genres'>
