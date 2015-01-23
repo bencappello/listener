@@ -11,9 +11,9 @@
   <%= blog.postTime() %></h4>
 
 <label class='blog-list'>Genres</label>
-<ul class='genres'>
+<ul class='genres-list group'>
   <% blog.get('tag_names').forEach(function (tagName) { %>
-    <li><%= tagName %></li>
+    <li class='genre'><%= tagName %></li>
   <% }) %>
 </ul>
 

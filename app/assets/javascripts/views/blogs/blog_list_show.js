@@ -1,7 +1,7 @@
 Listener.Views.BlogListShow = Backbone.CompositeView.extend({
   template: JST['blogs/list_show'],
 
-  className: 'blog-show',
+  className: 'blog-list-show',
 
   events: {
     'click .blog-follow': 'toggleFollow',

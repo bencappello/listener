@@ -13,7 +13,7 @@ me = User.create(
   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
   )
 
-10.times do
+20.times do
   User.create(
     username: Faker::Name.name,
     email: Faker::Internet.email,
@@ -75,26 +75,12 @@ end
 
 
 
+5.times do
+  Blog.create(name: Faker::App.name, user_id: 1)
+end
 
-
-blogs = Blog.create([
-  {name: 'Chromemusic', url: 'http://www.chromemusic.de'},
-  {name: 'The Quietus', url: 'http://thequietus.com/'},
-  {name: 'moarrr', url: 'http://moarrr.com'},
-  {name: 'Heart And Soul', url: 'http://heartandsoulmusic.tumblr.com/'},
-  {name: 'Avant-Avant', url: 'http://avant-avant.net'},
-  {name: 'Orange Peel', url: 'http://www.orangepeel.ch/'},
-  {name: 'Lady Wood', url: 'http://www.ladywoodmusic.com/'},
-  {name: 'Dublab', url: 'http://dublab.com/category/listen/mp3-blog/'},
-  {name: 'Lipstick Disco', url: 'http://www.lipstickdisco.co.uk'},
-  {name: 'Human Drizzle', url: 'http://humandrizzle.com/'},
-  {name: 'Stoney Roads', url: 'http://www.stoneyroads.com/'},
-  {name: 'Phonographecorp', url: 'http://www.phonographecorp.fr/'},
-  {name: 'Fluid-Radio', url: 'http://fluid-radio.co.uk'},
-])
-
-10.times do
-  Blog.create(name: Faker::App.name, url: Faker::Company.logo)
+50.times do
+  Blog.create(name: Faker::App.name, user_id: User.all.sample.id)
 end
 
 
@@ -102,33 +88,42 @@ end
 
 
 songs = Song.create([
-  {name: "Santeria", song_type: 'regular', blog_id: 1, band_id: 1},
-  {name: "Satisfaction", song_type: 'regular', blog_id: 2, band_id: 2},
-  {name: "Someday", song_type: 'regular', blog_id: 3, band_id: 3,
+  {name: "Santeria", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 1},
+  {name: "Satisfaction", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 2},
+  {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 3,
     audio_url: "https://api.soundcloud.com/tracks/122556104/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "You Are My Face", song_type: 'regular', blog_id: 4, band_id: 4},
-  {name: "Needy Girl", song_type: 'regular', blog_id: 5, band_id: 5,
+  {name: "You Are My Face", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 4},
+  {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 5,
     audio_url: "https://api.soundcloud.com/tracks/34532583/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Girls", song_type: 'regular', blog_id: 6, band_id: 6},
-  {name: "One Day", song_type: 'regular', blog_id: 7, band_id: 7},
-  {name: "So What", song_type: 'regular', blog_id: 8, band_id: 8},
-  {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: 9, band_id: 9,
+  {name: "Girls", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 6},
+  {name: "One Day", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 7},
+  {name: "So What", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 8},
+  {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 9,
     audio_url: "https://api.soundcloud.com/tracks/115417954/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Money", song_type: 'regular', blog_id: 10, band_id: 10},
-  {name: "White Winter Hymnal", song_type: 'regular', blog_id: 11, band_id: 11,
+  {name: "Money", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 10},
+  {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 11,
     audio_url: "https://api.soundcloud.com/tracks/1366184/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Postcards From Italy", song_type: 'regular', blog_id: 12, band_id: 12},
-  {name: "Charlotte Mittnacht", song_type: 'regular', blog_id: 13, band_id: 13},
-  {name: "Pink Matter", song_type: 'regular', blog_id: 1, band_id: 14},
-  {name: "Starálfur", song_type: 'regular', blog_id: 2, band_id: 15},
-  {name: "Oxford Comma", song_type: 'regular', blog_id: 3, band_id: 16,
+  {name: "Postcards From Italy", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 12},
+  {name: "Charlotte Mittnacht", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 13},
+  {name: "Pink Matter", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 14},
+  {name: "Starálfur", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 15},
+  {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 16,
     audio_url: "https://api.soundcloud.com/tracks/16294193/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "First of the Gang to Die", song_type: 'regular', blog_id: 4, band_id: 17},
-  {name: "Chandelier", song_type: 'regular', blog_id: 5, band_id: 18},
+  {name: "First of the Gang to Die", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 17},
+  {name: "Chandelier", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 18},
 ])
 
-20.times do
-  Song.create(name: Faker::App.name, song_type: 'remix', blog_id: Blog.all.sample.id, band_id: Band.all.sample.id)
+80.times do
+  blogs = false
+  until blogs
+    user = User.all.sample
+    blogs = true unless user.blogs.empty?
+  end
+
+  blog = user.blogs.sample
+  type = ['remix', 'regular'][rand(2)]
+
+  Song.create(name: Faker::App.name, song_type: type, blog_id: blog.id, user_id: user.id, band_id: Band.all.sample.id)
 end
 
 

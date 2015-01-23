@@ -19,5 +19,4 @@ Listener.Views.CreatedBlogs = Backbone.CompositeView.extend({
     this.model.createdBlogs().each(this.addBlog.bind(this));
     return this;
   },
-
 });

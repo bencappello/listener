@@ -25,6 +25,8 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       this.renderCreatedBlogs();
     } else if (this.content == 'feed') {
       this.renderFeed();
+    } else if (this.content == 'added-songs') {
+      this.renderFeed();
     } else if (this.content == 'followed_blogs') {
       this.renderFollowedBlogs();
     } else {
@@ -40,11 +42,19 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       this.renderCreatedBlogs();
     } else if (id == 'btn-favorites') {
       this.renderFavorites();
+    } else if (id == 'btn-added-songs') {
+      this.renderAddedSongs();
     } else if (id == 'btn-feed') {
       this.renderFeed();
     } else {
       this.renderFollowedBlogs();
     }
+  },
+
+  renderAddedSongs: function () {
+    this.content = 'added-songs';
+    var view = new Listener.Views.AddedSongs({model: this.model});
+    this._swapView(view);
   },
 
   renderCreatedBlogs: function () {
