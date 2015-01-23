@@ -1,5 +1,5 @@
-Listener.Views.UserBlogs = Backbone.CompositeView.extend({
-  template: JST['users/blogs'],
+Listener.Views.FollowedBlogs = Backbone.CompositeView.extend({
+  template: JST['users/followed_blogs'],
 
   className: 'blogs',
 
