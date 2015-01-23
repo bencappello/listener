@@ -33,6 +33,7 @@ Listener.Views.BlogForm = Backbone.CompositeView.extend({
     if (this.model.isNew()) {
       this.collection.create(formData, {
         success: function (model, resp) {
+          Listener.currentUser.fetch();
           Backbone.history.navigate('blogs/' + resp.id, {trigger: true});
         },
         error: function (model, resp) {

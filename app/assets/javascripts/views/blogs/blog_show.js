@@ -5,6 +5,7 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
 
   events: {
     'click .blog-follow': 'toggleFollow',
+    "click #add-song-link": "createSong",
   },
 
   initialize: function () {
@@ -40,5 +41,16 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
     var blog_id = button.data('id');
     Listener.currentUser.toggleBlogFollow(blog_id);
     button.toggleClass("blog-unfollow");
+  },
+
+  createSong: function (event) {
+    event.preventDefault();
+    var song = new Listener.Models.Song();
+    var view = new Listener.Views.SongForm({
+      model: song,
+      collection: this.model.songs(),
+      currentBlogId: this.model.id
+    })
+    Listener.modalRouter.trigger('swapModal', view)
   },
 });

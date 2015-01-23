@@ -33,7 +33,9 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     if (this.model.isNew()) {
       this.collection.create(formData, {
         success: function (model, resp) {
+          Listener.allBands.fetch();
           Backbone.history.navigate('bands/' + resp.id, {trigger: true});
+
         },
         error: function (model, resp) {
           that.renderErrors(resp);

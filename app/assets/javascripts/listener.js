@@ -12,6 +12,12 @@ window.Listener = {
     this.tags = new Listener.Collections.Tags();
     this.tags.fetch();
 
+    this.allBands = new Listener.Collections.Bands();
+    this.allBands.fetch();
+
+    this.allSongs = new Listener.Collections.Bands();
+    this.allSongs.fetch();
+
     this.topHeader = new Listener.Views.TopHeader({ el: "#top-header" });
     this.userHeader = new Listener.Views.UserHeader({ el: "#user-nav" });
 

@@ -12,13 +12,15 @@
 
         <label>Band
           <select name="song[band_id]">
-            <% Listener.bandList.forEach(function (band) { %>
+
+            <% Listener.allBands.forEach(function (band) { %>
+              <% debugger %>
               <option
-              <% if (song.get('band_id') == band[0]) { %>
+              <% if (song.get('band_id') == band.id) { %>
                 selected
               <% } %>
-              value="<%= band[0] %>">
-              <%= band[1] %>
+              value="<%= band.id %>">
+              <%= band.escape('name') %>
             </option>
             <% }) %>
           </select>
@@ -29,11 +31,11 @@
           <select name="song[blog_id]">
             <% Listener.currentUser.blogs().forEach(function (blog) { %>
               <option
-              <% if (song.get('blog_id') == blog[0] || currentBlogId == blog[0]) { %>
+              <% if (song.get('blog_id') == blog.id || currentBlogId == blog.id) { %>
                 selected
               <% } %>
-              value="<%= blog[0] %>">
-              <%= blog[1] %>
+              value="<%= blog.id %>">
+              <%= blog.escape('name') %>
             </option>
             <% }) %>
           </select>
