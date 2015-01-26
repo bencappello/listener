@@ -1,8 +1,10 @@
 <% if(Listener.currentUser.isSignedIn()) { %>
 
   <p class='user-info'>
-    Welcome:
-    <a href="#users/<%= Listener.currentUser.id %>"><%= Listener.currentUser.escape("username") %></a> |
+    <a href="#users/<%= Listener.currentUser.id %>">
+      <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
+      <%= Listener.currentUser.escape("username") %>
+    </a> |
     <a href="#" id="sign-out-link">Sign Out</a>
   </p>
 
