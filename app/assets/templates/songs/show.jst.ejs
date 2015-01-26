@@ -10,8 +10,8 @@
 <section class='song-left'>
   <img class='large-image' src="<%= song.get("image_url") %>">
   <h2>
-    <a class='underline-link' href="<%= bandU %>"><%= bandN %></a> -
-    <a class='underline-link' href="<%= songU %>"><%= songN %></a>
+    <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
+    <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
   </h2>
   <h4>Posted by: <a class='underline-link blue' href="<%= blogU %>"><%= blogN %> </a><%= song.postTime() %></h4>
 
@@ -38,9 +38,9 @@
   </ul>
 </section>
 <section class='song-right'>
-  <section class='comments-window'>
+  <section class='comments-window song-comments'>
     <h5>Comments</h5>
-    <div id="comment-form"></div>    
+    <div id="comment-form"></div>
     <ul id="comments"></ul>
   </section>
 </section>

@@ -1,4 +1,4 @@
-<p class='comment'><a class='underline-link blue' href="#/user/<%= comment.user_id %>"><%= comment.escape('author_name') %>:</a></p>
+<p class='comment'><a class='underline-link blue' href="#/user/<%= comment.user_id %>"><strong><%= comment.escape('author_name') %>:</strong></a></p>
 <p><%= comment.escape('body') %></p>
 
 <% if (comment.get('author_id') == Listener.currentUser.id) { %>
