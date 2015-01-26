@@ -24,7 +24,7 @@
  }
 
 
- body, header, ul, li, section, div, span, hr, nav, h1, h2, h3, h4, h5,  a, button {
+ body, header, ul, li, section, div, span, hr, nav, h1, h2, h3, h4, h5,  a, button, p {
    margin: 0;
    padding: 0;
    border: 0;
@@ -627,8 +627,17 @@ li.genre {
   padding: 3px;
 }
 
+.comments-window {
+  margin-top: 20px;
+}
+
 .comment-form {
   margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.comment-show {
+  margin-bottom: 10px;
 }
 
 .big-follow {

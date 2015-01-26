@@ -4,7 +4,8 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
   className: 'band-form',
 
   events : {
-    'submit form': 'saveBand'
+    'submit form': 'saveBand',
+    'click .js-modal-close': 'closeForm',
   },
 
   initialize: function () {
@@ -51,5 +52,10 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
         }
       })
     }
+  },
+
+  closeForm: function () {
+    event.preventDefault();
+    $(".modal").removeClass("is-open");
   },
 });

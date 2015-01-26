@@ -20,11 +20,6 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     return this;
   },
 
-  closeForm: function () {
-    event.preventDefault();
-    $(".modal").removeClass("is-open");
-  },
-
   renderErrors: function (resp) {
     $('#loading').empty();
     $('#errors').empty();
@@ -94,5 +89,10 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
 
   _updatePreview: function(src){
     this.$el.find("#preview-song-image").attr("src", src);
+  },
+
+  closeForm: function () {
+    event.preventDefault();
+    $(".modal").removeClass("is-open");
   },
 });
