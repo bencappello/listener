@@ -1,18 +1,18 @@
 <% if(Listener.currentUser.isSignedIn()) { %>
 
-  <p class='user-info'>
+  <section class='user-info'>
     <a href="#users/<%= Listener.currentUser.id %>">
       <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
       <%= Listener.currentUser.escape("username") %>
     </a> |
     <a href="#" id="sign-out-link">Sign Out</a>
-  </p>
+  </section>
 
 <% } else { %>
 
-  <p class='user-info'>
-    <a id="sign-up-link" class="js-modal-open">Sign Up</a>
-    <a id="sign-in-link" class="js-modal-open">Sign In</a>
-  </p>
+  <section class='user-info'>
+      <a id="sign-up-link" class="js-modal-open">Sign Up</a>
+      <a id="sign-in-link" class="js-modal-open">Sign In</a>
+  </section>
 
 <% } %>

@@ -127,8 +127,8 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
 
   clear: function(options) {
     var attrs = {};
-    this.songs().reset();
-    this.blogs().reset();
+    this.addedSongs().reset();
+    this.createdBlogs().reset();
     this.favoriteSongs().reset();
     this.feedSongs().reset();
     this.followedBlogs().reset();

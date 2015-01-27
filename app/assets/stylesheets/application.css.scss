@@ -96,6 +96,7 @@
    width: 40px;
    max-height: 40px;
    margin-top: 5px;
+   border: 1px solid purple;
  }
 
  button:hover {
@@ -455,6 +456,7 @@ div.modal-close:hover {
 
 #user-nav {
   float: right;
+  min-height: 50px;
 }
 
 ul#header-links {
@@ -478,12 +480,10 @@ li.nav-link a:hover {
 nav#top-nav {
 }
 
-.user-info {
-  padding: 0px;
-}
-
-.user-info {
+section.user-info {
   float: right;
+  display: block;
+  font-size: 16px;
 }
 
 header h3 {
@@ -527,7 +527,7 @@ header h3 a:hover {
 }
 
 .sidebar {
-  width: 289px;
+  width: 349px;
   float: left;
   border: 1px solid #C2B20A;
   outline: 1px solid black;
@@ -746,7 +746,7 @@ li.genre {
 //SONG-LIST
 
 
-.favorite-count {
+#favorite-count {
   font-size: 18px;
 }
 

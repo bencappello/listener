@@ -21,9 +21,8 @@
       <p>Your browser does not support the audio element </p>
     </audio>
     <br>
-    <span class='favorite-count'><%= song.get('favoriters_count') %></span>
+    <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
     <button
-    data-id= '<%= song.id %>'
     class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
   </button>
   <button class="play"></button>
