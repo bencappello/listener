@@ -22,14 +22,18 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
   toggleFavorite: function (event) {
     event.preventDefault();
     var button = $(event.currentTarget)
-    Listener.currentUser.toggleFavorite(this.model.id);
 
-    var count = this.model.escape('favoriters_count');
-    count = button.hasClass(unfavorite) ? count - 1 : count + 1
-    $('#favorite-count').html(count);
-    
+    //makes an ajax request to create or destroy 'favorite' join table row.
+    Listener.currentUser.toggleFavorite(this.model.id);
     button.toggleClass("unfavorite");
     this.parentModel && this.parentModel.fetch();
+
+    //update favoriters count
+    if (this.count != 0) {
+      this.count = this.count || parseInt(this.model.escape('favoriters_count'))
+    }
+    this.count = button.hasClass('unfavorite') ? this.count - 1 : this.count + 1
+    $('#favorite-count').html(this.count);
   },
 
   renderFavoriteCount: function () {

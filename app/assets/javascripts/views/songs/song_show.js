@@ -25,12 +25,14 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
     event.preventDefault();
     var button = $(event.currentTarget)
     Listener.currentUser.toggleFavorite(this.model.id);
-    debugger
-    var count = parseInt($('#favorite-count').html())
-    count = button.hasClass('unfavorite') ? count - 1 : count + 1
-    $('#favorite-count').html(count);
-
     button.toggleClass("unfavorite");
+
+    //update favoriters count
+    if (this.count != 0) {
+      this.count = this.count || parseInt(this.model.escape('favoriters_count'))
+    }
+    this.count = button.hasClass('unfavorite') ? this.count - 1 : this.count + 1
+    $('#favorite-count').html(this.count);
   },
 
   renderFavoriteCount: function () {
