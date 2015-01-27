@@ -3,136 +3,136 @@
 
     <div class="form group song-form">
 
-      <form action="javascript:void(0);" class='modal-form'>
-
-        <section>
+      <form action="javascript:void(0);" class='modal-form song-form'>
+        <section class='song-form-top group'>
           <div class="modal-close js-modal-close">&times;</div>
-          <section id='errors'></section>
-          <p><span class="fontawesome-music"></span><input type="text" placeholder="Song Name" name="song[name]" value="<%= song.escape('name') %>"></p>
+          <section class='song-form-left'>
+            <h2>Add A New Song</h2>
+            <section id='errors'></section>
+            <p><span class="fontawesome-music"></span><input type="text" placeholder="Song Name" name="song[name]" value="<%= song.escape('name') %>"></p>
 
-        <label>Band
-          <select name="song[band_id]">
+            <label>Band
+              <select name="song[band_id]">
 
-            <% Listener.allBands.forEach(function (band) { %>
-              <option
-              <% if (song.get('band_id') == band.id) { %>
-                selected
-              <% } %>
-              value="<%= band.id %>">
-              <%= band.escape('name') %>
-            </option>
-            <% }) %>
-          </select>
-        </label>
-        <br><br>
+                <% Listener.allBands.forEach(function (band) { %>
+                  <option
+                  <% if (song.get('band_id') == band.id) { %>
+                    selected
+                  <% } %>
+                  value="<%= band.id %>">
+                  <%= band.escape('name') %>
+                </option>
+                <% }) %>
+              </select>
+            </label>
+            <br><br>
 
-        <label>Playlist
-          <select name="song[blog_id]">
-            <% Listener.currentUser.blogs().forEach(function (blog) { %>
-              <option
-              <% if (song.get('blog_id') == blog.id || currentBlogId == blog.id) { %>
-                selected
-              <% } %>
-              value="<%= blog.id %>">
-              <%= blog.escape('name') %>
-            </option>
-            <% }) %>
-          </select>
-        </label>
-        <br><br>
+            <label>Playlist
+              <select name="song[blog_id]">
+                <% Listener.currentUser.createdBlogs().forEach(function (blog) { %>
+                  <option
+                  <% if (song.get('blog_id') == blog.id || currentBlogId == blog.id) { %>
+                    selected
+                  <% } %>
+                  value="<%= blog.id %>">
+                  <%= blog.escape('name') %>
+                </option>
+                <% }) %>
+              </select>
+            </label>
+            <br><br>
 
-        <label>Song Type
-          <br>
-          <label class='multiple' for="remix">Remix</label>
-          <input
-            class='input-inline'
-            type="radio"
-            name="song[song_type]"
-            value="remix"
-            id="remix"
-            <% if (song.escape('song_type') == 'remix') { %>
-              checked
+            <label>Song Type
+              <br>
+              <label class='multiple' for="remix">Remix</label>
+              <input
+                class='input-inline'
+                type="radio"
+                name="song[song_type]"
+                value="remix"
+                id="remix"
+                <% if (song.escape('song_type') == 'remix') { %>
+                  checked
+                <% } %>>
+              <br>
+              <label class='multiple' for="regular">Regular</label>
+              <input
+                class='input-inline'
+                type="radio"
+                name="song[song_type]"
+                value="regular"
+                id="regular"
+                <% if (song.escape('song_type') == 'regular') { %>
+                  checked
+                <% } %>>
+              <br><br>
+            </label>
+
+            <label>Genres</label>
+            <br>
+            <input type="hidden" name="song[tag_ids][]" value="">
+            <% Listener.tags.each(function (tag) { %>
+            <label class='multiple'>
+              <%= tag.escape('name') %>
+              <input
+                class='input-inline'
+                type="checkbox"
+                name="song[tag_ids][]"
+                value="<%= tag.id %>"
+            <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
+                checked
             <% } %>>
-          <br>
-          <label class='multiple' for="regular">Regular</label>
-          <input
-            class='input-inline'
-            type="radio"
-            name="song[song_type]"
-            value="regular"
-            id="regular"
-            <% if (song.escape('song_type') == 'regular') { %>
-              checked
-            <% } %>>
-          <br><br>
-        </label>
 
-        <label>Genres</label>
-        <br>
-        <input type="hidden" name="song[tag_ids][]" value="">
-        <% Listener.tags.each(function (tag) { %>
-        <label class='multiple'>
-          <%= tag.escape('name') %>
-          <input
-            class='input-inline'
-            type="checkbox"
-            name="song[tag_ids][]"
-            value="<%= tag.id %>"
-        <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
-            checked
-        <% } %>>
-
-        </label>
-          <% }) %>
-        <br><br>
-
-
-
-        <section class='upload-container'>
-          <label>
-            Audio File
-            <br>
-            <input type="file" name="song[audio]" id="input-song-audio">
-          </label>
-          <br>
-          <div>Or give a song url</div>
-          <label>
-            Audio Url
-            <br>
-            <input class='upload' type="text" name="song[audio_url]">
-          </label>
-        </section>
-
-
-          <section class='upload-container'>
-          <label>
-            Upload album cover art
-            <br>
-            <input class='upload' type="file" name="song[image]" id="input-song-image">
-          </label>
-
-          <br>
-
-          <img src="" width="50" id="preview-song-image">
-
-          <br>
-
-          <label>
-            Or provide an image url
-            <br>
-            <input class='upload' type="text" name="song[image_url]">
-          </label>
+            </label>
+              <% }) %>
           </section>
 
+          <section class='song-form-right'>
+            <section class='upload-container'>
+              <label>
+                Audio File
+                <br>
+                <input type="file" name="song[audio]" id="input-song-audio">
+              </label>
+              <br>
+              <div>Or give a song url</div>
+              <label>
+                Audio Url
+                <br>
+                <input class='upload' type="text" name="song[audio_url]">
+              </label>
+            </section>
 
-          <div id="loading"></div>
 
+              <section class='upload-container'>
+                <h3>Optional</h3>
+              <label>
+                Upload album cover art
+                <br>
+                <input class='upload' type="file" name="song[image]" id="input-song-image">
+              </label>
 
-          <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
-          <button class='submit modal-submit'>Add Song</button>
+              <br>
 
+              <img src="" width="50" id="preview-song-image">
+
+              <br>
+
+              <label>
+                Or provide an image url
+                <br>
+                <input class='upload' type="text" name="song[image_url]">
+              </label>
+            </section>
+          </section>
         </section>
 
+
+        <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
+        <section class='song-form-bottom'>
+          <button class='submit modal-submit'>Add Song</button>
+          <div id="loading"></div>
+        </section>
       </form>
     </div>
   </div>

@@ -94,7 +94,7 @@
 
  .img-tiny {
    width: 40px;
-   max-height: 40px;
+   height: 40px;
    margin-top: 5px;
    border: 1px solid purple;
  }
@@ -253,9 +253,7 @@ p {
   // width: 340px;
 }
 
-.song-form input {
-  width: 340px;
-}
+
 
 /* ---------- MODAL ---------- */
 
@@ -270,7 +268,7 @@ p {
 }
 
 .modal .container .song-form {
-  width: 380px;
+  width: 880px;
 }
 
 .form form span {
@@ -381,6 +379,38 @@ div.modal-close:hover {
 
 //SONG FORM
 
+.song-form h2 {
+  color: #D1D1D1;
+}
+
+.song-form h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.song-form input {
+  width: 340px;
+}
+
+.song-form-bottom {
+  text-align: center;
+}
+
+.song-form-top {
+  margin-bottom: 10px;
+  width: 880px;
+}
+
+.song-form-left {
+  float: left;
+  width: 400px;
+}
+
+.song-form-right {
+  float: right;
+  width: 400px;
+}
+
 
 .modal .form form .input-inline {
   display: inline;
@@ -390,11 +420,11 @@ div.modal-close:hover {
 }
 
 .modal .form form section {
-  width: 400px;
-  text-align: left;
+  // width: 400px;
+  // text-align: left;
 }
 
-.modal .song-form form section input {
+.modal .song-form section input {
   width: 340px;
 }
 
