@@ -52,9 +52,13 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
-    user.try(:is_password?, password) ? user : nil
+  def self.find_by_credentials(username_or_email, password)
+    if user = User.find_by(username: username_or_email)
+      user.try(:is_password?, password) ? user : nil
+    else
+      user = User.find_by(email: username_or_email)
+      user.try(:is_password?, password) ? user : nil
+    end
   end
 
   def self.generate_session_token

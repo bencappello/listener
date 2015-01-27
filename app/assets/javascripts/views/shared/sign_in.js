@@ -30,7 +30,7 @@ Listener.Views.SignIn = Backbone.View.extend({
     var $form = $(event.currentTarget);
     var formData = $form.serializeJSON().user;
     var credentials = {
-      "user[email]": formData.email,
+      "user[username_or_email]": formData.username_or_email,
       "user[password]": formData.password
     };
 
