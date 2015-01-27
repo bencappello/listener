@@ -31,8 +31,8 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
     if (this.count != 0) {
       this.count = this.count || parseInt(this.model.escape('favoriters_count'))
     }
-    this.count = button.hasClass('unfavorite') ? this.count - 1 : this.count + 1
-    $('#favorite-count').html(this.count);
+    this.count = button.hasClass('unfavorite') ? this.count + 1 : this.count - 1
+    this.$('#favorite-count').html(this.count);
   },
 
   renderFavoriteCount: function () {
