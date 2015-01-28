@@ -49,6 +49,6 @@ class Api::BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:name, :url, tag_ids: [])
+    params.require(:blog).permit(:name, tag_ids: [])
   end
 end

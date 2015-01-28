@@ -5,7 +5,8 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
 
   events: {
     'click .blog-follow': 'toggleFollow',
-    "click #add-song-link": "createSong",
+    'click #add-song-link': 'createSong',
+    'click .edit': 'editBlog',
   },
 
   initialize: function () {
@@ -51,6 +52,16 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
       model: song,
       collection: this.model.songs(),
       currentBlogId: this.model.id
+    })
+    Listener.modalRouter.trigger('swapModal', view)
+  },
+
+  editBlog: function (event) {
+    event.preventDefault();
+    var blog = this.model
+    var view = new Listener.Views.BlogForm({
+      model: blog,
+      edit: true
     })
     Listener.modalRouter.trigger('swapModal', view)
   },

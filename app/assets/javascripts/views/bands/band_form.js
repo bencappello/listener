@@ -8,12 +8,13 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     'click .js-modal-close': 'closeForm',
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(Listener.tags, 'sync', this.render);
+    this.edit = options.edit;
   },
 
   render: function () {
-    this.$el.html(this.template({band: this.model}))
+    this.$el.html(this.template({band: this.model, edit: this.edit}))
     return this;
   },
 
@@ -31,27 +32,18 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     var that = this;
     var $form = $(event.currentTarget);
     var formData = $form.serializeJSON().band;
-    if (this.model.isNew()) {
-      this.collection.create(formData, {
-        success: function (model, resp) {
-          Listener.allBands.fetch();
-          Backbone.history.navigate('bands/' + resp.id, {trigger: true});
 
-        },
-        error: function (model, resp) {
-          that.renderErrors(resp);
-        }
-      })
-    } else {
-      this.model.save(formData, {
-        success: function (model, resp) {
-          Backbone.history.navigate('bands/' + resp.id, {trigger: true});
-        },
-        error: function (model, resp) {
-          that.renderErrors(resp);
-        }
-      })
-    }
+    this.model.set(formData);
+    this.model.save({}, {
+      success: function (model, resp) {
+        $(".modal").removeClass("is-open");
+        Backbone.history.navigate('bands/' + resp.id, {trigger: true});
+      },
+      error: function (model, resp) {
+        that.renderErrors(resp);
+      }
+    })
+    this.renderLoading();
   },
 
   closeForm: function () {

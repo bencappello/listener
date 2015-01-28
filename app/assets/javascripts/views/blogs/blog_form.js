@@ -8,12 +8,13 @@ Listener.Views.BlogForm = Backbone.CompositeView.extend({
     'click .js-modal-close': 'closeForm',
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(Listener.tags, 'sync', this.render);
+    this.edit = options.edit;
   },
 
   render: function () {
-    this.$el.html(this.template({blog: this.model}))
+    this.$el.html(this.template({blog: this.model, edit: this.edit}))
     return this;
   },
 
@@ -35,7 +36,6 @@ Listener.Views.BlogForm = Backbone.CompositeView.extend({
     this.model.set(formData);
     this.model.save({}, {
       success: function (model, resp) {
-        that.collection.add(that.model);
         $(".modal").removeClass("is-open");
         Backbone.history.navigate('blogs/' + resp.id, {trigger: true});
       },

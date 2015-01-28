@@ -112,7 +112,6 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var blog = new Listener.Models.Blog();
     var view = new Listener.Views.BlogForm({
       model: blog,
-      collection: Listener.currentUser.createdBlogs(),
     })
     Listener.modalRouter.trigger('swapModal', view)
   },

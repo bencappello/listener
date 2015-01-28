@@ -3,6 +3,10 @@ Listener.Views.BandShow = Backbone.CommentableView.extend({
 
   className: 'band-show',
 
+  events: {
+    'click .edit': 'editBand',
+  },
+
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
     this.listenTo(this.model.comments(), 'sync', this.renderComments)
@@ -28,5 +32,15 @@ Listener.Views.BandShow = Backbone.CommentableView.extend({
   renderSongs: function () {
     this.$el.find('ul#songs').empty();
     this.model.songs().each(this.addSong.bind(this));
+  },
+
+  editBand: function (event) {
+    event.preventDefault();
+    var band = this.model
+    var view = new Listener.Views.BandForm({
+      model: band,
+      edit: true
+    })
+    Listener.modalRouter.trigger('swapModal', view)
   },
 });

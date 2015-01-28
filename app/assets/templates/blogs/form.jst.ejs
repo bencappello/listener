@@ -4,7 +4,11 @@
       <form action="javascript:void(0);" class='modal-form'>
         <section>
           <div class="modal-close js-modal-close">&times;</div>
-          <div id="form-title">Add A Playlist</div>
+          <% if (edit) { %>
+            <div id="form-title">Edit <%= blog.escape('name') %></div>
+          <% } else { %>
+            <div id="form-title">Add A Playlist</div>
+          <% } %>
           <section id='errors'></section>
           <p>
             <span class="fontawesome-list"></span>
@@ -34,7 +38,12 @@
           </section>
 
           <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
-          <button class='submit modal-submit blog-submit'>Add Playlist</button>
+          <% if (edit) { %>
+            <button class='submit modal-submit blog-submit'>Update Playlist</button>
+          <% } else { %>
+            <button class='submit modal-submit blog-submit'>Add Playlist</button>
+          <% } %>
+
         </section>
       </form>
     </div> <!-- end login -->

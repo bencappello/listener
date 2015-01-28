@@ -1,26 +1,52 @@
-<form id=new-band class='modal-form'>
-  <ul id="errors"></ul>
+<div class="modal is-open">
+  <div class="container">
+    <div class="form group">
+      <form action="javascript:void(0);" class='modal-form'>
+        <section>
+          <div class="modal-close js-modal-close">&times;</div>
+          <% if (edit) { %>
+            <div id="form-title">Edit <%= band.escape('name') %></div>
+          <% } else { %>
+            <div id="form-title">Add A Band</div>
+          <% } %>
+          <section id='errors'></section>
+          <p>
+            <span class="fontawesome-music"></span>
+            <input
+              type="text"
+              placeholder="Band Name"
+              name="band[name]"
+              value="<%= band.escape('name') %>">
+          </p>
 
-  <label>Name
-  <input class='mytext' type="text" name="band[name]" value="<%= band.escape('name') %>" class="mytext">
-  </label>
-  <br><br>
+          <section class='checkboxes group'>
+            <label>Genres</label>
+            <br>
+            <input type="hidden" name="band[tag_ids][]" value="">
+            <% Listener.tags.each(function (tag, idx) { %>
+              <input
+                id='<%= idx %>'
+                class='input-inline'
+                type="checkbox"
+                name="band[tag_ids][]"
+                value="<%= tag.id %>"
+                <% if (_.contains(band.get('tag_ids'), tag.id)) { %>
+                  checked
+                <% } %>>
+              <label for='<%= idx %>' class='multiple'><%= tag.escape('name') %></label>
+            <% }) %>
+          </section>
 
-  <label>Tags</label>
-    <input type="hidden" name="band[tag_ids][]" value="">
-    <% Listener.tags.each(function (tag) { %>
-      <label>
-        <input
-        type="checkbox"
-        name="band[tag_ids][]"
-        value="<%= tag.id %>"
-        <% if (_.contains(band.get('tag_ids'), tag.id)) { %>
-          checked
-        <% } %>>
-      <%= tag.escape('name') %>
-      </label>
-    <% }) %>
-  <br><br>
+          <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
+          <% if (edit) { %>
+            <button class='submit modal-submit band-submit'>Update Band</button>
+          <% } else { %>
+            <button class='submit modal-submit band-submit'>Add Band</button>
+          <% } %>
 
-  <input type="submit">
-</form>
+        </section>
+      </form>
+    </div> <!-- end login -->
+  </div>
+  <div class="modal-screen js-modal-close"></div>
+</div>
