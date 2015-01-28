@@ -14,6 +14,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     'click .favorite': 'maybeFetchUser',
     'click .blog-follow': 'maybeFetchUser',
     "click #add-song-link": "createSong",
+    "click #add-blog-link": "createBlog",
   },
 
   render: function(){
@@ -101,7 +102,17 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var song = new Listener.Models.Song();
     var view = new Listener.Views.SongForm({
       model: song,
-      collection: this.model.addedSongs(),
+      collection: Listener.currentUser.addedSongs(),
+    })
+    Listener.modalRouter.trigger('swapModal', view)
+  },
+
+  createBlog: function (event) {
+    event.preventDefault();
+    var blog = new Listener.Models.Blog();
+    var view = new Listener.Views.BlogForm({
+      model: blog,
+      collection: Listener.currentUser.createdBlogs(),
     })
     Listener.modalRouter.trigger('swapModal', view)
   },

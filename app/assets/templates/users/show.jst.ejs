@@ -8,7 +8,10 @@
       <button id="add-song-link" class="js-modal-open add-content">
         Add Song<p><br></p>✚
       </button>
-    <% } else { %>  
+      <button id="add-blog-link" class="js-modal-open add-content">
+        Add Playlist<p><br></p>✚
+      </button>
+    <% } else { %>
       <button
         data-id= '<%= user.id %>'
         class="big-follow user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">

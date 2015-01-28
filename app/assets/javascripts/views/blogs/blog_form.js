@@ -4,7 +4,8 @@ Listener.Views.BlogForm = Backbone.CompositeView.extend({
   className: 'blog-form',
 
   events : {
-    'submit form': 'saveBlog'
+    'submit form': 'saveBlog',
+    'click .js-modal-close': 'closeForm',
   },
 
   initialize: function () {
@@ -30,25 +31,23 @@ Listener.Views.BlogForm = Backbone.CompositeView.extend({
     var that = this;
     var $form = $(event.currentTarget);
     var formData = $form.serializeJSON().blog;
-    if (this.model.isNew()) {
-      this.collection.create(formData, {
-        success: function (model, resp) {
-          Listener.currentUser.fetch();
-          Backbone.history.navigate('blogs/' + resp.id, {trigger: true});
-        },
-        error: function (model, resp) {
-          that.renderErrors(resp);
-        }
-      })
-    } else {
-      this.model.save(formData, {
-        success: function (model, resp) {
-          Backbone.history.navigate('blogs/' + resp.id, {trigger: true});
-        },
-        error: function (model, resp) {
-          that.renderErrors(resp);
-        }
-      })
-    }
+
+    this.model.set(formData);
+    this.model.save({}, {
+      success: function (model, resp) {
+        that.collection.add(that.model);
+        $(".modal").removeClass("is-open");
+        Backbone.history.navigate('blogs/' + resp.id, {trigger: true});
+      },
+      error: function (model, resp) {
+        that.renderErrors(resp);
+      }
+    })
+    this.renderLoading();
+  },
+
+  closeForm: function () {
+    event.preventDefault();
+    $(".modal").removeClass("is-open");
   },
 });
