@@ -597,7 +597,7 @@ header h3 a:hover {
   margin-right: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
-  padding: 10px 10px;
+  padding: 20px 20px;
 }
 
 .top-buttons {
@@ -652,6 +652,14 @@ header h3 a:hover {
   content: '';
 }
 
+span.line-break {
+  height: 1px;
+  background: black;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
 .main-title-header {
   color: black;
   margin-bottom: 20px;
@@ -677,6 +685,13 @@ header h3 a:hover {
   margin-bottom: 10px;
   border: 1px solid black;
   padding: 5px;
+}
+
+span.blog-songs {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 5px;
+  font-size: 14px;
 }
 
 ul.genres {
@@ -716,6 +731,10 @@ li.genre {
 
 .comment-show {
   margin-bottom: 15px;
+}
+
+.add-comment {
+  font-size: 14px;
 }
 
 .time-stamp {

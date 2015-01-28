@@ -1,5 +1,6 @@
 json.extract!(@blog, :id, :name, :user_id, :tag_ids, :created_at, :updated_at)
 
+json.song_count @blog.songs.count
 json.user_name @blog.user.username
 
 json.songs @blog.songs do |song|

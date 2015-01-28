@@ -3,11 +3,13 @@
   <h1><%= band.escape('name') %></h1>
 
   <h5>Genres</h5>
-  <ul class='tags group'>
+  <ul class='genres group'>
     <% band.tags().forEach(function (tag) { %>
       <li class='genre'><%= tag.escape('name') %></li>
     <% }) %>
   </ul>
+
+  <span class='line-break'></span>
 
   <section class='comments-window'>
     <h5>Comments</h5>

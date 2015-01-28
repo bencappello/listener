@@ -9,7 +9,7 @@
 </h2>
 <h4>Created by: <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
   <%= blog.postTime() %></h4>
-
+<br>
 <label class='blog-list'>Genres</label>
 <ul class='genres-list group'>
   <% blog.get('tag_names').forEach(function (tagName) { %>
@@ -17,7 +17,7 @@
   <% }) %>
 </ul>
 
-<button class="blog-songs"><%= blog.get('song_count') + ' Songs' %></button>
+<span class="blog-songs"><%= blog.get('song_count') + ' Songs' %></span>
 <button
   data-id= '<%= blog.id %>'
   class="small-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
