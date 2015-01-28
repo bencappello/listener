@@ -633,8 +633,13 @@ header h3 a:hover {
   padding: 20px;
 }
 
+.song-left h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .song-right {
-  width: 449px;
+  width: 509px;
   float: right;
   border: 1px solid #C2B20A;
   outline: 1px solid black;
@@ -874,6 +879,10 @@ span.small-blog-songs {
 
 .favorite:hover {
   color: #0063dc;
+}
+
+.unfavorite:hover {
+  color: #DE3535;
 }
 
 .favorite:after {

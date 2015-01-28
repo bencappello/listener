@@ -6,6 +6,8 @@
 <% var songU = '#/songs/' + song.id %>
 <% var songEditU = '#/songs/' + song.id + '/edit' %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
+<% var creatorN = song.escape('creator_name') %>
+<% var creatorU = '#/users/' + song.escape('user_id') %>
 
 <section class='song-left'>
   <img class='large-image' src="<%= song.get("image_url") %>">
@@ -13,7 +15,9 @@
     <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
     <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
   </h2>
-  <h4>Posted by: <a class='underline-link blue' href="<%= blogU %>"><%= blogN %> </a><%= song.postTime() %></h4>
+  <h4>Added <%= song.postTime() %> by <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
+  <br>
+  Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
 
   <audio src="<%= song.get('audio_url') %>" controls>
     <p>Your browser does not support the audio element </p>
