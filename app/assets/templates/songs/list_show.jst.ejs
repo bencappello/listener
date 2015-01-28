@@ -23,7 +23,7 @@
     <br>
     <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
     <button
-    class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-  </button>
+      class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+    </button>
   <button class="play"></button>
 </section>
