@@ -1,11 +1,14 @@
 <% var follows = Listener.currentUser.followedBlogs() %>
 
 <section class=sidebar>
-  <section class='top-buttons'>
-    <button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
-  </section>
   <h1><%= blog.escape('name') %></h1>
   <h4>Created by: <a class='underline-link blue' href="#/users/<%= blog.escape('user_id') %>"><%= blog.escape('user_name') %></a></h4>
+
+  <% if (Listener.currentUser.id == blog.escape('user_id')) { %>
+    <section class='top-buttons'>
+      <button class="edit"><a href="#/blogs/<%= blog.id %>/edit">Edit Blog</a></button>
+    </section>
+  <% } %>
 
   <span class="big-blog-songs"><%= blog.get('song_count') + ' Songs' %></span>
   <% if (Listener.currentUser.id == blog.escape('user_id')) { %>

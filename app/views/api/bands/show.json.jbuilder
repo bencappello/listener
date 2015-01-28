@@ -1,4 +1,4 @@
-json.extract!(@band, :id, :name, :tag_ids, :created_at, :updated_at)
+json.extract!(@band, :id, :user_id, :name, :tag_ids, :created_at, :updated_at)
 
 json.songs @band.songs do |song|
   json.partial! "api/songs/list_show", song: song

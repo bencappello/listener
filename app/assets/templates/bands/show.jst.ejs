@@ -1,6 +1,11 @@
 <section class=sidebar>
-  <button class="edit"><a href="#/bands/<%= band.id %>/edit">Edit Band</a></button>
   <h1><%= band.escape('name') %></h1>
+
+  <% if (Listener.currentUser.id == band.escape('user_id')) { %>
+    <section class='top-buttons'>
+      <button class="edit"><a href="#/bands/<%= band.id %>/edit">Edit Band</a></button>
+    </section>
+  <% } %>
 
   <h5>Genres</h5>
   <ul class='genres group'>
