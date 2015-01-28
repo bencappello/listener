@@ -17,10 +17,10 @@ Listener.Views.BlogListShow = Backbone.CompositeView.extend({
   },
 
   toggleFollow: function (event) {
-    event.preventDefault();
-    var button = $(event.currentTarget)
-    var blog_id = button.data('id');
-    var followed = Listener.currentUser.toggleBlogFollow(blog_id);
-    button.toggleClass("blog-unfollow");
+    if (event) { event.preventDefault(); }
+    var callback = this.toggleFollow.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+    Listener.currentUser.toggleBlogFollow(this.model.id);
+    this.$('.blog-follow').toggleClass("blog-unfollow");
   },
 });

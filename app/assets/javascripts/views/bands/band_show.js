@@ -9,6 +9,7 @@ Listener.Views.BandShow = Backbone.CommentableView.extend({
   },
 
   render: function () {
+    Backbone.GeneralView.prototype.initialize.call(this);
     this.$el.html(this.template({band: this.model}))
     this.renderSongs();
     this.renderComments();

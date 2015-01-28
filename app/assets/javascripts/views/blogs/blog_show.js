@@ -9,6 +9,7 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
   },
 
   initialize: function () {
+    Backbone.GeneralView.prototype.initialize.call(this);
     this.listenTo(this.model, 'sync', this.render)
     this.listenTo(this.model.comments(), 'sync', this.renderComments)
     // this.listenTo(Listener.currentUser, 'sync', this.render)
@@ -39,7 +40,7 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
     if (event) { event.preventDefault(); }
     var callback = this.toggleFollow.bind(this);
     if (!this._requireSignedIn(callback)) { return; }
-    Listener.currentUser.toggleUserFollow(this.model.id);
+    Listener.currentUser.toggleBlogFollow(this.model.id);
     this.$('.blog-follow').toggleClass("blog-unfollow");
   },
 

@@ -629,7 +629,7 @@ header h3 a:hover {
   margin-right: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
-  padding: 10px 10px;
+  padding: 20px;
 }
 
 .song-right {
@@ -685,13 +685,6 @@ span.line-break {
   margin-bottom: 10px;
   border: 1px solid black;
   padding: 5px;
-}
-
-span.blog-songs {
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px 5px;
-  font-size: 14px;
 }
 
 ul.genres {
@@ -759,6 +752,20 @@ li.genre {
 
 .add-content p {
   line-height: 80%;
+}
+
+span.big-blog-songs {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+span.small-blog-songs {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
 }
 
 .big-follow {

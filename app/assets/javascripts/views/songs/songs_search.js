@@ -4,6 +4,7 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
   className: 'songs-search',
 
   initialize: function (options) {
+    Backbone.GeneralView.prototype.initialize.call(this);
     this.query = options.query
     this.listenTo(this.collection, 'sync', this.render)
   },

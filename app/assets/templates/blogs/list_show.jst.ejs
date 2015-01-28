@@ -17,7 +17,7 @@
   <% }) %>
 </ul>
 
-<span class="blog-songs"><%= blog.get('song_count') + ' Songs' %></span>
+<span class="small-blog-songs"><%= blog.get('song_count') + ' Songs' %></span>
 <button
   data-id= '<%= blog.id %>'
   class="small-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">

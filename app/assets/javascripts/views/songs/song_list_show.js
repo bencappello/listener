@@ -38,7 +38,6 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
     }
     this.count = this.$('.favorite').hasClass('unfavorite') ? this.count + 1 : this.count - 1
     this.$('#favorite-count').html(this.count);
-    debugger
   },
 
   renderFavoriteCount: function () {
