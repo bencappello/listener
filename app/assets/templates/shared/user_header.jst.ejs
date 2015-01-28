@@ -1,11 +1,18 @@
 <% if(Listener.currentUser.isSignedIn()) { %>
 
   <section class='user-info'>
-    <a href="#users/<%= Listener.currentUser.id %>">
-      <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
-      <%= Listener.currentUser.escape("username") %>
-    </a> |
-    <a href="#" id="sign-out-link">Sign Out</a>
+      <a href="#users/<%= Listener.currentUser.id %>">
+        <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
+        <%= Listener.currentUser.escape("username") %>
+      </a>
+      <ul class="user-nav-dropdown">
+        <li><a href="#">Feed</a></li>
+        <li><a href="#">Favorites</a></li>
+        <li><a href="#">Add Song</a></li>
+        <li><a href="#">Add Playlist</a></li>
+        <li><a href="#">Edit Profile</a></li>
+        <li><a href="#" id="sign-out-link">Sign Out</a></li>
+      </ul>
   </section>
 
 <% } else { %>

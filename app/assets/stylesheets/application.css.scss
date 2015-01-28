@@ -542,6 +542,43 @@ section.user-info {
   display: block;
   font-size: 16px;
   color: #e0e0e0;
+  position: relative;
+}
+
+section.user-info a {
+  display: block;
+}
+
+.user-nav-dropdown {
+  display: none;
+  position: absolute;
+  left: -1px;
+  width: 100%;
+  font-size: 14px;
+  white-space: nowrap;
+  background: #333;
+  color: #e0e0e0;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+}
+
+.user-nav-dropdown a {
+  padding: 10px;
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+.user-nav-dropdown a:hover {
+  background: #3F3F40;
+  color: white;
+}
+
+.user-info:hover .user-nav-dropdown {
+  display: block;
 }
 
 .signed-out {

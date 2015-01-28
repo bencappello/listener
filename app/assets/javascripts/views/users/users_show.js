@@ -25,14 +25,14 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     this.$el.html(html);
     if (this.content == 'created_blogs') {
       this.renderCreatedBlogs();
-    } else if (this.content == 'feed') {
+    } else if (this.content == 'favorites') {
       this.renderFeed();
     } else if (this.content == 'added-songs') {
-      this.renderFeed();
+      this.renderFavorites();
     } else if (this.content == 'followed_blogs') {
       this.renderFollowedBlogs();
     } else {
-      this.renderFavorites();
+      this.renderFeed();
     }
     return this;
   },
