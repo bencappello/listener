@@ -1,25 +1,43 @@
-<form id=new-blog class='modal-form'>
-  <ul id="errors"></ul>
-  <label>Name
-  <input class='mytext' type="text" name="blog[name]" value="<%= blog.escape('name') %>" class="mytext">
-  </label>
-  <br><br>
+<div class="modal is-open">
+  <div class="container">
+    <div class="form group">
+      <form action="javascript:void(0);" class='modal-form'>
+        <section>
+          <div class="modal-close js-modal-close">&times;</div>
+          <div id="form-title">Add A Playlist</div>
+          <section id='errors'></section>
+          <p>
+            <span class="fontawesome-list"></span>
+            <input
+              type="text"
+              placeholder="Playlist Name"
+              name="blog[name]"
+              value="<%= blog.escape('name') %>">
+          </p>
 
-  <label>Tags</label>
-    <input type="hidden" name="blog[tag_ids][]" value="">
-    <% Listener.tags.each(function (tag) { %>
-      <label>
-        <input
-        type="checkbox"
-        name="blog[tag_ids][]"
-        value="<%= tag.id %>"
-        <% if (_.contains(blog.get('tag_ids'), tag.id)) { %>
-          checked
-          <% } %>>
-          <%= tag.escape('name') %>
-        </label>
-    <% }) %>
-  <br><br>
+          <section class='checkboxes group'>
+            <label>Genres</label>
+            <br>
+            <input type="hidden" name="blog[tag_ids][]" value="">
+            <% Listener.tags.each(function (tag, idx) { %>
+              <input
+                id='<%= idx %>'
+                class='input-inline'
+                type="checkbox"
+                name="blog[tag_ids][]"
+                value="<%= tag.id %>"
+                <% if (_.contains(blog.get('tag_ids'), tag.id)) { %>
+                  checked
+                <% } %>>
+              <label for='<%= idx %>' class='multiple'><%= tag.escape('name') %></label>
+            <% }) %>
+          </section>
 
-  <input type="submit">
-</form>
+          <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
+          <button class='submit modal-submit blog-submit'>Add Playlist</button>
+        </section>
+      </form>
+    </div> <!-- end login -->
+  </div>
+  <div class="modal-screen js-modal-close"></div>
+</div>

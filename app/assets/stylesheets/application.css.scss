@@ -180,11 +180,31 @@ input {
   padding: 0;
 }
 
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0;
+}
 
+.container .form input[type=checkbox] + label {
+  background: gray;
+  color: #C2B20A;
+  padding: 3px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  float: left;
+  display: block;
+}
 
+.container .form input[type=checkbox]:checked + label {
+  background: white;
+  color: #34327D;
+}
 
-
-
+.container .form input[type=checkbox]:hover + label {
+  cursor: pointer;
+}
 
 p {
   line-height: 1.5em;
@@ -226,6 +246,10 @@ p {
   top: 3px;
   background: #0a0;
   box-shadow: none;
+}
+
+.blog-submit {
+  margin-top: 20px;
 }
 
 .container {
