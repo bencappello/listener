@@ -7,7 +7,12 @@
         <section class='song-form-top group'>
           <div class="modal-close js-modal-close">&times;</div>
           <section class='song-form-left'>
-            <h2>Add A New Song</h2>
+            <% if (edit) { %>
+              <div id="form-title">Edit <%= song.escape('name') %></div>
+            <% } else { %>
+              <div id="form-title">Add A Song</div>
+            <% } %>
+            <!-- <h2>Add A New Song</h2> -->
             <section id='errors'></section>
             <p>
               <span class="fontawesome-music"></span>
@@ -38,7 +43,7 @@
               <select name="song[blog_id]">
                 <% Listener.currentUser.createdBlogs().forEach(function (blog) { %>
                   <option
-                  <% if (song.get('blog_id') == blog.id || currentBlogId == blog.id) { %>
+                  <% if (song.escape('blog_id') == blog.id || currentBlogId == blog.id) { %>
                     selected
                   <% } %>
                   value="<%= blog.id %>">
@@ -140,7 +145,11 @@
 
         <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
         <section class='song-form-bottom'>
-          <button class='submit modal-submit'>Add Song</button>
+          <% if (edit) { %>
+            <button class='submit modal-submit'>Update Song</button>
+          <% } else { %>
+            <button class='submit modal-submit'>Add Song</button>
+          <% } %>
           <div id="loading"></div>
         </section>
       </form>

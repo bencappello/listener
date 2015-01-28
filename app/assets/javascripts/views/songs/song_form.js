@@ -12,11 +12,16 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
 
   initialize: function (options) {
     this.listenTo(Listener.tags, 'sync', this.render);
-    this.currentBlogId = options.currentBlogId
+    this.currentBlogId = options.currentBlogId;
+    this.edit = options.edit;
   },
 
   render: function () {
-    this.$el.html(this.template({song: this.model, currentBlogId: this.currentBlogId}))
+    this.$el.html(this.template({
+      song: this.model,
+      currentBlogId: this.currentBlogId,
+      edit: this.edit
+    }))
     return this;
   },
 
@@ -39,7 +44,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     this.model.set(formData);
     this.model.save({}, {
       success: function (model, resp) {
-        that.collection.add(that.model);
+        // that.collection.add(that.model);
         delete that.model._audio;
         delete that.model._image;
         $(".modal").removeClass("is-open");

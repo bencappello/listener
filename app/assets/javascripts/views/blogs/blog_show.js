@@ -50,7 +50,7 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
     var song = new Listener.Models.Song();
     var view = new Listener.Views.SongForm({
       model: song,
-      collection: this.model.songs(),
+      // collection: this.model.songs(),
       currentBlogId: this.model.id
     })
     Listener.modalRouter.trigger('swapModal', view)

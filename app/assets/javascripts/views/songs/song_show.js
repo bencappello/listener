@@ -5,6 +5,7 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
 
   events: {
     'click .favorite': 'toggleFavorite',
+    'click .edit': 'editSong',
   },
 
   initialize: function () {
@@ -45,5 +46,15 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
   renderFavoriteCount: function () {
     count = $('<span>' + this.model.get('favoriters_count') + '</span>');
     $('#favorite-count').html(count);
+  },
+
+  editSong: function (event) {
+    event.preventDefault();
+    var song = this.model
+    var view = new Listener.Views.SongForm({
+      model: song,
+      edit: true
+    })
+    Listener.modalRouter.trigger('swapModal', view)
   },
 });

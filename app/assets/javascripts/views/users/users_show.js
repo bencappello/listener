@@ -102,7 +102,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var song = new Listener.Models.Song();
     var view = new Listener.Views.SongForm({
       model: song,
-      collection: Listener.currentUser.addedSongs(),
+      // collection: Listener.currentUser.addedSongs(),
     })
     Listener.modalRouter.trigger('swapModal', view)
   },
