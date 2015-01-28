@@ -75,6 +75,7 @@
    border: 5px solid #C2B20A;
    border-radius: 5px;
    box-shadow: 0px 0px 3pt 2pt black;
+   margin-bottom: 5px;
  }
 
  .large-image:hover {
@@ -213,7 +214,7 @@ p {
 }
 
 .sign-up-link {
-  color: #eee;
+  color: #e0e0e0;
 }
 
 .sign-up-link:hover {
@@ -330,7 +331,7 @@ p {
 .form form input[type="text"], input[type="password"] {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
-  color: #606468;
+  color: #D1D1D1;
   margin-bottom: 1em;
   padding: 0 16px;
   width: 230px;
@@ -530,7 +531,7 @@ li.nav-link a {
 
 li.nav-link a:hover {
   background: black;
-  color: white;
+  color: #e0e0e0;
 }
 
 nav#top-nav {
@@ -540,6 +541,7 @@ section.user-info {
   float: right;
   display: block;
   font-size: 16px;
+  color: #e0e0e0;
 }
 
 .signed-out {
