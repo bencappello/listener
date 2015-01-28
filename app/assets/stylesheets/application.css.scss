@@ -570,6 +570,10 @@ header h3 a:hover {
   padding: 10px 10px;
 }
 
+.top-buttons {
+  margin-bottom: 5px;
+}
+
 .main {
   width: 585px;
   float: right;
@@ -690,6 +694,24 @@ li.genre {
   color: gray;
 }
 
+.add-content {
+  background: transparent;
+  color: #417501;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 5px;
+  text-align: center;
+  // line-height: 400%;
+}
+
+.add-content:hover {
+  color: #83c441;
+}
+
+.add-content p {
+  line-height: 80%;
+}
+
 .big-follow {
   background: transparent;
   color: #0063dc;
@@ -763,12 +785,12 @@ li.genre {
   margin-bottom: 20px;
 }
 
-#button-list {
+#top-button-list {
   text-align: center;
 }
 
-.user-sidebar {
-
+#bottom-button-list {
+  text-align: center;
 }
 
 

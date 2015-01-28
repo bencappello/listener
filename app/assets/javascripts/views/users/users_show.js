@@ -13,6 +13,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     'click .user-btn': 'changeContent',
     'click .favorite': 'maybeFetchUser',
     'click .blog-follow': 'maybeFetchUser',
+    "click #add-song-link": "createSong",
   },
 
   render: function(){
@@ -93,6 +94,16 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var followed_id = button.data('id');
     Listener.currentUser.toggleUserFollow(followed_id);
     button.toggleClass("user-unfollow");
+  },
+
+  createSong: function (event) {
+    event.preventDefault();
+    var song = new Listener.Models.Song();
+    var view = new Listener.Views.SongForm({
+      model: song,
+      collection: this.model.addedSongs(),
+    })
+    Listener.modalRouter.trigger('swapModal', view)
   },
 
   maybeFetchUser: function () {

@@ -4,15 +4,23 @@
     <img class ='large-image' src="<%= user.get("image_url") %>">
     <h2><%= user.escape("username") %></h2>
 
-    <% if (!(Listener.currentUser.id == user.id)) { %>
+    <% if (Listener.currentUser.id == user.id) { %>
+      <button id="add-song-link" class="js-modal-open add-content">
+        Add Song<p><br></p>✚
+      </button>
+    <% } else { %>  
       <button
-      data-id= '<%= user.id %>'
-      class="big-follow user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
-    </button>
+        data-id= '<%= user.id %>'
+        class="big-follow user-follow <%= _.contains(follows.pluck('id'), user.id) ? 'user-unfollow' : "" %>">
+      </button>
     <% } %>
   </section>
 
-  <section id='button-list'>
+    <section id='top-button-list'>
+
+    </section>
+
+  <section id='bottom-button-list'>
     <button id='btn-favorites' class='user-btn'>Favorites</button>
     <button id='btn-feed' class='user-btn'>Feed</button>
     <button id='btn-added-songs' class='user-btn'>Added Songs</button>
