@@ -7,6 +7,9 @@
 
         <section>
           <div class="modal-close js-modal-close">&times;</div>
+          <% if (required) { %>
+            <div id="required">You must sign in first</div>
+          <% } %>
           <div id="form-title">Sign In</div>
           <section id='errors'></section>
           <p><span class="fontawesome-user"></span><input type="text" placeholder="Username or Email" name="user[username_or_email]"></p>

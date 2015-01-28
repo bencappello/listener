@@ -36,11 +36,11 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
   },
 
   toggleFollow: function (event) {
-    event.preventDefault();
-    var button = $(event.currentTarget)
-    var blog_id = button.data('id');
-    Listener.currentUser.toggleBlogFollow(blog_id);
-    button.toggleClass("blog-unfollow");
+    if (event) { event.preventDefault(); }
+    var callback = this.toggleFollow.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+    Listener.currentUser.toggleUserFollow(this.model.id);
+    this.$('.blog-follow').toggleClass("blog-unfollow");
   },
 
   createSong: function (event) {

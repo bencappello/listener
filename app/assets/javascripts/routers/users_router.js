@@ -6,7 +6,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
 
   routes: {
     "users": "index",
-    // "users/new": "new",
     "users/:id": "show",
     "users/:id/favorites": "showFavorites",
     "users/:id/feed": "showFeed",
@@ -18,17 +17,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     var indexView = new Listener.Views.UsersIndex();
     this._swapView(indexView);
   },
-
-  // new: function(){
-  //   if (!this._requireSignedOut()) { return; }
-  //
-  //   var model = new Listener.users.model();
-  //   var formView = new Listener.Views.UsersForm({
-  //     collection: Listener.users,
-  //     model: model
-  //   });
-  //   this._swapView(formView);
-  // },
 
   show: function(id){
     var callback = this.show.bind(this, id);
@@ -45,7 +33,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
       this.signIn(callback);
       return false;
     }
-
     return true;
   },
 

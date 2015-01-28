@@ -90,11 +90,11 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   toggleFollow: function (event) {
-    event.preventDefault();
-    var button = $(event.currentTarget)
-    var followed_id = button.data('id');
-    Listener.currentUser.toggleUserFollow(followed_id);
-    button.toggleClass("user-unfollow");
+    if (event) { event.preventDefault(); }
+    var callback = this.toggleFollow.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+    Listener.currentUser.toggleUserFollow(this.model.id);
+    this.$('.user-follow').toggleClass("user-unfollow");
   },
 
   createSong: function (event) {

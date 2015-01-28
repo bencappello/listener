@@ -17,13 +17,12 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
   addSong: function (song) {
     var view = new Listener.Views.SongListShow({
       model: song,
-      collection: this.collection,
     });
-    this.addSubview('#songs', view);
+    this.addSubview('section#songs', view);
   },
 
   renderSongs: function () {
-    this.$el.find('ul#songs').empty();
+    this.$el.find('section#songs').empty();
     this.collection.each(this.addSong.bind(this));
   },
 });

@@ -13,7 +13,6 @@
     </button>
   <% } else { %>
     <button
-      data-id= '<%= blog.id %>'
       class="big-follow blog-follow <%= _.contains(follows.pluck('id'), blog.id) ? 'blog-unfollow' : "" %>">
     </button>
   <% } %>

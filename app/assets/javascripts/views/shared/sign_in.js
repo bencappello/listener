@@ -2,7 +2,8 @@ Listener.Views.SignIn = Backbone.View.extend({
 
   initialize: function(options){
     this.model = Listener.currentUser;
-    // this.callback = options.callback;
+    this.callback = options ? options.callback : false;
+    this.required = options ? options.required : false;
     // this.listenTo(Listener.currentUser, "signIn", this.signInCallback);
   },
 
@@ -15,7 +16,7 @@ Listener.Views.SignIn = Backbone.View.extend({
   template: JST['shared/sign_in'],
 
   render: function(){
-    this.$el.html(this.template());
+    this.$el.html(this.template({required: this.required}));
     return this;
   },
 
@@ -43,6 +44,9 @@ Listener.Views.SignIn = Backbone.View.extend({
         data = that.model.parse(data);
         that.model.set(data);
         $(".modal").removeClass("is-open");
+        if (that.callback) {
+          that.callback();
+        }
       },
       error: function() {
         $("#errors").html($('<div>Wrong username/password combination. Please try again.</div>'));
@@ -58,13 +62,5 @@ Listener.Views.SignIn = Backbone.View.extend({
     });
     Listener.modalRouter.trigger('swapModal', userFormView)
   },
-
-  // signInCallback: function(event){
-  //   if(this.callback) {
-  //     this.callback();
-  //   } else {
-  //     Backbone.history.navigate("", { trigger: true });
-  //   }
-  // }
 
 });
