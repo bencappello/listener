@@ -80,22 +80,23 @@
               <br><br>
             </label>
 
-            <label>Genres</label>
-            <br>
-            <input type="hidden" name="song[tag_ids][]" value="">
-            <% Listener.tags.each(function (tag) { %>
-              <label class='multiple'>
-                <%= tag.escape('name') %>
+            <section class='checkboxes group'>
+              <label>Genres</label>
+              <br>
+              <input type="hidden" name="song[tag_ids][]" value="">
+              <% Listener.tags.each(function (tag, idx) { %>
                 <input
+                  id='<%= idx %>'
                   class='input-inline'
                   type="checkbox"
                   name="song[tag_ids][]"
                   value="<%= tag.id %>"
-                  <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
-                      checked
-                  <% } %>>
-              </label>
-            <% }) %>
+                <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
+                  checked
+                <% } %>>
+                <label for='<%= idx %>' class='multiple'><%= tag.escape('name') %></label>
+              <% }) %>
+            </section>
           </section>
 
           <section class='song-form-right'>
