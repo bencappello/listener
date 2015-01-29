@@ -1,18 +1,23 @@
+<% var userID = Listener.currentUser.id %>
+
 <% if(Listener.currentUser.isSignedIn()) { %>
 
   <section class='user-info'>
-      <a href="#users/<%= Listener.currentUser.id %>">
-        <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
-        <%= Listener.currentUser.escape("username") %>
-      </a>
-      <ul class="user-nav-dropdown">
-        <li><a href="#">Feed</a></li>
-        <li><a href="#">Favorites</a></li>
-        <li><a href="#">Add Song</a></li>
-        <li><a href="#">Add Playlist</a></li>
-        <li><a href="#">Edit Profile</a></li>
-        <li><a href="#" id="sign-out-link">Sign Out</a></li>
-      </ul>
+    <a href="#users/<%= Listener.currentUser.id %>">
+      <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
+      <%= Listener.currentUser.escape("username") %>
+    </a>
+    <ul class="user-nav-dropdown">
+      <li><a href="#/users/<%= userID %>/feed">Feed</a></li>
+      <li><a href="#/users/<%= userID %>/favorites">Favorites</a></li>
+      <li>
+        <a href="#/users/<%= userID %>/followed_blogs">Followed Playlists</a>
+      </li>
+      <li><a href="#" id="add-song-link">Add Song</a></li>
+      <li><a href="#" id="add-blog-link">Add Playlist</a></li>
+      <li><a href="#">Edit Profile</a></li>
+      <li><a href="#" id="sign-out-link">Sign Out</a></li>
+    </ul>
   </section>
 
 <% } else { %>

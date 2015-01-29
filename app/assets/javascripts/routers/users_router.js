@@ -7,27 +7,32 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
   routes: {
     "users": "index",
     "users/:id": "show",
-    "users/:id/favorites": "showFavorites",
-    "users/:id/feed": "showFeed",
+    "users/:id/:suffix": "show",
+    // "users/:id/feed": "showFeed",
   },
 
-  index: function(){
+  index: function () {
     Listener.users.fetch();
     var callback = this.index.bind(this);
     var indexView = new Listener.Views.UsersIndex();
     this._swapView(indexView);
   },
 
-  show: function(id){
+  show: function (id, suffix) {
     var callback = this.show.bind(this, id);
     var model = Listener.users.getOrFetch(id, 'reload');
     var showView = new Listener.Views.UsersShow({
-      model: model
+      model: model,
+      content: suffix
     });
     this._swapView(showView);
   },
 
-  _requireSignedIn: function(callback){
+  // showFavorites: function (id) {
+  //
+  // }
+
+  _requireSignedIn: function (callback) {
     if (!Listener.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
       this.signIn(callback);
@@ -36,7 +41,7 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     return true;
   },
 
-  _requireSignedOut: function(callback){
+  _requireSignedOut: function (callback) {
     if (Listener.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
       callback();
@@ -45,7 +50,7 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     return true;
   },
 
-  _goHome: function(){
+  _goHome: function () {
     Backbone.history.navigate("", { trigger: true });
   },
 

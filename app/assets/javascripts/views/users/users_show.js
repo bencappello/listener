@@ -26,9 +26,9 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     if (this.content == 'created_blogs') {
       this.renderCreatedBlogs();
     } else if (this.content == 'favorites') {
-      this.renderFeed();
-    } else if (this.content == 'added-songs') {
       this.renderFavorites();
+    } else if (this.content == 'added_songs') {
+      this.renderAddedSongs();
     } else if (this.content == 'followed_blogs') {
       this.renderFollowedBlogs();
     } else {
@@ -54,7 +54,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   renderAddedSongs: function () {
-    this.content = 'added-songs';
+    this.content = 'added_songs';
     var view = new Listener.Views.AddedSongs({model: this.model});
     this._swapView(view);
   },
@@ -102,7 +102,6 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     var song = new Listener.Models.Song();
     var view = new Listener.Views.SongForm({
       model: song,
-      // collection: Listener.currentUser.addedSongs(),
     })
     Listener.modalRouter.trigger('swapModal', view)
   },

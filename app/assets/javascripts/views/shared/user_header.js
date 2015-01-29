@@ -8,7 +8,9 @@ Listener.Views.UserHeader = Backbone.View.extend({
   events: {
     "click #sign-out-link": "signOut",
     "click #sign-in-link": "signIn",
-    "click #sign-up-link": "signUp"
+    "click #sign-up-link": "signUp",
+    "click #add-song-link": "createSong",
+    "click #add-blog-link": "createBlog",
   },
 
   template: JST['shared/user_header'],
@@ -37,6 +39,24 @@ Listener.Views.UserHeader = Backbone.View.extend({
       model: model
     });
     Listener.modalRouter.trigger('swapModal', userFormView)
+  },
+
+  createSong: function (event) {
+    event.preventDefault();
+    var song = new Listener.Models.Song();
+    var view = new Listener.Views.SongForm({
+      model: song,
+    })
+    Listener.modalRouter.trigger('swapModal', view)
+  },
+
+  createBlog: function (event) {
+    event.preventDefault();
+    var blog = new Listener.Models.Blog();
+    var view = new Listener.Views.BlogForm({
+      model: blog,
+    })
+    Listener.modalRouter.trigger('swapModal', view)
   },
 
 });
