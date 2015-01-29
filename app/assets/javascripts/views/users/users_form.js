@@ -1,6 +1,8 @@
 Listener.Views.UsersForm = Backbone.View.extend({
 
   initialize: function(options){
+    this.edit = options.edit;
+    this.model = this.edit ? Listener.currentUser : new Listener.users.model();
   },
 
   template: JST['users/form'],
@@ -13,7 +15,7 @@ Listener.Views.UsersForm = Backbone.View.extend({
   },
 
   render: function(){
-    var html = this.template({ user: this.model });
+    var html = this.template({ user: this.model, edit: this.edit });
     this.$el.html(html);
 
     return this;
@@ -29,6 +31,10 @@ Listener.Views.UsersForm = Backbone.View.extend({
 
     var $form = $(event.currentTarget);
     var userData = $form.serializeJSON().user;
+    if (userData.password == '') {
+      delete userData.password;
+    }
+    debugger
     var that = this;
 
     this.model.set(userData);

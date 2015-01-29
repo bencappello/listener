@@ -7,13 +7,17 @@
 
         <section>
           <div class="modal-close js-modal-close">&times;</div>
-          <div id="form-title">Create A New Account</div>
+
+          <% if (edit) { %>
+            <div id="form-title">Edit Profile</div>
+          <% } else { %>
+            <div id="form-title">Create A New Account</div>
+          <% } %>
+
           <section id='errors'></section>
           <p><span class="fontawesome-user"></span><input type="text" placeholder="Username" name="user[username]" value="<%= user.escape("username") %>"></p>
           <p><span class="fontawesome-user"></span><input type="text" placeholder="Email" name="user[email]" value="<%= user.escape("email") %>"></p>
           <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password" name="user[password]"></p>
-
-
 
           <label>
             Upload A Profile Image
@@ -33,20 +37,24 @@
             <input class='upload' class='mytext' type="text" name="user[image_url]">
           </label>
 
+
+          <% if (edit) { %>
+            <button class='submit modal-submit'>Update Account</button>
+          <% } else { %>
+            <button class='submit modal-submit'>Create Account</button>
+          <% } %>
+
           <div id="loading"></div>
-
-
-          <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
-          <button class='submit modal-submit'>Create Account</button>
-
         </section>
 
       </form>
 
-      <p class='not-member'>Already a member?
-        <a id="sign-in-link" class='sign-up-link' href="#">Sign in</a>
-        <span class="fontawesome-arrow-right"></span>
-      </p>
+      <% if (!edit) { %>
+        <p class='not-member'>Already a member?
+          <a id="sign-in-link" class='sign-up-link' href="#">Sign in</a>
+          <span class="fontawesome-arrow-right"></span>
+        </p>
+      <% } %>
 
     </div> <!-- end login -->
 

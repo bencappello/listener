@@ -534,9 +534,6 @@ li.nav-link a:hover {
   color: #e0e0e0;
 }
 
-nav#top-nav {
-}
-
 section.user-info {
   float: right;
   display: block;
@@ -547,6 +544,11 @@ section.user-info {
 
 section.user-info a {
   display: block;
+}
+
+.btn-sign {
+  float: left;
+  margin-left: 10px;
 }
 
 .user-nav-dropdown {

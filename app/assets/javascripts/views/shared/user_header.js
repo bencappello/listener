@@ -11,6 +11,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
     "click #sign-up-link": "signUp",
     "click #add-song-link": "createSong",
     "click #add-blog-link": "createBlog",
+    'click .edit': 'editUser',
   },
 
   template: JST['shared/user_header'],
@@ -34,10 +35,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
 
   signUp: function (event) {
     event.preventDefault();
-    var model = new Listener.users.model();
-    var userFormView = new Listener.Views.UsersForm({
-      model: model
-    });
+    var userFormView = new Listener.Views.UsersForm();
     Listener.modalRouter.trigger('swapModal', userFormView)
   },
 
@@ -55,6 +53,14 @@ Listener.Views.UserHeader = Backbone.View.extend({
     var blog = new Listener.Models.Blog();
     var view = new Listener.Views.BlogForm({
       model: blog,
+    })
+    Listener.modalRouter.trigger('swapModal', view)
+  },
+
+  editUser: function (event) {
+    event.preventDefault();
+    var view = new Listener.Views.UsersForm({
+      edit: true
     })
     Listener.modalRouter.trigger('swapModal', view)
   },

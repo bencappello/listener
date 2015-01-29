@@ -15,16 +15,16 @@
       </li>
       <li><a href="#" id="add-song-link">Add Song</a></li>
       <li><a href="#" id="add-blog-link">Add Playlist</a></li>
-      <li><a href="#">Edit Profile</a></li>
+      <li><a href="#" class='edit'>Edit Profile</a></li>
       <li><a href="#" id="sign-out-link">Sign Out</a></li>
     </ul>
   </section>
 
 <% } else { %>
 
-  <section class='user-info signed-out'>
-      <a id="sign-up-link" class="js-modal-open">Sign Up</a>
-      <a id="sign-in-link" class="js-modal-open">Sign In</a>
+  <section class='group user-info signed-out'>
+      <a id="sign-up-link" class="btn-sign js-modal-open">Sign Up</a>
+      <a id="sign-in-link" class="btn-sign js-modal-open">Sign In</a>
   </section>
 
 <% } %>

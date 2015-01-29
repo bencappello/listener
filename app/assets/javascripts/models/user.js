@@ -115,7 +115,7 @@ Listener.Models.User = Backbone.Model.extend({
 
 Listener.Models.CurrentUser = Listener.Models.User.extend({
 
-  url: "/api/session",
+  url: "/api/users",
 
   initialize: function(options){
     this.listenTo(this, "change", this.fireSessionEvent);
@@ -141,7 +141,7 @@ Listener.Models.CurrentUser = Listener.Models.User.extend({
   signOut: function(options){
     var model = this;
     $.ajax({
-      url: this.url,
+      url: '/api/session',
       type: "DELETE",
       dataType: "json",
       success: function(data){
