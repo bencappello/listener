@@ -19,7 +19,7 @@ me = User.create!(
   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
   )
 
-20.times do
+5.times do
   User.create!(
     username: Faker::Name.name,
     email: Faker::Internet.email,
