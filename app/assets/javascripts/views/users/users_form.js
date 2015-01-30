@@ -21,6 +21,15 @@ Listener.Views.UsersForm = Backbone.View.extend({
     return this;
   },
 
+  renderErrors: function (resp) {
+    $('#errors').empty();
+    resp.responseJSON.forEach(function (el) {
+      var li = $('<li></li>');
+      li.html(el);
+      $('#errors').append(li);
+    })
+  },
+
   closeForm: function () {
     event.preventDefault();
     $(".modal").removeClass("is-open");
@@ -28,13 +37,11 @@ Listener.Views.UsersForm = Backbone.View.extend({
 
   submit: function(event){
     event.preventDefault();
-
     var $form = $(event.currentTarget);
     var userData = $form.serializeJSON().user;
     if (userData.password == '') {
       delete userData.password;
     }
-    debugger
     var that = this;
 
     this.model.set(userData);
@@ -44,6 +51,9 @@ Listener.Views.UsersForm = Backbone.View.extend({
         Listener.users.add(that.model, { merge: true });
         delete that.model._image;
         $(".modal").removeClass("is-open");
+        if (Backbone.history.fragment == 'users/' + resp.id) {
+          Listener.usersRouter.show(resp.id);
+        }
         Backbone.history.navigate("users/" + resp.id, { trigger: true });
       },
       error: function (model, resp) {

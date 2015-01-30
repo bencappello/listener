@@ -115,7 +115,7 @@ Listener.Models.User = Backbone.Model.extend({
 
 Listener.Models.CurrentUser = Listener.Models.User.extend({
 
-  url: "/api/users",
+  url: "/api/session",
 
   initialize: function(options){
     this.listenTo(this, "change", this.fireSessionEvent);

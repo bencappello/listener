@@ -24,7 +24,7 @@ window.Listener = {
     new Listener.Routers.BandsRouter();
     new Listener.Routers.BlogsRouter();
     new Listener.Routers.SongsRouter();
-    new Listener.Routers.UsersRouter();
+    this.usersRouter = new Listener.Routers.UsersRouter();
     this.modalRouter = new Listener.Routers.ModalRouter();
     Backbone.history.start();
 

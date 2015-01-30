@@ -28,10 +28,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     this._swapView(showView);
   },
 
-  // showFavorites: function (id) {
-  //
-  // }
-
   _requireSignedIn: function (callback) {
     if (!Listener.currentUser.isSignedIn()) {
       callback = callback || this._goHome.bind(this);
