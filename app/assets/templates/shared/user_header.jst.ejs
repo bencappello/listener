@@ -8,13 +8,13 @@
       <%= Listener.currentUser.escape("username") %>
     </a>
     <ul class="user-nav-dropdown">
+      <li><a href="#" id="add-song-link">Add Song</a></li>
+      <li><a href="#" id="add-blog-link">Add Playlist</a></li>
       <li><a href="#/users/<%= userID %>/feed">Feed</a></li>
       <li><a href="#/users/<%= userID %>/favorites">Favorites</a></li>
       <li>
         <a href="#/users/<%= userID %>/followed_blogs">Followed Playlists</a>
       </li>
-      <li><a href="#" id="add-song-link">Add Song</a></li>
-      <li><a href="#" id="add-blog-link">Add Playlist</a></li>
       <li><a href="#" class='edit'>Edit Profile</a></li>
       <li><a href="#" id="sign-out-link">Sign Out</a></li>
     </ul>

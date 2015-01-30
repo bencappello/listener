@@ -35,7 +35,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
 
   signUp: function (event) {
     event.preventDefault();
-    var userFormView = new Listener.Views.UsersForm();
+    var userFormView = new Listener.Views.UsersForm({edit: false});
     Listener.modalRouter.trigger('swapModal', userFormView)
   },
 

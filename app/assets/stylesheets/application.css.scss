@@ -507,31 +507,9 @@ div.modal-close:hover {
    z-index: 1;
  }
 
-#header-links {
-  float: right;
-}
-
 #user-nav {
   float: right;
   min-height: 50px;
-}
-
-ul#header-links {
-}
-
-li.nav-link {
-  float: left;
-  font-size: 18px;
-}
-
-li.nav-link a {
-  padding: 20px;
-  display: block;
-}
-
-li.nav-link a:hover {
-  background: black;
-  color: #e0e0e0;
 }
 
 section.user-info {
@@ -555,7 +533,7 @@ section.user-info a {
   display: none;
   position: absolute;
   left: -1px;
-  width: 100%;
+  min-width: 150px;
   font-size: 14px;
   white-space: nowrap;
   background: #333;
@@ -601,6 +579,65 @@ header h3 a:hover {
   color: white;
 }
 
+
+
+
+
+
+//TOP HEADER
+
+li.nav-link {
+  float: left;
+  font-size: 18px;
+  position: relative;
+}
+
+li.nav-link > a {
+  padding: 20px;
+  display: block;
+}
+
+li.nav-link:hover {
+  background: #222;
+  color: #e0e0e0;
+}
+
+#header-links {
+  float: right;
+  margin-right: 30px;
+}
+
+.top-header-dropdown {
+  display: none;
+  position: absolute;
+  left: 0px;
+  font-size: 14px;
+  color: #e0e0e0;
+  white-space: nowrap;
+  background: #222;
+  // border-bottom-left-radius: 5px;
+  // border-bottom-right-radius: 5px;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.top-header-dropdown a {
+  padding: 15px;
+  text-align: center;
+  display: block;
+}
+
+.top-header-dropdown a:hover {
+  text-decoration: underline;
+}
+
+#playlists-head:hover .playlists-dropdown {
+  display: block;
+}
+
+#songs-head:hover .songs-dropdown {
+  display: block;
+}
 
 
 
