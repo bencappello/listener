@@ -2,11 +2,6 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   model: Listener.Models.Song,
   url: 'api/songs',
 
-  // initialize: function (options) {
-  //   this.blog = options.blog
-  //   this.band = options.band
-  // },
-
   comparator: function (song) {
     return -song.get('id');
   },
@@ -26,6 +21,12 @@ Listener.Collections.Songs = Backbone.Collection.extend({
     }
 
     return song;
+  },
+
+  parse: function(response) {
+    this.page_number = parseInt(response.page_number);
+    this.total_pages = parseInt(response.total_pages);
+    return response.models;
   },
 
 });

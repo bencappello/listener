@@ -65,6 +65,10 @@
    color: #D0D4CD;
  }
 
+ input[type="text"] {
+   padding: 0 16px;
+ }
+
  .btn-comment {
    font-size: 12px;
    padding: 3px;
@@ -913,6 +917,10 @@ span.small-blog-songs {
 
 .close-lg:hover {
   color: red;
+}
+
+.songs-search {
+  padding: 20px;
 }
 
 

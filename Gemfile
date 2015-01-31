@@ -35,6 +35,7 @@ gem 'aws-sdk', '~> 1.5.7'
 gem "figaro"
 gem 'pg_search'
 gem 'faker'
+gem 'kaminari'
 
 group :development do
   gem 'better_errors'

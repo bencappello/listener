@@ -7,6 +7,16 @@ class Api::SongsController < ApplicationController
       else
         render :search
       end
+    elsif params[:find]
+      if params[:find] == 'popular_now'
+        @songs = Song.includes(:blog, :band)
+      elsif params[:find] == 'popular_all_time'
+        @songs = Song.includes(:blog, :band)
+      else
+        @songs = Song.includes(:blog, :band).order('created_at').limit(50)
+      end
+      @page = params[:page]
+      render :search
     else
       @songs = Song.all
       render :index
