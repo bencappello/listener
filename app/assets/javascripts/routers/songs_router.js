@@ -38,16 +38,18 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     this._swapView(view);
   },
 
-  search: function (query) {
+  search: function (query, page) {
+    page = page || 1
     var results = new Listener.Collections.Songs();
     results.fetch ({
-      data: {query: query}
+      data: {query: query, page: page}
     })
     var view = new Listener.Views.SongSearch({collection: results, query: query})
     this._swapView(view);
   },
 
   find: function (suffix, page) {
+    page = page || 1
     var songs = new Listener.Collections.Songs();
     songs.fetch ({
       data: {find: suffix, page: page}

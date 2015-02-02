@@ -1,7 +1,7 @@
 class Api::SongsController < ApplicationController
   def index
     if params[:query]
-      @songs = Song.includes(:blog, :band).search_by_title_or_band(params[:query])
+      @songs = Song.includes(:blog, :band).search_by_title_or_band(params[:query]).page(params[:page])
       if @songs.empty?
         render json: @songs, status: 422
       else

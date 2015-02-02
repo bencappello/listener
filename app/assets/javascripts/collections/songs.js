@@ -24,6 +24,7 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   },
 
   parse: function(response) {
+    debugger
     this.page_number = parseInt(response.page_number);
     this.total_pages = parseInt(response.total_pages);
     return response.models;
