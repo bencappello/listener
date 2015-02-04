@@ -2,9 +2,9 @@ Listener.Collections.Blogs = Backbone.Collection.extend({
   model: Listener.Models.Blog,
   url: 'api/blogs',
 
-  comparator: function (blog) {
-    return blog.escape('name');
-  },
+  // comparator: function (blog) {
+  //   return blog.escape('name');
+  // },
 
   getOrFetch: function (id) {
     var blog = this.get(id);
@@ -21,6 +21,12 @@ Listener.Collections.Blogs = Backbone.Collection.extend({
     }
 
     return blog;
+  },
+
+  parse: function(response) {
+    this.page_number = parseInt(response.page_number);
+    this.total_pages = parseInt(response.total_pages);
+    return response.models;
   },
 
 });

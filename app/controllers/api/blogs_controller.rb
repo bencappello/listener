@@ -1,7 +1,27 @@
 class Api::BlogsController < ApplicationController
   def index
-    @blogs = Blog.all
-    render :index
+    if params[:find] == 'popular_now'
+      time = 0
+      count = 0
+      while count < 5
+        time += 3
+        time_range = (Time.now - time.day)..Time.now
+        count = Blog.joins(:user_blogs).where(:user_blogs => {:created_at => time_range}).distinct.count('blogs.id')
+      end
+      @blogs = Blog.includes(:songs, :tags, :user).joins(:user_blogs)
+        .where(:user_blogs => {:created_at => time_range})
+          .group('blogs.id').order('COUNT(user_blogs.id) desc, blogs.id')
+            .page(params[:page])
+    elsif params[:find] == 'popular_all_time'
+      @blogs = Blog.includes(:songs, :tags, :user).joins(:user_blogs)
+        .group('blogs.id').order('COUNT(user_blogs.id) desc, blogs.id')
+          .page(params[:page])
+    else
+      @blogs = Blog.includes(:songs, :tags, :user).order('created_at desc')
+        .limit(50).page(params[:page])
+    end
+    @page = params[:page]
+    render :find
   end
 
   def new
@@ -24,7 +44,7 @@ class Api::BlogsController < ApplicationController
     @blog = Blog.includes(
       :user,
       :tags,
-      songs: [:blog, :band, :favoriters],
+      blogs: [:blog, :band, :favoriters],
       comments: :author
       ).find(params[:id])
     render :show

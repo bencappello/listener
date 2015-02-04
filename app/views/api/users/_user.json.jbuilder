@@ -7,11 +7,7 @@ json.songs user.songs do |song|
 end
 
 json.blogs user.blogs do |blog|
-  json.extract! blog, :id, :name, :user_id, :created_at, :updated_at
-
-  json.creator_name user.username
-  json.song_count blog.songs.count
-  json.tag_names blog.tags.pluck('name')
+  json.partial! "api/blogs/list_show", blog: blog
 end
 
 json.favorite_songs user.favorite_songs do |favorite_song|
@@ -19,11 +15,7 @@ json.favorite_songs user.favorite_songs do |favorite_song|
 end
 
 json.followed_blogs user.followed_blogs do |followed_blog|
-  json.extract! followed_blog, :id, :name, :user_id, :created_at, :updated_at
-
-  json.creator_name followed_blog.user.username
-  json.song_count followed_blog.songs.count
-  json.tag_names followed_blog.tags.pluck('name')
+  json.partial! "api/blogs/list_show", blog: followed_blog
 end
 
 json.followed_users user.followed_users do |followed_user|

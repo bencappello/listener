@@ -44,7 +44,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     results.fetch ({
       data: {query: query, page: page}
     })
-    var view = new Listener.Views.SongSearch({collection: results, query: query})
+    var view = new Listener.Views.SongsSearch({collection: results, query: query})
     this._swapView(view);
   },
 
@@ -55,7 +55,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     songs.fetch ({
       data: {find: suffix, page: page}
     })
-    var view = new Listener.Views.SongFind({collection: songs, suffix: suffix})
+    var view = new Listener.Views.SongsFind({collection: songs, suffix: suffix})
     this._swapView(view);
   },
 

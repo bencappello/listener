@@ -9,6 +9,7 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
     'blogs/new': 'blogNew',
     'blogs/:id': 'blogShow',
     'blogs/:id/edit': 'blogEdit',
+    'blogs/find/:suffix': 'find',
   },
 
   blogsIndex: function () {
@@ -32,6 +33,17 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
   blogEdit: function (id) {
     var blog = this.blogs.getOrFetch(id);
     var view = new Listener.Views.BlogForm({model: blog, collection: this.blogs})
+    this._swapView(view);
+  },
+
+  find: function (suffix, page) {
+    page = page || 1
+    suffix = suffix || 'popular_now'
+    var blogs = new Listener.Collections.Blogs();
+    blogs.fetch ({
+      data: {find: suffix, page: page}
+    })
+    var view = new Listener.Views.BlogsFind({collection: blogs, suffix: suffix})
     this._swapView(view);
   },
 

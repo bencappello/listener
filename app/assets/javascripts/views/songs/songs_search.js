@@ -1,7 +1,7 @@
-Listener.Views.SongSearch = Backbone.CompositeView.extend({
+Listener.Views.SongsSearch = Backbone.CompositeView.extend({
   template: JST['songs/search'],
 
-  className: 'songs-search',
+  className: 'find',
 
   initialize: function (options) {
     Backbone.GeneralView.prototype.initialize.call(this);

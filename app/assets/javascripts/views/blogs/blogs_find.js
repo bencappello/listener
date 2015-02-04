@@ -1,5 +1,5 @@
-Listener.Views.SongsFind = Backbone.CompositeView.extend({
-  template: JST['songs/find'],
+Listener.Views.BlogsFind = Backbone.CompositeView.extend({
+  template: JST['blogs/find'],
 
   className: 'find',
 
@@ -8,25 +8,25 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
     this.suffix = options.suffix;
     this.listenTo(this.collection, 'sync', this.render)
     this.listenForScroll();
-    this.newSongs = new Listener.Collections.Songs();
+    this.newBlogs = new Listener.Collections.Blogs();
   },
 
   render: function () {
-    this.$el.html(this.template({songs: this.collection, title: this.suffix}))
-    this.renderSongs();
+    this.$el.html(this.template({blogs: this.collection, title: this.suffix}))
+    this.renderBlogs();
     return this;
   },
 
-  addSong: function (song) {
-    var view = new Listener.Views.SongListShow({
-      model: song,
+  addBlog: function (blog) {
+    var view = new Listener.Views.BlogListShow({
+      model: blog,
     });
-    this.addSubview('section#songs', view);
+    this.addSubview('section#blogs', view);
   },
 
-  renderSongs: function () {
-    this.$el.find('section#songs').empty();
-    this.collection.each(this.addSong.bind(this));
+  renderBlogs: function () {
+    this.$el.find('section#blogs').empty();
+    this.collection.each(this.addBlog.bind(this));
   },
 
   listenForScroll: function () {
@@ -37,12 +37,12 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   nextPage: function () {
     var view = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-      var pageN = view.newSongs.page_number || 1
+      var pageN = view.newBlogs.page_number || 1
       if (pageN < view.collection.total_pages) {
-        view.newSongs.fetch({
+        view.newBlogs.fetch({
           data: { page: pageN + 1, find: view.suffix},
           success: function () {
-            view.newSongs.each(view.addSong.bind(view));
+            view.newBlogs.each(view.addBlog.bind(view));
           }
         });
       }
