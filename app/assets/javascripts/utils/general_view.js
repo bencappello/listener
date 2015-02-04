@@ -7,7 +7,7 @@ Backbone.GeneralView = Backbone.View.extend({
 
   bindStickyNav: function () {
     $(window).bind('scroll', function() {
-      if ($(window).scrollTop() > 62) {
+      if ($(window).scrollTop() > 60) {
         $('#sub-header').addClass('fixed');
       }
       else {
