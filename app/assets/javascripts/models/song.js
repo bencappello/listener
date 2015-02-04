@@ -28,7 +28,6 @@ Listener.Models.Song = Backbone.Model.extend ({
     var diff = Date.now() - Date.parse(postDate);
     var time;
     var sfx;
-    // debugger
     if ( diff < 3600000) {
       time = 'less than an hr ago';
     } else if (diff < 86457091) {

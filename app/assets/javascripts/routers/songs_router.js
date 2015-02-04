@@ -5,7 +5,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   routes: {
-    '': 'songsIndex',
+    '': 'find',
     'songs': 'songsIndex',
     'songs/:id': 'songShow',
     'songs/:id/edit': 'songEdit',
@@ -50,6 +50,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
 
   find: function (suffix, page) {
     page = page || 1
+    suffix = suffix || 'popular_now'
     var songs = new Listener.Collections.Songs();
     songs.fetch ({
       data: {find: suffix, page: page}

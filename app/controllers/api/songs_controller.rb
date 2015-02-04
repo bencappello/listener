@@ -10,15 +10,15 @@ class Api::SongsController < ApplicationController
         @page = params[:page]
         render :search
       end
-    elsif params[:find]
+
+    else
       if params[:find] == 'popular_now'
-        time = 1
+        time = 0
         count = 0
-        while count < 5
+        while count < 6
           time += 3
           time_range = (Time.now - time.day)..Time.now
-          count = Song.joins(:user_songs)
-            .where(:user_songs => {:created_at => time_range}).count
+          count = Song.joins(:user_songs).where(:user_songs => {:created_at => time_range}).distinct.count('songs.id')
         end
         @songs = Song.includes(:blog, :band, :user).joins(:user_songs)
           .where(:user_songs => {:created_at => time_range})
@@ -34,9 +34,6 @@ class Api::SongsController < ApplicationController
       end
       @page = params[:page]
       render :search
-    else
-      @songs = Song.all
-      render :index
     end
   end
 

@@ -7,7 +7,7 @@ class Song < ActiveRecord::Base
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
   has_attached_file :audio,
-  :default_url => "missing_song.jpg"
+  :default_url => "http://s3.amazonaws.com/listener-dev/songs/audios/000/000/005/original/stream?1422649924"
 
   validates_attachment_content_type :audio,
     content_type: /\Aaudio\/.*\Z/
