@@ -21,7 +21,6 @@ Listener.Views.SongFind = Backbone.CompositeView.extend({
     var view = new Listener.Views.SongListShow({
       model: song,
     });
-    console.log(song.id)
     this.addSubview('section#songs', view);
   },
 

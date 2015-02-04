@@ -19,7 +19,7 @@ Listener.Models.Blog = Backbone.Model.extend ({
       time = time.toString() + sfx;
     } else if (diff < 604918332 ) {
       time = Math.floor((diff / (60000 * 60 * 24)));
-      sfx = (time == 1) ? ' hr ago' : ' hrs ago';
+      sfx = (time == 1) ? ' day ago' : ' days ago';
       time = time.toString() + sfx;
     } else {
       time = 'on ' + postDate.toLocaleDateString();
