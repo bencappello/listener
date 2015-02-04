@@ -5,6 +5,7 @@ class Api::SongsController < ApplicationController
       if @songs.empty?
         render json: @songs, status: 422
       else
+        @page = params[:page]
         render :search
       end
     elsif params[:find]

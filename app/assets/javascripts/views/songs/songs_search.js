@@ -8,12 +8,13 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
     Backbone.GeneralView.prototype.initialize.call(this);
     this.query = options.query
     this.listenTo(this.collection, 'sync', this.render)
+    this.listenForScroll();
+    this.newSongs = new Listener.Collections.Songs();
   },
 
   render: function () {
     this.$el.html(this.template({songs: this.collection, query: this.query}))
     this.renderSongs();
-    this.listenForScroll();
     return this;
   },
 
@@ -30,18 +31,22 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
   },
 
   listenForScroll: function () {
-    $(window).off("scroll"); // remove previous listeners
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 200);
+    debugger
+    // $(window).off("scroll"); // remove previous listeners
+    var throttledCallback = _.throttle(this.nextPage.bind(this), 200, {leading: false});
     $(window).on("scroll", throttledCallback);
   },
 
   nextPage: function () {
     var view = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-      if (view.collection.page_number < view.collection.total_pages) {
-        view.collection.fetch({
-          data: { page: view.collection.page_number + 1 },
-          remove: false
+      var pageN = view.newSongs.page_number || 1
+      if (pageN < view.collection.total_pages) {
+        view.newSongs.fetch({
+          data: { page: pageN + 1, query: view.query},
+          success: function () {
+            view.newSongs.each(view.addSong.bind(view));
+          }
         });
       }
     }
