@@ -1,6 +1,19 @@
 Backbone.GeneralView = Backbone.View.extend({
   initialize: function () {
     this.listenTo(Listener.currentUser, 'signIn signOut signUp update', this.render);
+    $(window).off("scroll");
+    this.bindStickyNav();
+  },
+
+  bindStickyNav: function () {
+    $(window).bind('scroll', function() {
+      if ($(window).scrollTop() > 62) {
+        $('#sub-header').addClass('fixed');
+      }
+      else {
+        $('#sub-header').removeClass('fixed');
+      }
+    });
   },
 
   _requireSignedIn: function(callback){

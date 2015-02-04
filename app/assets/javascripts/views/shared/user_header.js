@@ -16,13 +16,13 @@ Listener.Views.UserHeader = Backbone.View.extend({
 
   template: JST['shared/user_header'],
 
-  render: function(){
+  render: function () {
     var html = this.template({ currentUser: Listener.currentUser });
     this.$el.html(html);
     return this;
   },
 
-  signOut: function(event){
+  signOut: function (event) {
     event.preventDefault();
     Listener.currentUser.signOut();
   },
