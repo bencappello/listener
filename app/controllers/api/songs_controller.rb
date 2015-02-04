@@ -1,7 +1,9 @@
 class Api::SongsController < ApplicationController
   def index
     if params[:query]
-      @songs = Song.includes(:blog, :band).search_by_title_or_band(params[:query]).page(params[:page])
+      @songs = Song.includes(:blog, :band, :user)
+        .search_by_title_or_band(params[:query])
+          .page(params[:page])
       if @songs.empty?
         render json: @songs, status: 422
       else
@@ -10,11 +12,25 @@ class Api::SongsController < ApplicationController
       end
     elsif params[:find]
       if params[:find] == 'popular_now'
-        @songs = Song.includes(:blog, :band)
+        time = 1
+        count = 0
+        while count < 5
+          time += 3
+          time_range = (Time.now - time.day)..Time.now
+          count = Song.joins(:user_songs)
+            .where(:user_songs => {:created_at => time_range}).count
+        end
+        @songs = Song.includes(:blog, :band, :user).joins(:user_songs)
+          .where(:user_songs => {:created_at => time_range})
+            .group('songs.id').order('COUNT(user_songs.id) desc, songs.id')
+              .page(params[:page])
       elsif params[:find] == 'popular_all_time'
-        @songs = Song.includes(:blog, :band)
+        @songs = Song.includes(:blog, :band, :user).joins(:user_songs)
+          .group('songs.id').order('COUNT(user_songs.id) desc, songs.id')
+            .page(params[:page])
       else
-        @songs = Song.includes(:blog, :band).order('created_at').limit(50)
+        @songs = Song.includes(:blog, :band, :user).order('created_at desc')
+          .limit(50).page(params[:page])
       end
       @page = params[:page]
       render :search
@@ -43,7 +59,14 @@ class Api::SongsController < ApplicationController
   end
 
   def show
-    @song = Song.includes(:user, :tags, :blog, :band, :favoriters, comments: :author).find(params[:id])
+    @song = Song.includes(
+      :user,
+      :tags,
+      :blog,
+      :band,
+      :favoriters,
+      comments: :author
+      ).find(params[:id])
     render :show
   end
 

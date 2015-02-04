@@ -1,0 +1,15 @@
+<% if (title == 'popular_all_time') { %>
+  <h1>Most Popular Songs All Time</h1>
+<% } else if (title == 'popular_now') { %>
+  <h1>Trending Songs</h1>
+<% } else { %>
+  <h1>Recently Added Songs</h1>
+<% } %>
+
+<section id="songs"></section>
+<br>
+<div id="no-results">
+  <% if (songs.length == 0) { %>
+    Sorry, there are no results for
+    <% } %>
+</div>

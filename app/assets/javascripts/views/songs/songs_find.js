@@ -1,18 +1,18 @@
-Listener.Views.SongSearch = Backbone.CompositeView.extend({
-  template: JST['songs/search'],
+Listener.Views.SongFind = Backbone.CompositeView.extend({
+  template: JST['songs/find'],
 
-  className: 'songs-search',
+  className: 'songs-find',
 
   initialize: function (options) {
     Backbone.GeneralView.prototype.initialize.call(this);
-    this.query = options.query
+    this.suffix = options.suffix;
     this.listenTo(this.collection, 'sync', this.render)
     this.listenForScroll();
     this.newSongs = new Listener.Collections.Songs();
   },
 
   render: function () {
-    this.$el.html(this.template({songs: this.collection, query: this.query}))
+    this.$el.html(this.template({songs: this.collection, title: this.suffix}))
     this.renderSongs();
     return this;
   },
@@ -21,6 +21,7 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
     var view = new Listener.Views.SongListShow({
       model: song,
     });
+    console.log(song.id)
     this.addSubview('section#songs', view);
   },
 
@@ -30,7 +31,6 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
   },
 
   listenForScroll: function () {
-    // $(window).off("scroll"); // remove previous listeners
     var throttledCallback = _.throttle(this.nextPage.bind(this), 200, {leading: false});
     $(window).on("scroll", throttledCallback);
   },
@@ -41,7 +41,7 @@ Listener.Views.SongSearch = Backbone.CompositeView.extend({
       var pageN = view.newSongs.page_number || 1
       if (pageN < view.collection.total_pages) {
         view.newSongs.fetch({
-          data: { page: pageN + 1, query: view.query},
+          data: { page: pageN + 1, find: view.suffix},
           success: function () {
             view.newSongs.each(view.addSong.bind(view));
           }
