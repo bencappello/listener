@@ -6,8 +6,6 @@ json.creator_name song.user.username
 json.blog_name song.blog.name
 json.band_name song.band.name
 
-json.tags song.tags do |tag|
-  json.extract! tag, :id, :name, :created_at, :updated_at
-end
+json.tag_names song.tags.pluck('name')
 
 json.favoriters_count song.favoriters.length

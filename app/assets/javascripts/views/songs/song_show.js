@@ -12,7 +12,6 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
     Backbone.GeneralView.prototype.initialize.call(this);
     this.listenTo(this.model, 'sync', this.render)
     this.listenTo(this.model.comments(), 'sync', this.renderComments)
-    // this.listenTo(Listener.currentUser, 'sync', this.render)
   },
 
   render: function () {
