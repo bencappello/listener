@@ -1,7 +1,7 @@
 <% var follows = Listener.currentUser.followedUsers() %>
 <section class='sidebar'>
   <section id='user-top'>
-    <img class ='large-image' src="<%= user.escape("profile_image_url") %>">
+    <img class ='profile-image' src="<%= user.escape("profile_image_url") %>">
     <h2><%= user.escape("username") %></h2>
 
     <% if (Listener.currentUser.id == user.id) { %>

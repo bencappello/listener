@@ -23,21 +23,16 @@
                 value="<%= song.escape('name') %>">
             </p>
 
-            <label>Band
-              <select name="song[band_id]">
+            <p>
+              <span class="fontawesome-headphones"></span>
+              <input
+                type="text"
+                placeholder="Artist"
+                name="song[band_name]"
+                value="<%= song.escape('band_name') %>">
+            </p>
 
-                <% Listener.allBands.forEach(function (band) { %>
-                  <option
-                  <% if (song.get('band_id') == band.id) { %>
-                    selected
-                  <% } %>
-                  value="<%= band.id %>">
-                  <%= band.escape('name') %>
-                </option>
-                <% }) %>
-              </select>
-            </label>
-            <br><br>
+            
 
             <label>Playlist
               <select name="song[blog_id]">

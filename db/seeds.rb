@@ -3,7 +3,6 @@ profile_pics = [
   "http://static.guim.co.uk/sys-images/Media/Pix/pictures/2010/8/19/1282237124087/Pink-Floyd-006.jpg",
   "http://fc09.deviantart.net/fs11/i/2006/254/2/5/The_Strokes__1__by_alexjames01.png",
   "https://mysterypeople.files.wordpress.com/2013/11/lou-reed-2.jpg",
-  "http://www.disc-o-graphy.com/images/65/8d/5d/23/ee/658d5d23e0a8b1558f37427c22f47e27.jpg",
   "http://i.dailymail.co.uk/i/pix/2012/07/25/article-2178781-00558A751000044C-896_306x423.jpg",
   "http://images4.fanpop.com/image/photos/17700000/Rolling-Stones-Wallpaper-classic-rock-17732124-1024-768.jpg",
   "http://rollingout.com/wp-content/uploads/2012/07/Frank+Ocean+01-e1305847591792.jpeg",
@@ -154,7 +153,7 @@ songs = Song.create!([
 
 
 User.all.each do |user|
-  5.times do
+  2.times do
     type = ['remix', 'regular'].sample
     blog_id = user.blogs.sample.id
     band_id = Band.all.sample.id

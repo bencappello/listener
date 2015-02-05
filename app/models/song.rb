@@ -48,4 +48,12 @@ class Song < ActiveRecord::Base
       self.image = image_url
     end
   end
+
+  def band_name=(band_name)
+    band = Band.find_by(name: band_name)
+    unless band
+      band = Band.create(name: band_name)
+    end
+    self.band_id = band.id
+  end
 end

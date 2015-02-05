@@ -6,7 +6,6 @@ class Api::BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
-    @band.user_id = current_user.id
 
     if @band.save
       render :show
@@ -16,7 +15,7 @@ class Api::BandsController < ApplicationController
   end
 
   def show
-    @band = Band.includes(:tags, songs: [:blog, :band, :favoriters], comments: :author).find(params[:id])
+    @band = Band.includes(songs: [:blog, :band, :favoriters], comments: :author).find(params[:id])
     render :show
   end
 

@@ -2,7 +2,7 @@
 <% var bandU = '#/bands/' + song.escape('band_id') %>
 <% var blogN = song.escape('blog_name') %>
 <% var blogU = '#/blogs/' + song.escape('blog_id') %>
-<% var songN = song.escape('name') %>
+<% var songN = song.fullName() %>
 <% var songU = '#/songs/' + song.id %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 <% var creatorN = song.escape('creator_name') %>
