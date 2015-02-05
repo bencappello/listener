@@ -30,13 +30,13 @@ Listener.Views.UserHeader = Backbone.View.extend({
   signIn: function (event) {
     event.preventDefault();
     var signInView = new Listener.Views.SignIn();
-    Listener.modalRouter.trigger('swapModal', signInView)
+    Listener.modalRouter.trigger('swapModal', signInView);
   },
 
   signUp: function (event) {
     event.preventDefault();
     var userFormView = new Listener.Views.UsersForm({edit: false});
-    Listener.modalRouter.trigger('swapModal', userFormView)
+    Listener.modalRouter.trigger('swapModal', userFormView);
   },
 
   createSong: function (event) {
@@ -45,7 +45,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
     var view = new Listener.Views.SongForm({
       model: song,
     })
-    Listener.modalRouter.trigger('swapModal', view)
+    Listener.modalRouter.trigger('swapModal', view);
   },
 
   createBlog: function (event) {
@@ -54,7 +54,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
     var view = new Listener.Views.BlogForm({
       model: blog,
     })
-    Listener.modalRouter.trigger('swapModal', view)
+    Listener.modalRouter.trigger('swapModal', view);
   },
 
   editUser: function (event) {
@@ -62,7 +62,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
     var view = new Listener.Views.UsersForm({
       edit: true
     })
-    Listener.modalRouter.trigger('swapModal', view)
+    Listener.modalRouter.trigger('swapModal', view);
   },
 
 });

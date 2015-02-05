@@ -5,6 +5,7 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
 
   events: {
     'click .favorite': 'toggleFavorite',
+    'click #play-btn': 'playSong',
   },
 
   initialize: function (options) {
@@ -43,5 +44,9 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
   renderFavoriteCount: function () {
     count = $('<span>' + this.model.get('favoriters_count') + '</span>');
     $('#favorite-count').html(count);
+  },
+
+  playSong: function () {
+    Listener.audioPlayer.changeSong(this.model);
   },
 });

@@ -15,10 +15,11 @@ window.Listener = {
     this.allBands = new Listener.Collections.Bands();
     this.allBands.fetch();
 
-    this.allSongs = new Listener.Collections.Bands();
-    this.allSongs.fetch();
+    this.allSongs = new Listener.Collections.Songs();
+    // this.allSongs.fetch();
 
     this.topHeader = new Listener.Views.TopHeader({ el: "#top-header" });
+    this.audioPlayer = new Listener.Views.AudioPlayer({ el: '#audio-container'})
     this.userHeader = new Listener.Views.UserHeader({ el: "#user-nav" });
 
     new Listener.Routers.BandsRouter();

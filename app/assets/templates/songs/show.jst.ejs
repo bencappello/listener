@@ -28,7 +28,7 @@
   <button
     class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
   </button>
-  <button class="play"></i></button>
+  <button id="play-btn"></i></button>
   <% if (Listener.currentUser.id == song.escape('user_id')) { %>
     <section class='top-buttons'>
       <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>

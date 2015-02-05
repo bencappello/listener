@@ -516,6 +516,51 @@ div.modal-close:hover {
   min-height: 50px;
 }
 
+
+
+
+
+//AUDTIO PLAYER
+
+
+
+
+section#audio-container {
+  display: block;
+  float: left;
+  margin-left: 20px;
+  // padding: 7px 0;
+}
+
+section#player-left {
+  display: block;
+  float: left;
+}
+
+#player-img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid red;
+}
+
+section#player-right {
+  display: block;
+  float: right;
+}
+
+#song-title {
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+
+
+
+
+//USER-INFO-NAV
+
+
+
 section.user-info {
   float: right;
   display: block;
@@ -952,6 +997,14 @@ span.small-blog-songs {
 
 //SONG-LIST
 
+#song-list-controls {
+  border: 1px solid #83c441;
+  box-shadow: 0px 0px 3pt 1pt black;
+  padding: 0px 5px;
+  width: 90px;
+  margin-top: 10px;
+  text-align: center;
+}
 
 #favorite-count {
   font-size: 18px;
@@ -982,7 +1035,7 @@ span.small-blog-songs {
   content: '♥';
 }
 
-.play {
+#play-btn {
   padding: 2px 3px;
   margin: 5px;
   background: transparent;
@@ -990,7 +1043,7 @@ span.small-blog-songs {
   color: gray;
 }
 
-.play:after {
+#play-btn:after {
   content: "►";
 }
 
@@ -998,7 +1051,7 @@ span.small-blog-songs {
   color: #090E7D;
 }
 
-.play:hover {
+#play-btn:hover {
   color: #0063dc;
   background: #A3A3A3;
 }

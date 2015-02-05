@@ -8,7 +8,8 @@ pics = [
   "http://images4.fanpop.com/image/photos/17700000/Rolling-Stones-Wallpaper-classic-rock-17732124-1024-768.jpg",
   "http://rollingout.com/wp-content/uploads/2012/07/Frank+Ocean+01-e1305847591792.jpeg",
   "http://the305.com/blog/wp-content/uploads/2014/05/earl-sweatshirt.jpg",
-  "http://www.chartattack.com/wp-content/uploads/2013/01/DEVENDRA-BANHART-32.jpg"
+  "http://www.chartattack.com/wp-content/uploads/2013/01/DEVENDRA-BANHART-32.jpg",
+  "http://images.daytrotter.com/concerts/320/21021209-37385753.jpg"
 ]
 
 
@@ -19,7 +20,7 @@ me = User.create!(
   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
   )
 
-5.times do
+25.times do
   User.create!(
     username: Faker::Name.name,
     email: Faker::Internet.email,
@@ -129,7 +130,7 @@ songs = Song.create!([
 
 
 User.all.each do |user|
-  5.times do
+  10.times do
     type = ['remix', 'regular'].sample
     blog_id = user.blogs.sample.id
     band_id = Band.all.sample.id
@@ -138,7 +139,7 @@ User.all.each do |user|
     UserSong.create(user_id: user.id, song_id: Song.all.sample.id)
   end
 
-  4.times do
+  5.times do
     UserBlog.create(user_id: user.id, blog_id: Blog.all.sample.id)
   end
 end

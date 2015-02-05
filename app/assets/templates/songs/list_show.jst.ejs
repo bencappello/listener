@@ -1,8 +1,8 @@
-<% var bandN = song.get('band_name') %>
-<% var bandU = '#/bands/' + song.get('band_id') %>
-<% var blogN = song.get('blog_name') %>
-<% var blogU = '#/blogs/' + song.get('blog_id') %>
-<% var songN = song.get('name') %>
+<% var bandN = song.escape('band_name') %>
+<% var bandU = '#/bands/' + song.escape('band_id') %>
+<% var blogN = song.escape('blog_name') %>
+<% var blogU = '#/blogs/' + song.escape('blog_id') %>
+<% var songN = song.escape('name') %>
 <% var songU = '#/songs/' + song.id %>
 <% var favorites = Listener.currentUser.favoriteSongs() %>
 <% var creatorN = song.escape('creator_name') %>
@@ -17,15 +17,14 @@
   <h4>Added <%= song.postTime() %> by <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
     , Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
 
-    <audio src="<%= song.get('audio_url') %>" controls>
-      <p>Your browser does not support the audio element </p>
-    </audio>
-    <br>
+  <section id='song-list-controls'>
     <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
     <button
       class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
     </button>
-  <button class="play"></button>
+    <button id="play-btn"></button>
+  </section>
+
 
   <br>
   <label>Genres</label>
