@@ -6,6 +6,7 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
   events: {
     'click .favorite': 'toggleFavorite',
     'click .edit': 'editSong',
+    'click #play-btn': 'playSong',
   },
 
   initialize: function () {
@@ -55,5 +56,9 @@ Listener.Views.SongShow = Backbone.CommentableView.extend({
       edit: true
     })
     Listener.modalRouter.trigger('swapModal', view)
+  },
+
+  playSong: function () {
+    Listener.audioPlayer.changeSong(this.model);
   },
 });

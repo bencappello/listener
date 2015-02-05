@@ -19,16 +19,14 @@
   <br>
   Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
 
-  <audio src="<%= song.get('audio_url') %>" controls>
-    <p>Your browser does not support the audio element </p>
-  </audio>
-
-  <br>
-  <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
-  <button
-    class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-  </button>
-  <button id="play-btn"></i></button>
+  <section id='song-list-controls'>
+    <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
+    <button
+      class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+    </button>
+    <button id="play-btn"></button>
+  </section>
+  
   <% if (Listener.currentUser.id == song.escape('user_id')) { %>
     <section class='top-buttons'>
       <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
