@@ -9,7 +9,7 @@
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
 <section class='list-song'>
-  <a href="<%= songU %>"><img class='thumbnail' src="<%= song.get("image_url") %>"></a>
+  <a href="<%= songU %>"><img class='thumbnail' src="<%= song.escape("list_image_url") %>"></a>
   <h2>
     <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
     <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>

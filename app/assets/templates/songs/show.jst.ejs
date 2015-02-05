@@ -10,7 +10,7 @@
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
 <section class='song-left'>
-  <img class='large-image' src="<%= song.get("image_url") %>">
+  <img class='large-image' src="<%= song.escape("large_image_url") %>">
   <h2>
     <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
     <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
@@ -26,7 +26,7 @@
     </button>
     <button id="play-btn"></button>
   </section>
-  
+
   <% if (Listener.currentUser.id == song.escape('user_id')) { %>
     <section class='top-buttons'>
       <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>

@@ -13,7 +13,7 @@ window.Listener = {
     this.tags.fetch();
 
     this.allBands = new Listener.Collections.Bands();
-    this.allBands.fetch();
+    // this.allBands.fetch();
 
     this.allSongs = new Listener.Collections.Songs();
     // this.allSongs.fetch();

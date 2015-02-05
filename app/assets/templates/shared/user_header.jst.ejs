@@ -4,7 +4,7 @@
 
   <section class='user-info'>
     <a href="#users/<%= Listener.currentUser.id %>">
-      <img class ='img-tiny' src="<%= currentUser.get("image_url") %>">
+      <img class ='img-tiny' src="<%= currentUser.get("nav_image_url") %>">
       <%= Listener.currentUser.escape("username") %>
     </a>
     <ul class="user-nav-dropdown">

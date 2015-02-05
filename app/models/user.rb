@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   validates :email, :username, uniqueness: true
 
   has_attached_file :image,
-  :default_url => "missing.jpg"
+  default_url: "missing.jpg",
+  styles: {profile: '200x200', nav: '-quality 40 -strip'}
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 

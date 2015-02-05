@@ -1,6 +1,7 @@
 Listener.Views.AudioPlayer = Backbone.View.extend({
 
   initialize: function(options){
+    this.initialSong = new Listener.Models.Song({id: 1})
     this.render();
   },
 
@@ -11,12 +12,18 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
 
   render: function () {
     var html = this.template();
+    var that = this
     this.$el.html(html);
+    this.initialSong.fetch({
+      success: function () {
+        that.changeSong(that.initialSong, 'load');
+      }
+    })
     return this;
   },
 
-  changeSong: function (song) {
-    var imageUrl = song.escape('image_url');
+  changeSong: function (song, load) {
+    var imageUrl = song.escape('nav_image_url');
     var audioUrl = song.escape('audio_url');
     var name = song.escape('band_name') + ' - ' + song.escape('name');
 
@@ -26,7 +33,9 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
     this.$el.find('#song-title').html(name);
     audioPlayer[0].pause();
     audioPlayer[0].load();
-    audioPlayer[0].play();
+    if (!load) {
+      audioPlayer[0].play();
+    }
   },
 
 });

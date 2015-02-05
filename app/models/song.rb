@@ -13,7 +13,8 @@ class Song < ActiveRecord::Base
     content_type: /\Aaudio\/.*\Z/
 
   has_attached_file :image,
-  :default_url => "missing_song.jpg"
+  default_url: "missing_song.jpg",
+  styles: {large: '200x200', list: '-quality 100 -strip', nav: '-quality 40 -strip'}
 
   validates_attachment_content_type :image,
     :content_type => /\Aimage\/.*\Z/

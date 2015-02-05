@@ -1,5 +1,6 @@
 json.(user, :id, :username, :email, :created_at, :updated_at)
-json.image_url asset_path(user.image.url)
+json.profile_image_url asset_path(user.image.url(:profile))
+json.nav_image_url asset_path(user.image.url(:nav))
 
 
 json.songs user.songs do |song|

@@ -524,11 +524,11 @@ div.modal-close:hover {
 
 
 
-
 section#audio-container {
   display: block;
   float: left;
   margin-left: 20px;
+  width: 700px;
   // padding: 7px 0;
 }
 
@@ -542,6 +542,7 @@ section#player-left {
   height: 40px;
   border: 1px solid red;
   margin-top: 5px;
+  // margin-bottom: 20px;
 }
 
 section#player-right {
@@ -549,9 +550,18 @@ section#player-right {
   float: right;
 }
 
+#audio-player {
+  float: left;
+  background: black;
+  margin-top: 10px;
+
+}
+
 #song-title {
+  float: left;
   font-size: 16px;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-top: 17px;
 }
 
 
@@ -620,11 +630,7 @@ section.user-info a {
 header h3 {
   float: left;
   float: left;
-  padding: 12px 15px;
-}
-
-header h3:after {
-  // content: "♫"
+  padding: 20px 15px;
 }
 
 header h3 a:hover {
