@@ -47,7 +47,13 @@ Listener.Views.CommentForm = Backbone.CompositeView.extend({
   },
 
   create: function (event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+      $(event.currentTarget).addClass('hello');
+    }
+    var callback = this.create.bind(this);
+    if (!this._requireSignedIn(callback)) { return; }
+
     this.collection.create({
       body: this.$('textarea').val(),
       commentable_id: this.parent_id,
