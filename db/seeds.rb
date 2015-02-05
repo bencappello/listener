@@ -1,4 +1,4 @@
-pics = [
+profile_pics = [
   "http://www.mtv.com/crop-images/2013/09/09/slash.jpg",
   "http://static.guim.co.uk/sys-images/Media/Pix/pictures/2010/8/19/1282237124087/Pink-Floyd-006.jpg",
   "http://fc09.deviantart.net/fs11/i/2006/254/2/5/The_Strokes__1__by_alexjames01.png",
@@ -12,6 +12,30 @@ pics = [
   "http://images.daytrotter.com/concerts/320/21021209-37385753.jpg"
 ]
 
+album_pics = [
+  'http://mystartupiscoolerthanyours.com/wp-content/uploads/2014/05/Sunset-from-Artsy-HQ.jpg',
+  'http://www.zingerbugimages.com/backgrounds/artsy_magenta_trees.jpg',
+  'http://bristolwood.net/wp-content/uploads/2009/02/artsy-accidental-shotsmall.jpg',
+  'http://cas.umkc.edu/physics/sps/projects/pinhole/ARTSY.JPG',
+  'http://images.fineartamerica.com/images-medium/im-so-artsy-all-of-the-sudden-johnathan-dahl.jpg',
+  'http://data3.whicdn.com/images/64182946/original.jpg',
+  'http://fc03.deviantart.net/fs17/f/2007/149/9/b/artsy_splats_by_Maikey.jpg',
+  'https://photos.travelblog.org/Photos/1294/195485/f/1461857-My-attempt-at-artsy-photography-0.jpg',
+  'http://25.media.tumblr.com/tumblr_m4v2qcM0fL1ql5w50o1_500.jpg',
+  'http://cloud.lomography.com/576/581/ea/2cd7125a76c38623bec119ce97ddd21072cfe9.jpg',
+  'http://wac.450f.edgecastcdn.net/80450F/929jackfm.com/files/2012/08/photooftheday-iphone-gf-night-summer-newyork-buffalo-tunnel-light-blackandwhite-@mattbissett-Instagram.jpg',
+  'http://images.fineartamerica.com/images-medium-large/welcome-to-artsy-asheville-gray-artus.jpg',
+  'http://images.fineartamerica.com/images-medium/artsy-sunflower-sonya-chalmers.jpg',
+  'http://fc01.deviantart.net/fs70/f/2013/158/0/c/splatter_1_by_artsy_antics-d684y6m.png',
+  'http://www.archerville.com/sue/stilllife/1207/Artsy-Apple2.jpg',
+  'http://lh4.ggpht.com/-8d-Sk1YQR7M/UmgxK4HwLKI/AAAAAAAAegI/yFRRVD0OExg/11-29-13%252520koda%252520chrome%252520forest-AFF8_thumb%25255B2%25255D.jpg?imgmax=800',
+  'http://images2.layoutsparks.com/1/130352/artsy-black-design-background-31000.jpg',
+  'http://s8.favim.com/orig/72/ii-art-artsy-beautiful-Favim.com-689826.jpg',
+  'http://media.creativebloq.futurecdn.net/sites/creativebloq.com/files/articles/article/2012/06/Young_Magic_LP_cover_flat.jpg',
+  'http://1.bp.blogspot.com/_pdM8IBQO_cQ/TL3-famA0eI/AAAAAAAAAAU/fbAm97gHZWg/s1600/The+Catalyst+4.75+single+DJ+Crossfire.JPEG',
+  'http://www.weallwantsomeone.org/wp-content/uploads/2012/03/f251d544.jpg'
+]
+
 
 me = User.create!(
   username: 'thatpurplestuff',
@@ -20,12 +44,12 @@ me = User.create!(
   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
   )
 
-25.times do
+5.times do
   User.create!(
     username: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'password',
-    image_url: pics.sample
+    image_url: profile_pics.sample
   )
 end
 
@@ -104,7 +128,7 @@ songs = Song.create!([
   {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 3,
     audio_url: "https://api.soundcloud.com/tracks/122556104/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
   {name: "Santeria", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 1},
-  {name: "Satisfaction", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 2},  
+  {name: "Satisfaction", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 2},
   {name: "You Are My Face", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 4},
   {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 5,
     audio_url: "https://api.soundcloud.com/tracks/34532583/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
@@ -130,11 +154,18 @@ songs = Song.create!([
 
 
 User.all.each do |user|
-  10.times do
+  5.times do
     type = ['remix', 'regular'].sample
     blog_id = user.blogs.sample.id
     band_id = Band.all.sample.id
-    Song.create(name: Faker::App.name, song_type: type, blog_id: blog_id, user_id: user.id, band_id: band_id)
+    Song.create(
+      name: Faker::App.name,
+      song_type: type,
+      blog_id: blog_id,
+      user_id: user.id,
+      band_id: band_id,
+      image_url: album_pics.sample
+    )
 
     UserSong.create(user_id: user.id, song_id: Song.all.sample.id)
   end
@@ -154,7 +185,12 @@ Band.all.each do |band|
   end
 
   7.times do
-    Comment.create!(user_id: User.all.sample.id, body: Faker::Hacker.say_something_smart, commentable_id: band.id, commentable_type: 'Band')
+    Comment.create!(
+      user_id: User.all.sample.id,
+      body: Faker::Hacker.say_something_smart,
+      commentable_id: band.id,
+      commentable_type: 'Band'
+    )
   end
 end
 
@@ -164,7 +200,12 @@ Blog.all.each do |blog|
   end
 
   7.times do
-    Comment.create!(user_id: User.all.sample.id, body: Faker::Hacker.say_something_smart, commentable_id: blog.id, commentable_type: 'Blog')
+    Comment.create!(
+      user_id: User.all.sample.id,
+      body: Faker::Hacker.say_something_smart,
+      commentable_id: blog.id,
+      commentable_type: 'Blog'
+    )
   end
 end
 
@@ -174,6 +215,11 @@ Song.all.each do |song|
   end
 
   7.times do
-    Comment.create!(user_id: User.all.sample.id, body: Faker::Hacker.say_something_smart, commentable_id: song.id, commentable_type: 'Song')
+    Comment.create!(
+      user_id: User.all.sample.id,
+      body: Faker::Hacker.say_something_smart,
+      commentable_id: song.id,
+      commentable_type: 'Song'
+    )
   end
 end

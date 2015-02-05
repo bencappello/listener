@@ -24,9 +24,13 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   },
 
   parse: function(response) {
-    this.page_number = parseInt(response.page_number);
-    this.total_pages = parseInt(response.total_pages);
-    return response.models;
+    if (response.page_number) {
+      this.page_number = parseInt(response.page_number);
+      this.total_pages = parseInt(response.total_pages);
+      return response.models;
+    } else {
+      return response;
+    }
   },
 
 });
