@@ -37,6 +37,17 @@ album_pics = [
   'http://wac.450f.edgecastcdn.net/80450F/diffuser.fm/files/2012/05/crystal_20antlers_album_20cover.jpg'
 ]
 
+markov = MarkyMarkov::TemporaryDictionary.new
+markov.parse_file "./app/assets/text/david_copperfield.txt"
+
+def generate_name
+  phrase = TokenPhrase.generate(' ').split(' ')
+  name = []
+  name << phrase[0]
+  name << phrase[3]
+  name.join(' ')
+end
+
 
 me = User.create!(
   username: 'thatpurplestuff',
@@ -45,7 +56,7 @@ me = User.create!(
   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
   )
 
-5.times do
+15.times do
   User.create!(
     username: Faker::Name.name,
     email: Faker::Internet.email,
@@ -78,9 +89,6 @@ tags = Tag.create!([
   {name: 'Ska'}
 ])
 
-
-
-
 bands = Band.create!([
   {name: 'Sublime'},
   {name: 'Rolling Stones'},
@@ -102,33 +110,24 @@ bands = Band.create!([
   {name: 'Sia'},
 ])
 
-10.times do
-  Band.create(name: Faker::App.author)
+30.times do
+  Band.create(name: generate_name)
 end
-
-10.times do
-  Band.create(name: Faker::Address.city)
-end
-
 
 User.all.each do |user|
-  1.times do
-    Blog.create(name: Faker::App.name, user_id: user.id, created_at: Time.now - rand(100).day)
-  end
-
-  1.times do
-    Blog.create(name: Faker::Company.name, user_id: user.id, created_at: Time.now - rand(100).day)
-  end
-
-  1.times do
-    Blog.create!(name: Faker::Internet.domain_word, user_id: user.id, created_at: Time.now - rand(100).day)
+  (rand(4) + 1).times do
+    Blog.create(
+      name: generate_name,
+      user_id: user.id,
+      created_at: Time.now - rand(100).day
+    )
   end
 end
 
 
 songs = Song.create!([
   {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 3,
-    audio_url: "https://api.soundcloud.com/tracks/122556104/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/001/original/stream?1423248781", created_at: Time.now - rand(100).day,
     image_url: 'http://upload.wikimedia.org/wikipedia/en/e/e7/The_Strokes_-_Ist_Tis_It_US_cover.png'},
   {name: "Santeria", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 1, created_at: Time.now - rand(100).day,
     image_url: 'http://upload.wikimedia.org/wikipedia/en/9/94/Sublime_Self-Titled.jpg'},
@@ -137,7 +136,7 @@ songs = Song.create!([
   {name: "You Are My Face", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 4, created_at: Time.now - rand(100).day,
     image_url: 'http://a3.img.mobypicture.com/376af02f9281ddc43d2f9326600ccff9_view.jpg'},
   {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 5,
-    audio_url: "https://api.soundcloud.com/tracks/34532583/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    audio_url: "http://s3.amazonaws.com/listener-dev/songs/audios/000/000/005/original/stream?1422649924", created_at: Time.now - rand(100).day,
     image_url: 'http://youtellconcerts.com/wp-content/uploads/2008/07/chromeomusicbox.jpg'},
   {name: "Girls", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 6, created_at: Time.now - rand(100).day,
     image_url: 'http://upload.wikimedia.org/wikipedia/en/5/55/Girls-album.jpg'},
@@ -146,12 +145,12 @@ songs = Song.create!([
   {name: "So What", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 8, created_at: Time.now - rand(100).day,
     image_url: 'http://ecx.images-amazon.com/images/I/61L2pef6hzL._SL500_AA280_.jpg'},
   {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 9,
-    audio_url: "https://api.soundcloud.com/tracks/115417954/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/009/original/stream?1423248796", created_at: Time.now - rand(100).day,
     image_url: 'http://www.queenfanclub.nl/uploads/Bohemian%20Rhapsody.jpg'},
   {name: "Money", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 10, created_at: Time.now - rand(100).day,
     image_url: 'http://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png'},
   {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 11,
-    audio_url: "https://api.soundcloud.com/tracks/1366184/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/011/original/stream?1423248801", created_at: Time.now - rand(100).day,
     image_url: 'http://upload.wikimedia.org/wikipedia/en/0/01/Fleet_foxes.jpg'},
   {name: "Postcards From Italy", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 12, created_at: Time.now - rand(100).day,
     image_url: 'http://ecx.images-amazon.com/images/I/51CHIgaEHjL._SS280.jpg'},
@@ -162,7 +161,7 @@ songs = Song.create!([
   {name: "Starálfur", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 15, created_at: Time.now - rand(100).day,
     image_url: 'http://ecx.images-amazon.com/images/I/51sDqoy0yxL._SS280.jpg'},
   {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 16,
-    audio_url: "https://api.soundcloud.com/tracks/16294193/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/016/original/stream?1423248810", created_at: Time.now - rand(100).day,
     image_url: 'https://38.media.tumblr.com/tumblr_mipeq2gini1s6o2alo1_1361674443_cover.jpg'},
   {name: "First of the Gang to Die", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 17, created_at: Time.now - rand(100).day,
     image_url: 'http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/MorrisseyFirstGang.jpg/220px-MorrisseyFirstGang.jpg'},
@@ -170,14 +169,13 @@ songs = Song.create!([
     image_url: 'http://buzzworthy.mtv.com//wp-content/uploads/buzz/2014/03/sia-chandelier-cover-art.jpg'},
 ])
 
-
 User.all.each do |user|
-  2.times do
+  (rand(3) + 5).times do
     type = ['remix', 'regular'].sample
     blog_id = user.blogs.sample.id
     band_id = Band.all.sample.id
     Song.create(
-      name: Faker::App.name,
+      name: generate_name,
       song_type: type,
       blog_id: blog_id,
       user_id: user.id,
@@ -187,14 +185,14 @@ User.all.each do |user|
     )
   end
 
-  10.times do
+  12.times do
     UserSong.create(
       user_id: user.id,
       song_id: Song.all.sample.id,
       created_at: Time.now - rand(8).day)
   end
 
-  5.times do
+  7.times do
     UserBlog.create(
       user_id: user.id,
       blog_id: Blog.all.sample.id,
@@ -207,10 +205,10 @@ end
 #Genre Tags
 
 Band.all.each do |band|
-  7.times do
+  10.times do
     Comment.create!(
       user_id: User.all.sample.id,
-      body: Faker::Hacker.say_something_smart,
+      body: markov.generate_n_sentences(rand(5) + 1),
       commentable_id: band.id,
       commentable_type: 'Band',
       created_at: Time.now - rand(100).day
@@ -219,14 +217,14 @@ Band.all.each do |band|
 end
 
 Blog.all.each do |blog|
-  3.times do
+  (rand(4) + 2).times do
     BlogTag.create(blog: blog, tag_id: Tag.all.sample.id)
   end
 
-  7.times do
+  10.times do
     Comment.create!(
       user_id: User.all.sample.id,
-      body: Faker::Hacker.say_something_smart,
+      body: markov.generate_n_sentences(rand(5) + 1),
       commentable_id: blog.id,
       commentable_type: 'Blog',
       created_at: Time.now - rand(100).day
@@ -235,14 +233,14 @@ Blog.all.each do |blog|
 end
 
 Song.all.each do |song|
-  3.times do
+  (rand(3) + 1).times do
     SongTag.create(song: song, tag_id: Tag.all.sample.id)
   end
 
-  7.times do
+  10.times do
     Comment.create!(
       user_id: User.all.sample.id,
-      body: Faker::Hacker.say_something_smart,
+      body: markov.generate_n_sentences(rand(4) + 1),
       commentable_id: song.id,
       commentable_type: 'Song',
       created_at: Time.now - rand(100).day

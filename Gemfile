@@ -36,6 +36,8 @@ gem "figaro"
 gem 'pg_search'
 gem 'faker'
 gem 'kaminari'
+gem 'token_phrase'
+gem 'marky_markov'
 
 group :development do
   gem 'better_errors'
