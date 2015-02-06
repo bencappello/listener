@@ -13,10 +13,10 @@ class Api::SongsController < ApplicationController
 
     else
       if params[:find] == 'popular_now'
-        time = 0
+        time = 2
         count = 0
         while count < 5
-          time += 3
+          time += 1
           time_range = (Time.now - time.day)..Time.now
           count = Song.joins(:user_songs).where(:user_songs => {:created_at => time_range}).distinct.count('songs.id')
         end

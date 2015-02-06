@@ -826,6 +826,7 @@ span.line-break {
 }
 
 .list-song {
+  padding: 0 0 20px 0;
   border-bottom: 1px solid black;
   width: 100%;
   display: block;
@@ -1014,29 +1015,40 @@ span.small-blog-songs {
 
 //SONG-LIST
 
+.song-top {
+  margin-bottom: 10px;
+}
+
 #song-list-controls {
+  float: left;
   border: 1px solid #83c441;
   box-shadow: 0px 0px 3pt 1pt black;
   padding: 0px 5px;
-  width: 90px;
-  margin-top: 10px;
+  width: 190px;
+  margin-top: 20px;
+  margin-left: 200px;
   text-align: center;
 }
 
+.list-img {
+  float: left;
+}
+
 #favorite-count {
-  font-size: 18px;
+  font-size: 30px;
+  color: gray;
 }
 
 .favorite {
-  font-size: 18px;
   background: transparent;
   padding: 0px;
   color: gray;
   border-radius: 5px;
-  font-size: 27px;
+  font-size: 32px;
+  margin: 5px
 }
 
-.unfavorite {
+#song-list-controls .unfavorite {
   color: #DE3535;
 }
 
@@ -1048,21 +1060,21 @@ span.small-blog-songs {
   color: #DE3535;
 }
 
-.favorite:after {
-  content: '♥';
-}
+// .favorite:after {
+//   content: '♥';
+// }
 
 #play-btn {
-  padding: 2px 3px;
+  padding: 2px 7px;
   margin: 5px;
   background: transparent;
-  font-size: 22px;
+  font-size: 32px;
   color: gray;
 }
 
-#play-btn:after {
-  content: "►";
-}
+// #play-btn:after {
+//   content: "►";
+// }
 
 .blue {
   color: #090E7D;

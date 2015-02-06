@@ -48,7 +48,8 @@ me = User.create!(
     username: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'password',
-    image_url: profile_pics.sample
+    image_url: profile_pics.sample,
+    created_at: Time.now - rand(100).day
   )
 end
 
@@ -110,46 +111,62 @@ end
 
 User.all.each do |user|
   1.times do
-    Blog.create(name: Faker::App.name, user_id: user.id)
+    Blog.create(name: Faker::App.name, user_id: user.id, created_at: Time.now - rand(100).day)
   end
 
   1.times do
-    Blog.create(name: Faker::Company.name, user_id: user.id)
+    Blog.create(name: Faker::Company.name, user_id: user.id, created_at: Time.now - rand(100).day)
   end
 
   1.times do
-    Blog.create!(name: Faker::Internet.domain_word, user_id: user.id)
+    Blog.create!(name: Faker::Internet.domain_word, user_id: user.id, created_at: Time.now - rand(100).day)
   end
 end
 
 
 songs = Song.create!([
   {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 3,
-    audio_url: "https://api.soundcloud.com/tracks/122556104/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Santeria", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 1},
-  {name: "Satisfaction", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 2},
-  {name: "You Are My Face", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 4},
+    audio_url: "https://api.soundcloud.com/tracks/122556104/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/e/e7/The_Strokes_-_Ist_Tis_It_US_cover.png'},
+  {name: "Santeria", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 1, created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/9/94/Sublime_Self-Titled.jpg'},
+  {name: "Satisfaction", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 2, created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/7/7f/Satisfaction-us.jpg'},
+  {name: "You Are My Face", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 4, created_at: Time.now - rand(100).day,
+    image_url: 'http://a3.img.mobypicture.com/376af02f9281ddc43d2f9326600ccff9_view.jpg'},
   {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 5,
-    audio_url: "https://api.soundcloud.com/tracks/34532583/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Girls", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 6},
-  {name: "One Day", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 7},
-  {name: "So What", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 8},
+    audio_url: "https://api.soundcloud.com/tracks/34532583/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    image_url: 'http://youtellconcerts.com/wp-content/uploads/2008/07/chromeomusicbox.jpg'},
+  {name: "Girls", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 6, created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/5/55/Girls-album.jpg'},
+  {name: "One Day", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 7, created_at: Time.now - rand(100).day,
+    image_url: 'http://cps-static.rovicorp.com/3/JPG_400/MI0000/107/MI0000107533.jpg?partner=allrovi.com'},
+  {name: "So What", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 8, created_at: Time.now - rand(100).day,
+    image_url: 'http://ecx.images-amazon.com/images/I/61L2pef6hzL._SL500_AA280_.jpg'},
   {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 9,
-    audio_url: "https://api.soundcloud.com/tracks/115417954/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Money", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 10},
+    audio_url: "https://api.soundcloud.com/tracks/115417954/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    image_url: 'http://www.queenfanclub.nl/uploads/Bohemian%20Rhapsody.jpg'},
+  {name: "Money", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 10, created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png'},
   {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 11,
-    audio_url: "https://api.soundcloud.com/tracks/1366184/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "Postcards From Italy", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 12},
-  {name: "Charlotte Mittnacht", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 13},
-  {name: "Pink Matter", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 14},
-  {name: "Starálfur", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 15},
+    audio_url: "https://api.soundcloud.com/tracks/1366184/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/0/01/Fleet_foxes.jpg'},
+  {name: "Postcards From Italy", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 12, created_at: Time.now - rand(100).day,
+    image_url: 'http://ecx.images-amazon.com/images/I/51CHIgaEHjL._SS280.jpg'},
+  {name: "Charlotte Mittnacht", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 13, created_at: Time.now - rand(100).day,
+    image_url: 'http://i.ytimg.com/vi/RD9ZMDGJcQc/hqdefault.jpg'},
+  {name: "Pink Matter", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 14, created_at: Time.now - rand(100).day,
+    image_url: 'http://d3aunljtr1h7e8.cloudfront.net/frankocean/images/artwork/booklet_01.jpg'},
+  {name: "Starálfur", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 15, created_at: Time.now - rand(100).day,
+    image_url: 'http://ecx.images-amazon.com/images/I/51sDqoy0yxL._SS280.jpg'},
   {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 16,
-    audio_url: "https://api.soundcloud.com/tracks/16294193/stream?client_id=4346c8125f4f5c40ad666bacd8e96498"},
-  {name: "First of the Gang to Die", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 17},
-  {name: "Chandelier", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 18},
+    audio_url: "https://api.soundcloud.com/tracks/16294193/stream?client_id=4346c8125f4f5c40ad666bacd8e96498", created_at: Time.now - rand(100).day,
+    image_url: 'https://38.media.tumblr.com/tumblr_mipeq2gini1s6o2alo1_1361674443_cover.jpg'},
+  {name: "First of the Gang to Die", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 17, created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/thumb/f/f3/MorrisseyFirstGang.jpg/220px-MorrisseyFirstGang.jpg'},
+  {name: "Chandelier", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_id: 18, created_at: Time.now - rand(100).day,
+    image_url: 'http://buzzworthy.mtv.com//wp-content/uploads/buzz/2014/03/sia-chandelier-cover-art.jpg'},
 ])
-
-
 
 
 User.all.each do |user|
@@ -163,14 +180,23 @@ User.all.each do |user|
       blog_id: blog_id,
       user_id: user.id,
       band_id: band_id,
-      image_url: album_pics.sample
+      image_url: album_pics.sample,
+      created_at: Time.now - rand(100).day
     )
+  end
 
-    UserSong.create(user_id: user.id, song_id: Song.all.sample.id)
+  10.times do
+    UserSong.create(
+      user_id: user.id,
+      song_id: Song.all.sample.id,
+      created_at: Time.now - rand(8).day)
   end
 
   5.times do
-    UserBlog.create(user_id: user.id, blog_id: Blog.all.sample.id)
+    UserBlog.create(
+      user_id: user.id,
+      blog_id: Blog.all.sample.id,
+      created_at: Time.now - rand(8).day)
   end
 end
 
@@ -179,16 +205,13 @@ end
 #Genre Tags
 
 Band.all.each do |band|
-  3.times do
-    BandTag.create(band: band, tag_id: Tag.all.sample.id)
-  end
-
   7.times do
     Comment.create!(
       user_id: User.all.sample.id,
       body: Faker::Hacker.say_something_smart,
       commentable_id: band.id,
-      commentable_type: 'Band'
+      commentable_type: 'Band',
+      created_at: Time.now - rand(100).day
     )
   end
 end
@@ -203,7 +226,8 @@ Blog.all.each do |blog|
       user_id: User.all.sample.id,
       body: Faker::Hacker.say_something_smart,
       commentable_id: blog.id,
-      commentable_type: 'Blog'
+      commentable_type: 'Blog',
+      created_at: Time.now - rand(100).day
     )
   end
 end
@@ -218,7 +242,8 @@ Song.all.each do |song|
       user_id: User.all.sample.id,
       body: Faker::Hacker.say_something_smart,
       commentable_id: song.id,
-      commentable_type: 'Song'
+      commentable_type: 'Song',
+      created_at: Time.now - rand(100).day
     )
   end
 end

@@ -8,29 +8,34 @@
 <% var creatorN = song.escape('creator_name') %>
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
-<section class='list-song'>
-  <a href="<%= songU %>"><img class='thumbnail' src="<%= song.escape("list_image_url") %>"></a>
-  <h2>
-    <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
-    <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
-  </h2>
-  <h4>Added <%= song.postTime() %> by <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
-    , Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
-
+<section class='song-top group'>
+  <a href="<%= songU %>"><img class='thumbnail list-img' src="<%= song.escape("list_image_url") %>"></a>
   <section id='song-list-controls'>
-    <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
+    <span
+      id='favorite-count'
+      class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+      <%= song.escape('favoriters_count') %>
+    </span>
     <button
       class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+      <i class="fa fa-heart"></i>
     </button>
-    <button id="play-btn"></button>
+    <button id="play-btn"><i class="fa fa-play"></i></button>
   </section>
-
-
-  <br>
-  <label>Genres</label>
-  <ul class='genres-list group'>
-    <% song.get('tag_names').forEach(function (tagName) { %>
-      <li class='genre'><%= tagName %></li>
-    <% }) %>
-  </ul>
 </section>
+
+<h2>
+  <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
+  <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
+</h2>
+<h4>Added <%= song.postTime() %> by <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
+  , Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
+
+
+<br>
+<label>Genres</label>
+<ul class='genres-list group'>
+  <% song.get('tag_names').forEach(function (tagName) { %>
+    <li class='genre'><%= tagName %></li>
+  <% }) %>
+</ul>
