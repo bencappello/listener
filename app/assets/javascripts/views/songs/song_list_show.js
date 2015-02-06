@@ -4,7 +4,7 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
   className: 'list-song',
 
   events: {
-    'click .favorite': 'toggleFavorite',
+    'click button.favorite': 'toggleFavorite',
     'click #play-btn': 'playSong',
   },
 

@@ -10,7 +10,23 @@
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
 <section class='song-left'>
-  <img class='large-image' src="<%= song.escape("large_image_url") %>">
+  <section class='song-top group'>
+    <img class='large-image show-img' src="<%= song.escape("large_image_url") %>">
+
+    <section id='song-list-controls'>
+      <span
+        id='favorite-count'
+        class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+        <%= song.escape('favoriters_count') %>
+      </span>
+      <button
+        class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+        <i class="fa fa-heart"></i>
+      </button>
+      <button id="play-btn"><i class="fa fa-play"></i></button>
+    </section>
+  </section>
+
   <h2>
     <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
     <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
@@ -19,20 +35,11 @@
   <br>
   Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
 
-  <section id='song-list-controls'>
-    <span id='favorite-count'><%= song.escape('favoriters_count') %></span>
-    <button
-      class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-    </button>
-    <button id="play-btn"></button>
-  </section>
-
   <% if (Listener.currentUser.id == song.escape('user_id')) { %>
     <section class='top-buttons'>
       <button class="edit"><a href="<%= songEditU %>">Edit Song</a></button>
     </section>
   <% } %>
-
 
   <h5>Genres</h5>
   <ul class='tags group'>
@@ -41,6 +48,7 @@
     <% }) %>
   </ul>
 </section>
+
 <section class='song-right'>
   <section class='comments-window song-comments'>
     <h5>Comments</h5>

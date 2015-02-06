@@ -1019,6 +1019,18 @@ span.small-blog-songs {
   margin-bottom: 10px;
 }
 
+.genres-container {
+  float: left;
+  margin-left: 150px;
+  width: 370px;
+}
+
+.main .genres-container {
+  margin-left: 30px;
+  width: 170px;
+
+}
+
 #song-list-controls {
   float: right;
   border: 1px solid #83c441;
@@ -1033,6 +1045,16 @@ span.small-blog-songs {
 
 #song-list-controls:hover {
   box-shadow: 0px 0px 3pt 1.5pt black;
+}
+
+.show-img {
+  float: left;
+}
+
+.song-left #song-list-controls {
+  margin-top: 0px;
+  margin-right: 0px;
+  width: 160px;
 }
 
 .list-img {
@@ -1065,10 +1087,6 @@ span.small-blog-songs {
   color: #DE3535;
 }
 
-// .favorite:after {
-//   content: '♥';
-// }
-
 #play-btn {
   padding: 2px 7px;
   margin: 5px;
@@ -1076,10 +1094,6 @@ span.small-blog-songs {
   font-size: 32px;
   color: gray;
 }
-
-// #play-btn:after {
-//   content: "►";
-// }
 
 .blue {
   color: #090E7D;
