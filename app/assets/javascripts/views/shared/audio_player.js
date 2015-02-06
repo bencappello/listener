@@ -25,7 +25,11 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   changeSong: function (song, load) {
     var imageUrl = song.escape('nav_image_url');
     var audioUrl = song.escape('audio_url');
-    var name = song.escape('band_name') + ' - ' + song.escape('name');
+    var bandN = song.escape('band_name');
+    var bandU = '#/bands/' + song.escape('band_id');
+    var songN = song.fullName();
+    var songU = '#/songs/' + song.id;
+    var name = $('<a class="audio-underline-link" href="' + bandU + '">' + bandN + '</a> - <a class="audio-underline-link" href="' + songU + '">' + songN + '</a>')
 
     var audioPlayer = this.$el.find('#audio-player')
     this.$el.find('#mp3_src').attr('src', audioUrl);
