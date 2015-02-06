@@ -1,6 +1,6 @@
 json.extract!(@band, :id, :name, :created_at, :updated_at)
 
-json.songs @band.songs do |song|
+json.songs @band.songs.order('created_at desc') do |song|
   json.partial! "api/songs/list_show", song: song
 end
 

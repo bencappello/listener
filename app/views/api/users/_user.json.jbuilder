@@ -3,19 +3,19 @@ json.profile_image_url asset_path(user.image.url(:profile))
 json.nav_image_url asset_path(user.image.url(:nav))
 
 
-json.songs user.songs do |song|
+json.songs user.songs.order('created_at desc') do |song|
   json.partial! "api/songs/list_show", song: song
 end
 
-json.blogs user.blogs do |blog|
+json.blogs user.blogs.order('created_at desc') do |blog|
   json.partial! "api/blogs/list_show", blog: blog
 end
 
-json.favorite_songs user.favorite_songs do |favorite_song|
+json.favorite_songs user.favorite_songs.order('user_songs.created_at desc') do |favorite_song|
   json.partial! "api/songs/list_show", song: favorite_song
 end
 
-json.followed_blogs user.followed_blogs do |followed_blog|
+json.followed_blogs user.followed_blogs.order('user_blogs.created_at desc') do |followed_blog|
   json.partial! "api/blogs/list_show", blog: followed_blog
 end
 

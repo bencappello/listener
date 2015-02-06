@@ -49,7 +49,6 @@ Listener.Views.CommentForm = Backbone.CompositeView.extend({
   create: function (event) {
     if (event) {
       event.preventDefault();
-      $(event.currentTarget).addClass('hello');
     }
     var callback = this.create.bind(this);
     if (!this._requireSignedIn(callback)) { return; }
