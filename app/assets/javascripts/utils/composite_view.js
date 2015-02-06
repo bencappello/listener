@@ -56,7 +56,4 @@ Backbone.CompositeView = Backbone.GeneralView.extend({
     }
   },
 
-  renderLoading: function () {
-    $('#loading').html($('<div> Loading...</div>'));
-  },
 });

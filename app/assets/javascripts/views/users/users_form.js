@@ -1,4 +1,4 @@
-Listener.Views.UsersForm = Backbone.View.extend({
+Listener.Views.UsersForm = Backbone.CompositeView.extend({
 
   initialize: function(options){
     this.edit = options.edit;
@@ -60,6 +60,7 @@ Listener.Views.UsersForm = Backbone.View.extend({
         that.renderErrors(resp);
       }
     });
+    this.renderLoading();
   },
 
   fileInputChange: function(event){

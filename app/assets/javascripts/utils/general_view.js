@@ -16,6 +16,10 @@ Backbone.GeneralView = Backbone.View.extend({
     });
   },
 
+  renderLoading: function () {
+    this.$el.find('#loading').html($('<div> Saving...</div>'));
+  },
+
   _requireSignedIn: function(callback){
     if (!Listener.currentUser.isSignedIn()) {
       var signInView = new Listener.Views.SignIn({callback: callback, required: true});

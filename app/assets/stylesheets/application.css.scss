@@ -392,6 +392,18 @@ div.form form.modal-form div.modal-close {
   background: #2c3338;
 }
 
+.user-form-bottom {
+  text-align: center;
+}
+
+.modal .user-form-bottom .submit {
+  margin-bottom: 10px;
+}
+
+.form #loading {
+  color: white;
+}
+
 div.modal-close:hover {
   color: #eee;
 }

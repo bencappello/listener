@@ -37,14 +37,15 @@
             <input class='upload' class='mytext' type="text" name="user[image_url]">
           </label>
 
+          <section class='user-form-bottom'>
+            <% if (edit) { %>
+              <button class='submit modal-submit'>Update Account</button>
+            <% } else { %>
+              <button class='submit modal-submit'>Create Account</button>
+            <% } %>
 
-          <% if (edit) { %>
-            <button class='submit modal-submit'>Update Account</button>
-          <% } else { %>
-            <button class='submit modal-submit'>Create Account</button>
-          <% } %>
-
-          <div id="loading"></div>
+            <div id="loading"></div>
+          </section>
         </section>
 
       </form>
