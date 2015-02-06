@@ -815,7 +815,7 @@ span.line-break {
 .main-title-header {
   color: black;
   margin-bottom: 20px;
-  border-bottom: 3px solid black;
+  // border-bottom: 3px solid black;
   font-weight: bold;
   text-shadow: 1px 0 0 #71AB3A, -1px 0 0 #71AB3A, 0 1px 0 #71AB3A, 0 -1px 0 #71AB3A, 1px 1px #71AB3A, -1px -1px 0 #3D7D0A, 1px -1px 0 #71AB3A, -1px 1px 0 #71AB3A;
 }
@@ -826,8 +826,8 @@ span.line-break {
 }
 
 .list-song {
-  padding: 0 0 20px 0;
-  border-bottom: 1px solid black;
+  padding: 20px 0 0 0;
+  border-top: 1px solid black;
   width: 100%;
   display: block;
   margin-top: 20px;
@@ -1020,14 +1020,19 @@ span.small-blog-songs {
 }
 
 #song-list-controls {
-  float: left;
+  float: right;
   border: 1px solid #83c441;
-  box-shadow: 0px 0px 3pt 1pt black;
   padding: 0px 5px;
   width: 190px;
   margin-top: 20px;
-  margin-left: 200px;
+  margin-right: 50px;
   text-align: center;
+  box-shadow: 0px 0px 3pt 1pt black;
+  -webkit-transition: box-shadow 0.07s ease-in-out 0s;
+}
+
+#song-list-controls:hover {
+  box-shadow: 0px 0px 3pt 1.5pt black;
 }
 
 .list-img {

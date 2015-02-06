@@ -16,7 +16,7 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
 
   render: function () {
     this.$el.html(this.template({song: this.model}))
-    this.renderFavoriteCount();
+    // this.renderFavoriteCount();
     return this;
   },
 
@@ -41,10 +41,10 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
     this.$('#favorite-count').html(this.count);
   },
 
-  renderFavoriteCount: function () {
-    count = $('<span>' + this.model.get('favoriters_count') + '</span>');
-    $('#favorite-count').html(count);
-  },
+  // renderFavoriteCount: function () {
+  //   count = $('<span>' + this.model.get('favoriters_count') + '</span>');
+  //   $('#favorite-count').html(count);
+  // },
 
   playSong: function () {
     Listener.audioPlayer.changeSong(this.model);
