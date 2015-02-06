@@ -1,5 +1,5 @@
 class Blog < ActiveRecord::Base
-  paginates_per 3
+  paginates_per 5
 
   validates :name, presence: true, uniqueness: true
   validates :user_id, presence: true
