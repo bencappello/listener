@@ -25,14 +25,16 @@ album_pics = [
   'http://wac.450f.edgecastcdn.net/80450F/929jackfm.com/files/2012/08/photooftheday-iphone-gf-night-summer-newyork-buffalo-tunnel-light-blackandwhite-@mattbissett-Instagram.jpg',
   'http://images.fineartamerica.com/images-medium-large/welcome-to-artsy-asheville-gray-artus.jpg',
   'http://images.fineartamerica.com/images-medium/artsy-sunflower-sonya-chalmers.jpg',
-  'http://fc01.deviantart.net/fs70/f/2013/158/0/c/splatter_1_by_artsy_antics-d684y6m.png',
   'http://www.archerville.com/sue/stilllife/1207/Artsy-Apple2.jpg',
   'http://lh4.ggpht.com/-8d-Sk1YQR7M/UmgxK4HwLKI/AAAAAAAAegI/yFRRVD0OExg/11-29-13%252520koda%252520chrome%252520forest-AFF8_thumb%25255B2%25255D.jpg?imgmax=800',
   'http://images2.layoutsparks.com/1/130352/artsy-black-design-background-31000.jpg',
   'http://s8.favim.com/orig/72/ii-art-artsy-beautiful-Favim.com-689826.jpg',
   'http://media.creativebloq.futurecdn.net/sites/creativebloq.com/files/articles/article/2012/06/Young_Magic_LP_cover_flat.jpg',
   'http://1.bp.blogspot.com/_pdM8IBQO_cQ/TL3-famA0eI/AAAAAAAAAAU/fbAm97gHZWg/s1600/The+Catalyst+4.75+single+DJ+Crossfire.JPEG',
-  'http://www.weallwantsomeone.org/wp-content/uploads/2012/03/f251d544.jpg'
+  'http://www.weallwantsomeone.org/wp-content/uploads/2012/03/f251d544.jpg',
+  'http://img.photobucket.com/albums/v27/deekneez/recordseries-pressmarker.jpg',
+  'http://www.autostraddle.com/wp-content/uploads/2009/08/artsy-guitar-by-kaki-king.jpg',
+  'http://wac.450f.edgecastcdn.net/80450F/diffuser.fm/files/2012/05/crystal_20antlers_album_20cover.jpg'
 ]
 
 

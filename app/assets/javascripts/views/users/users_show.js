@@ -29,7 +29,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       this.renderFavorites();
     } else if (this.content == 'added_songs') {
       this.renderAddedSongs();
-    } else if (this.content == 'followed_blogs') {
+    } else if (this.content == 'followed_playlists') {
       this.renderFollowedBlogs();
     } else {
       this.renderFeed();
@@ -78,7 +78,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   renderFollowedBlogs: function () {
-    this.content = 'followed_blogs';
+    this.content = 'followed_playlists';
     var view = new Listener.Views.FollowedBlogs({model: this.model});
     this._swapView(view);
   },

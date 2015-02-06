@@ -8,7 +8,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     "users": "index",
     "users/:id": "show",
     "users/:id/:suffix": "show",
-    // "users/:id/feed": "showFeed",
   },
 
   index: function () {
