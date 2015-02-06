@@ -11,6 +11,7 @@ Listener.Views.SignIn = Backbone.View.extend({
     "submit form": "submit",
     'click .js-modal-close': 'closeForm',
     "click .sign-up-link": "signUp",
+    'click .guest-btn': 'guestSignIn',
   },
 
   template: JST['shared/sign_in'],
@@ -62,5 +63,5 @@ Listener.Views.SignIn = Backbone.View.extend({
     });
     Listener.modalRouter.trigger('swapModal', userFormView)
   },
-
+  
 });
