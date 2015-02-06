@@ -27,9 +27,11 @@ json.followers user.followers do |follower|
   json.extract! follower, :id, :username
 end
 
-songs = user.followed_blogs.map(&:songs).flatten
+blog_songs = user.followed_blogs.map(&:songs).flatten
+users_songs = user.followed_users.map(&:favorite_songs).flatten
+all_songs = blog_songs + users_songs
 json.feed_songs do
-  json.array!(songs) do |feed_song|
+  json.array!(all_songs) do |feed_song|
     json.partial! "api/songs/list_show", song: feed_song
   end
 end
