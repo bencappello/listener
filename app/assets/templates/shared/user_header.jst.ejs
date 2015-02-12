@@ -15,7 +15,9 @@
       <li>
         <a href="#/users/<%= userID %>/followed_playlists">Followed Playlists</a>
       </li>
-      <li><a href="#" class='edit'>Edit Profile</a></li>
+      <% if (Listener.currentUser.escape('username') != 'guest') { %>
+        <li><a href="#" class='edit'>Edit Profile</a></li>
+      <% } %>
       <li><a href="#" id="sign-out-link">Sign Out</a></li>
     </ul>
   </section>
