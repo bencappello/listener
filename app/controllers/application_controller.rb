@@ -21,7 +21,9 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_out!
-    current_user.try(:reset_session_token!)
+    unless current_user.username == 'guest'
+      current_user.try(:reset_session_token!)
+    end
     self.session[:session_token] = nil
   end
 end
