@@ -21,6 +21,12 @@ class Api::SessionsController < ApplicationController
     end
   end
 
+  def guest_sign_in
+    puts 'hellooooooooooooooooooooooooo'
+    log_in_guest
+    render :show
+  end
+
   def update
     if current_user.update(user_params)
       render :show

@@ -63,5 +63,22 @@ Listener.Views.SignIn = Backbone.View.extend({
     });
     Listener.modalRouter.trigger('swapModal', userFormView)
   },
-  
+
+  guestSignIn: function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/api/session/guest",
+      type: "POST",
+      dataType: "json",
+      success: function(data) {
+        Listener.currentUser.fetch();
+        Backbone.history.navigate("users/" + data.id, { trigger: true })
+        $(".modal").removeClass("is-open");
+      },
+      error: function() {
+        console.log('guest sign in error')
+      }
+    });
+  },
+
 });
