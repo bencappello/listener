@@ -49,8 +49,6 @@ class Api::UsersController < ApplicationController
         image_url: PROFILE_PICS.sample
       )
 
-      @user.save
-
       30.times do
         UserSong.create(
           user_id: @user.id,
