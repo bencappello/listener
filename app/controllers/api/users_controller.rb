@@ -48,26 +48,26 @@ class Api::UsersController < ApplicationController
         password: 'password',
         image_url: PROFILE_PICS.sample
       )
-      if @user.save
-        30.times do
-          UserSong.create(
-            user_id: @user.id,
-            song_id: Song.all.sample.id,
-            created_at: Time.now - rand(48).hour
-          )
-        end
 
-        20.times do
-          UserBlog.create(
-            user_id: @user.id,
-            blog_id: Blog.all.sample.id,
-            created_at: Time.now - rand(48).hour
-          )
-        end
-        render :show
-      else
-        render json: @user.errors.full_messages, status: :unprocessable_entity
+      @user.save
+
+      30.times do
+        UserSong.create(
+          user_id: @user.id,
+          song_id: Song.all.sample.id,
+          created_at: Time.now - rand(48).hour
+        )
       end
+
+      20.times do
+        UserBlog.create(
+          user_id: @user.id,
+          blog_id: Blog.all.sample.id,
+          created_at: Time.now - rand(48).hour
+        )
+      end
+
+      render json: {username: @user.username}
     end
   end
 
