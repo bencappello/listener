@@ -12,6 +12,7 @@ Listener.Views.UserHeader = Backbone.View.extend({
     "click #add-song-link": "createSong",
     "click #add-blog-link": "createBlog",
     'click .edit': 'editUser',
+    'click #create-user': 'createUser'
   },
 
   template: JST['shared/user_header'],
@@ -64,5 +65,17 @@ Listener.Views.UserHeader = Backbone.View.extend({
     })
     Listener.modalRouter.trigger('swapModal', view);
   },
+
+  createUser: function (event) {
+    event.preventDefault();
+    var signOutCallback = $.ajax({
+      url: "/api/users/create_new",
+      type: "POST",
+      dataType: "json",
+      success: function (resp) {
+        console.log(resp.username)
+      }
+    })
+  }
 
 });

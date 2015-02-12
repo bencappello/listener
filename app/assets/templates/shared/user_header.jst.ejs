@@ -8,6 +8,9 @@
       <%= Listener.currentUser.escape("username") %>
     </a>
     <ul class="user-nav-dropdown">
+      <% if (Listener.currentUser.escape('username') == 'thatpurplestuff') { %>
+        <li><a href="#" id='create-user'>Create User</a></li>
+      <% } %>
       <li><a href="#" id="add-song-link">Add Song</a></li>
       <li><a href="#" id="add-blog-link">Add Playlist</a></li>
       <li><a href="#/users/<%= userID %>/feed">Feed</a></li>

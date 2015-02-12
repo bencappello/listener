@@ -22,7 +22,6 @@ class Api::SessionsController < ApplicationController
   end
 
   def guest_sign_in
-    puts 'hellooooooooooooooooooooooooo'
     log_in_guest
     render :show
   end
