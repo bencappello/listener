@@ -83,13 +83,8 @@ def generate_name
   name = []
   name << phrase[0]
   name << phrase[3]
-  name.join(' ')
+  name.map(&:capitalize).join(' ')
 end
-
-
-
-
-
 
 
 
