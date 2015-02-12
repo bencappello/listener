@@ -5,7 +5,7 @@ class UserFollow < ActiveRecord::Base
   belongs_to(
     :follower,
     class_name: "User",
-    inverse_of: :follower_choices
+    inverse_of: :follow_choices
   )
 
   belongs_to(
