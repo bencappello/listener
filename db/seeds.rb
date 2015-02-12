@@ -84,7 +84,7 @@ users = 5.times do
     username: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'password',
-    image_url: PROFILE_PICS.sample
+    image_url: profile_pics.sample
   )
 end
 

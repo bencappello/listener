@@ -49,11 +49,11 @@ class Api::UsersController < ApplicationController
         image_url: PROFILE_PICS.sample
       )
 
-      30.times do
+      40.times do
         UserSong.create(
           user_id: @user.id,
           song_id: Song.all.sample.id,
-          created_at: Time.now - rand(48).hour
+          created_at: Time.now - rand(72).hour
         )
       end
 
