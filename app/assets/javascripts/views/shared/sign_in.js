@@ -74,7 +74,6 @@ Listener.Views.SignIn = Backbone.View.extend({
         Listener.currentUser.fetch();
         Backbone.history.navigate("users/" + data.id, { trigger: true })
         $(".modal").removeClass("is-open");
-        setTimeout(signOutCallback, 3000)
       },
       error: function() {
         console.log('guest sign in error')
