@@ -6,18 +6,35 @@ class Song < ActiveRecord::Base
   validates :user_id, :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
+  SONG_NAMES = [
+    'someday',
+    'bohemian_rhapsody',
+    'needy_girl',
+    'white_winter_hymnal',
+    'oxford_comma',
+    'share_my_love',
+    'vienna',
+    'first_of_the_gang_to_die',
+    'do_you',
+    'careless_whisper'
+  ]
+
   has_attached_file :audio,
-  :default_url => "http://s3.amazonaws.com/listener-dev/songs/audios/000/000/005/original/stream?1422649924"
+    default_url: ":song_name.mp3"
+
+  Paperclip.interpolates :song_name do |attachment, style|
+    SONG_NAMES[rand(SONG_NAMES.length)]
+  end
 
   validates_attachment_content_type :audio,
     content_type: /\Aaudio\/.*\Z/
 
   has_attached_file :image,
-  default_url: "missing_song.jpg",
-  styles: {large: '200x200', list: '-quality 100 -strip', nav: '-quality 40 -strip'}
+    default_url: "missing_song.jpg",
+    styles: {large: '200x200', list: '-quality 100 -strip', nav: '-quality 40 -strip'}
 
   validates_attachment_content_type :image,
-    :content_type => /\Aimage\/.*\Z/
+    content_type: /\Aimage\/.*\Z/
 
   belongs_to :user
   belongs_to :band

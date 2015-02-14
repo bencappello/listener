@@ -28,5 +28,7 @@ module Listener
         :secret_access_key => ENV["s3_secret_access_key"]
       }
     }
+
+    config.assets.paths << "#{ Rails.root }/app/assets/audio"
   end
 end

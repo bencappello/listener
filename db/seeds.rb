@@ -75,59 +75,60 @@ profile_pics = [
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/011/profile/21021209-37385753.jpg?1423256814"
 ]
 
+markov = MarkyMarkov::TemporaryDictionary.new
+markov.parse_file "./app/assets/text/david_copperfield.txt"
 
-
-#NEW USERS AND FAVORITES
-
-users = 5.times do
-  User.create!(
-    username: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: 'password',
-    image_url: profile_pics.sample
-  )
-end
-
-puts users
-
-users.each do |user|
-  40.times do
-    UserSong.create(
-      user_id: user.id,
-      song_id: Song.all.sample.id,
-      created_at: Time.now - rand(72).hour
-    )
-  end
-
-  20.times do
-    UserBlog.create(
-      user_id: user.id,
-      blog_id: Blog.all.sample.id,
-      created_at: Time.now - rand(72).hour
-    )
-  end
+def generate_name
+  phrase = TokenPhrase.generate(' ').split(' ')
+  name = []
+  name << phrase[0]
+  name << phrase[3]
+  name.map(&:capitalize).join(' ')
 end
 
 
 
-
-
-
-
-
-
-
-
-# markov = MarkyMarkov::TemporaryDictionary.new
-# markov.parse_file "./app/assets/text/david_copperfield.txt"
+# #NEW USERS AND FAVORITES
 #
-# def generate_name
-#   phrase = TokenPhrase.generate(' ').split(' ')
-#   name = []
-#   name << phrase[0]
-#   name << phrase[3]
-#   name.map(&:capitalize).join(' ')
+# users = 5.times do
+#   User.create!(
+#     username: Faker::Name.name,
+#     email: Faker::Internet.email,
+#     password: 'password',
+#     image_url: profile_pics.sample
+#   )
 # end
+#
+# puts users
+#
+# users.each do |user|
+#   40.times do
+#     UserSong.create(
+#       user_id: user.id,
+#       song_id: Song.all.sample.id,
+#       created_at: Time.now - rand(72).hour
+#     )
+#   end
+#
+#   20.times do
+#     UserBlog.create(
+#       user_id: user.id,
+#       blog_id: Blog.all.sample.id,
+#       created_at: Time.now - rand(72).hour
+#     )
+#   end
+# end
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -365,129 +366,129 @@ end
 
 
 
-# #DEV SEED
-#
-# me = User.create!(
-#   username: 'thatpurplestuff',
-#   email: 'ben@gmail.com',
-#   password: 'password',
-#   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
-#   )
-#
-# profile_pics.each do |pic|
-#   User.create!(
-#     username: Faker::Name.name,
-#     email: Faker::Internet.email,
-#     password: 'password',
-#     image_url: pic,
-#     created_at: Time.now - rand(100).day
-#   )
-# end
-#
-# tags = Tag.create!([
-#   {name: 'Funk'},
-#   {name: 'Indie Rock'},
-#   {name: 'Folk Rock'},
-#   {name: 'Electro-pop'},
-#   {name: 'Soul'},
-#   {name: 'House'},
-#   {name: 'Electronic'},
-#   {name: 'Rap'},
-#   {name: 'Hip Hop'},
-#   {name: 'Jazz'},
-#   {name: 'Folk'},
-#   {name: 'Metal'},
-#   {name: 'Punk'},
-#   {name: 'R&B'},
-#   {name: 'Disco'},
-#   {name: 'Country'},
-#   {name: 'Dub Step'},
-#   {name: 'Rock'},
-#   {name: 'Classic Rock'},
-#   {name: 'Ska'}
-# ])
-#
-# bands = Band.create!([
-#   {name: 'Sublime'},
-#   {name: 'Rolling Stones'},
-#   {name: 'The Strokes'},
-#   {name: 'Wilco'},
-#   {name: 'Chromeo'},
-#   {name: 'Calvin Harris'},
-#   {name: 'UGK'},
-#   {name: 'Miles Davis'},
-#   {name: 'Queen'},
-#   {name: 'Pink Floyd'},
-#   {name: 'Fleet Foxes'},
-#   {name: 'Beirut'},
-#   {name: 'Devotchka'},
-#   {name: 'Frank Ocean'},
-#   {name: 'Sigur Ros'},
-#   {name: 'Vampire Weekend'},
-#   {name: 'Morrissey'},
-#   {name: 'Sia'},
-# ])
-#
-# 5.times do
-#   Band.create(name: generate_name)
-# end
-#
-# User.all.each do |user|
-#   (rand(4) + 1).times do
-#     Blog.create(
-#       name: generate_name,
-#       user_id: user.id,
-#       created_at: Time.now - rand(100).day
-#     )
-#   end
-# end
-#
-# User.all.each do |user|
-#   1.times do
-#     type = ['remix', 'regular'].sample
-#     blog_id = user.blogs.sample.id
-#     band_id = Band.all.sample.id
-#     Song.create(
-#       name: generate_name,
-#       song_type: type,
-#       blog_id: blog_id,
-#       user_id: user.id,
-#       band_id: band_id,
-#       image_url: album_pics.sample,
-#       created_at: Time.now - rand(100).day
-#     )
-#   end
-#
-#   8.times do
-#     UserSong.create(
-#       user_id: user.id,
-#       song_id: Song.all.sample.id,
-#       created_at: Time.now - rand(8).day)
-#   end
-#
-#   7.times do
-#     UserBlog.create(
-#       user_id: user.id,
-#       blog_id: Blog.all.sample.id,
-#       created_at: Time.now - rand(8).day)
-#   end
-# end
-#
-#
-#
-#
-#
-#
-# #Genre Tags
-#
-# Blog.all.each do |blog|
-#   (rand(4) + 2).times do
-#     BlogTag.create(blog: blog, tag_id: Tag.all.sample.id)
-#   end
-# end
-#
-# Song.all.each do |song|
-#   (rand(3) + 1).times do
-#     SongTag.create(song: song, tag_id: Tag.all.sample.id)
-#   end
-# end
+#DEV SEED
+
+me = User.create!(
+  username: 'thatpurplestuff',
+  email: 'ben@gmail.com',
+  password: 'password',
+  image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
+  )
+
+profile_pics.each do |pic|
+  User.create!(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: 'password',
+    image_url: pic,
+    created_at: Time.now - rand(100).day
+  )
+end
+
+tags = Tag.create!([
+  {name: 'Funk'},
+  {name: 'Indie Rock'},
+  {name: 'Folk Rock'},
+  {name: 'Electro-pop'},
+  {name: 'Soul'},
+  {name: 'House'},
+  {name: 'Electronic'},
+  {name: 'Rap'},
+  {name: 'Hip Hop'},
+  {name: 'Jazz'},
+  {name: 'Folk'},
+  {name: 'Metal'},
+  {name: 'Punk'},
+  {name: 'R&B'},
+  {name: 'Disco'},
+  {name: 'Country'},
+  {name: 'Dub Step'},
+  {name: 'Rock'},
+  {name: 'Classic Rock'},
+  {name: 'Ska'}
+])
+
+bands = Band.create!([
+  {name: 'Sublime'},
+  {name: 'Rolling Stones'},
+  {name: 'The Strokes'},
+  {name: 'Wilco'},
+  {name: 'Chromeo'},
+  {name: 'Calvin Harris'},
+  {name: 'UGK'},
+  {name: 'Miles Davis'},
+  {name: 'Queen'},
+  {name: 'Pink Floyd'},
+  {name: 'Fleet Foxes'},
+  {name: 'Beirut'},
+  {name: 'Devotchka'},
+  {name: 'Frank Ocean'},
+  {name: 'Sigur Ros'},
+  {name: 'Vampire Weekend'},
+  {name: 'Morrissey'},
+  {name: 'Sia'},
+])
+
+5.times do
+  Band.create(name: generate_name)
+end
+
+User.all.each do |user|
+  (rand(4) + 1).times do
+    Blog.create(
+      name: generate_name,
+      user_id: user.id,
+      created_at: Time.now - rand(100).day
+    )
+  end
+end
+
+User.all.each do |user|
+  1.times do
+    type = ['remix', 'regular'].sample
+    blog_id = user.blogs.sample.id
+    band_id = Band.all.sample.id
+    Song.create(
+      name: generate_name,
+      song_type: type,
+      blog_id: blog_id,
+      user_id: user.id,
+      band_id: band_id,
+      image_url: album_pics.sample,
+      created_at: Time.now - rand(100).day
+    )
+  end
+
+  8.times do
+    UserSong.create(
+      user_id: user.id,
+      song_id: Song.all.sample.id,
+      created_at: Time.now - rand(8).day)
+  end
+
+  7.times do
+    UserBlog.create(
+      user_id: user.id,
+      blog_id: Blog.all.sample.id,
+      created_at: Time.now - rand(8).day)
+  end
+end
+
+
+
+
+
+
+#Genre Tags
+
+Blog.all.each do |blog|
+  (rand(4) + 2).times do
+    BlogTag.create(blog: blog, tag_id: Tag.all.sample.id)
+  end
+end
+
+Song.all.each do |song|
+  (rand(3) + 1).times do
+    SongTag.create(song: song, tag_id: Tag.all.sample.id)
+  end
+end

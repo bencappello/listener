@@ -12,6 +12,7 @@ Listener.Views.UsersForm = Backbone.CompositeView.extend({
     "change #input-user-image": "fileInputChange",
     "click #sign-in-link": "signIn",
     'click .js-modal-close': 'closeForm',
+    'click .guest-btn': 'guestSignIn',
   },
 
   render: function(){
@@ -90,6 +91,24 @@ Listener.Views.UsersForm = Backbone.CompositeView.extend({
     event.preventDefault();
     var signInView = new Listener.Views.SignIn();
     Listener.modalRouter.trigger('swapModal', signInView)
+  },
+
+  guestSignIn: function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/api/session/guest",
+      type: "POST",
+      dataType: "json",
+      success: function(data) {
+        Listener.currentUser.fetch();
+        Backbone.history.navigate("users/" + data.id, { trigger: true })
+        $(".modal").removeClass("is-open");
+        setTimeout(signOutCallback, 3000)
+      },
+      error: function() {
+        console.log('guest sign in error')
+      }
+    });
   },
 
 });

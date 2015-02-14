@@ -235,6 +235,11 @@ p {
   text-decoration: underline;
 }
 
+#sign-up-link {
+  border-right: 2px solid #e0e0e0;
+  padding: 0 10px 0 0
+}
+
 .not-member {
   color: #606468;
 }
@@ -671,7 +676,7 @@ section.user-info a {
 }
 
 .signed-out {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 header h3 {
