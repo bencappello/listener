@@ -96,7 +96,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     this.$el.find("#preview-song-image").attr("src", src);
   },
 
-  closeForm: function () {
+  closeForm: function (event) {
     event.preventDefault();
     $(".modal").removeClass("is-open");
   },

@@ -46,7 +46,7 @@ Listener.Views.BandForm = Backbone.CompositeView.extend({
     this.renderLoading();
   },
 
-  closeForm: function () {
+  closeForm: function (event) {
     event.preventDefault();
     $(".modal").removeClass("is-open");
   },

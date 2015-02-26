@@ -21,7 +21,7 @@ Listener.Views.SignIn = Backbone.View.extend({
     return this;
   },
 
-  closeForm: function () {
+  closeForm: function (event) {
     event.preventDefault();
     $(".modal").removeClass("is-open");
   },

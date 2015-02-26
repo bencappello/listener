@@ -31,7 +31,7 @@ Listener.Views.UsersForm = Backbone.CompositeView.extend({
     })
   },
 
-  closeForm: function () {
+  closeForm: function (event) {
     event.preventDefault();
     $(".modal").removeClass("is-open");
   },
