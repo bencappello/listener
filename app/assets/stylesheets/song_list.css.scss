@@ -36,14 +36,12 @@
   padding: 0 0 0 10px;
 }
 
-.show-img {
-  float: left;
-}
-
 .song-left #song-list-controls {
+  width: 200px;
+  float: none;
+  display: block;
   margin-top: 0px;
   margin-right: 0px;
-  width: 160px;
 }
 
 .list-img {
