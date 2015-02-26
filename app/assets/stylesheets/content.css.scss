@@ -1,0 +1,300 @@
+//CONTENT
+
+#content {
+  width: 1000px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffe1;
+  // min-height: 500px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  outline: 2px solid white;
+  // outline-right: 2px solid white;
+  // outline-bottom: 2px solid white;
+  margin-bottom: 80px;
+}
+
+.sidebar {
+  width: 349px;
+  float: left;
+  border: 1px solid #C2B20A;
+  outline: 1px solid black;
+  // border-left: 1px solid #C2B20A;
+  // border-top: 1px solid #C2B20A;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px 20px;
+}
+
+.top-buttons {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.main {
+  width: 585px;
+  float: right;
+  border: 1px solid #C2B20A;
+  outline: 1px solid black;
+  // border-left: 1px solid #C2B20A;
+  // border-top: 1px solid #C2B20A;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.song-left {
+  width: 425px;
+  float: left;
+  border: 1px solid #C2B20A;
+  outline: 1px solid black;
+  // border-left: 1px solid #C2B20A;
+  // border-top: 1px solid #C2B20A;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.song-left h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.song-right {
+  width: 509px;
+  float: right;
+  border: 1px solid #C2B20A;
+  outline: 1px solid black;
+  // border-left: 1px solid #C2B20A;
+  // border-top: 1px solid #C2B20A;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.main::after {
+  clear: both;
+  display: block;
+  content: '';
+}
+
+span.line-break {
+  height: 1px;
+  background: black;
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.main-title-header {
+  color: black;
+  margin-bottom: 20px;
+  // border-bottom: 3px solid black;
+  font-weight: bold;
+  text-shadow: 1px 0 0 #71AB3A, -1px 0 0 #71AB3A, 0 1px 0 #71AB3A, 0 -1px 0 #71AB3A, 1px 1px #71AB3A, -1px -1px 0 #3D7D0A, 1px -1px 0 #71AB3A, -1px 1px 0 #71AB3A;
+}
+
+.main-title {
+  padding: 5px;
+  font-size: 30px;
+}
+
+.list-song {
+  padding: 20px 0 0 0;
+  border-top: 1px solid black;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+  float: left;
+}
+
+.blog-list-show {
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+ul.genres {
+  margin-bottom: 20px;
+}
+
+ul.genres-list {
+  margin-bottom: 5px;
+}
+
+li.genre {
+  float: left;
+  margin: 3px;
+  font-size: 14px;
+  color: #434347;
+  background: white;
+  border: 1px solid black;
+  padding: 3px;
+}
+
+.comments-window {
+  margin-top: 20px;
+}
+
+.song-right .song-comments {
+  margin-top: 5px;
+}
+
+.song-right .song-comments h5 {
+  font-size: 24px;
+}
+
+.comment-form {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.comment-show {
+  margin-bottom: 15px;
+}
+
+.add-comment {
+  font-size: 14px;
+}
+
+.time-stamp {
+  margin-left: 20px;
+  font: 10px;
+  color: gray;
+}
+
+.add-content {
+  background: transparent;
+  color: #417501;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 5px;
+  text-align: center;
+  // line-height: 400%;
+}
+
+.add-content:hover {
+  color: #83c441;
+}
+
+.add-content p {
+  line-height: 80%;
+}
+
+span.big-blog-songs {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+span.small-blog-songs {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.big-follow {
+  background: transparent;
+  color: #0063dc;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.big-follow:hover {
+  color: #0063dc;
+  background: #E6E7F5;
+}
+
+.small-follow {
+  font-size: 12px;
+  background: transparent;
+  color: #0063dc;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.small-follow:hover {
+  color: #0063dc;
+  background: #E6E7F5;
+}
+
+.blog-follow:after {
+  content: '✚ Follow';
+}
+
+.blog-unfollow:after {
+  content: '━ Unfollow';
+}
+
+.user-follow:after {
+  content: '✚ Follow';
+}
+
+.user-unfollow:after {
+  content: '━ Unfollow';
+}
+
+.user-btn {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  display: block;
+  width: 122px;
+  text-align: center;
+}
+
+#errors {
+  color: red;
+  margin-bottom: 20px;
+  width: 230px;
+  margin-top: 20px;
+}
+
+.close-lg:hover {
+  color: red;
+}
+
+.find {
+  padding: 20px;
+}
+
+.find h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+//USER-SHOW
+
+#user-top {
+  text-align: center;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#top-button-list {
+  text-align: center;
+}
+
+#bottom-button-list {
+  text-align: center;
+}

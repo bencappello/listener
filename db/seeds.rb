@@ -67,7 +67,7 @@ profile_pics = [
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/003/profile/Pink-Floyd-006.jpg?1423256797",
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/004/profile/The_Strokes__1__by_alexjames01.png?1423256798",
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/005/profile/lou-reed-2.jpg?1423256800",
-  "http://s3.amazonaws.com/listener-dev/users/images/000/000/006/profile/article-2178781-00558A751000044C-896_306x423.jpg?1423256801",
+  # "http://s3.amazonaws.com/listener-dev/users/images/000/000/006/profile/article-2178781-00558A751000044C-896_306x423.jpg?1423256801",
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/007/profile/Rolling-Stones-Wallpaper-classic-rock-17732124-1024-768.jpg?1423256802",
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/008/profile/Frank_Ocean_01-e1305847591792.jpeg?1423256803",
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/009/profile/earl-sweatshirt.jpg?1423256804",

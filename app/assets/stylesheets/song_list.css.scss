@@ -1,0 +1,103 @@
+//SONG-LIST
+
+.song-top {
+  margin-bottom: 10px;
+}
+
+.genres-container {
+  float: left;
+  margin-left: 150px;
+  width: 370px;
+}
+
+.main .genres-container {
+  margin-left: 30px;
+  width: 170px;
+
+}
+
+#song-list-controls {
+  float: right;
+  border: 1px solid #83c441;
+  padding: 0px 5px;
+  width: 190px;
+  margin-top: 20px;
+  margin-right: 50px;
+  text-align: center;
+  box-shadow: 0px 0px 3pt 1pt black;
+  -webkit-transition: box-shadow 0.07s ease-in-out 0s;
+}
+
+#song-list-controls:hover {
+  box-shadow: 0px 0px 3pt 1.5pt black;
+}
+
+#song-list-controls span {
+  padding: 0 0 0 10px;
+}
+
+.show-img {
+  float: left;
+}
+
+.song-left #song-list-controls {
+  margin-top: 0px;
+  margin-right: 0px;
+  width: 160px;
+}
+
+.list-img {
+  float: left;
+}
+
+#favorite-count {
+  font-size: 30px;
+  color: gray;
+}
+
+.favorite {
+  background: transparent;
+  padding: 0px;
+  color: gray;
+  border-radius: 5px;
+  font-size: 32px;
+  margin: 5px
+}
+
+#song-list-controls .unfavorite {
+  color: #DE3535;
+}
+
+.favorite:hover {
+  color: #0063dc;
+}
+
+.unfavorite:hover {
+  color: #DE3535;
+}
+
+#play-btn {
+  padding: 2px 7px;
+  margin: 5px;
+  background: transparent;
+  font-size: 32px;
+  color: black;
+}
+
+.blue {
+  color: #090E7D;
+}
+
+#play-btn:hover {
+  color: #0063dc;
+  background: #A3A3A3;
+}
+
+.underline-link:hover {
+  text-decoration: underline;
+  color: #0063dc;
+}
+
+.audio-underline-link:hover {
+  text-decoration: underline;
+}

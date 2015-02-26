@@ -1,0 +1,155 @@
+/* ---------- MODAL ---------- */
+
+
+
+.modal-close:hover {
+  color: #f00;
+}
+
+.form {
+  width: 280px;
+}
+
+.modal .container .song-form {
+  width: 880px;
+}
+
+.form form span {
+  background-color: #363b41;
+  border-radius: 3px 0px 0px 3px;
+  color: #606468;
+  display: block;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+}
+
+.form form input {
+  height: 50px;
+}
+
+.form form .upload {
+  height: 20px;
+}
+
+.form form label {
+  font-size: 16px;
+  color: #D1D1D1;
+}
+
+// .form form label.multiple {
+//   color: #606468;
+//   font-size: 14px;
+// }
+
+.form form input[type="text"], input[type="password"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #D1D1D1;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 230px;
+}
+
+.modal .form form label input {
+  color: #606468;
+  width: 280px;
+}
+
+#form-title {
+  font-size: 20px;
+  color: #eee;
+}
+
+.modal-submit {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #83c441;
+  color: #eee;
+  font-weight: bold;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 3px 0 0 #406606;
+}
+
+.guest-btn {
+  padding: 10px 0;
+  position: relative;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #345DD9;
+  color: #eee;
+  font-weight: bold;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 3px 0 0 #203E99;
+}
+
+.guest-btn:hover {
+  background: #3056C7;
+}
+
+.guest-btn:active {
+  top: 3px;
+  box-shadow: none;
+}
+
+.form > p {
+  text-align: center;
+}
+
+.form > p span {
+  padding-left: 5px;
+}
+
+div.form form.modal-form div.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  background: #2c3338;
+}
+
+.user-form-bottom {
+  text-align: center;
+}
+
+.modal .user-form-bottom .submit {
+  margin-bottom: 10px;
+}
+
+.form #loading {
+  color: white;
+}
+
+div.modal-close:hover {
+  color: #eee;
+}
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal-screen {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}

@@ -1,0 +1,70 @@
+//TOP HEADER
+
+ #top-header {
+   display: block;
+   background: #83c441;
+ }
+
+ #top-header nav {
+   width: 1000px;
+   margin: auto;
+   display: block;
+ }
+
+ #top-header form#search {
+   float: right;
+   padding: 10px;
+ }
+
+li.nav-link {
+  float: left;
+  font-size: 18px;
+  position: relative;
+}
+
+li.nav-link > a {
+  padding: 20px;
+  display: block;
+}
+
+li.nav-link:hover {
+  background: #222;
+  color: #e0e0e0;
+}
+
+#header-links {
+  float: right;
+  margin-right: 30px;
+}
+
+.top-header-dropdown {
+  display: none;
+  position: absolute;
+  left: 0px;
+  font-size: 14px;
+  color: #e0e0e0;
+  white-space: nowrap;
+  background: #222;
+  // border-bottom-left-radius: 5px;
+  // border-bottom-right-radius: 5px;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.top-header-dropdown a {
+  padding: 15px;
+  text-align: center;
+  display: block;
+}
+
+.top-header-dropdown a:hover {
+  text-decoration: underline;
+}
+
+#playlists-head:hover .playlists-dropdown {
+  display: block;
+}
+
+#songs-head:hover .songs-dropdown {
+  display: block;
+}

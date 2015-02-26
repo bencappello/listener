@@ -1,0 +1,141 @@
+// NAV GENERAL
+
+#sub-header {
+  display: block;
+  background: black;
+  width: 100%;
+  position: absolute;
+}
+
+#sub-header nav {
+  width: 1000px;
+  margin: auto;
+  display: block;
+  color: white;
+}
+
+#sub-header.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+#user-nav {
+ float: right;
+ min-height: 50px;
+}
+
+
+
+
+//AUDTIO PLAYER
+
+section#audio-container {
+  display: block;
+  float: left;
+  margin-left: 20px;
+  width: 700px;
+  // padding: 7px 0;
+}
+
+section#player-left {
+  display: block;
+  float: left;
+}
+
+#player-img {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+section#player-right {
+  display: block;
+  float: right;
+}
+
+#audio-player {
+  float: left;
+  background: black;
+  margin-top: 10px;
+
+}
+
+#song-title {
+  float: left;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-top: 17px;
+}
+
+
+
+
+
+
+//USER-INFO-NAV
+
+section.user-info {
+  float: right;
+  display: block;
+  font-size: 16px;
+  color: #e0e0e0;
+  position: relative;
+  min-width: 140px;
+  text-align: right;
+}
+
+section.user-info a {
+  display: block;
+}
+
+.btn-sign {
+  float: left;
+  margin-left: 10px;
+}
+
+.user-nav-dropdown {
+  display: none;
+  position: absolute;
+  left: -1px;
+  min-width: 150px;
+  font-size: 14px;
+  white-space: nowrap;
+  background: #333;
+  color: #e0e0e0;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow: hidden;
+}
+
+.user-nav-dropdown a {
+  padding: 10px;
+  border-top: 1px solid black;
+  text-align: center;
+}
+
+.user-nav-dropdown a:hover {
+  background: #3F3F40;
+  color: white;
+}
+
+.user-info:hover .user-nav-dropdown {
+  display: block;
+}
+
+.signed-out {
+  margin-top: 20px;
+}
+
+header h3 {
+  float: left;
+  float: left;
+  padding: 10px 15px;
+}
+
+header h3 a:hover {
+  color: white;
+}

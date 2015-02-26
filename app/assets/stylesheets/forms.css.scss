@@ -1,0 +1,183 @@
+//FORMS GENERAL
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before, *:after {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input {
+  border: none;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  opacity: 0;
+}
+
+.container .form input[type=checkbox] + label {
+  background: gray;
+  color: #C2B20A;
+  padding: 3px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  float: left;
+  display: block;
+  border: 1px solid black;
+}
+
+.container .form input[type=checkbox]:checked + label {
+  background: white;
+  color: #34327D;
+}
+
+.container .form input[type=checkbox]:hover + label {
+  cursor: pointer;
+  border: 1px solid #C2B20A;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+.sign-up-link {
+  color: #e0e0e0;
+}
+
+.sign-up-link:hover {
+  text-decoration: underline;
+}
+
+#sign-up-link {
+  border-right: 2px solid #e0e0e0;
+  padding: 0 10px 0 0
+}
+
+.not-member {
+  color: #606468;
+}
+
+.submit {
+  position: relative;
+  padding: 10px 20px;
+  color: #fff;
+  background: #0c0;
+  font-weight: 700;
+  border-radius: 5px;
+  box-shadow: 0 3px 0 0 #406606;
+}
+
+.modal .submit:hover {
+  background: #639C35;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background: #0b0;
+  cursor: pointer;
+}
+
+.submit:active {
+  top: 3px;
+  background: #0a0;
+  box-shadow: none;
+}
+
+.blog-submit {
+  margin-top: 20px;
+}
+
+.container {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: #2c3338;
+  color: #606468;
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 40px 80px;
+  border-radius: 5px;
+  z-index: 3;
+  box-shadow: 0 0 0 2px #606468;
+  overflow: hidden;
+}
+
+.modal .form section.upload-container {
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 20px;
+  // width: 340px;
+}
+
+
+//NEW SONG FORM
+
+.song-form h2 {
+  color: #D1D1D1;
+}
+
+.song-form h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.song-form input {
+  width: 340px;
+}
+
+.song-form-bottom {
+  text-align: center;
+}
+
+.song-form-top {
+  margin-bottom: 10px;
+  width: 880px;
+}
+
+.song-form-left {
+  float: left;
+  width: 400px;
+}
+
+.song-form-right {
+  float: right;
+  width: 400px;
+}
+
+
+.modal .form form .input-inline {
+  display: inline;
+  height: 20px;
+  width: 10px;
+  text-align: left;
+}
+
+.modal .form form section {
+  // width: 400px;
+  // text-align: left;
+}
+
+.modal .song-form section input {
+  width: 340px;
+}
+
+.modal .song-form .submit {
+  width: 380px;
+  margin-bottom: 10px;
+}
+
+.modal .song-container {
+  padding: 20px 80px;
+}
