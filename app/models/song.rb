@@ -67,10 +67,15 @@ class Song < ActiveRecord::Base
   end
 
   def band_name=(band_name)
+    band_name = band_name.titleize
     band = Band.find_by(name: band_name)
     unless band
       band = Band.create(name: band_name)
     end
     self.band_id = band.id
+  end
+
+  def name=(s)
+    write_attribute(:name, s.to_s.titleize)
   end
 end
