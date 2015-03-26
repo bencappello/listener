@@ -4,6 +4,7 @@
   display: block;
   background: black;
   width: 100%;
+  min-width: 1000px;
   position: absolute;
 }
 
@@ -23,6 +24,7 @@
 #user-nav {
  float: right;
  min-height: 50px;
+ margin-right: 5px;
 }
 
 
@@ -128,14 +130,4 @@ section.user-info a {
 
 .signed-out {
   margin-top: 20px;
-}
-
-header h3 {
-  float: left;
-  float: left;
-  padding: 10px 15px;
-}
-
-header h3 a:hover {
-  color: white;
 }

@@ -1,20 +1,32 @@
 //TOP HEADER
 
- #top-header {
-   display: block;
-   background: #83c441;
- }
+#top-header {
+ min-width: 1000px;
+ display: block;
+ background: #83c441;
+}
 
- #top-header nav {
-   width: 1000px;
-   margin: auto;
-   display: block;
- }
+#top-header nav {
+ width: 1000px;
+ margin: auto;
+ display: block;
+}
 
- #top-header form#search {
-   float: right;
-   padding: 10px;
- }
+header h3 {
+  float: left;
+  margin: 15px;
+}
+
+header h3 a:hover {
+  color: white;
+}
+
+#top-header form#search {
+  float: right;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 li.nav-link {
   float: left;
