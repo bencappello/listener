@@ -31,7 +31,7 @@ class Song < ActiveRecord::Base
 
   has_attached_file :image,
     default_url: "missing_song.jpg",
-    styles: {large: '200x200', list: '-quality 100 -strip', nav: '-quality 40 -strip'}
+    styles: {large: '200x200', list: '100X100', nav: '40X40'}
 
   validates_attachment_content_type :image,
     content_type: /\Aimage\/.*\Z/
