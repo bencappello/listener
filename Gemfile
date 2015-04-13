@@ -38,6 +38,7 @@ gem 'faker'
 gem 'kaminari'
 gem 'token_phrase'
 gem 'marky_markov'
+gem 'smusher'
 
 group :development do
   gem 'better_errors'
