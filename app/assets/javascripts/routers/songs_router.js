@@ -6,35 +6,15 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
 
   routes: {
     '': 'find',
-    'songs': 'songsIndex',
     'songs/:id': 'songShow',
-    'songs/:id/edit': 'songEdit',
     'songs/search/:query': 'search',
     'songs/find/:suffix': 'find',
-  },
-
-  songsIndex: function () {
-    this.songs.fetch();
-    var view = new Listener.Views.SongsIndex({collection: this.songs});
-    this._swapView(view);
   },
 
   songShow: function (id) {
     Listener.currentUser.fetch();
     var song = this.songs.getOrFetch(id)
     var view = new Listener.Views.SongShow({model: song});
-    this._swapView(view);
-  },
-
-  songNew: function () {
-    var song = new Listener.Models.Song();
-    var view = new Listener.Views.SongForm({model: song, collection: this.songs})
-    this._swapView(view);
-  },
-
-  songEdit: function (id) {
-    var song = this.songs.getOrFetch(id);
-    var view = new Listener.Views.SongForm({model: song, collection: this.songs})
     this._swapView(view);
   },
 

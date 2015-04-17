@@ -1,7 +1,7 @@
 Listener.Views.AudioPlayer = Backbone.View.extend({
 
   initialize: function(options){
-    this.initialSong = new Listener.Models.Song({id: 1})
+    this.initialSong = new Listener.Models.Song({name: 'Someday'})
     this.render();
   },
 
@@ -23,6 +23,7 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   },
 
   changeSong: function (song, load) {
+    this.current_song = song;
     var imageUrl = song.escape('nav_image_url');
     var audioUrl = song.escape('audio_url');
     var bandN = song.escape('band_name');

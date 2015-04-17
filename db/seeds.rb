@@ -104,15 +104,23 @@ end
 #   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
 #   )
 #
-profile_pics.each do |pic|
-  User.create!(
-    username: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: 'password',
-    image_url: pic,
-    created_at: Time.now - rand(100).day
-  )
-end
+# 50.times do
+# # profile_pics.each do |pic|
+#   user = User.create!(
+#     username: Faker::Name.name,
+#     email: Faker::Internet.email,
+#     password: 'password',
+#     # image_url: pic,
+#     created_at: Time.now - rand(100).day
+#   )
+#
+#   80.times do
+#     UserSong.create(
+#       user_id: user.id,
+#       song_id: Song.all.sample.id,
+#       created_at: Time.now - rand(20).day)
+#   end
+# end
 #
 # tags = Tag.create!([
 #   {name: 'Funk'},
@@ -137,93 +145,93 @@ end
 #   {name: 'Ska'}
 # ])
 #
-User.all.each do |user|
-  (rand(2) + 2).times do
-    Blog.create(
-      name: generate_name,
-      user_id: user.id,
-      created_at: Time.now - rand(100).day
-    )
-  end
-end
+# User.all.each do |user|
+#   (rand(2) + 2).times do
+#     Blog.create(
+#       name: generate_name,
+#       user_id: user.id,
+#       created_at: Time.now - rand(100).day
+#     )
+#   end
+# end
 #
 #
-# songs = Song.create!([
-#   {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'The Strokes',
-#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/001/original/stream?1423248781", created_at: Time.now - rand(100).day,
-#     image_url: 'http://upload.wikimedia.org/wikipedia/en/e/e7/The_Strokes_-_Ist_Tis_It_US_cover.png'},
-#   {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Chromeo',
-#     audio_url: "https://s3.amazonaws.com/listener-dev/songs/audios/02+Needy+Girl.mp3", created_at: Time.now - rand(100).day,
-#     image_url: 'http://youtellconcerts.com/wp-content/uploads/2008/07/chromeomusicbox.jpg'},
-#   {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Queen',
-#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/009/original/stream?1423248796", created_at: Time.now - rand(100).day,
-#     image_url: 'http://www.queenfanclub.nl/uploads/Bohemian%20Rhapsody.jpg'},
-#   {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Fleet Foxes',
-#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/011/original/stream?1423248801", created_at: Time.now - rand(100).day,
-#     image_url: 'http://upload.wikimedia.org/wikipedia/en/0/01/Fleet_foxes.jpg'},
-#   {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Vampire Weekend',
-#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/016/original/stream?1423248810", created_at: Time.now - rand(100).day,
-#     image_url: 'https://38.media.tumblr.com/tumblr_mipeq2gini1s6o2alo1_1361674443_cover.jpg'}
-# ])
+songs = Song.create!([
+  {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'The Strokes',
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/001/original/stream?1423248781", created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/e/e7/The_Strokes_-_Ist_Tis_It_US_cover.png'},
+  {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Chromeo',
+    audio_url: "https://s3.amazonaws.com/listener-dev/songs/audios/02+Needy+Girl.mp3", created_at: Time.now - rand(100).day,
+    image_url: 'http://youtellconcerts.com/wp-content/uploads/2008/07/chromeomusicbox.jpg'},
+  {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Queen',
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/009/original/stream?1423248796", created_at: Time.now - rand(100).day,
+    image_url: 'http://www.queenfanclub.nl/uploads/Bohemian%20Rhapsody.jpg'},
+  {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Fleet Foxes',
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/011/original/stream?1423248801", created_at: Time.now - rand(100).day,
+    image_url: 'http://upload.wikimedia.org/wikipedia/en/0/01/Fleet_foxes.jpg'},
+  {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Vampire Weekend',
+    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/016/original/stream?1423248810", created_at: Time.now - rand(100).day,
+    image_url: 'https://38.media.tumblr.com/tumblr_mipeq2gini1s6o2alo1_1361674443_cover.jpg'}
+])
 
-User.all.each do |user|
-
+# User.all.each do |user|
+#
   # 7.times do
   #   UserBlog.create(
   #     user_id: user.id,
   #     blog_id: Blog.all.sample.id,
   #     created_at: Time.now - rand(8).day)
   # end
-
-  ############SONGS##############################
-
-  local_songs = Dir.glob("../songs_art/*")
-
-  user.blogs.each do |blog|
-      audio_file = File.open(local_songs[rand(local_songs.count - 1)])
-
-      Mp3Info.open(audio_file) do |mp3|
-        title = mp3.tag.title
-        artist =  mp3.tag.artist
-        genres = mp3.tag.genre_s
-        if mp3.tag2.pictures[0]
-          pic_array = mp3.tag2.pictures[0]
-          picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
-          picture = File.open(pic_array[0])
-        else
-          picture = album_pics.sample
-        end
-
-        Song.create(
-          name: title,
-          band_name: artist,
-          genres: genres,
-          song_type: 'regular',
-          blog_id: blog.id,
-          user_id: user.id,
-          image: picture,
-          audio: audio_file,
-          created_at: Time.now - rand(100).day
-        )
-      end
-  end
-  #
+#
+#   ############SONGS##############################
+#
+#   local_songs = Dir.glob("../songs_art/*")
+#
+#   user.blogs.each do |blog|
+#       audio_file = File.open(local_songs[rand(local_songs.count - 1)])
+#
+#       Mp3Info.open(audio_file) do |mp3|
+#         title = mp3.tag.title
+#         artist =  mp3.tag.artist
+#         genres = mp3.tag.genre_s
+#         if mp3.tag2.pictures[0]
+#           pic_array = mp3.tag2.pictures[0]
+#           picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
+#           picture = File.open(pic_array[0])
+#         else
+#           picture = album_pics.sample
+#         end
+#
+#         Song.create(
+#           name: title,
+#           band_name: artist,
+#           genres: genres,
+#           song_type: 'regular',
+#           blog_id: blog.id,
+#           user_id: user.id,
+#           image: picture,
+#           audio: audio_file,
+#           created_at: Time.now - rand(100).day
+#         )
+#       end
+#   end
+#   #
   # 12.times do
   #   UserSong.create(
   #     user_id: user.id,
   #     song_id: Song.all.sample.id,
   #     created_at: Time.now - rand(8).day)
   # end
-  # ##########################################
-
-end
+#   # ##########################################
+#
+# end
 
 
 
 #Genre Tags & Comments
 
 # Band.all.each do |band|
-#   10.times do
+#   2.times do
 #     Comment.create!(
 #       user_id: User.all.sample.id,
 #       body: markov.generate_n_sentences(rand(5) + 1),
@@ -233,29 +241,26 @@ end
 #     )
 #   end
 # end
-#
+
 # Blog.all.each do |blog|
-#   (rand(4) + 2).times do
+#   (rand(3) + 1).times do
 #     BlogTag.create(blog: blog, tag_id: Tag.all.sample.id)
 #   end
-#
-#   10.times do
-#     Comment.create!(
-#       user_id: User.all.sample.id,
-#       body: markov.generate_n_sentences(rand(5) + 1),
-#       commentable_id: blog.id,
-#       commentable_type: 'Blog',
-#       created_at: Time.now - rand(100).day
-#     )
-#   end
+
+  # 2.times do
+  #   Comment.create!(
+  #     user_id: User.all.sample.id,
+  #     body: markov.generate_n_sentences(rand(5) + 1),
+  #     commentable_id: blog.id,
+  #     commentable_type: 'Blog',
+  #     created_at: Time.now - rand(100).day
+  #   )
+  # end
 # end
-#
+
 # Song.all.each do |song|
-#   (rand(3) + 1).times do
-#     SongTag.create(song: song, tag_id: Tag.all.sample.id)
-#   end
 #
-#   10.times do
+#   3.times do
 #     Comment.create!(
 #       user_id: User.all.sample.id,
 #       body: markov.generate_n_sentences(rand(4) + 1),
