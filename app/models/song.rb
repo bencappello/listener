@@ -75,6 +75,35 @@ class Song < ActiveRecord::Base
     self.band_id = band.id
   end
 
+  def associate_song_genre(genre)
+    tag = Tag.find_by(name: genre)
+    unless tag
+      puts 'NEW GENRE'
+      tag = Tag.create(name: genre)
+    end
+    puts tag
+    puts tag.name
+    puts tag.id
+    puts "tag ids before #{self.tag_ids}"
+    self.tag_ids += [tag.id]
+    puts "tag ids after #{self.tag_ids}"
+  end
+
+  def genres=(genres)
+    if genres.nil?
+      puts nil
+      return
+    elsif genres.is_a?(Array)
+      puts 'array'
+      genres.each do |g|
+        associate_song_genre(g)
+      end
+    else
+      puts 'string'
+      associate_song_genre(genres)
+    end
+  end
+
   def name=(s)
     write_attribute(:name, s.to_s.titleize)
   end

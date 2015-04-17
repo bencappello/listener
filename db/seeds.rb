@@ -180,30 +180,30 @@ User.all.each do |user|
   local_songs = Dir.glob("../songs_art/*")
 
   user.blogs.each do |blog|
-    audio_file = File.open(local_songs[rand(local_songs.count - 1)])
+      audio_file = File.open(local_songs[rand(local_songs.count - 1)])
 
-    Mp3Info.open(audio_file) do |mp3|
-      title = mp3.tag.title
-      artist =  mp3.tag.artist
-      if mp3.tag2.pictures[0]
-        pic_array = mp3.tag2.pictures[0]
-        picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
-        picture = File.open(pic_array[0])
-      else
-        picture = album_pics.sample
+      Mp3Info.open(audio_file) do |mp3|
+        title = mp3.tag.title
+        artist =  mp3.tag.artist
+        if mp3.tag2.pictures[0]
+          pic_array = mp3.tag2.pictures[0]
+          picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
+          picture = File.open(pic_array[0])
+        else
+          picture = album_pics.sample
+        end
+
+        Song.create(
+          name: title,
+          band_name: artist,
+          song_type: 'regular',
+          blog_id: blog.id,
+          user_id: user.id,
+          image: picture,
+          audio: audio_file,
+          created_at: Time.now - rand(100).day
+        )
       end
-
-      Song.create(
-        name: title,
-        band_name: artist,
-        song_type: 'regular',
-        blog_id: blog.id,
-        user_id: user.id,
-        image: picture,
-        audio: audio_file,
-        created_at: Time.now - rand(100).day
-      )
-    end
   end
   #
   # 12.times do

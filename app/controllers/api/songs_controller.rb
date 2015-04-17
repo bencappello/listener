@@ -90,6 +90,6 @@ class Api::SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :band_name, :blog_id, :song_type, :audio, :audio_url, :image, :image_url, tag_ids: [])
+    params.require(:song).permit(:name, :band_name, :blog_id, :song_type, :audio, :audio_url, :image, :image_url, :genres, tag_ids: [])
   end
 end

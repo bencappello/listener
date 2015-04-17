@@ -10,7 +10,7 @@
 <h4>Created by: <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
   <%= blog.postTime() %></h4>
 <br>
-<label>Genres</label>
+<label>Genre(s)</label>
 <ul class='genres-list group'>
   <% blog.get('tag_names').forEach(function (tagName) { %>
     <li class='genre'><%= tagName %></li>
