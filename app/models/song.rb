@@ -81,7 +81,6 @@ class Song < ActiveRecord::Base
       puts 'NEW GENRE'
       tag = Tag.create(name: genre)
     end
-    puts tag
     puts tag.name
     puts tag.id
     puts "tag ids before #{self.tag_ids}"

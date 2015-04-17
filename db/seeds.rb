@@ -104,15 +104,15 @@ end
 #   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
 #   )
 #
-# profile_pics.each do |pic|
-#   User.create!(
-#     username: Faker::Name.name,
-#     email: Faker::Internet.email,
-#     password: 'password',
-#     image_url: pic,
-#     created_at: Time.now - rand(100).day
-#   )
-# end
+profile_pics.each do |pic|
+  User.create!(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: 'password',
+    image_url: pic,
+    created_at: Time.now - rand(100).day
+  )
+end
 #
 # tags = Tag.create!([
 #   {name: 'Funk'},
@@ -137,15 +137,15 @@ end
 #   {name: 'Ska'}
 # ])
 #
-# User.all.each do |user|
-#   (rand(2) + 2).times do
-#     Blog.create(
-#       name: generate_name,
-#       user_id: user.id,
-#       created_at: Time.now - rand(100).day
-#     )
-#   end
-# end
+User.all.each do |user|
+  (rand(2) + 2).times do
+    Blog.create(
+      name: generate_name,
+      user_id: user.id,
+      created_at: Time.now - rand(100).day
+    )
+  end
+end
 #
 #
 # songs = Song.create!([
@@ -185,6 +185,7 @@ User.all.each do |user|
       Mp3Info.open(audio_file) do |mp3|
         title = mp3.tag.title
         artist =  mp3.tag.artist
+        genres = mp3.tag.genre_s
         if mp3.tag2.pictures[0]
           pic_array = mp3.tag2.pictures[0]
           picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
@@ -196,6 +197,7 @@ User.all.each do |user|
         Song.create(
           name: title,
           band_name: artist,
+          genres: genres,
           song_type: 'regular',
           blog_id: blog.id,
           user_id: user.id,
