@@ -9,13 +9,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     "users/:id/:suffix": "show",
   },
 
-  index: function () {
-    Listener.users.fetch();
-    var callback = this.index.bind(this);
-    var indexView = new Listener.Views.UsersIndex();
-    this._swapView(indexView);
-  },
-
   show: function (id, suffix) {
     var callback = this.show.bind(this, id);
     var model = Listener.users.getOrFetch(id, 'reload');
