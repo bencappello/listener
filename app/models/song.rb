@@ -27,7 +27,7 @@ class Song < ActiveRecord::Base
   end
 
   validates_attachment_content_type :audio,
-    content_type: /\Aaudio\/.*\Z/
+    content_type: [ /\Aaudio\/.*\Z/, 'application/octet-stream' ]
 
   has_attached_file :image,
     default_url: "missing_song.jpg",
