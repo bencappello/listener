@@ -2,8 +2,11 @@ Listener.Collections.Tags = Backbone.Collection.extend({
   model: Listener.Models.Tag,
   url: 'api/tags',
 
+  comparator: function (tag) {
+    return tag.get('name');
+  },
+
   initialize: function (options) {
-    // this.band = options.band
   },
 
   getOrFetch: function (id) {
