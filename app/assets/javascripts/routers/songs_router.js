@@ -33,7 +33,10 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     suffix = suffix || 'popular_now'
     var songs = new Listener.Collections.Songs();
     songs.fetch ({
-      data: {find: suffix, page: page}
+      data: {find: suffix, page: page},
+      success: function () {
+        Listener.audioPlayer.loadSong(songs.at(0))
+      }
     })
     var view = new Listener.Views.SongsFind({collection: songs, suffix: suffix})
     this._swapView(view);
