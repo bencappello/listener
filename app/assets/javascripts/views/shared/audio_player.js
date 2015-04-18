@@ -3,6 +3,7 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   initialize: function(options){
     this.render();
     $('#audio-player').on("playing", this.addCurrentSong.bind(this));
+    $('#audio-player').on("ended", this.nextSong.bind(this));
   },
 
   events: {
@@ -24,6 +25,8 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   },
 
   changeSong: function (song, load) {
+    this.current_playlist = song.collection;
+    this.current_index = song.collection.indexOf(song);
     var imageUrl = song.escape('nav_image_url');
     var audioUrl = song.escape('audio_url');
     var bandN = song.escape('band_name');
@@ -43,8 +46,13 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
     }
   },
 
+  nextSong: function () {
+    this.current_index += 1;
+    this.changeSong(this.current_playlist.at(this.current_index));
+  },
+
   addCurrentSong: function () {
-    this.current_song = true
+    this.current_song = true;
   },
 
 });
