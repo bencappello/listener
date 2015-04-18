@@ -18,6 +18,10 @@ Listener.Views.BandShow = Backbone.CommentableView.extend({
     this.renderSongs();
     this.renderComments();
     this.renderCommentForm('Band');
+    if (this.model.songs().length > 0) {
+      Listener.audioPlayer.maybeLoadSong(this.model.songs().at(0))
+    }
+
     return this;
   },
 

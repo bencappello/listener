@@ -21,6 +21,10 @@ Listener.Views.BlogShow = Backbone.CommentableView.extend({
     this.renderSongs();
     this.renderComments();
     this.renderCommentForm('Blog');
+    if (this.model.songs().length > 0) {
+      Listener.audioPlayer.maybeLoadSong(this.model.songs().at(0))
+    }
+    
     return this;
   },
 
