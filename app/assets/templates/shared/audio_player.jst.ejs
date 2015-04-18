@@ -1,11 +1,12 @@
 <section id='player-left'>
-  <img
-    id='player-img'
-    src="/assets/missing_song.jpg"
-    alt="" />
+
 </section>
+
 <section id='player-right group'>
-  <div id='song-title' class='truncate'> </div>
+  <div class="forward-back">
+    <i id='last-song' class="fa fa-backward"></i>
+    <i id='next-song' class="fa fa-forward"></i>
+  </div>
   <audio id='audio-player' controls>
     <source
       id="mp3_src"
@@ -13,4 +14,9 @@
       type="audio/mp3" />
     <p>Your browser does not support the audio element </p>
   </audio>
+  <img
+    id='player-img'
+    src="/assets/missing_song.jpg"
+    alt="" />
+  <div id='song-title' class='truncate'> </div>
 </section>

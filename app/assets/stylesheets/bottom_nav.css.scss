@@ -35,7 +35,7 @@ section#audio-container {
   display: block;
   float: left;
   margin-left: 10px;
-  width: 700px;
+  width: 740px;
 }
 
 section#player-left {
@@ -44,6 +44,7 @@ section#player-left {
 }
 
 #player-img {
+  float: left;
   width: 40px;
   height: 40px;
   margin-top: 5px;
@@ -54,19 +55,32 @@ section#player-right {
   float: right;
 }
 
-#audio-player {
-  float: left;
-  background: black;
-  margin-top: 10px;
-
-}
-
 #song-title {
   float: left;
   font-size: 16px;
   margin-left: 10px;
   margin-top: 17px;
-  max-width: 350px;
+  max-width: 312px;
+}
+
+.forward-back {
+  float: left;
+  margin-left: 5px;
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.forward-back i {
+  margin-left: 10px;
+}
+
+
+
+#audio-player {
+  float: left;
+  background: black;
+  margin-top: 10px;
+  width: 300px;
 }
 
 
@@ -83,7 +97,7 @@ section.user-info {
   color: #e0e0e0;
   position: relative;
   min-width: 140px;
-  max-width: 260px;
+  max-width: 230px;
 }
 
 section.user-info a {

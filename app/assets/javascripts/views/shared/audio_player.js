@@ -7,6 +7,8 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   },
 
   events: {
+    'click #next-song': 'nextSong',
+    'click #last-song': 'lastSong',
   },
 
   template: JST['shared/audio_player'],
@@ -27,7 +29,7 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   changeSong: function (song, load) {
     if (song.collection) {
       this.current_playlist = song.collection;
-      this.current_index = song.collection.indexOf(song);  
+      this.current_index = song.collection.indexOf(song);
     }
     var imageUrl = song.escape('nav_image_url');
     var audioUrl = song.escape('audio_url');
@@ -49,8 +51,17 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   },
 
   nextSong: function () {
-    this.current_index += 1;
-    this.changeSong(this.current_playlist.at(this.current_index));
+    if (this.current_index < (this.current_playlist.length - 1)) {
+      this.current_index += 1;
+      this.changeSong(this.current_playlist.at(this.current_index));
+    }
+  },
+
+  lastSong: function () {
+    if (this.current_index > 0) {
+      this.current_index -= 1;
+      this.changeSong(this.current_playlist.at(this.current_index));
+    }
   },
 
   addCurrentSong: function () {
