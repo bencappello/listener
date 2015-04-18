@@ -24,7 +24,6 @@
 #user-nav {
  float: right;
  min-height: 50px;
- margin-right: 5px;
 }
 
 
@@ -35,9 +34,8 @@
 section#audio-container {
   display: block;
   float: left;
-  margin-left: 20px;
+  margin-left: 10px;
   width: 700px;
-  // padding: 7px 0;
 }
 
 section#player-left {
@@ -68,6 +66,7 @@ section#player-right {
   font-size: 16px;
   margin-left: 10px;
   margin-top: 17px;
+  max-width: 350px;
 }
 
 
@@ -84,7 +83,7 @@ section.user-info {
   color: #e0e0e0;
   position: relative;
   min-width: 140px;
-  text-align: right;
+  max-width: 260px;
 }
 
 section.user-info a {
@@ -99,8 +98,10 @@ section.user-info a {
 .user-nav-dropdown {
   display: none;
   position: absolute;
-  left: -1px;
+  right: -2px;
+  width: 100%;
   min-width: 150px;
+  max-width: 200px;
   font-size: 14px;
   white-space: nowrap;
   background: #333;

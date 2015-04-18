@@ -2,7 +2,7 @@
 
 <% if(Listener.currentUser.isSignedIn()) { %>
 
-  <section class='user-info'>
+  <section class='user-info flowout'>
     <a href="#users/<%= Listener.currentUser.id %>">
       <img class ='img-tiny' src="<%= currentUser.get("nav_image_url") %>">
       <%= Listener.currentUser.escape("username") %>
