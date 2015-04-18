@@ -25,8 +25,10 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   },
 
   changeSong: function (song, load) {
-    this.current_playlist = song.collection;
-    this.current_index = song.collection.indexOf(song);
+    if (song.collection) {
+      this.current_playlist = song.collection;
+      this.current_index = song.collection.indexOf(song);  
+    }
     var imageUrl = song.escape('nav_image_url');
     var audioUrl = song.escape('audio_url');
     var bandN = song.escape('band_name');
