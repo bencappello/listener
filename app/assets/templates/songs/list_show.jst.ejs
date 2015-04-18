@@ -8,8 +8,31 @@
 <% var creatorN = song.escape('creator_name') %>
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
-<section class='song-top group'>
   <a href="<%= songU %>"><img class='thumbnail list-img' src="<%= song.escape("list_image_url") %>"></a>
+
+  <section id='song-list-controls'>
+    <section class='controls-inner-container'>
+      <button id="play-btn"><i class="fa fa-play"></i></button>
+      <button
+        class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+        <i class="fa fa-heart"></i>
+      </button>
+      <span
+        id='favorite-count'
+        class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+        <%= song.escape('favoriters_count') %>
+      </span>
+    </section>
+  </section>
+
+  <section class='song-list-info'>
+    <h2>
+      <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
+      <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
+    </h2>
+    <h4>Added <%= song.postTime() %> by <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
+      , Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
+  </section>
 
   <section class ='genres-container'>
     <label>Genre(s)</label>
@@ -19,24 +42,3 @@
       <% }) %>
     </ul>
   </section>
-
-  <section id='song-list-controls'>
-    <span
-      id='favorite-count'
-      class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-      <%= song.escape('favoriters_count') %>
-    </span>
-    <button
-      class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
-      <i class="fa fa-heart"></i>
-    </button>
-    <button id="play-btn"><i class="fa fa-play"></i></button>
-  </section>
-</section>
-
-<h2>
-  <a class='underline-link blue' href="<%= bandU %>"><%= bandN %></a> -
-  <a class='underline-link blue' href="<%= songU %>"><%= songN %></a>
-</h2>
-<h4>Added <%= song.postTime() %> by <a class='underline-link blue' href="<%= creatorU %>"><strong><%= creatorN %></strong></a>
-  , Playlist: <a class='underline-link blue' href="<%= blogU %>"><strong><%= blogN %></strong></a></h4>
