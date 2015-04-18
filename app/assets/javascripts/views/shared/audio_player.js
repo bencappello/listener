@@ -18,7 +18,7 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
     return this;
   },
 
-  loadSong: function (song) {
+  maybeLoadSong: function (song) {
     if (!this.current_song) {
       this.changeSong(song, 'load')
     }

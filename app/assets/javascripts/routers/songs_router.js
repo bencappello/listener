@@ -22,7 +22,10 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     page = page || 1
     var results = new Listener.Collections.Songs();
     results.fetch ({
-      data: {query: query, page: page}
+      data: {query: query, page: page},
+      success: function () {
+        Listener.audioPlayer.maybeLoadSong(results.at(0))
+      }
     })
     var view = new Listener.Views.SongsSearch({collection: results, query: query})
     this._swapView(view);
@@ -35,7 +38,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     songs.fetch ({
       data: {find: suffix, page: page},
       success: function () {
-        Listener.audioPlayer.loadSong(songs.at(0))
+        Listener.audioPlayer.maybeLoadSong(songs.at(0))
       }
     })
     var view = new Listener.Views.SongsFind({collection: songs, suffix: suffix})

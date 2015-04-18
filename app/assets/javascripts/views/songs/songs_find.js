@@ -30,7 +30,7 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   },
 
   listenForScroll: function () {
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 200, {leading: false});
+    var throttledCallback = _.throttle(this.nextPage.bind(this), 300, {leading: false});
     $(window).on("scroll", throttledCallback);
   },
 
