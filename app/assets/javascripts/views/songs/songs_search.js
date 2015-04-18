@@ -42,7 +42,12 @@ Listener.Views.SongsSearch = Backbone.CompositeView.extend({
         view.newSongs.fetch({
           data: { page: pageN + 1, query: view.query},
           success: function () {
-            view.newSongs.each(view.addSong.bind(view));
+            view.newSongs.each(function(song){
+              view.addSong(song);
+              view.collection.add(song);
+              song.collection = view.collection;
+            });
+            debugger
           }
         });
       }

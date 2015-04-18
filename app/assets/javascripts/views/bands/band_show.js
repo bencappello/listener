@@ -25,6 +25,7 @@ Listener.Views.BandShow = Backbone.CommentableView.extend({
     var view = new Listener.Views.SongListShow({
       model: song,
       collection: this.model.songs(),
+      compressed_template: true
     });
     this.addSubview('#songs', view);
   },

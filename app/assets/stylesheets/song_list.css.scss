@@ -6,20 +6,24 @@
 
 .genres-container {
   float: right;
-  margin-right: 10px;
-  width: 170px;
+  width: 180px;
   text-align: left
 }
 
 .main .genres-container {
-  width: 200px;
+  width: 230px;
 }
 
 .song-list-info {
-  width: 540px;
+  width: 535px;
   float: left;
-  margin-left: 10px;
+  margin-left: 15px;
   margin-top: 15px
+}
+
+.main .song-list-info {
+  margin-left: -2px;
+  width: 100%;
 }
 
 .controls-inner-container {
@@ -43,7 +47,8 @@
   box-shadow: 0px 0px 3pt 2.5pt black;
 }
 
-#song-list-controls #favorite-count {
+.main #song-list-controls {
+  margin-left: 10px;
 }
 
 .song-left #song-list-controls {

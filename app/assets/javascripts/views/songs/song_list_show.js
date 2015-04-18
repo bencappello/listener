@@ -1,5 +1,6 @@
 Listener.Views.SongListShow = Backbone.CompositeView.extend({
   template: JST['songs/list_show'],
+  compressed_template: JST['songs/list_show_compressed'],
 
   className: 'list-song',
 
@@ -11,7 +12,9 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render)
     this.parentModel = options.parentModel;
-    // this.listenTo(Listener.currentUser, 'sync', this.render)
+    if (options.compressed_template) {
+      this.template = this.compressed_template;
+    }
   },
 
   render: function () {

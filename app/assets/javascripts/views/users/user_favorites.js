@@ -9,6 +9,7 @@ Listener.Views.UserFavorites = Backbone.CompositeView.extend({
   addSong: function (song) {
     var view = new Listener.Views.SongListShow({
       model: song,
+      compressed_template: true
     });
     this.addSubview('section#favorite-songs', view);
   },

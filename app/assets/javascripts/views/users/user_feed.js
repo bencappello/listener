@@ -10,6 +10,7 @@ Listener.Views.UserFeed = Backbone.CompositeView.extend({
     var view = new Listener.Views.SongListShow({
       model: song,
       collection: this.model.feedSongs(),
+      compressed_template: true
     });
     this.addSubview('section#feed-songs', view);
   },
