@@ -11,7 +11,7 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
 
   show: function (id, suffix) {
     var callback = this.show.bind(this, id);
-    var model = Listener.users.getOrFetch(id, 'reload');
+    var model = Listener.users.getOrFetch(id);
     var showView = new Listener.Views.UsersShow({
       model: model,
       content: suffix

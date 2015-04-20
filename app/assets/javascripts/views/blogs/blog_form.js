@@ -36,7 +36,7 @@ Listener.Views.BlogForm = Backbone.CompositeView.extend({
     this.model.set(formData);
     this.model.save({}, {
       success: function (model, resp) {
-        Listener.currentUser.fetch();
+        // Listener.currentUser.fetch();
         $(".modal").removeClass("is-open");
         Backbone.history.navigate('blogs/' + resp.id, {trigger: true});
       },

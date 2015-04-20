@@ -2,6 +2,12 @@ class Api::SessionsController < ApplicationController
 
   def show
     if current_user
+      @user = User.includes(
+        :followed_users,
+        :followers,
+        :followed_blogs,
+        :favorite_songs
+      ).find(current_user.id)
       render :show
     else
       render json: {}

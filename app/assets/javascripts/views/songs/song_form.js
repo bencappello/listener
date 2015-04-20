@@ -44,7 +44,6 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     this.model.set(formData);
     this.model.save({}, {
       success: function (model, resp) {
-        // that.collection.add(that.model);
         delete that.model._audio;
         delete that.model._image;
         $(".modal").removeClass("is-open");
