@@ -104,23 +104,23 @@ end
 #   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
 #   )
 #
-# 50.times do
-# # profile_pics.each do |pic|
-#   user = User.create!(
-#     username: Faker::Name.name,
-#     email: Faker::Internet.email,
-#     password: 'password',
-#     # image_url: pic,
-#     created_at: Time.now - rand(100).day
-#   )
-#
-#   80.times do
-#     UserSong.create(
-#       user_id: user.id,
-#       song_id: Song.all.sample.id,
-#       created_at: Time.now - rand(20).day)
-#   end
-# end
+50.times do
+# profile_pics.each do |pic|
+  user = User.create!(
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: 'password',
+    # image_url: pic,
+    created_at: Time.now - rand(100).day
+  )
+
+  80.times do
+    UserSong.create(
+      user_id: user.id,
+      song_id: Song.all.sample.id,
+      created_at: Time.now - rand(20).day)
+  end
+end
 #
 # tags = Tag.create!([
 #   {name: 'Funk'},
@@ -156,53 +156,72 @@ end
 # end
 #
 #
-songs = Song.create!([
-  {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'The Strokes',
-    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/001/original/stream?1423248781", created_at: Time.now - rand(100).day,
-    image_url: 'http://upload.wikimedia.org/wikipedia/en/e/e7/The_Strokes_-_Ist_Tis_It_US_cover.png'},
-  {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Chromeo',
-    audio_url: "https://s3.amazonaws.com/listener-dev/songs/audios/02+Needy+Girl.mp3", created_at: Time.now - rand(100).day,
-    image_url: 'http://youtellconcerts.com/wp-content/uploads/2008/07/chromeomusicbox.jpg'},
-  {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Queen',
-    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/009/original/stream?1423248796", created_at: Time.now - rand(100).day,
-    image_url: 'http://www.queenfanclub.nl/uploads/Bohemian%20Rhapsody.jpg'},
-  {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Fleet Foxes',
-    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/011/original/stream?1423248801", created_at: Time.now - rand(100).day,
-    image_url: 'http://upload.wikimedia.org/wikipedia/en/0/01/Fleet_foxes.jpg'},
-  {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Vampire Weekend',
-    audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/016/original/stream?1423248810", created_at: Time.now - rand(100).day,
-    image_url: 'https://38.media.tumblr.com/tumblr_mipeq2gini1s6o2alo1_1361674443_cover.jpg'}
-])
+# songs = Song.create!([
+#   {name: "Someday", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'The Strokes',
+#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/001/original/stream?1423248781", created_at: Time.now - rand(100).day,
+#     image_url: 'http://upload.wikimedia.org/wikipedia/en/e/e7/The_Strokes_-_Ist_Tis_It_US_cover.png'},
+#   {name: "Needy Girl", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Chromeo',
+#     audio_url: "https://s3.amazonaws.com/listener-dev/songs/audios/02+Needy+Girl.mp3", created_at: Time.now - rand(100).day,
+#     image_url: 'http://youtellconcerts.com/wp-content/uploads/2008/07/chromeomusicbox.jpg'},
+#   {name: "Bohemian Rhapsody", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Queen',
+#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/009/original/stream?1423248796", created_at: Time.now - rand(100).day,
+#     image_url: 'http://www.queenfanclub.nl/uploads/Bohemian%20Rhapsody.jpg'},
+#   {name: "White Winter Hymnal", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Fleet Foxes',
+#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/011/original/stream?1423248801", created_at: Time.now - rand(100).day,
+#     image_url: 'http://upload.wikimedia.org/wikipedia/en/0/01/Fleet_foxes.jpg'},
+#   {name: "Oxford Comma", song_type: 'regular', blog_id: User.first.blogs.sample.id, user_id: 1, band_name: 'Vampire Weekend',
+#     audio_url: "http://s3.amazonaws.com/listener/songs/audios/000/000/016/original/stream?1423248810", created_at: Time.now - rand(100).day,
+#     image_url: 'https://38.media.tumblr.com/tumblr_mipeq2gini1s6o2alo1_1361674443_cover.jpg'}
+# ])
 
+# @blog_count = 0
+# @song_count = 0
+# @empty = 0
+# @empty_song_count = 0
 # User.all.each do |user|
 #
-  # 7.times do
-  #   UserBlog.create(
-  #     user_id: user.id,
-  #     blog_id: Blog.all.sample.id,
-  #     created_at: Time.now - rand(8).day)
-  # end
+#   7.times do
+#     UserBlog.create(
+#       user_id: user.id,
+#       blog_id: Blog.all.sample.id,
+#       created_at: Time.now - rand(8).day)
+#   end
 #
 #   ############SONGS##############################
 #
-#   local_songs = Dir.glob("../songs_art/*")
+#   local_songs = Dir.glob("../songs/*")
 #
 #   user.blogs.each do |blog|
+#     @found = false
+#     until @found
 #       audio_file = File.open(local_songs[rand(local_songs.count - 1)])
+#
+#       Mp3Info.open(audio_file) do |mp3|
+#         if mp3.tag.title && mp3.tag.artist
+#           @found = true
+#           puts "title #{mp3.tag.title}"
+#           puts "artist #{mp3.tag.artist}"
+#         end
+#       end
+#     end
 #
 #       Mp3Info.open(audio_file) do |mp3|
 #         title = mp3.tag.title
 #         artist =  mp3.tag.artist
 #         genres = mp3.tag.genre_s
-#         if mp3.tag2.pictures[0]
+#
+#         unless mp3.tag2.pictures.empty?
 #           pic_array = mp3.tag2.pictures[0]
 #           picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
 #           picture = File.open(pic_array[0])
+#           empty = false
 #         else
+#           puts "EMPTY!!!! #{@empty += 1}"
 #           picture = album_pics.sample
+#           empty = true
 #         end
 #
-#         Song.create(
+#         song = Song.create(
 #           name: title,
 #           band_name: artist,
 #           genres: genres,
@@ -213,17 +232,32 @@ songs = Song.create!([
 #           audio: audio_file,
 #           created_at: Time.now - rand(100).day
 #         )
+#
+#         puts "BLOG COUNT #{ @blog_count += 1 }"
+#         if song.id
+#           puts "SONG COUNT #{@song_count += 1}"
+#           puts "EMPTY SONG COUNT #{@empty_song_count += 1}" if empty
+#         end
+#
+#         28.times do
+#           UserSong.create(
+#             user_id: User.all.sample.id,
+#             song_id: song.id,
+#             created_at: Time.now - rand(8).day
+#           )
+#         end
 #       end
-#   end
-#   #
+  # end
+
+  #
   # 12.times do
   #   UserSong.create(
   #     user_id: user.id,
   #     song_id: Song.all.sample.id,
   #     created_at: Time.now - rand(8).day)
   # end
-#   # ##########################################
-#
+  # ##########################################
+
 # end
 
 

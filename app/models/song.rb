@@ -2,7 +2,11 @@ class Song < ActiveRecord::Base
   include PgSearch
   paginates_per 5
 
-  validates :name, presence: true, uniqueness: {scope: :blog_id}
+  validates :name, presence: true
+  validates :name, uniqueness: {scope: :band_id,
+    message: "song already exists"}
+  validates :name, uniqueness: {scope: :blog_id,
+    message: "song already added to playlist"}
   validates :user_id, :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
@@ -82,15 +86,11 @@ class Song < ActiveRecord::Base
       tag = Tag.create(name: genre)
     end
     puts tag.name
-    puts tag.id
-    puts "tag ids before #{self.tag_ids}"
     self.tag_ids += [tag.id]
-    puts "tag ids after #{self.tag_ids}"
   end
 
   def genres=(genres)
     if genres.nil?
-      puts nil
       return
     elsif genres.is_a?(Array)
       puts 'array'
