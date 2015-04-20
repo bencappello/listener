@@ -29,7 +29,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       this.renderFavorites();
     } else if (this.content == 'added_songs') {
       this.renderAddedSongs();
-    } else if (this.content == 'followed_playlists') {
+    } else if (this.content == 'followed_blogs') {
       this.renderFollowedBlogs();
     } else {
       this.renderFeed();
@@ -55,21 +55,26 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   renderAddedSongs: function () {
     this.content = 'added_songs';
+    this.model.fetch({
+      data: {content: 'added_songs'}
+    });
     var view = new Listener.Views.AddedSongs({model: this.model});
     this._swapView(view);
   },
 
   renderCreatedBlogs: function () {
     this.content = 'created_blogs';
+    this.model.fetch({
+      data: {content: 'created_blogs'}
+    });
     var view = new Listener.Views.CreatedBlogs({model: this.model});
     this._swapView(view);
   },
 
   renderFavorites: function () {
-    view = this
     this.content = 'favorites';
     this.model.fetch({
-      data: {content: 'favorites'},
+      data: {content: 'favorites'}
     });
     var view = new Listener.Views.UserFavorites({model: this.model});
     this._swapView(view);
@@ -77,12 +82,18 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
 
   renderFeed: function () {
     this.content = 'feed';
+    this.model.fetch({
+      data: {content: 'feed'}
+    });
     var view = new Listener.Views.UserFeed({model: this.model});
     this._swapView(view);
   },
 
   renderFollowedBlogs: function () {
-    this.content = 'followed_playlists';
+    this.content = 'followed_blogs';
+    this.model.fetch({
+      data: {content: 'followed_blogs'}
+    });
     var view = new Listener.Views.FollowedBlogs({model: this.model});
     this._swapView(view);
   },

@@ -4,6 +4,7 @@ Listener.Views.AddedSongs = Backbone.CompositeView.extend({
   className: 'added-songs',
 
   initialize: function(options){
+    this.listenTo(this.model, "sync", this.render)
   },
 
   addSong: function (song) {

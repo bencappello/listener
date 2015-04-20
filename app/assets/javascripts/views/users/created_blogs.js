@@ -4,6 +4,7 @@ Listener.Views.CreatedBlogs = Backbone.CompositeView.extend({
   className: 'blogs',
 
   initialize: function(options){
+    this.listenTo(this.model, "sync", this.render)
   },
 
   addBlog: function (blog) {

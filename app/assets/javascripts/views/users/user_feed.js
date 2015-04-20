@@ -4,6 +4,7 @@ Listener.Views.UserFeed = Backbone.CompositeView.extend({
   className: 'feed',
 
   initialize: function(options){
+    this.listenTo(this.model, "sync", this.render)
   },
 
   addSong: function (song) {
