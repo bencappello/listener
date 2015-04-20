@@ -6,7 +6,8 @@ class Api::SessionsController < ApplicationController
         :followed_users,
         :followers,
         :followed_blogs,
-        :favorite_songs
+        :favorite_songs,
+        :blogs
       ).find(current_user.id)
       render :show
     else

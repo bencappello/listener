@@ -16,3 +16,7 @@ end
 json.followers @user.followers do |follower|
   json.extract! follower, :id, :username
 end
+
+json.blogs @user.blogs do |blog|
+  json.extract! blog, :id, :name
+end
