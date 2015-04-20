@@ -23,7 +23,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
       followed: this.model.followed()
       });
     this.$el.html(html);
-    if (this.content == 'created_blogs') {
+    if (this.content == 'added_blogs') {
       this.renderCreatedBlogs();
     } else if (this.content == 'favorites') {
       this.renderFavorites();
@@ -63,9 +63,9 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   renderCreatedBlogs: function () {
-    this.content = 'created_blogs';
+    this.content = 'added_blogs';
     this.model.fetch({
-      data: {content: 'created_blogs'}
+      data: {content: 'added_blogs'}
     });
     var view = new Listener.Views.CreatedBlogs({model: this.model});
     this._swapView(view);
