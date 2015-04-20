@@ -4,6 +4,7 @@ Listener.Views.UserFavorites = Backbone.CompositeView.extend({
   className: 'favorites',
 
   initialize: function(options){
+    this.listenTo(this.model, "sync", this.render)
   },
 
   addSong: function (song) {

@@ -6,8 +6,15 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    render :show
+    if params[:content] == 'favorites'
+      @user = User.includes(
+      favorite_songs: [:blog, :band, :favoriters, :user]
+      ).find(params[:id])
+      render :favorites
+    else
+      @user = User.find(params[:id])
+      render :show
+    end
   end
 
   def favorites

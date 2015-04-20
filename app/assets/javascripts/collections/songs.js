@@ -2,10 +2,6 @@ Listener.Collections.Songs = Backbone.Collection.extend({
   model: Listener.Models.Song,
   url: 'api/songs',
 
-  // comparator: function (song) {
-  //   return -song.get('id');
-  // },
-
   getOrFetch: function (id) {
     var song = this.get(id);
 
