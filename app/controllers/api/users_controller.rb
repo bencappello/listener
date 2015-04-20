@@ -11,7 +11,10 @@ class Api::UsersController < ApplicationController
   end
 
   def favorites
-
+    @user = User.includes(
+    favorite_songs: [:blog, :band, :favoriters, :user]
+    ).find(params[:id])
+    render :songs
   end
 
   def feed
