@@ -43,8 +43,8 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
+    Listener._currentView && Listener._currentView.remove();
+    Listener._currentView = view;
     this.$rootEl.html(view.render().$el);
   }
 

@@ -1,4 +1,4 @@
-Listener.Routers.SongsRouter = Backbone.Router.extend ({
+Listener.Routers.ContentRouter = Backbone.Router.extend ({
   initialize: function () {
     this.$rootEl = $('#content');
     this.songs = new Listener.Collections.Songs();
@@ -46,8 +46,8 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   _swapView: function (view) {
-    Listener.currentView && Listener.currentView.remove();
-    Listener.currentView = view;
+    this.currentView && this.currentView.remove();
+    this.currentView = view;
     this.$rootEl.html(view.render().$el);
   },
 });

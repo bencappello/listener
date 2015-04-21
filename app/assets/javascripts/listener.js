@@ -13,10 +13,8 @@ window.Listener = {
     this.tags.fetch();
 
     this.allBands = new Listener.Collections.Bands();
-    // this.allBands.fetch();
 
     this.allSongs = new Listener.Collections.Songs();
-    // this.allSongs.fetch();
 
     this.topHeader = new Listener.Views.TopHeader({ el: "#top-header" });
     this.audioPlayer = new Listener.Views.AudioPlayer({ el: '#audio-container'})

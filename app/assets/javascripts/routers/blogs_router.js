@@ -24,8 +24,7 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
     this._swapView(view);
   },
 
-  blogNew: function () {
-    var blog = new Listener.Models.Blog();
+  blogNew: function () {    var blog = new Listener.Models.Blog();
     var view = new Listener.Views.BlogForm({model: blog, collection: this.blogs})
     this._swapView(view);
   },
