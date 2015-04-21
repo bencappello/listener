@@ -3,7 +3,7 @@
 <% if(Listener.currentUser.isSignedIn()) { %>
 
   <section class='user-info'>
-    <a class='truncate' href="#users/<%= Listener.currentUser.id %>">
+    <a class='truncate' href="#users/<%= userID %>/favorites">
       <img class ='img-tiny' src="<%= currentUser.get("nav_image_url") %>">
       <%= Listener.currentUser.escape("username") %>
     </a>

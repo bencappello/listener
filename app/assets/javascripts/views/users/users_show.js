@@ -37,21 +37,21 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     return this;
   },
 
-  changeContent: function (event) {
-    var targ = $(event.currentTarget);
-    var id = targ.attr('id');
-    if (id == 'btn-created-blogs') {
-      this.renderCreatedBlogs();
-    } else if (id == 'btn-favorites') {
-      this.renderFavorites();
-    } else if (id == 'btn-added-songs') {
-      this.renderAddedSongs();
-    } else if (id == 'btn-feed') {
-      this.renderFeed();
-    } else {
-      this.renderFollowedBlogs();
-    }
-  },
+  // changeContent: function (event) {
+  //   var targ = $(event.currentTarget);
+  //   var id = targ.attr('id');
+  //   if (id == 'btn-created-blogs') {
+  //     this.renderCreatedBlogs();
+  //   } else if (id == 'btn-favorites') {
+  //     this.renderFavorites();
+  //   } else if (id == 'btn-added-songs') {
+  //     this.renderAddedSongs();
+  //   } else if (id == 'btn-feed') {
+  //     this.renderFeed();
+  //   } else {
+  //     this.renderFollowedBlogs();
+  //   }
+  // },
 
   renderAddedSongs: function () {
     var that = this;

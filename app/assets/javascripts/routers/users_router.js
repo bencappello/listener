@@ -42,7 +42,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
-    console.log('user router current view ' + Listener._currentView)
     Listener._currentView && Listener._currentView.remove();
     Listener._currentView = view;
     this.$rootEl.html(view.render().$el);

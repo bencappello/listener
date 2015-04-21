@@ -46,7 +46,6 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   _swapView: function (view) {
-    console.log('song router current view ' + Listener._currentView)
     Listener._currentView && Listener._currentView.remove();
     Listener._currentView = view;
     this.$rootEl.html(view.render().$el);
