@@ -1,20 +1,19 @@
-Listener.Routers.BlogsRouter = Backbone.Router.extend ({
+Listener.Routers.BandsBlogsRouter = Backbone.Router.extend ({
   initialize: function () {
     this.$rootEl = $('#content');
     this.blogs = new Listener.Collections.Blogs();
+    this.bands = new Listener.Collections.Bands();
   },
 
   routes: {
-    'blogs': 'blogsIndex',
-    'blogs/new': 'blogNew',
+    'bands/:id': 'bandShow',
     'blogs/:id': 'blogShow',
-    'blogs/:id/edit': 'blogEdit',
     'blogs/find/:suffix': 'find',
   },
 
-  blogsIndex: function () {
-    this.blogs.fetch();
-    var view = new Listener.Views.BlogsIndex({collection: this.blogs});
+  bandShow: function (id) {
+    var band = this.bands.getOrFetch(id)
+    var view = new Listener.Views.BandShow({model: band});
     this._swapView(view);
   },
 
@@ -24,18 +23,7 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
     this._swapView(view);
   },
 
-  blogNew: function () {    var blog = new Listener.Models.Blog();
-    var view = new Listener.Views.BlogForm({model: blog, collection: this.blogs})
-    this._swapView(view);
-  },
-
-  blogEdit: function (id) {
-    var blog = this.blogs.getOrFetch(id);
-    var view = new Listener.Views.BlogForm({model: blog, collection: this.blogs})
-    this._swapView(view);
-  },
-
-  find: function (suffix, page) {
+  findBlogs: function (suffix, page) {
     page = page || 1
     suffix = suffix || 'popular_now'
     var blogs = new Listener.Collections.Blogs();
@@ -47,8 +35,8 @@ Listener.Routers.BlogsRouter = Backbone.Router.extend ({
   },
 
   _swapView: function (view) {
-    this.currentView && this.currentView.remove();
-    this.currentView = view;
+    Listener.currentView && Listener.currentView.remove();
+    Listener.currentView = view;
     this.$rootEl.html(view.render().$el);
   },
 });

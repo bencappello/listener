@@ -28,7 +28,7 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
 
   changeSong: function (song, load) {
     if (song.collection) {
-      this.current_playlist = song.collection;
+      this.current_blog = song.collection;
       this.current_index = song.collection.indexOf(song);
     }
     var imageUrl = song.escape('nav_image_url');
@@ -51,16 +51,16 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
   },
 
   nextSong: function () {
-    if (this.current_index < (this.current_playlist.length - 1)) {
+    if (this.current_index < (this.current_blog.length - 1)) {
       this.current_index += 1;
-      this.changeSong(this.current_playlist.at(this.current_index));
+      this.changeSong(this.current_blog.at(this.current_index));
     }
   },
 
   lastSong: function () {
     if (this.current_index > 0) {
       this.current_index -= 1;
-      this.changeSong(this.current_playlist.at(this.current_index));
+      this.changeSong(this.current_blog.at(this.current_index));
     }
   },
 

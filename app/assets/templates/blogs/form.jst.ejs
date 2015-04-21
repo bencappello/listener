@@ -7,14 +7,14 @@
           <% if (edit) { %>
             <div id="form-title">Edit <%= blog.escape('name') %></div>
           <% } else { %>
-            <div id="form-title">Add A Playlist</div>
+            <div id="form-title">Add A Blog</div>
           <% } %>
           <section id='errors'></section>
           <p>
             <span class="fontawesome-list"></span>
             <input
               type="text"
-              placeholder="Playlist Name"
+              placeholder="Blog Name"
               name="blog[name]"
               value="<%= blog.escape('name') %>">
           </p>
@@ -39,9 +39,9 @@
 
           <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
           <% if (edit) { %>
-            <button class='submit modal-submit blog-submit'>Update Playlist</button>
+            <button class='submit modal-submit blog-submit'>Update Blog</button>
           <% } else { %>
-            <button class='submit modal-submit blog-submit'>Add Playlist</button>
+            <button class='submit modal-submit blog-submit'>Add Blog</button>
           <% } %>
 
         </section>

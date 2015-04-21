@@ -12,11 +12,11 @@
         <li><a href="#" id='create-user'>Create User</a></li>
       <% } %>
       <li><a href="#" id="add-song-link">Add Song</a></li>
-      <li><a href="#" id="add-blog-link">Add Playlist</a></li>
+      <li><a href="#" id="add-blog-link">Add Blog</a></li>
       <li><a href="#/users/<%= userID %>/feed">Feed</a></li>
       <li><a href="#/users/<%= userID %>/favorites">Favorites</a></li>
       <li>
-        <a href="#/users/<%= userID %>/followed_playlists">Followed Playlists</a>
+        <a href="#/users/<%= userID %>/followed_blogs">Followed Blogs</a>
       </li>
       <% if (Listener.currentUser.escape('username') != 'guest') { %>
         <li><a href="#" class='edit'>Edit Profile</a></li>

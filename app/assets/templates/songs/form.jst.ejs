@@ -32,7 +32,7 @@
                 value="<%= song.escape('name') %>">
             </p>
 
-            <label>Playlist
+            <label>Blog
               <select name="song[blog_id]">
                 <% Listener.currentUser.createdBlogs().forEach(function (blog) { %>
                   <option

@@ -20,8 +20,7 @@ window.Listener = {
     this.audioPlayer = new Listener.Views.AudioPlayer({ el: '#audio-container'})
     this.userHeader = new Listener.Views.UserHeader({ el: "#user-nav" });
 
-    new Listener.Routers.BandsRouter();
-    new Listener.Routers.BlogsRouter();
+    new Listener.Routers.BandsBlogsRouter();
     new Listener.Routers.SongsRouter();
     this.usersRouter = new Listener.Routers.UsersRouter();
     this.modalRouter = new Listener.Routers.ModalRouter();

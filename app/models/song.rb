@@ -6,7 +6,7 @@ class Song < ActiveRecord::Base
   validates :name, uniqueness: {scope: :band_id,
     message: "song already exists"}
   validates :name, uniqueness: {scope: :blog_id,
-    message: "song already added to playlist"}
+    message: "song already added to blog"}
   validates :user_id, :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
