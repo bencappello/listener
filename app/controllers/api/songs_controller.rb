@@ -1,5 +1,6 @@
 class Api::SongsController < ApplicationController
   def index
+    @page = params[:page]
     if params[:query]
       self.search
     elsif params[:find]
@@ -8,6 +9,8 @@ class Api::SongsController < ApplicationController
       self.favorites
     elsif params[:content] == 'feed'
       self.feed
+    elsif params[:content] == 'added_songs'
+      self.added_songs
     end
   end
 
@@ -18,7 +21,6 @@ class Api::SongsController < ApplicationController
     if @songs.empty?
       render json: @songs, status: 422
     else
-      @page = params[:page]
       render :search
     end
   end
@@ -44,14 +46,12 @@ class Api::SongsController < ApplicationController
       @songs = Song.includes(:blog, :band, :user).order('created_at desc')
         .limit(50).page(params[:page])
     end
-    @page = params[:page]
     render :search
   end
 
   def favorites
     #get the user as opposed to just the songs because its simpler to
     #use the through association to get the songs
-    @page = params[:page]
     @user = User.includes(
       favorite_songs: [:blog, :band, :favoriters, :user]
     ).find(params[:user_id])
@@ -59,12 +59,18 @@ class Api::SongsController < ApplicationController
   end
 
   def feed
-    @page = params[:page]
     @user = User.includes(
       followed_blogs: [songs: [:blog, :band, :favoriters]],
       followed_users: [favorite_songs: [:blog, :band, :favoriters]]
     ).find(params[:user_id])
     render :feed
+  end
+
+  def added_songs
+    @user = User.includes(
+      songs: [:blog, :band, :favoriters]
+    ).find(params[:user_id])
+    render :added_songs
   end
 
   def new

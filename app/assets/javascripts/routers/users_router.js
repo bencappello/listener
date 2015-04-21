@@ -7,7 +7,6 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
   routes: {
     "users/:id": "show",
     "users/:id/:suffix": "show",
-
   },
 
   show: function (id, suffix) {

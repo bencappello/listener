@@ -54,9 +54,13 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   renderAddedSongs: function () {
+    var that = this;
     this.content = 'added_songs';
-    this.model.fetch({
-      data: {content: 'added_songs'}
+    this.model.addedSongs().fetch({
+      data: {user_id: that.model.id, content: 'added_songs', page: 1},
+      success: function () {
+        Listener.audioPlayer.maybeLoadSong(that.model.addedSongs().at(0))
+      }
     });
     var view = new Listener.Views.AddedSongs({model: this.model});
     this._swapView(view);

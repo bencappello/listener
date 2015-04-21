@@ -23,7 +23,7 @@ Listener.Routers.BandsBlogsRouter = Backbone.Router.extend ({
     this._swapView(view);
   },
 
-  findBlogs: function (suffix, page) {
+  find: function (suffix, page) {
     page = page || 1
     suffix = suffix || 'popular_now'
     var blogs = new Listener.Collections.Blogs();
