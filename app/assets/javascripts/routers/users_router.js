@@ -7,6 +7,8 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
   routes: {
     "users/:id": "show",
     "users/:id/:suffix": "show",
+    // "users/:id/favorites": "show",
+
   },
 
   show: function (id, suffix) {
@@ -18,6 +20,12 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     });
     this._swapView(showView);
   },
+
+  // favorites: function (id) {
+  //   var model = Listener.users.getOrFetch(id);
+  //   var showView = new Listener.Views.UsersFavorites({model: model});
+  //   this._swapView(showView);
+  // },
 
   _requireSignedIn: function (callback) {
     if (!Listener.currentUser.isSignedIn()) {

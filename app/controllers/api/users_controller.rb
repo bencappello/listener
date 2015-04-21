@@ -6,17 +6,18 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    @page = params[:page]
     if params[:content] == 'favorites'
       @user = User.includes(
-      favorite_songs: [:blog, :band, :favoriters, :user]
+        favorite_songs: [:blog, :band, :favoriters, :user]
       ).find(params[:id])
       render :favorites
     elsif params[:content] == 'feed'
-      @user = User.includes(
-      followed_blogs: [songs: [:blog, :band, :favoriters]],
-      followed_users: [favorite_songs: [:blog, :band, :favoriters]]
-      ).find(params[:id])
-      render :feed
+      # @user = User.includes(
+      #   followed_blogs: [songs: [:blog, :band, :favoriters]],
+      #   followed_users: [favorite_songs: [:blog, :band, :favoriters]]
+      # ).find(params[:id])
+      # render :feed
     elsif params[:content] == 'added_songs'
       @user = User.includes(
         songs: [:blog, :band, :favoriters]
@@ -32,23 +33,11 @@ class Api::UsersController < ApplicationController
         followed_blogs: [:tags, :songs]
       ).find(params[:id])
       render :followed_blogs
-    else
+    else #just fetch info for sidepanel - username, avatar, etc.
       @user = User.find(params[:id])
       render :show
     end
   end
-
-  # def show
-  #   @user = User.includes(
-  #     :followed_users,
-  #     :followers,
-  #     songs: [:blog, :band, :favoriters],
-  #     blogs: [:tags, :songs],
-  #     followed_blogs: [:tags, :songs],
-  #     favorite_songs: [:blog, :band, :favoriters, :user]
-  #     ).find(params[:id])
-  #   render :show
-  # end
 
   def create
     @user = User.new(user_params)
