@@ -7,23 +7,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @page = params[:page]
-    if params[:content] == 'favorites'
-      @user = User.includes(
-        favorite_songs: [:blog, :band, :favoriters, :user]
-      ).find(params[:id])
-      render :favorites
-    elsif params[:content] == 'feed'
-      @user = User.includes(
-        followed_blogs: [songs: [:blog, :band, :favoriters]],
-        followed_users: [favorite_songs: [:blog, :band, :favoriters]]
-      ).find(params[:id])
-      render :feed
-    elsif params[:content] == 'added_songs'
-      @user = User.includes(
-        songs: [:blog, :band, :favoriters]
-      ).find(params[:id])
-      render :added_songs
-    elsif params[:content] == 'added_blogs'
+    if params[:content] == 'added_blogs'
       @user = User.includes(
         blogs: [:tags, :songs]
       ).find(params[:id])

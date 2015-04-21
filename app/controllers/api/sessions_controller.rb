@@ -16,6 +16,7 @@ class Api::SessionsController < ApplicationController
   end
 
   def create
+    puts 'YOOOOOOOO!!!!!'
     user = User.find_by_credentials(
                   params[:user][:username_or_email],
                   params[:user][:password])
