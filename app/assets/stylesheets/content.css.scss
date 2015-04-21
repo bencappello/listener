@@ -22,8 +22,6 @@
   float: left;
   border: 1px solid #C2B20A;
   outline: 1px solid black;
-  // border-left: 1px solid #C2B20A;
-  // border-top: 1px solid #C2B20A;
   margin-left: 20px;
   margin-right: 10px;
   margin-top: 20px;
@@ -41,8 +39,6 @@
   float: right;
   border: 1px solid #C2B20A;
   outline: 1px solid black;
-  // border-left: 1px solid #C2B20A;
-  // border-top: 1px solid #C2B20A;
   margin-left: 10px;
   margin-right: 20px;
   margin-top: 20px;
@@ -55,8 +51,6 @@
   float: left;
   border: 1px solid #C2B20A;
   outline: 1px solid black;
-  // border-left: 1px solid #C2B20A;
-  // border-top: 1px solid #C2B20A;
   margin-left: 20px;
   margin-right: 10px;
   margin-top: 20px;
@@ -74,8 +68,6 @@
   float: right;
   border: 1px solid #C2B20A;
   outline: 1px solid black;
-  // border-left: 1px solid #C2B20A;
-  // border-top: 1px solid #C2B20A;
   margin-left: 10px;
   margin-right: 20px;
   margin-top: 20px;
@@ -100,7 +92,6 @@ span.line-break {
 .main-title-header {
   color: black;
   margin-bottom: 20px;
-  // border-bottom: 3px solid black;
   font-weight: bold;
   text-shadow: 1px 0 0 #71AB3A, -1px 0 0 #71AB3A, 0 1px 0 #71AB3A, 0 -1px 0 #71AB3A, 1px 1px #71AB3A, -1px -1px 0 #3D7D0A, 1px -1px 0 #71AB3A, -1px 1px 0 #71AB3A;
 }
@@ -181,7 +172,6 @@ li.genre {
   border: 1px solid black;
   margin: 5px;
   text-align: center;
-  // line-height: 400%;
 }
 
 .add-content:hover {
@@ -297,4 +287,20 @@ span.small-blog-songs {
 
 #bottom-button-list {
   text-align: center;
+}
+
+.user-btn {
+  font-size: 16px;
+  width: 130px;
+  padding: 10px 0;
+  border: 1px solid black;
+  -webkit-transition: all 0.14s;
+  -moz-transition: all 0.14s;
+  -o-transition: all 0.14s;
+  transition: all 0.14s;
+}
+
+.user-btn:hover {
+  background: white;
+  color: black;
 }
