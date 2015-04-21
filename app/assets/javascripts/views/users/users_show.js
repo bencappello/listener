@@ -77,8 +77,9 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     this.model.favoriteSongs().fetch({
       data: {user_id: that.model.id, content: 'favorites', page: 1},
     });
-    var view = new Listener.Views.UserFavorites({model: this.model});
-    this._swapView(view);
+
+    this.favoriteView = new Listener.Views.UserFavorites({model: this.model});
+    this._swapView(this.favoriteView);
   },
 
   renderFeed: function () {

@@ -4,6 +4,7 @@ Listener.Views.UserFavorites = Backbone.CompositeView.extend({
   className: 'favorites',
 
   initialize: function(options){
+    Backbone.GeneralView.prototype.initialize.call(this);
     this.collection = this.model.favoriteSongs();
     this.newSongs = new Listener.Collections.Songs();
     this.timeOut = false;
@@ -35,12 +36,12 @@ Listener.Views.UserFavorites = Backbone.CompositeView.extend({
         this.timeOut === false) {
       this.timeOut = true;
       setTimeout(function(){ view.timeOut = false }, 1000);
-      
+
       var pageN = view.newSongs.page_number || 1
       if (pageN < view.collection.total_pages) {
-        this.newSongs.fetch({
+        view.newSongs.fetch({
           data: {user_id: view.model.id, content: 'favorites', page: pageN + 1},
-          success: function (model, response) {
+          success: function () {
             view.newSongs.each(function(song){
               view.addSong(song);
               view.collection.add(song);
