@@ -35,8 +35,8 @@ Listener.Routers.BandsBlogsRouter = Backbone.Router.extend ({
   },
 
   _swapView: function (view) {
-    Listener.currentView && Listener.currentView.remove();
-    Listener.currentView = view;
+    Listener._currentView && Listener._currentView.remove();
+    Listener._currentView = view;
     this.$rootEl.html(view.render().$el);
   },
 });

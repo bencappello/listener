@@ -111,9 +111,13 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   _swapView: function (view) {
-    this._currentView && this._currentView.remove();
+    // this._currentView && this._currentView.remove();
+    // this._currentView = view;
+    // $('.main').html(view.render().$el);
+
+    this._currentView && this.removeSubview('.main', this._currentView)
     this._currentView = view;
-    $('.main').html(view.render().$el);
+    this.addSubview('.main', view);
   },
 
   toggleFollow: function (event) {
