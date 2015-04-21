@@ -13,11 +13,11 @@ class Api::UsersController < ApplicationController
       ).find(params[:id])
       render :favorites
     elsif params[:content] == 'feed'
-      # @user = User.includes(
-      #   followed_blogs: [songs: [:blog, :band, :favoriters]],
-      #   followed_users: [favorite_songs: [:blog, :band, :favoriters]]
-      # ).find(params[:id])
-      # render :feed
+      @user = User.includes(
+        followed_blogs: [songs: [:blog, :band, :favoriters]],
+        followed_users: [favorite_songs: [:blog, :band, :favoriters]]
+      ).find(params[:id])
+      render :feed
     elsif params[:content] == 'added_songs'
       @user = User.includes(
         songs: [:blog, :band, :favoriters]

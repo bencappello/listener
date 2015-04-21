@@ -76,16 +76,22 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     this.content = 'favorites';
     this.model.favoriteSongs().fetch({
       data: {user_id: that.model.id, content: 'favorites', page: 1},
+      success: function () {
+        Listener.audioPlayer.maybeLoadSong(that.model.favoriteSongs().at(0))
+      }
     });
-
-    this.favoriteView = new Listener.Views.UserFavorites({model: this.model});
-    this._swapView(this.favoriteView);
+    var view = new Listener.Views.UserFavorites({model: this.model});
+    this._swapView(view);
   },
 
   renderFeed: function () {
+    var that = this;
     this.content = 'feed';
-    this.model.fetch({
-      data: {content: 'feed'}
+    this.model.feedSongs().fetch({
+      data: {user_id: that.model.id, content: 'feed', page: 1},
+      success: function () {
+        Listener.audioPlayer.maybeLoadSong(that.model.feedSongs().at(0))
+      }
     });
     var view = new Listener.Views.UserFeed({model: this.model});
     this._swapView(view);

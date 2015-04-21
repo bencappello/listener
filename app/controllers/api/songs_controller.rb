@@ -4,8 +4,10 @@ class Api::SongsController < ApplicationController
       self.search
     elsif params[:find]
       self.find
-    elsif params[:content] = 'favorites'
+    elsif params[:content] == 'favorites'
       self.favorites
+    elsif params[:content] == 'feed'
+      self.feed
     end
   end
 
@@ -54,6 +56,15 @@ class Api::SongsController < ApplicationController
       favorite_songs: [:blog, :band, :favoriters, :user]
     ).find(params[:user_id])
     render :favorites
+  end
+
+  def feed
+    @page = params[:page]
+    @user = User.includes(
+      followed_blogs: [songs: [:blog, :band, :favoriters]],
+      followed_users: [favorite_songs: [:blog, :band, :favoriters]]
+    ).find(params[:user_id])
+    render :feed
   end
 
   def new

@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   has_many :favorite_songs, through: :user_songs, source: :song
   has_many :followed_blogs, through: :user_blogs, source: :blog
+  has_many :followed_blog_songs, through: :followed_blogs, source: :songs
 
   has_many(
     :follow_choices,
@@ -26,6 +27,8 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
   has_many :followed_users, through: :follow_choices, source: :followed_user
+  has_many :followed_user_songs, through: :followed_users, source: :favorite_songs
+
   has_many(
   :followings,
   class_name: "UserFollow",
