@@ -6,9 +6,10 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   initialize: function (options) {
     Backbone.GeneralView.prototype.initialize.call(this);
     this.suffix = options.suffix;
+    this.timeOut = false;
+    this.newSongs = new Listener.Collections.Songs();
     this.listenTo(this.collection, 'sync', this.render)
     this.listenForScroll();
-    this.newSongs = new Listener.Collections.Songs();
   },
 
   render: function () {
@@ -30,13 +31,16 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   },
 
   listenForScroll: function () {
-    var throttledCallback = _.throttle(this.nextPage.bind(this), 300, {leading: false});
-    $(window).on("scroll", throttledCallback);
+    $(window).on("scroll", this.nextPage.bind(this));
   },
 
   nextPage: function () {
     var view = this;
-    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+    if ($(window).scrollTop() > $(document).height() - $(window).height() - 50 &&
+        this.timeOut === false) {
+      this.timeOut = true;
+      setTimeout(function(){ view.timeOut = false }, 1000);
+
       var pageN = view.newSongs.page_number || 1
       if (pageN < view.collection.total_pages) {
         view.newSongs.fetch({
