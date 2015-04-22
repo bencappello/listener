@@ -1,0 +1,112 @@
+<div class="modal is-open">
+  <div class="container">
+
+    <div class="form group genre-form">
+
+      <form action="javascript:void(0);" class='modal-form '>
+        <!-- <section class='song-form-top group'> -->
+          <div class="modal-close js-modal-close">&times;</div>
+
+
+          <!-- <section class='song-form-left'> -->
+            <% if (edit) { %>
+              <div id="form-title">Edit <%= song.escape('name') %></div>
+            <% } else { %>
+              <div id="form-title">Add A Song</div>
+            <% } %>
+            <!-- <h2>Add A New Song</h2> -->
+            <section id='errors'></section>
+            <p>
+              <span class="fontawesome-headphones"></span>
+              <input
+                type="text"
+                placeholder="Artist"
+                name="song[band_name]"
+                value="<%= song.escape('band_name') %>">
+            </p>
+
+            <p>
+              <span class="fontawesome-music"></span>
+              <input
+                type="text"
+                placeholder="Song Name"
+                name="song[name]"
+                value="<%= song.escape('name') %>">
+            </p>
+
+            <label class='large-label'>Blog
+              <select name="song[blog_id]">
+                <% Listener.currentUser.createdBlogs().forEach(function (blog) { %>
+                  <option
+                  <% if (song.escape('blog_id') == blog.id || currentBlogId == blog.id) { %>
+                    selected
+                  <% } %>
+                  value="<%= blog.id %>">
+                  <%= blog.escape('name') %>
+                </option>
+                <% }) %>
+              </select>
+            </label>
+            <br><br>
+
+            <label class='large-label'>Song Type
+              <br>
+              <label class='radio' for="regular">Regular</label>
+              <input
+                class='input-inline'
+                type="radio"
+                name="song[song_type]"
+                value="regular"
+                id="regular"
+                <% if (song.escape('song_type') == 'regular' || song.escape('song_type') == "") { %>
+                  checked
+                <% } %>>
+              <br>
+              <label class='radio' for="remix">Remix</label>
+              <input
+                class='input-inline'
+                type="radio"
+                name="song[song_type]"
+                value="remix"
+                id="remix"
+                <% if (song.escape('song_type') == 'remix') { %>
+                  checked
+                <% } %>>
+              <br><br>
+            </label>
+
+            <section class='checkboxes group'>
+              <label class='large-label'>Genre(s)</label>
+              <br>
+              <input type="hidden" name="song[tag_ids][]" value="">
+              <% Listener.tags.each(function (tag, idx) { %>
+                <input
+                  id='<%= idx %>'
+                  class='input-inline'
+                  type="checkbox"
+                  name="song[tag_ids][]"
+                  value="<%= tag.id %>"
+                <% if (_.contains(song.get('tag_ids'), tag.id)) { %>
+                  checked
+                <% } %>>
+                <label for='<%= idx %>' class='multiple'><%= tag.escape('name') %></label>
+              <% }) %>
+            </section>
+
+
+          <!-- </section> -->
+
+
+        <!-- </section> -->
+
+
+        <!-- <p><input class='submit' type="submit" value="Sign In"></p> -->
+        <section class='song-form-bottom'>
+          <button class='submit modal-submit'>Update Song</button>
+          <div id="loading"></div>
+        </section>
+      </form>
+    </div>
+  </div>
+  <div class="modal-screen js-modal-close"></div>
+</div>

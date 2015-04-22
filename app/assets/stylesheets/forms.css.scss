@@ -17,6 +17,10 @@ input {
   padding: 0;
 }
 
+label.radio {
+  margin-left: 10px;
+}
+
 input[type=checkbox] {
   position: absolute;
   top: -9999px;
@@ -104,7 +108,7 @@ p {
   margin: 0;
   padding: 40px 80px;
   border-radius: 5px;
-  max-height: 600px;
+  max-height: 400px;
   left: 50%;
   position: fixed;
   top: 50%;
@@ -178,7 +182,6 @@ p {
   width: 400px;
 }
 
-
 .modal .form form .input-inline {
   display: inline;
   height: 20px;
@@ -186,9 +189,36 @@ p {
   text-align: left;
 }
 
-.modal .blog-form {
-  width: 600px;
+
+
+
+
+
+
+//SONG AND BLOG FORMS
+
+.modal .genre-form {
+  width: 500px;
 }
+
+.modal .container .genre-form input[type=text] {
+  width: 450px;
+}
+
+.modal .genre-form .submit {
+  width: 500px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.genre-form #form-title {
+  font-size: 24px;
+}
+
+
+
+
+
 
 .modal .song-form section input {
   width: 340px;

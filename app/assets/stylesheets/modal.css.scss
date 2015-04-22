@@ -39,10 +39,9 @@
   color: #D1D1D1;
 }
 
-// .form form label.multiple {
-//   color: #606468;
-//   font-size: 14px;
-// }
+.form form .large-label {
+  font-size: 18px;
+}
 
 .form form input[type="text"], input[type="password"] {
   background-color: #3b4148;
@@ -61,6 +60,7 @@
 #form-title {
   font-size: 20px;
   color: #eee;
+  text-align: center;
 }
 
 .modal-submit {

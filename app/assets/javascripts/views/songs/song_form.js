@@ -1,5 +1,6 @@
 Listener.Views.SongForm = Backbone.CompositeView.extend({
-  template: JST['songs/form'],
+  newTemplate: JST['songs/new_form'],
+  editTemplate: JST['songs/edit_form'],
 
   className: 'song-form',
 
@@ -17,7 +18,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.template({
+    this.$el.html(this.editTemplate({
       song: this.model,
       currentBlogId: this.currentBlogId,
       edit: this.edit
