@@ -189,65 +189,65 @@ end
 #
 #   ############SONGS##############################
 #
-#   local_songs = Dir.glob("../songs/*")
-#
-#   user.blogs.each do |blog|
-#     @found = false
-#     until @found
-#       audio_file = File.open(local_songs[rand(local_songs.count - 1)])
-#
-#       Mp3Info.open(audio_file) do |mp3|
-#         if mp3.tag.title && mp3.tag.artist
-#           @found = true
-#           puts "title #{mp3.tag.title}"
-#           puts "artist #{mp3.tag.artist}"
-#         end
-#       end
-#     end
-#
-#       Mp3Info.open(audio_file) do |mp3|
-#         title = mp3.tag.title
-#         artist =  mp3.tag.artist
-#         genres = mp3.tag.genre_s
-#
-#         unless mp3.tag2.pictures.empty?
-#           pic_array = mp3.tag2.pictures[0]
-#           picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
-#           picture = File.open(pic_array[0])
-#           empty = false
-#         else
-#           puts "EMPTY!!!! #{@empty += 1}"
-#           picture = album_pics.sample
-#           empty = true
-#         end
-#
-#         song = Song.create(
-#           name: title,
-#           band_name: artist,
-#           genres: genres,
-#           song_type: 'regular',
-#           blog_id: blog.id,
-#           user_id: user.id,
-#           image: picture,
-#           audio: audio_file,
-#           created_at: Time.now - rand(100).day
-#         )
-#
-#         puts "BLOG COUNT #{ @blog_count += 1 }"
-#         if song.id
-#           puts "SONG COUNT #{@song_count += 1}"
-#           puts "EMPTY SONG COUNT #{@empty_song_count += 1}" if empty
-#         end
-#
-#         28.times do
-#           UserSong.create(
-#             user_id: User.all.sample.id,
-#             song_id: song.id,
-#             created_at: Time.now - rand(8).day
-#           )
-#         end
-#       end
-  # end
+  local_songs = Dir.glob("../songs/*")
+
+  user.blogs.each do |blog|
+    @found = false
+    until @found
+      audio_file = File.open(local_songs[rand(local_songs.count - 1)])
+
+      Mp3Info.open(audio_file) do |mp3|
+        if mp3.tag.title && mp3.tag.artist
+          @found = true
+          puts "title #{mp3.tag.title}"
+          puts "artist #{mp3.tag.artist}"
+        end
+      end
+    end
+
+      Mp3Info.open(audio_file) do |mp3|
+        title = mp3.tag.title
+        artist =  mp3.tag.artist
+        genres = mp3.tag.genre_s
+
+        unless mp3.tag2.pictures.empty?
+          pic_array = mp3.tag2.pictures[0]
+          picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
+          picture = File.open(pic_array[0])
+          empty = false
+        else
+          puts "EMPTY!!!! #{@empty += 1}"
+          picture = album_pics.sample
+          empty = true
+        end
+
+        song = Song.create(
+          name: title,
+          band_name: artist,
+          genres: genres,
+          song_type: 'regular',
+          blog_id: blog.id,
+          user_id: user.id,
+          image: picture,
+          audio: audio_file,
+          created_at: Time.now - rand(100).day
+        )
+
+        puts "BLOG COUNT #{ @blog_count += 1 }"
+        if song.id
+          puts "SONG COUNT #{@song_count += 1}"
+          puts "EMPTY SONG COUNT #{@empty_song_count += 1}" if empty
+        end
+
+        28.times do
+          UserSong.create(
+            user_id: User.all.sample.id,
+            song_id: song.id,
+            created_at: Time.now - rand(8).day
+          )
+        end
+      end
+  end
 
   #
   # 12.times do

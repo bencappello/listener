@@ -4,9 +4,9 @@ class Song < ActiveRecord::Base
 
   validates :name, presence: true
   validates :name, uniqueness: {scope: :band_id,
-    message: "song already exists"}
+    message: "already added to this blog"}
   validates :name, uniqueness: {scope: :blog_id,
-    message: "song already added to blog"}
+    message: "already added to this blog"}
   validates :user_id, :blog_id, :band_id, presence: true
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
@@ -58,12 +58,6 @@ class Song < ActiveRecord::Base
       :tsearch => {:prefix => true}
     }
 
-  def audio_url=(audio_url)
-    unless self.audio.exists?
-      self.audio = audio_url
-    end
-  end
-
   def image_url=(image_url)
     unless self.image.exists?
       self.image = image_url
@@ -105,5 +99,38 @@ class Song < ActiveRecord::Base
 
   def name=(s)
     write_attribute(:name, s.to_s.titleize)
+  end
+
+  def audio_url=(audio_url)
+    unless self.audio.exists?
+      self.audio = audio_url
+    end
+
+  end
+
+  before_validation :extract_metadata
+
+  def extract_metadata
+    if audio.queued_for_write[:original]
+      path = audio.queued_for_write[:original].path
+      open_opts = { :encoding => 'utf-8' }
+      Mp3Info.open(path, open_opts) do |mp3|
+        tag1 = mp3.tag
+        tag2 = mp3.tag2
+        self.name = tag1.title ? tag1.title : 'Untitled'
+        self.band_name = tag1.artist ? tag1.artist : 'Untitled'
+        self.genres = tag1.genre_s if tag1.genre_s
+        puts "Title #{tag1.title}"
+        puts "Band #{tag1.artist}"
+
+        unless tag2.pictures.empty?
+          pic_array = tag2.pictures[0]
+          picture = File.open(pic_array[0], 'wb'){|f| f.write pic_array[1]}
+          picture = File.open(pic_array[0])
+          self.image = picture
+          picture.close
+        end
+      end
+    end
   end
 end
