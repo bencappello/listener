@@ -8,6 +8,7 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
     'submit form': 'saveSong',
     "change #input-song-audio": "audioInputChange",
     "change #input-song-image": "imageInputChange",
+    "keyup .upload-url": "imageURLInputChange",
     'click .js-modal-close': 'closeForm',
   },
 
@@ -80,28 +81,45 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   },
 
   imageInputChange: function(event){
-
     var that = this;
     var file = event.currentTarget.files[0];
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      that._updatePreview(reader.result);
+      that._addPreview("#preview-song-image", reader.result);
       that.model._image = reader.result;
     }
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this._updatePreview("");
+      this._removePreview("#preview-song-image", "");
       delete this.model._image;
     }
   },
 
-  _updatePreview: function(src){
-    var $preview = this.$el.find("#preview-song-image").attr("src", src);
+  imageURLInputChange: function(event){
+    var that = this;
+    var url = $(event.currentTarget).val();
+    console.log(url)
+
+    if (url == "") {
+      this._removePreview("#preview-song-image-url", "");
+    } else {
+      that._addPreview("#preview-song-image-url", url);
+    }
+  },
+
+  _addPreview: function(el, src){
+    var $preview = this.$el.find(el);
     $preview.attr("src", src);
     $preview.addClass('show');
+  },
+
+  _removePreview: function(el, src){
+    var $preview = this.$el.find(el);
+    $preview.attr("src", src);
+    $preview.removeClass('show');
   },
 
   closeForm: function (event) {
