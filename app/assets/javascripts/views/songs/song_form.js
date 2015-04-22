@@ -18,11 +18,17 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    this.$el.html(this.editTemplate({
-      song: this.model,
-      currentBlogId: this.currentBlogId,
-      edit: this.edit
-    }))
+    if (this.edit) {
+      this.$el.html(this.editTemplate({
+        song: this.model,
+        currentBlogId: this.currentBlogId
+      }))
+    } else {
+      this.$el.html(this.newTemplate({
+        song: this.model,
+        currentBlogId: this.currentBlogId
+      }))
+    }
     return this;
   },
 
@@ -93,7 +99,9 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
   },
 
   _updatePreview: function(src){
-    this.$el.find("#preview-song-image").attr("src", src);
+    var $preview = this.$el.find("#preview-song-image").attr("src", src);
+    $preview.attr("src", src);
+    $preview.addClass('show');
   },
 
   closeForm: function (event) {
