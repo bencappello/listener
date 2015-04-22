@@ -59,9 +59,7 @@ class Song < ActiveRecord::Base
     }
 
   def image_url=(image_url)
-    unless self.image.exists?
-      self.image = image_url
-    end
+    self.image = image_url
   end
 
   def band_name=(band_name)
