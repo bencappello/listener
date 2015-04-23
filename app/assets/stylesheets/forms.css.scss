@@ -108,7 +108,7 @@ p {
   margin: 0;
   padding: 40px 80px;
   border-radius: 5px;
-  max-height: 400px;
+  max-height: 600px;
   left: 50%;
   position: fixed;
   top: 50%;
@@ -181,21 +181,18 @@ p {
 
 
 
-
-
-
 //SONG AND BLOG FORMS
 
 .modal .genre-form {
-  width: 500px;
+  width: 600px;
 }
 
 .modal .container .genre-form input[type=text] {
-  width: 450px;
+  width: 550px;
 }
 
 .modal .genre-form .submit {
-  width: 500px;
+  width: 600px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
