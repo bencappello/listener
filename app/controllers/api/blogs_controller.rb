@@ -44,7 +44,7 @@ class Api::BlogsController < ApplicationController
     @blog = Blog.includes(
       :user,
       :tags,
-      songs: [:blog, :band, :favoriters],
+      songs: [:blog, :band, :favoriters, :user, :tags],
       comments: :author
       ).find(params[:id])
     render :show

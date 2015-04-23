@@ -15,7 +15,7 @@ class Api::SongsController < ApplicationController
   end
 
   def search
-    @songs = Song.includes(:blog, :band, :user)
+    @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
       .search_by_title_or_band(params[:query])
         .page(params[:page])
     if @songs.empty?
@@ -32,19 +32,20 @@ class Api::SongsController < ApplicationController
       while count < 5
         time += 1
         time_range = (Time.now - time.day)..Time.now
-        count = Song.joins(:user_songs).where(:user_songs => {:created_at => time_range}).distinct.count('songs.id')
+        count = Song.joins(:user_songs)
+          .where(user_songs: {created_at: time_range}).distinct.count('songs.id')
       end
-      @songs = Song.includes(:blog, :band, :user).joins(:user_songs)
-        .where(:user_songs => {:created_at => time_range})
+      @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
+        .joins(:user_songs).where(:user_songs => {:created_at => time_range})
           .group('songs.id').order('COUNT(user_songs.id) desc, songs.id')
             .page(params[:page])
     elsif params[:find] == 'popular_all_time'
-      @songs = Song.includes(:blog, :band, :user).joins(:user_songs)
-        .group('songs.id').order('COUNT(user_songs.id) desc, songs.id')
-          .page(params[:page])
+      @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
+      .joins(:user_songs).group('songs.id')
+        .order('COUNT(user_songs.id) desc, songs.id').page(params[:page])
     else
-      @songs = Song.includes(:blog, :band, :user).order('created_at desc')
-        .limit(50).page(params[:page])
+      @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
+        .order('created_at desc').limit(50).page(params[:page])
     end
     render :search
   end
@@ -53,22 +54,22 @@ class Api::SongsController < ApplicationController
     #get the user as opposed to just the songs because its simpler to
     #use the through association to get the songs
     @user = User.includes(
-      favorite_songs: [:blog, :band, :favoriters, :user]
+      favorite_songs: [:blog, :band, :favoriters, :user, :tags]
     ).find(params[:user_id])
     render :favorites
   end
 
   def feed
     @user = User.includes(
-      followed_blogs: [songs: [:blog, :band, :favoriters]],
-      followed_users: [favorite_songs: [:blog, :band, :favoriters]]
+      followed_blogs: [songs: [:blog, :band, :favoriters, :tags, :user]],
+      followed_users: [favorite_songs: [:blog, :band, :favoriters, :tags, :user]]
     ).find(params[:user_id])
     render :feed
   end
 
   def added_songs
     @user = User.includes(
-      songs: [:blog, :band, :favoriters]
+      songs: [:blog, :band, :favoriters, :tags, :user]
     ).find(params[:user_id])
     render :added_songs
   end
@@ -126,6 +127,17 @@ class Api::SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:name, :band_name, :blog_id, :song_type, :audio, :audio_url, :image, :image_url, :genres, tag_ids: [])
+    params.require(:song).permit(
+      :name,
+      :band_name,
+      :blog_id,
+      :song_type,
+      :audio,
+      :audio_url,
+      :image,
+      :image_url,
+      :genres,
+      tag_ids: []
+    )
   end
 end

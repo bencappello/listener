@@ -6,7 +6,11 @@ Listener.Collections.Comments = Backbone.Collection.extend({
   // },
 
   comparator: function (comment) {
-    return -comment.id;
+    return String.fromCharCode.apply(String,
+        _.map(comment.get("created_at").split(""), function (c) {
+            return 0xffff - c.charCodeAt();
+        })
+    );
   },
 
   getOrFetch: function (id) {
