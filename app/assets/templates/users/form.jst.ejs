@@ -19,23 +19,23 @@
           <p><span class="fontawesome-user"></span><input type="text" placeholder="Email" name="user[email]" value="<%= user.escape("email") %>"></p>
           <p><span class="fontawesome-lock"></span><input type="password"  placeholder="Password" name="user[password]"></p>
 
-          <label>
-            Upload A Profile Image
-            <br>
-            <input class='upload-url' type="file" name="user[image]" id="input-user-image">
-          </label>
 
-          <br>
+          <section class='upload-container'>
+            <h2 class='upload-title'>Profile Image</h2>
+            <label class='large-label'>
+              From File
+              <input type="file" name="user[image]" id="input-user-image" class='upload-url'>
+            </label>
+            <img src='' width="50" id="preview-user-image" class='preview-image'>
 
-          <img src="" width="50" id="preview-user-image">
-
-          <br>
-
-          <label>
-            Or provide an image url
-            <br>
-            <input class='upload-url' class='mytext' type="text" name="user[image_url]">
-          </label>
+            <p>Or</p>
+            <label class='large-label'>
+              From Url
+              <br>
+              <input class='upload-url user-upload-url' type="text" name="user[image_url]">
+            </label>
+            <img src='' width="50" id="preview-user-image-url" class='preview-image'>
+          </section>
 
           <section class='user-form-bottom'>
             <% if (edit) { %>

@@ -10,6 +10,7 @@ Listener.Views.UsersForm = Backbone.CompositeView.extend({
   events: {
     "submit form": "submit",
     "change #input-user-image": "fileInputChange",
+    "keyup .upload-url": "imageURLInputChange",
     "click #sign-in-link": "signIn",
     'click .js-modal-close': 'closeForm',
     'click .guest-btn': 'guestSignIn',
@@ -71,20 +72,40 @@ Listener.Views.UsersForm = Backbone.CompositeView.extend({
     var reader = new FileReader();
 
     reader.onloadend = function(){
-      that._updatePreview(reader.result);
+      that._addPreview("#preview-user-image", reader.result);
       that.model._image = reader.result;
     }
 
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this._updatePreview("");
+      this._removePreview("#preview-user-image", "");
       delete this.model._image;
     }
   },
 
-  _updatePreview: function(src){
-    this.$el.find("#preview-user-image").attr("src", src);
+  imageURLInputChange: function(event){
+    var that = this;
+    var url = $(event.currentTarget).val();
+    console.log(url)
+
+    if (url == "") {
+      this._removePreview("#preview-user-image-url", "");
+    } else {
+      that._addPreview("#preview-user-image-url", url);
+    }
+  },
+
+  _addPreview: function(el, src){
+    var $preview = this.$el.find(el);
+    $preview.attr("src", src);
+    $preview.addClass('show');
+  },
+
+  _removePreview: function(el, src){
+    var $preview = this.$el.find(el);
+    $preview.attr("src", src);
+    $preview.removeClass('show');
   },
 
   signIn: function (event) {

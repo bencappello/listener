@@ -34,6 +34,11 @@
   height: 20px;
 }
 
+.container .form form .user-upload-url {
+  height: 20px;
+  width: 250px;
+}
+
 .form form label {
   font-size: 16px;
   color: #D1D1D1;
@@ -50,11 +55,6 @@
   margin-bottom: 1em;
   padding: 0 16px;
   width: 230px;
-}
-
-.modal .form form label input {
-  color: #606468;
-  width: 280px;
 }
 
 #form-title {
@@ -130,6 +130,7 @@ div.form form.modal-form div.modal-close {
 
 .form #loading {
   color: white;
+  text-align: center;
 }
 
 div.modal-close:hover {

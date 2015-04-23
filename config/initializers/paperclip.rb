@@ -1,5 +1,6 @@
 Paperclip.options[:content_type_mappings] = {
-  :mp3 => "application/octet-stream"
+  mp3: "application/octet-stream",
+  jpg: "image/jpeg"
 }
 
 # require 'paperclip/media_type_spoof_detector'

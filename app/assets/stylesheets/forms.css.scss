@@ -133,17 +133,25 @@ p {
     background-color: rgba(255,255,255,.4);
     border-radius: 10px;
   }
-  // &::-webkit-scrollbar-button {
-  //   display: block;
-  //   width: 5px;
-  //   height: 5px;
-  // }
 }
+
+
+
+
+
+//UPLOAD BOX
 
 .modal .form section.upload-container {
   border: 1px solid #eee;
   padding: 10px;
   margin-bottom: 20px;
+}
+
+.upload-title {
+  font-size: 20px;
+  text-align: center;
+  color: #D1D1D1;
+  margin-bottom: 5px;
 }
 
 .modal .form section.upload-container p {
@@ -172,49 +180,6 @@ p {
 
 
 
-//NEW SONG FORM
-
-// .song-form h2 {
-//   color: #D1D1D1;
-// }
-//
-// .song-form h3 {
-//   font-size: 18px;
-//   margin-bottom: 10px;
-// }
-//
-// .song-form input {
-//   width: 340px;
-// }
-//
-// .song-form-bottom {
-//   text-align: center;
-// }
-//
-// .song-form-top {
-//   margin-bottom: 10px;
-//   width: 880px;
-// }
-//
-// .song-form-left {
-//   float: left;
-//   width: 400px;
-// }
-//
-// .song-form-right {
-//   float: right;
-//   width: 400px;
-// }
-//
-.modal .form form .input-inline {
-  display: inline;
-  height: 20px;
-  width: 10px;
-  text-align: left;
-}
-
-
-
 
 
 
@@ -239,10 +204,12 @@ p {
   font-size: 24px;
 }
 
-
-
-
-
+.modal .form form .input-inline {
+  display: inline;
+  height: 20px;
+  width: 10px;
+  text-align: left;
+}
 
 .modal .song-form section input {
   width: 340px;

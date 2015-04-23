@@ -41,9 +41,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   def image_url=(image_url)
-    # unless self.image.exists?
-      self.image = image_url
-    # end
+    self.image = image_url
   end
 
   def password=(password)
