@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson.min
+//= require jquery.cookie
+//= require jquery.joyride-2.1
+//= require modernizr.mq
+
 //= require underscore
 //= require backbone
 //= require listener

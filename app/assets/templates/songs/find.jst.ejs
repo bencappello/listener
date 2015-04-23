@@ -1,15 +1,28 @@
 <% if (title == 'popular_all_time') { %>
   <h1>Most Popular Songs All Time</h1>
 <% } else if (title == 'popular_now') { %>
-  <h1>Trending Songs</h1>
+  <h1 class='tour2'>Trending Songs</h1>
 <% } else { %>
   <h1>Recently Added Songs</h1>
 <% } %>
 
-<section id="songs"></section>
+<section id="songs" class='tour3'></section>
 <br>
 <div id="no-results">
   <% if (songs.length == 0) { %>
     Loading...
     <% } %>
 </div>
+
+<ol id="tour1-id">
+  <li>Welcome Message</li>
+
+  <!-- /* This tip will be display as a modal */
+  <li>Tip content...</li> -->
+
+  <!-- <li data-class="tour2" data-options="tipLocation:top;tipAnimation:fade" data-button="Second Button">
+    2nd tour pane
+  </li>
+
+  <li data-class="tour3">Third tour pane</li> -->
+</ol>

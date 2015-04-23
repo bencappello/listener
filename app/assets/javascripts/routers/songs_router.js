@@ -39,6 +39,13 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
       data: {find: suffix, page: page},
       success: function () {
         Listener.audioPlayer.maybeLoadSong(songs.at(0))
+        // tour: function () {
+        //   debugger
+        //   $("#tour1-id").joyride({
+        //     /* Options will go here */
+        //   });
+        // }
+        // setTimeout(tour, 3000);
       }
     })
     var view = new Listener.Views.SongsFind({collection: songs, suffix: suffix})
