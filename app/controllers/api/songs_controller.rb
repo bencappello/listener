@@ -61,8 +61,8 @@ class Api::SongsController < ApplicationController
 
   def feed
     @user = User.includes(
-      followed_blogs: [songs: [:blog, :band, :favoriters, :tags, :user]],
-      followed_users: [favorite_songs: [:blog, :band, :favoriters, :tags, :user]]
+      followed_blog_songs: [:blog, :band, :favoriters, :tags, :user],
+      followed_user_songs: [:blog, :band, :favoriters, :tags, :user]
     ).find(params[:user_id])
     render :feed
   end
