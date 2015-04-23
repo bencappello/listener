@@ -40,6 +40,7 @@ gem 'token_phrase'
 gem 'marky_markov'
 gem 'smusher'
 gem 'ruby-mp3info', :require => 'mp3info'
+gem 'yaml_db'
 
 
 group :development do
