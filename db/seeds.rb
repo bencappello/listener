@@ -36,8 +36,8 @@ profile_pics = [
   "http://s3.amazonaws.com/listener-dev/users/images/000/000/011/profile/21021209-37385753.jpg?1423256814"
 ]
 
-# markov = MarkyMarkov::TemporaryDictionary.new
-# markov.parse_file "./app/assets/text/david_copperfield.txt"
+markov = MarkyMarkov::TemporaryDictionary.new
+markov.parse_file "./app/assets/text/david_copperfield.txt"
 
 def generate_name
   phrase = TokenPhrase.generate(' ').split(' ')
@@ -104,23 +104,23 @@ end
 #   image_url: "https://i1.sndcdn.com/artworks-000055749355-guzn2f-t500x500.jpg"
 #   )
 #
-50.times do
-# profile_pics.each do |pic|
-  user = User.create!(
-    username: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: 'password',
-    # image_url: pic,
-    created_at: Time.now - rand(100).day
-  )
-
-  80.times do
-    UserSong.create(
-      user_id: user.id,
-      song_id: Song.all.sample.id,
-      created_at: Time.now - rand(20).day)
-  end
-end
+# 50.times do
+# # profile_pics.each do |pic|
+#   user = User.create!(
+#     username: Faker::Name.name,
+#     email: Faker::Internet.email,
+#     password: 'password',
+#     # image_url: pic,
+#     created_at: Time.now - rand(100).day
+#   )
+#
+#   80.times do
+#     UserSong.create(
+#       user_id: user.id,
+#       song_id: Song.all.sample.id,
+#       created_at: Time.now - rand(20).day)
+#   end
+# end
 #
 # tags = Tag.create!([
 #   {name: 'Funk'},
@@ -265,43 +265,47 @@ end
 #Genre Tags & Comments
 
 Band.all.each do |band|
-  2.times do
-    Comment.create!(
-      user_id: User.all.sample.id,
-      body: markov.generate_n_sentences(rand(5) + 1),
-      commentable_id: band.id,
-      commentable_type: 'Band',
-      created_at: Time.now - rand(100).day
-    )
+  if band.comments.count < 4
+    2.times do
+      Comment.create!(
+        user_id: User.all.sample.id,
+        body: markov.generate_n_sentences(rand(5) + 1),
+        commentable_id: band.id,
+        commentable_type: 'Band',
+        created_at: Time.now - rand(100).day
+      )
+    end
   end
 end
 
 Blog.all.each do |blog|
-  (rand(3) + 1).times do
-    BlogTag.create(blog: blog, tag_id: Tag.all.sample.id)
-  end
-
-  2.times do
-    Comment.create!(
-      user_id: User.all.sample.id,
-      body: markov.generate_n_sentences(rand(5) + 1),
-      commentable_id: blog.id,
-      commentable_type: 'Blog',
-      created_at: Time.now - rand(100).day
-    )
+  # (rand(3) + 1).times do
+  #   BlogTag.create(blog: blog, tag_id: Tag.all.sample.id)
+  # end
+  if blog.comments.count < 4
+    2.times do
+      Comment.create!(
+        user_id: User.all.sample.id,
+        body: markov.generate_n_sentences(rand(5) + 1),
+        commentable_id: blog.id,
+        commentable_type: 'Blog',
+        created_at: Time.now - rand(100).day
+      )
+    end
   end
 end
 
 Song.all.each do |song|
-
-  3.times do
-    Comment.create!(
-      user_id: User.all.sample.id,
-      body: markov.generate_n_sentences(rand(4) + 1),
-      commentable_id: song.id,
-      commentable_type: 'Song',
-      created_at: Time.now - rand(100).day
-    )
+  if song.comments.count < 4
+    3.times do
+      Comment.create!(
+        user_id: User.all.sample.id,
+        body: markov.generate_n_sentences(rand(4) + 1),
+        commentable_id: song.id,
+        commentable_type: 'Song',
+        created_at: Time.now - rand(100).day
+      )
+    end
   end
 end
 
