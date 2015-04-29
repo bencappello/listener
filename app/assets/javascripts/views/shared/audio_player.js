@@ -37,7 +37,7 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
     var bandU = '#/bands/' + song.escape('band_id');
     var songN = song.fullName();
     var songU = '#/songs/' + song.id;
-    var name = $('<a class="audio-underline-link" href="' + bandU + '">' + bandN + '</a> - <a class="audio-underline-link" href="' + songU + '">' + songN + '</a>')
+    var name = $('<a class="audio-underline-link" href="' + bandU + '">' + bandN + '</a> - <a class="audio-underline-link tour-user-nav" href="' + songU + '">' + songN + '</a>')
 
     var audioPlayer = this.$el.find('#audio-player')
     this.$el.find('#mp3_src').attr('src', audioUrl);
