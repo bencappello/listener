@@ -18,7 +18,10 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     });
     this._swapView(showView);
 
-    
+    //if tour not ended
+    showView.startNewTour({
+      wait: 2000
+    })
   },
 
   _requireSignedIn: function (callback) {

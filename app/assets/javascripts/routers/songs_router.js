@@ -32,6 +32,11 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   find: function (suffix, page) {
+
+    debugger
+    //if tour active start tour
+    Listener.tour && $("#tour1").joyride();
+
     page = page || 1
     suffix = suffix || 'popular_now'
     var songs = new Listener.Collections.Songs();
@@ -39,7 +44,7 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
       data: {find: suffix, page: page},
       success: function () {
         Listener.audioPlayer.maybeLoadSong(songs.at(0));
-      
+
       }
     })
     var view = new Listener.Views.SongsFind({collection: songs, suffix: suffix})

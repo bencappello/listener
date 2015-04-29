@@ -18,13 +18,6 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   },
 
   render: function(){
-    //if tour not ended
-    this.startNewTour({
-      endTourID: "#tour1",
-      startTourID: "#tour2",
-      wait: 2000
-    })
-
     var html = this.template({
       user: this.model,
       followed: this.model.followed()
@@ -93,6 +86,11 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     });
     var view = new Listener.Views.UserFavorites({model: this.model});
     this._swapView(view);
+
+    //if tour not ended
+    view.startNewTour({
+      wait: 1500
+    })
   },
 
   renderFeed: function () {

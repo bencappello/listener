@@ -20,7 +20,14 @@ window.Listener = {
     new Listener.Routers.SongsRouter();
     this.usersRouter = new Listener.Routers.UsersRouter();
     this.modalRouter = new Listener.Routers.ModalRouter();
-    this.tour1 = true
+
+    //TOUR
+    this.tour = true
+    this.tourNumber = 1
+    this.endTour = function () {
+      this.tour = false;
+    }
+
     Backbone.history.start();
   }
 };

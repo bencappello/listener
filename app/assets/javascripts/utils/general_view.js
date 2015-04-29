@@ -3,6 +3,7 @@ Backbone.GeneralView = Backbone.View.extend({
     this.listenTo(Listener.currentUser, 'signIn signOut signUp update', this.render);
     $(window).off("scroll");
     this.bindStickyNav();
+    $(".joyride-close-tip").on("click", Listener.endTour.bind(Listener))
   },
 
   bindStickyNav: function () {
@@ -42,14 +43,16 @@ Backbone.GeneralView = Backbone.View.extend({
   },
 
   startNewTour: function (options) {
+    Listener.tourNumber
     settings = {
-      endTourID: "#tour1",
-      startTourID: "#tour2",
+      endTourID: "#tour" + Listener.tourNumber,
+      startTourID: "#tour" + (Listener.tourNumber + 1),
       wait: 300,
       resize: false,
       waitResize: 800
     }
     $.extend(settings, options)
+    debugger
 
     $(settings.endTourID).joyride('destroy');
     setTimeout(function(){
@@ -61,6 +64,7 @@ Backbone.GeneralView = Backbone.View.extend({
         $(window).trigger('resize')
       }, settings.waitResize);
     }
+    Listener.tourNumber += 1;
   },
 
 

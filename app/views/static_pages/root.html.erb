@@ -33,28 +33,47 @@
       Click the heart to favorite a song.
     </li>
 
-    <li data-class="tour-guest-btn" data-options="tipLocation:bottom">
+    <li data-class="tour-guest-btn">
       You must be signed in to favorite a song. Go ahead and sign in as
       a guest for now.
     </li>
 
-    <li data-class="guest-btn" data-options="tipLocation:bottom">
+    <li data-class="guest-btn">
       You must be signed in to favorite a song. Go ahead and sign in as
       a guest for now.
     </li>
   </ol>
 
   <ol id="tour2" class="tour">
-    <li data-class="tour-favorites">
-      This is your user page. Click on "Favorites" above to see all your favorite songs.
+    <li data-class="tour-favorites" data-options="tipLocation:top">
+      This is your user page. Click on the "Favorites" button below to see all your
+      favorite songs.
     </li>
   </ol>
 
-  <script>
-    $(window).load(function() {
-      $("#tour1").joyride();
-    });
-  </script>
+  <ol id="tour3" class="tour">
+    <li data-class="tour-song-creator-name">
+      This is the user that added this song to Listener. Click on the
+      username to go to that user's page.
+    </li>
+  </ol>
+
+  <ol id="tour4" class="tour">
+    <li data-class="tour-song-creator-name">
+      Since this user added a song you liked, you may want to follow
+      them. Click the "Follow" button above, then click "Next".
+    </li>
+
+    <li data-class="tour-song-creator-name">
+      Check out their music blogs by clicking here.
+    </li>
+  </ol>
+
+  <ol id="tour5" class="tour">
+    <li data-class="tour-song-creator-name">
+      Click on a blog to check out the .
+    </li>
+  </ol>
 
   <script charset="utf-8">
   </script>
