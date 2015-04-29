@@ -7,7 +7,10 @@ Backbone.GeneralView = Backbone.View.extend({
   },
 
   bindTourClose: function () {
-    $(".joyride-close-tip").on("click", Listener.endTour.bind(Listener))
+    $(".joyride-close-tip").on("click", Listener.endTour.bind(Listener));
+    $(window).on('resize', function () {
+      console.log('resize')
+    });
   },
 
   bindStickyNav: function () {
@@ -39,7 +42,7 @@ Backbone.GeneralView = Backbone.View.extend({
       $(settings.tourID).joyride('show');
     }, settings.wait);
 
-    if (settings.resize) {
+    if (false) {
       setTimeout(function(){
         $(window).trigger('resize')
       }, settings.waitResize);

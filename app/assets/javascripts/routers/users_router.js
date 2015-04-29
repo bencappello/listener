@@ -23,7 +23,7 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
       showView.startNewTour({
         wait: 2000,
         resize: true,
-        waitResize: 2200
+        waitResize: 2400
       });
     }
   },

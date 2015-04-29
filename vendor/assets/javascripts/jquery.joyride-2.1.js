@@ -349,7 +349,9 @@
           settings.paused = true;
 
         }
-
+        setTimeout(function(){
+          $(window).trigger('resize');
+        }, 300);
       },
 
       // detect phones with media queries if supported.
@@ -535,7 +537,6 @@
             }
 
         } else if (settings.$li.length) {
-
           methods.pos_modal($nub);
 
         }
@@ -609,6 +610,10 @@
         } else {
           $('.joyride-modal-bg').fadeIn(settings.tipAnimationFadeSpeed);
         }
+      },
+
+      loadResize: function(){
+        methods.resizeOnce = _.once($(window).trigger('resize'));
       },
 
       expose: function(){

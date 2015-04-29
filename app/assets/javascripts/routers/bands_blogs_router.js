@@ -26,8 +26,6 @@ Listener.Routers.BandsBlogsRouter = Backbone.Router.extend ({
     if (Listener.tour) {
       view.startNewTour({
         wait: 1500,
-        resize: true,
-        waitResize: 3000
       });
     }
   },
