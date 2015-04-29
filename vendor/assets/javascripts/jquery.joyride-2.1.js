@@ -21,7 +21,7 @@
       'autoStart'            : true,     // true or false - false tour starts when restart called
       'startTimerOnClick'    : true,      // true or false - true requires clicking the first button start the timer
       'startOffset'          : 0,         // the index of the tooltip you want to start on (index of the li)
-      'nextButton'           : true,      // true or false to control whether a next button is used
+      'nextButton'           : false,      // true or false to control whether a next button is used
       'tipAnimation'         : 'fade',    // 'pop' or 'fade' in each tip
       'pauseAfter'           : [],        // array of indexes where to pause the tour after
       'tipAnimationFadeSpeed': 500,       // when tipAnimation = 'fade' this is speed in milliseconds for the transition
@@ -213,8 +213,9 @@
       },
 
       button_text : function (txt) {
-        if (settings.nextButton) {
-          txt = $.trim(txt) || 'Next';
+
+        if (txt) {
+          txt = $.trim(txt) || '';
           txt = methods.outerHTML($(settings.template.button).append(txt)[0]);
         } else {
           txt = '';

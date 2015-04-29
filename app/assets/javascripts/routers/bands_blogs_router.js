@@ -21,6 +21,15 @@ Listener.Routers.BandsBlogsRouter = Backbone.Router.extend ({
     var blog = this.blogs.getOrFetch(id)
     var view = new Listener.Views.BlogShow({model: blog});
     this._swapView(view);
+
+    //if tour not ended
+    if (Listener.tour) {
+      view.startNewTour({
+        wait: 1500,
+        resize: true,
+        waitResize: 3000
+      });
+    }
   },
 
   find: function (suffix, page) {

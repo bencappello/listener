@@ -32,8 +32,6 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
   },
 
   find: function (suffix, page) {
-
-    debugger
     //if tour active start tour
     Listener.tour && $("#tour1").joyride();
 

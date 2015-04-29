@@ -3,6 +3,10 @@ Backbone.GeneralView = Backbone.View.extend({
     this.listenTo(Listener.currentUser, 'signIn signOut signUp update', this.render);
     $(window).off("scroll");
     this.bindStickyNav();
+    this.bindTourClose();
+  },
+
+  bindTourClose: function () {
     $(".joyride-close-tip").on("click", Listener.endTour.bind(Listener))
   },
 
@@ -22,7 +26,7 @@ Backbone.GeneralView = Backbone.View.extend({
   },
 
   pauseStartTour: function (options) {
-    settings = {
+    var settings = {
       tourID: "#tour1",
       wait: 300,
       resize: false,
@@ -52,7 +56,6 @@ Backbone.GeneralView = Backbone.View.extend({
       waitResize: 800
     }
     $.extend(settings, options)
-    debugger
 
     $(settings.endTourID).joyride('destroy');
     setTimeout(function(){

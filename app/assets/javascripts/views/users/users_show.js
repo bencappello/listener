@@ -73,6 +73,15 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     });
     var view = new Listener.Views.CreatedBlogs({model: this.model});
     this._swapView(view);
+
+    //if tour not ended
+    if (Listener.tour) {
+      view.startNewTour({
+        wait: 1500,
+        resize: true,
+        waitResize: 1700
+      });
+    }
   },
 
   renderFavorites: function () {
@@ -88,9 +97,13 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     this._swapView(view);
 
     //if tour not ended
-    view.startNewTour({
-      wait: 1500
-    })
+    if (Listener.tour) {
+      view.startNewTour({
+        wait: 1500,
+        resize: true,
+        waitResize: 1700
+      });
+    }
   },
 
   renderFeed: function () {
