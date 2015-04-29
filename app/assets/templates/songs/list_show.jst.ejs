@@ -12,9 +12,9 @@
 
   <section id='song-list-controls'>
     <section class='controls-inner-container'>
-      <button id="play-btn"><i class="fa fa-play"></i></button>
+      <button class="tour-song-play" id="play-btn"><i class="fa fa-play"></i></button>
       <button
-        class="favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
+        class="tour-song-favorite favorite <%= _.contains(favorites.pluck('id'), song.id) ? 'unfavorite' : "" %>">
         <i class="fa fa-heart"></i>
       </button>
       <span

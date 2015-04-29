@@ -25,7 +25,6 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
   toggleFavorite: function (event) {
     if (event) {
       event.preventDefault();
-      $(event.currentTarget).addClass('hello');
     }
     var callback = this.toggleFavorite.bind(this);
     if (!this._requireSignedIn(callback)) { return; }

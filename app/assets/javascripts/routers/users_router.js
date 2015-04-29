@@ -17,6 +17,8 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
       content: suffix
     });
     this._swapView(showView);
+
+    
   },
 
   _requireSignedIn: function (callback) {

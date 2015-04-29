@@ -10,6 +10,52 @@
   </header>
   <div id="content" class='group'></div>
   <div class='hidden' id="modal-window"></div>
+
+  <ol id="tour1" class="tour">
+    <li>
+      Welcome to Listener, a music sharing ecosystem where users can
+      create music blogs, add songs, and discover music in a variety of ways.
+    </li>
+
+    <li>
+      This is the Trending Songs page where you can find which songs
+      have received the most likes in the past few days. Scroll to the
+      bottom of the page to load more songs.
+    </li>
+
+    <li data-class="tour-song-play">
+      Click the play button of any song to play it without even being signed in. Go ahead, try it. Then click 'Next'.
+    </li>
+
+    <li
+    data-class="tour-song-favorite"
+    data-button="">
+      Click the heart to favorite a song.
+    </li>
+
+    <li data-class="tour-guest-btn" data-options="tipLocation:bottom">
+      You must be signed in to favorite a song. Go ahead and sign in as
+      a guest for now.
+    </li>
+
+    <li data-class="guest-btn" data-options="tipLocation:bottom">
+      You must be signed in to favorite a song. Go ahead and sign in as
+      a guest for now.
+    </li>
+  </ol>
+
+  <ol id="tour2" class="tour">
+    <li data-class="tour-favorites">
+      This is your user page. Click on "Favorites" above to see all your favorite songs.
+    </li>
+  </ol>
+
+  <script>
+    $(window).load(function() {
+      $("#tour1").joyride();
+    });
+  </script>
+
   <script charset="utf-8">
   </script>
 </div>

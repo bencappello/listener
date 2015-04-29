@@ -1,4 +1,4 @@
-Listener.Views.SignIn = Backbone.View.extend({
+Listener.Views.SignIn = Backbone.GeneralView.extend({
 
   initialize: function(options){
     this.model = Listener.currentUser;
@@ -17,6 +17,9 @@ Listener.Views.SignIn = Backbone.View.extend({
   template: JST['shared/sign_in'],
 
   render: function(){
+    //if tour not ended
+    this.pauseStartTour({resize: true});
+
     this.$el.html(this.template({required: this.required}));
     return this;
   },

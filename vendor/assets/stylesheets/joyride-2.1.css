@@ -3,21 +3,27 @@ body {
   position: relative;
 }
 
-#joyRideTipContent { display: none; }
+.tour { display: none; }
 
-.joyRideTipContent { display: none; }
+/*.joyride-close-tip { display: none; }*/
+
+.joyride-tip-guide:nth-of-type(5) .joyride-next-tip {
+  display: none;
+}
+
 
 /* Default styles for the container */
 .joyride-tip-guide {
   position: absolute;
   background: #000;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display: none;
   color: #fff;
-  width: 300px;
+  width: 400px;
   z-index: 101;
   top: 0; /* keeps the page from scrolling when calculating position */
   left: 0;
+  font-size: 20px;
   font-family: "HelveticaNeue", "Helvetica Neue", "Helvetica", Helvetica, Arial, Lucida, sans-serif;
   font-weight: normal;
      -moz-border-radius: 4px;
@@ -160,6 +166,9 @@ body {
 
 /* Button Style */
 .joyride-tip-guide .joyride-next-tip {
+  margin-top: 5px;
+  display: block;
+  max-width: 65px;
   width: auto;
   padding: 6px 18px 4px;
   font-size: 13px;
