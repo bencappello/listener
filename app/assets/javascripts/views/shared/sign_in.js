@@ -18,7 +18,9 @@ Listener.Views.SignIn = Backbone.GeneralView.extend({
 
   render: function(){
     //if tour not ended
-    this.pauseStartTour({resize: true});
+    if (Listener.tour) {
+      this.pauseStartTour({resize: true});
+    }
 
     this.$el.html(this.template({required: this.required}));
     return this;
