@@ -31,9 +31,7 @@ Backbone.GeneralView = Backbone.View.extend({
   pauseStartTour: function (options) {
     var settings = {
       tourID: "#tour1",
-      wait: 300,
-      resize: false,
-      waitResize: 800
+      wait: 300
     }
     $.extend(settings, options)
 
@@ -42,34 +40,27 @@ Backbone.GeneralView = Backbone.View.extend({
       $(settings.tourID).joyride('show');
     }, settings.wait);
 
-    if (false) {
-      setTimeout(function(){
-        $(window).trigger('resize')
-      }, settings.waitResize);
-    }
   },
 
   startNewTour: function (options) {
-    Listener.tourNumber
     settings = {
       endTourID: "#tour" + Listener.tourNumber,
       startTourID: "#tour" + (Listener.tourNumber + 1),
-      wait: 300,
-      resize: false,
-      waitResize: 800
+      wait: 300
     }
     $.extend(settings, options)
+
+    if (Listener.tourNumber >= 12) {
+      Listener.tour = false;
+      $(settings.endTourID).joyride('destroy');
+      return;
+    }
 
     $(settings.endTourID).joyride('destroy');
     setTimeout(function(){
       $(settings.startTourID).joyride();
     }, settings.wait);
 
-    if (settings.resize) {
-      setTimeout(function(){
-        $(window).trigger('resize')
-      }, settings.waitResize);
-    }
     Listener.tourNumber += 1;
   },
 

@@ -77,9 +77,7 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     //if tour not ended
     if (Listener.tour) {
       view.startNewTour({
-        wait: 1500,
-        resize: true,
-        waitResize: 1700
+        wait: 1000
       });
     }
   },

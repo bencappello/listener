@@ -5,12 +5,6 @@ body {
 
 .tour { display: none; }
 
-/*.joyride-close-tip { display: none; }*/
-
-.joyride-tip-guide:nth-of-type(5) .joyride-next-tip {
-  display: none;
-}
-
 
 /* Default styles for the container */
 .joyride-tip-guide {
@@ -19,7 +13,7 @@ body {
   background: rgba(0,0,0,0.85);
   display: none;
   color: #fff;
-  width: 400px;
+  width: 380px;
   z-index: 101;
   top: 0; /* keeps the page from scrolling when calculating position */
   left: 0;

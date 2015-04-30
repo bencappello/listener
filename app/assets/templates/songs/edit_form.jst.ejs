@@ -68,6 +68,24 @@
             <br><br>
           </label>
 
+          <section class='upload-container'>
+            <span id='tour-edit-song'></span>
+            <h2 class='upload-title'>Change Album Cover</h2>
+            <label class='large-label'>
+              Image File
+              <input type="file" name="song[image]" id="input-song-image">
+            </label>
+            <img src='' width="50" id="preview-song-image" class='preview-image'>
+
+            <p>Or</p>
+            <label class='large-label'>
+              Image Url
+              <br>
+              <input class='upload-url' type="text" name="song[image_url]">
+            </label>
+            <img src='' width="50" id="preview-song-image-url" class='preview-image'>
+          </section>
+
           <section class='checkboxes group'>
             <label class='large-label'>Genre(s)</label>
             <br>
@@ -86,25 +104,6 @@
             <% }) %>
           </section>
           <br>
-
-          <section class='upload-container'>
-            <h2 class='upload-title'>Change Album Cover</h2>
-            <label class='large-label'>
-              Image File
-              <input type="file" name="song[image]" id="input-song-image">
-            </label>
-            <img src='' width="50" id="preview-song-image" class='preview-image'>
-
-            <p>Or</p>
-            <label class='large-label'>
-              Image Url
-              <br>
-              <input class='upload-url' type="text" name="song[image_url]">
-            </label>
-            <img src='' width="50" id="preview-song-image-url" class='preview-image'>
-          </section>
-
-
 
         <section class='song-form-bottom'>
           <button class='submit modal-submit'>Update Song</button>

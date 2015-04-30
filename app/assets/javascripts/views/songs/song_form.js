@@ -29,6 +29,13 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
         currentBlogId: this.currentBlogId
       }))
     }
+    //if tour not ended
+    if (Listener.tour) {
+      this.startNewTour({
+        wait: 400,
+      });
+    }
+
     return this;
   },
 
@@ -55,7 +62,9 @@ Listener.Views.SongForm = Backbone.CompositeView.extend({
         delete that.model._audio;
         delete that.model._image;
         $(".modal").removeClass("is-open");
-        Backbone.history.navigate('songs/' + resp.id, {trigger: true});
+
+        //will load the same url if already at that page
+        Backbone.history.loadUrl('songs/' + resp.id);
       },
       error: function (model, resp) {
         that.renderErrors(resp);

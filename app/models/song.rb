@@ -2,12 +2,11 @@ class Song < ActiveRecord::Base
   include PgSearch
   paginates_per 5
 
-  validates :name, presence: true
+  validates :name, :user_id, :blog_id, :band_id, presence: true
   # validates :name, uniqueness: {scope: :band_id,
   #   message: "already added to this blog"}
-  validates :name, uniqueness: {scope: :blog_id,
-    message: "already added to this blog"}
-  validates :user_id, :blog_id, :band_id, presence: true
+  # validates :name, uniqueness: {scope: :blog_id,
+  #   message: "already added to this blog"}
   validates :song_type, presence: true, inclusion: { in: ["remix", "regular"] }
 
   SONG_NAMES = [

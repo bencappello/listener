@@ -21,9 +21,7 @@ Listener.Routers.UsersRouter = Backbone.Router.extend({
     //if tour not ended
     if (Listener.tour) {
       showView.startNewTour({
-        wait: 2000,
-        resize: true,
-        waitResize: 2400
+        wait: 1500,
       });
     }
   },

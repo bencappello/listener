@@ -16,6 +16,13 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     var song = this.songs.getOrFetch(id)
     var view = new Listener.Views.SongShow({model: song});
     this._swapView(view);
+
+    //if tour not ended
+    if (Listener.tour) {
+      view.startNewTour({
+        wait: 700,
+      });
+    }
   },
 
   search: function (query, page) {
@@ -29,6 +36,12 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     })
     var view = new Listener.Views.SongsSearch({collection: results, query: query})
     this._swapView(view);
+
+    if (Listener.tour) {
+      view.startNewTour({
+        wait: 1000,
+      });
+    }
   },
 
   find: function (suffix, page) {
