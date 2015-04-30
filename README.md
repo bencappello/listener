@@ -1,9 +1,8 @@
 #Listener
+#####www.listenerapp.org
 
 ###Description
 Inspired by sites such as Soundcloud and Hype Machine, Listener is a music sharing ecosystem where users can create music blogs, add songs, and discover music in a variety of ways.
-
-Listener is live at www.listenerapp.org
 
 ###Features
 * Single page Backbone.js Application.
@@ -17,8 +16,6 @@ Listener is live at www.listenerapp.org
 * Uses Kaminari pagination gem for an infinite scroll on pages that list songs. This improves the user experience by reducing load time with an aesthetically pleasing interface.
 * Uses pg_search gem for custom song search database queries.
 * Employs basic site tour using Joyride jQuery plug-in.
-
-
 
 ###Goals
 * Add functionality to display all users who have favorited a song and followed a blog or a user.
