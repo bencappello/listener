@@ -3,6 +3,8 @@
 ###Description
 Inspired by sites such as Soundcloud and Hype Machine, Listener is a music sharing ecosystem where users can create music blogs, add songs, and discover music in a variety of ways.
 
+Listener is live at www.listenerapp.org
+
 ###Features
 * Single page Backbone.js Application.
 * Consumes a Rails JSON API.
