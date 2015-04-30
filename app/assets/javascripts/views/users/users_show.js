@@ -69,17 +69,18 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
   renderCreatedBlogs: function () {
     this.content = 'added_blogs';
     this.model.fetch({
-      data: {content: 'added_blogs'}
+      data: {content: 'added_blogs'},
+      success: function () {
+        //if tour not ended
+        if (Listener.tour) {
+          view.startNewTour({
+            wait: 400
+          });
+        }
+      }
     });
     var view = new Listener.Views.CreatedBlogs({model: this.model});
     this._swapView(view);
-
-    //if tour not ended
-    if (Listener.tour) {
-      view.startNewTour({
-        wait: 1000
-      });
-    }
   },
 
   renderFavorites: function () {
@@ -88,20 +89,18 @@ Listener.Views.UsersShow = Backbone.CompositeView.extend({
     this.model.favoriteSongs().fetch({
       data: {user_id: that.model.id, content: 'favorites', page: 1},
       success: function () {
-        Listener.audioPlayer.maybeLoadSong(that.model.favoriteSongs().at(0))
+        Listener.audioPlayer.maybeLoadSong(that.model.favoriteSongs().at(0));
+
+        //if tour not ended
+        if (Listener.tour) {
+          view.startNewTour({
+            wait: 400
+          });
+        }
       }
     });
     var view = new Listener.Views.UserFavorites({model: this.model});
     this._swapView(view);
-
-    //if tour not ended
-    if (Listener.tour) {
-      view.startNewTour({
-        wait: 1500,
-        resize: true,
-        waitResize: 1700
-      });
-    }
   },
 
   renderFeed: function () {

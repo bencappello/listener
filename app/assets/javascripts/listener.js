@@ -23,7 +23,7 @@ window.Listener = {
 
     //TOUR
     this.tour = true
-    this.tourNumber = 1
+    this.tourNumber = 0
     this.endTour = function () {
       this.tour = false;
     }

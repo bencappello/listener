@@ -31,23 +31,20 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
     results.fetch ({
       data: {query: query, page: page},
       success: function () {
-        Listener.audioPlayer.maybeLoadSong(results.at(0))
+        Listener.audioPlayer.maybeLoadSong(results.at(0));
+
+        if (Listener.tour) {
+          view.startNewTour({
+            wait: 400,
+          });
+        }
       }
     })
     var view = new Listener.Views.SongsSearch({collection: results, query: query})
     this._swapView(view);
-
-    if (Listener.tour) {
-      view.startNewTour({
-        wait: 1000,
-      });
-    }
   },
 
   find: function (suffix, page) {
-    //if tour active start tour
-    Listener.tour && $("#tour1").joyride();
-
     page = page || 1
     suffix = suffix || 'popular_now'
     var songs = new Listener.Collections.Songs();
@@ -56,6 +53,12 @@ Listener.Routers.SongsRouter = Backbone.Router.extend ({
       success: function () {
         Listener.audioPlayer.maybeLoadSong(songs.at(0));
 
+        //if tour active start tour
+        if (Listener.tour) {
+          view.startNewTour({
+            wait: 400,
+          });
+        }
       }
     })
     var view = new Listener.Views.SongsFind({collection: songs, suffix: suffix})
