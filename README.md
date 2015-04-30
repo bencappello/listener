@@ -14,9 +14,9 @@ Listener is live at www.listenerapp.org
 * Music player attached in sticky nav bar (separate backbone view) allowing continuous playing during site navigation.
 * Stores image and audio files on Amazon S3. Uses Paperclip for uploads to S3.
 * Uses mp3info gem to pull mp3 metadata including title, artist, genre(s), and album art.
-* Uses Kaminari pagination for an infinite scroll on pages that list songs. This improves the user experience by reducing load time and providing an aesthetically pleasing interface to load songs.
+* Uses kaminari pagination gem for an infinite scroll on pages that list songs. This improves the user experience by reducing load time and providing an aesthetically pleasing interface to load songs.
 * Uses pg_search gem for custom song search database queries.
-* Employs basic site tour using Joyride jQuery plug-in
+* Employs basic site tour using Joyride jQuery plug-in.
 
 
 
