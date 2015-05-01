@@ -17,6 +17,6 @@ Inspired by sites such as Soundcloud and Hype Machine, Listener is a music shari
 * Uses pg_search gem for custom song search database queries.
 * Employs basic site tour using Joyride jQuery plug-in.
 
-###Goals
+###Future Updates
 * Add functionality to display all users who have favorited a song and followed a blog or a user.
 * Add scraper functionality to pull in songs from music blogs hosted outside Listener.
