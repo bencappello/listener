@@ -1,6 +1,6 @@
 class Song < ActiveRecord::Base
   include PgSearch
-  paginates_per 5
+  paginates_per 6
 
   validates :name, :user_id, :blog_id, :band_id, presence: true
   # validates :name, uniqueness: {scope: :band_id,

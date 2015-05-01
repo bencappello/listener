@@ -38,14 +38,14 @@ class Api::SongsController < ApplicationController
       @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
         .joins(:user_songs).where(:user_songs => {:created_at => time_range})
           .group('songs.id').order('COUNT(user_songs.id) desc, songs.id')
-            .page(params[:page])
+            .page(params[:page]).per(7)
     elsif params[:find] == 'popular_all_time'
       @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
       .joins(:user_songs).group('songs.id')
-        .order('COUNT(user_songs.id) desc, songs.id').page(params[:page])
+        .order('COUNT(user_songs.id) desc, songs.id').page(params[:page]).per(7)
     else
       @songs = Song.includes(:blog, :band, :user, :tags, :favoriters)
-        .order('created_at desc').limit(50).page(params[:page])
+        .order('created_at desc').limit(50).page(params[:page]).per(7)
     end
     render :search
   end

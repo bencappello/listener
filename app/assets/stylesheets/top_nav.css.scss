@@ -4,6 +4,8 @@
  min-width: 1000px;
  display: block;
  background: #83c441;
+ position: relative;
+ z-index: 1;
 }
 
 #top-header nav {
