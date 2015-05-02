@@ -5,12 +5,12 @@
 Inspired by sites such as Soundcloud and Hype Machine, Listener is a music sharing ecosystem where users can create music blogs, add songs, and discover music in a variety of ways.
 
 ###Features
-* Single page Backbone.js Application.
+* Single page Backbone.js application.
 * Consumes a Rails JSON API.
 * Custom built user authentication uses BCrypt for encrypting passwords.
 * Extends *Backbone.View* with a custom *compositeView* class to create nested Backbone views.
 * Polymorphic comments model allows comments to be placed on songs, blogs and bands.
-* Music player attached in sticky nav bar (separate backbone view) allowing continuous playing during site navigation.
+* Music player attached in sticky nav bar (separate backbone view) allowing uninterrupted playing during site navigation.
 * Stores image and audio files on Amazon S3. Uses Paperclip for uploads to S3.
 * Uses mp3info gem to pull mp3 metadata including title, artist, genre(s), and album art.
 * Uses Kaminari pagination gem for an infinite scroll on pages that list songs. This improves the user experience by reducing load time with an aesthetically pleasing interface.
