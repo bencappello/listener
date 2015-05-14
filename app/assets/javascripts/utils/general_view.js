@@ -43,7 +43,6 @@ Backbone.GeneralView = Backbone.View.extend({
   },
 
   startNewTour: function (options) {
-    debugger
     settings = {
       endTourID: "#tour" + Listener.tourNumber,
       startTourID: "#tour" + (Listener.tourNumber + 1),

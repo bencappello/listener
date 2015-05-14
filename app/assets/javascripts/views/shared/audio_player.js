@@ -31,8 +31,8 @@ Listener.Views.AudioPlayer = Backbone.View.extend({
       this.current_blog = song.collection;
       this.current_index = song.collection.indexOf(song);
     }
-    var imageUrl = song.escape('nav_image_url');
-    var audioUrl = song.escape('audio_url');
+    var imageUrl = song.get('nav_image_url');
+    var audioUrl = song.get('audio_url');
     var bandN = song.escape('band_name');
     var bandU = '#/bands/' + song.escape('band_id');
     var songN = song.fullName();
