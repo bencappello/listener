@@ -22,7 +22,7 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   addSong: function (song) {
     var view = new Listener.Views.SongListShow({
       model: song,
-      rank: this.rank
+      rankInfo: {rank: this.rank, page: this.suffix}
     });
     this.addSubview('section#songs', view);
     this.rank += 1;

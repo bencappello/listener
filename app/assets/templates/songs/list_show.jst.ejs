@@ -9,9 +9,11 @@
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
   <a class='song-list-link' href="<%= songU %>">
-    <div class="song-link-container">
-      <div class="song-rank"><%= rank %></div>
-    </div>
+    <% if (!(rankInfo.page == 'recently_added')) { %>
+      <div class="song-link-container">
+        <div class="song-rank"><%= rankInfo.rank %></div>
+      </div>
+    <% } %>
     <img class='thumbnail list-img' src="<%= song.escape("list_image_url") %>">
   </a>
 
