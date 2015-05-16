@@ -60,8 +60,46 @@
   margin-right: 0px;
 }
 
+.song-list-link {
+  position: relative;
+}
+
+.song-link-container {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.song-rank {
+  position: absolute;
+  top: 5px;
+  left: -22px;
+  width: 80px;
+  text-align: center;
+  font-size: 16px;
+  background: black;
+  // border: 1px solid white;
+  color: white;
+  font-weight: 700;
+  padding: 2px 0;
+  transform: rotate(-45deg);
+}
+
 .list-img {
   float: left;
+  border: 3px solid #C2B20A;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3pt 2pt black;
+  -webkit-transition: box-shadow 0.07s ease-in-out 0s;
+}
+
+.list-img:hover {
+  box-shadow: 0px 0px 5pt 4pt black;
+}
+
+.song-link-container:hover + .list-img {
+  box-shadow: 0px 0px 5pt 4pt black;
 }
 
 #favorite-count {

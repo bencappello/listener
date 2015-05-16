@@ -12,13 +12,14 @@ Listener.Views.SongListShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render)
     this.parentModel = options.parentModel;
+    this.rank = options.rank
     if (options.compressed_template) {
       this.template = this.compressed_template;
     }
   },
 
   render: function () {
-    this.$el.html(this.template({song: this.model}))
+    this.$el.html(this.template({song: this.model, rank: this.rank}))
     return this;
   },
 

@@ -7,6 +7,7 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
     Backbone.GeneralView.prototype.initialize.call(this);
     this.suffix = options.suffix;
     this.timeOut = false;
+    this.rank = 1; //the current song rank starts at 1
     this.newSongs = new Listener.Collections.Songs();
     this.listenTo(this.collection, 'sync', this.render)
     this.listenForScroll();
@@ -21,8 +22,10 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   addSong: function (song) {
     var view = new Listener.Views.SongListShow({
       model: song,
+      rank: this.rank
     });
     this.addSubview('section#songs', view);
+    this.rank += 1;
   },
 
   renderSongs: function () {

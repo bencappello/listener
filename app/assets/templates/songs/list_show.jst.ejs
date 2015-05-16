@@ -8,7 +8,12 @@
 <% var creatorN = song.escape('creator_name') %>
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
-  <a href="<%= songU %>"><img class='thumbnail list-img' src="<%= song.escape("list_image_url") %>"></a>
+  <a class='song-list-link' href="<%= songU %>">
+    <div class="song-link-container">
+      <div class="song-rank"><%= rank %></div>
+    </div>
+    <img class='thumbnail list-img' src="<%= song.escape("list_image_url") %>">
+  </a>
 
   <section id='song-list-controls'>
     <section class='controls-inner-container'>
