@@ -14,7 +14,6 @@ Listener.Views.SongsFind = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    debugger
     this.$el.html(this.template({songs: this.collection, title: this.suffix}))
     this.renderSongs();
     return this;

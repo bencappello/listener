@@ -28,6 +28,7 @@ window.Listener = {
       debugger
       this.tour = false;
     };
+    $('body').on("click", ".joyride-close-tip", this.endTour.bind(Listener));
 
     Backbone.history.start();
   }

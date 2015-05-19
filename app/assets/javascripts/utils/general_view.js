@@ -3,11 +3,6 @@ Backbone.GeneralView = Backbone.View.extend({
     this.listenTo(Listener.currentUser, 'signIn signOut signUp update', this.render);
     $(window).off("scroll");
     this.bindStickyNav();
-    this.bindTourClose();
-  },
-
-  bindTourClose: function () {
-    $(".joyride-close-tip").on("click", Listener.endTour.bind(Listener));
   },
 
   bindStickyNav: function () {
@@ -47,13 +42,12 @@ Backbone.GeneralView = Backbone.View.extend({
     }
     $.extend(settings, options)
 
+    $(settings.endTourID).joyride('destroy');
     if (Listener.tourNumber >= 12) {
       Listener.tour = false;
-      $(settings.endTourID).joyride('destroy');
       return;
     }
 
-    $(settings.endTourID).joyride('destroy');
     setTimeout(function(){
       $(settings.startTourID).joyride();
     }, settings.wait);
