@@ -22,11 +22,12 @@ window.Listener = {
     this.modalRouter = new Listener.Routers.ModalRouter();
 
     //TOUR
-    this.tour = true
-    this.tourNumber = 0
+    this.tour = true;
+    this.tourNumber = 0;
     this.endTour = function () {
+      debugger
       this.tour = false;
-    }
+    };
 
     Backbone.history.start();
   }

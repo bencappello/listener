@@ -9,7 +9,7 @@
 <% var creatorU = '#/users/' + song.escape('user_id') %>
 
   <a class='song-list-link' href="<%= songU %>">
-    <% if (!(rankInfo.page == 'recently_added')) { %>
+    <% if (rankInfo && !(rankInfo.page == 'recently_added')) { %>
       <div class="song-link-container">
         <div class="song-rank"><%= rankInfo.rank %></div>
       </div>

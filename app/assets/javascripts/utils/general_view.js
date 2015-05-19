@@ -8,9 +8,6 @@ Backbone.GeneralView = Backbone.View.extend({
 
   bindTourClose: function () {
     $(".joyride-close-tip").on("click", Listener.endTour.bind(Listener));
-    $(window).on('resize', function () {
-      console.log('resize')
-    });
   },
 
   bindStickyNav: function () {
