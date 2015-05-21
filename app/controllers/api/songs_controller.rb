@@ -51,8 +51,8 @@ class Api::SongsController < ApplicationController
   end
 
   def favorites
-    #get the user as opposed to just the songs because its simpler to
-    #use the through association to get the songs
+    #get the user and use the through association to get the songs
+    #minimal time added to query is mitigated by pagination
     @user = User.includes(
       favorite_songs: [:blog, :band, :favoriters, :user, :tags]
     ).find(params[:user_id])
@@ -60,6 +60,8 @@ class Api::SongsController < ApplicationController
   end
 
   def feed
+    #get the user and use the through association to get the songs
+    #minimal time added to query is mitigated by pagination
     @user = User.includes(
       followed_blog_songs: [:blog, :band, :favoriters, :tags, :user],
       followed_user_songs: [:blog, :band, :favoriters, :tags, :user]
@@ -68,6 +70,8 @@ class Api::SongsController < ApplicationController
   end
 
   def added_songs
+    #get the user and use the through association to get the songs
+    #minimal time added to query is mitigated by pagination
     @user = User.includes(
       songs: [:blog, :band, :favoriters, :tags, :user]
     ).find(params[:user_id])
