@@ -1,5 +1,6 @@
 class Api::SongsController < ApplicationController
   def index
+    puts "CURRENT TIME #{Time.now}"
     @page = params[:page]
     if params[:query]
       self.search
