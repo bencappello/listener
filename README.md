@@ -13,7 +13,7 @@ Inspired by sites such as Soundcloud and Hype Machine, Listener is a music shari
 * Music player attached in sticky nav bar (separate backbone view) allowing uninterrupted playing during site navigation.
 * Stores image and audio files on Amazon S3. Uses Paperclip for uploads to S3.
 * Uses mp3info gem to pull mp3 metadata including title, artist, genre(s), and album art.
-* Implements infinites croll through custom JavaScript in the browser and the Kaminari gem in the backend. This improves the user experience by reducing load time with an aesthetically pleasing interface.
+* Implements infinites scroll through custom JavaScript in the browser and the Kaminari gem in the backend. This improves the user experience by reducing load time with an aesthetically pleasing interface.
 * Uses pg_search gem for custom song search queries.
 * Employs basic site tour using Joyride jQuery plug-in.
 
