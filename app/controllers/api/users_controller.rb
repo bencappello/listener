@@ -41,7 +41,7 @@ class Api::UsersController < ApplicationController
         password: 'password'
       )
 
-      200.times do
+      40.times do
         UserSong.create(
           user_id: @user.id,
           song_id: Song.all.sample.id,
